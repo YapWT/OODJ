@@ -31,10 +31,28 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("Password");
 
         BTN_exit.setText("Exit");
+        BTN_exit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTN_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_exitActionPerformed(evt);
+            }
+        });
 
         BTN_login.setText("Login");
+        BTN_login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTN_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_loginActionPerformed(evt);
+            }
+        });
 
         BTN_register.setText("Register");
+        BTN_register.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTN_register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_registerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -45,7 +63,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(BTN_exit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BTN_register)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BTN_login))
@@ -81,7 +99,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(BTN_exit)
                     .addComponent(BTN_login)
                     .addComponent(BTN_register))
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -103,6 +121,18 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BTN_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_exitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_BTN_exitActionPerformed
+
+    private void BTN_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_loginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_loginActionPerformed
+
+    private void BTN_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_registerActionPerformed
+        // customer register
+    }//GEN-LAST:event_BTN_registerActionPerformed
 
     /**
      * @param args the command line arguments
