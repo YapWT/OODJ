@@ -1,7 +1,5 @@
 package assignment;
 
-import javax.swing.JOptionPane;
-
 public class uiLogin extends javax.swing.JFrame {    
     public uiLogin() {
         initComponents();
@@ -82,7 +80,7 @@ public class uiLogin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BTN_login))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(LBL_message, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LBL_message, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(84, 84, 84))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -140,11 +138,11 @@ public class uiLogin extends javax.swing.JFrame {
     private void BTN_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_loginActionPerformed
 
         ClassLogin cl = new ClassLogin(TXT_id.getText(),TXT_pass.getText());
-        boolean check = cl.checkUser();
+        String check = cl.checkUser();
         String type = cl.getUtype(); 
         // S - scheduler, C - customer, A - admin, M - manager
         
-        if (check) {
+        if (check.equals("Login")) {
             this.dispose();
             switch (type) {
                 case "A":
@@ -164,7 +162,12 @@ public class uiLogin extends javax.swing.JFrame {
                 }
         } else {
             LBL_message.setVisible(true);
-            LBL_message.setText("Invalid User ID or Password. Please Try Again. ");
+            if (check.equals("Failed"))
+                LBL_message.setText("Invalid User ID or Password. Please Try Again. ");
+            else if (check.equals("block"))
+                LBL_message.setText("Your account is blocked. Please contact support.");
+            else
+                LBL_message.setText("Your account has been deleted.");
         }
     }//GEN-LAST:event_BTN_loginActionPerformed
 
