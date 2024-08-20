@@ -1,8 +1,11 @@
 package assignment;
 
-public class Login extends javax.swing.JFrame {
-    public Login() {
+import javax.swing.JOptionPane;
+
+public class uiLogin extends javax.swing.JFrame {    
+    public uiLogin() {
         initComponents();
+        LBL_message.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -18,6 +21,7 @@ public class Login extends javax.swing.JFrame {
         BTN_exit = new javax.swing.JButton();
         BTN_login = new javax.swing.JButton();
         BTN_register = new javax.swing.JButton();
+        LBL_message = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,6 +58,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        LBL_message.setText("Message Area");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -62,19 +68,20 @@ public class Login extends javax.swing.JFrame {
                 .addGap(84, 84, 84)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(BTN_exit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTN_register)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BTN_login))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TXT_id, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TXT_password, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(TXT_password, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(BTN_exit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BTN_register)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BTN_login))
+                    .addComponent(LBL_message, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(84, 84, 84))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(180, 180, 180)
@@ -99,17 +106,19 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(BTN_exit)
                     .addComponent(BTN_login)
                     .addComponent(BTN_register))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(LBL_message)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +136,34 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_exitActionPerformed
 
     private void BTN_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_loginActionPerformed
-        // TODO add your handling code here:
+
+        ClassLogin cl = new ClassLogin(TXT_id.getText(),TXT_id.getText());
+        boolean check = cl.checkUser();
+        String type = cl.getUtype(); 
+        // S - scheduler, C - customer, A - admin, M - manager
+        
+        if (check) {
+            this.dispose();
+            switch (type) {
+                case "A":
+                    new uiAdmin().setVisible(true);
+                    break;
+                case "C":
+                    new uiCustomer().setVisible(true);
+                    break;
+                case "M":
+                    new uiManager().setVisible(true);
+                    break;
+                case "S":
+                    new uiScheduler().setVisible(true);
+                    break;
+                default:
+                    break;
+                }
+        } else {
+            LBL_message.setVisible(true);
+            LBL_message.setText("Invalid User ID or Password. Please Try Again. ");
+        }
     }//GEN-LAST:event_BTN_loginActionPerformed
 
     private void BTN_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_registerActionPerformed
@@ -141,7 +177,7 @@ public class Login extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new uiLogin().setVisible(true);
             }
         });
     }
@@ -150,6 +186,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton BTN_exit;
     private javax.swing.JButton BTN_login;
     private javax.swing.JButton BTN_register;
+    private javax.swing.JLabel LBL_message;
     private javax.swing.JTextField TXT_id;
     private javax.swing.JPasswordField TXT_password;
     private javax.swing.JLabel jLabel1;
