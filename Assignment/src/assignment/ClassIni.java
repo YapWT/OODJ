@@ -11,7 +11,7 @@ public class ClassIni {
                 UserMangement id = new UserMangement();
                 
                 String ID = id.generateID("A");
-                w.write(String.format("%s, 123, admin, A", ID));
+                w.write(String.format("%s,123,admin,A", ID));
                 
                 return (String.format("ID: %s\nPasswors: 123", ID));
                 

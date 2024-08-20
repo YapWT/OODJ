@@ -1,6 +1,7 @@
 package assignment;
 
 import java.io.*;
+import javax.swing.JOptionPane;
 
 
 public class ClassLogin {
@@ -15,13 +16,14 @@ public class ClassLogin {
     }
     
     public boolean checkUser(){
+        
         try (BufferedReader rd = new BufferedReader(new FileReader("users.txt"))){
             String line;
             while ((line = rd.readLine()) != null){
                 String[] data = line.split(",");
-                if (data[0].trim().equals(Uid)){
+                if (data[0].equals(Uid) && data[1].equals(Upass)){
                     this.Utype = data[3];
-                    this.Utype = data[2];
+                    this.Uname = data[2];
                     return true;
                 }
                     
