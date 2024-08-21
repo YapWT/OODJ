@@ -7,7 +7,7 @@ public class ClassLogin {
     private String Upass;
     private String Uname;
     private String Utype;
-    private String Ustatus; // active, blocked, deleted
+    private String Ustatus; // active, blocked, deactived, pending
 
     public ClassLogin(String Uid, String Upass) {
         this.Uid = Uid;
@@ -21,14 +21,18 @@ public class ClassLogin {
                 String[] data = line.split(",");
                 
                 if (data[0].equals(Uid) && data[1].equals(Upass)){
-                    if (data[4].equals("active")){
-                        this.Utype = data[3];
-                        this.Uname = data[2];
+                    this.Utype = data[3];
+                    this.Uname = data[2];
+                    this.Ustatus = data[4];
+                    
+                    if (Ustatus.equals("active"))
                         return "Login";
-                    } else if (data[4].equals("blocked"))
+                    else if (Ustatus.equals("blocked"))
                         return "block";
+                    else if (Ustatus.equals("pending"))
+                        return "pending";
                     else
-                        return "delete";
+                        return "deactivate";
                 }
             }
         } catch (IOException e){
@@ -39,7 +43,9 @@ public class ClassLogin {
 
     public String getUtype() {
         return Utype;
+    }    
+
+    public String getUid() {
+        return Uid;
     }
-
-
 }

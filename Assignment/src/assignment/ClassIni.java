@@ -8,8 +8,8 @@ public class ClassIni {
             return null;
         } catch (FileNotFoundException e) {
             try (BufferedWriter w = new BufferedWriter(new FileWriter("users.txt"))) {
-                UserMangement id = new UserMangement();
                 
+                UserMangement id = new UserMangement();
                 String ID = id.generateID("A");
                 w.write(String.format("%s,123,admin,A,active", ID));
                 

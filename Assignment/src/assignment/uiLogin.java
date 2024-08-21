@@ -1,5 +1,9 @@
 package assignment;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class uiLogin extends javax.swing.JFrame {    
     public uiLogin() {
         initComponents();
@@ -142,11 +146,18 @@ public class uiLogin extends javax.swing.JFrame {
         String type = cl.getUtype(); 
         // S - scheduler, C - customer, A - admin, M - manager
         
-        if (check.equals("Login")) {
+        if (check.equals("Login") | check.equals("pending")) {
+            if (check.equals("pending")){
+                try (BufferedWriter w = new BufferedWriter(new FileWriter("users.txt"))) {
+                    // modify the stAtus from inactive to active
+                } catch (IOException e2){
+                    System.out.println("Error when adding a new user. ");
+                }
+            }
             this.dispose();
             switch (type) {
                 case "A":
-                    new uiAdmin().setVisible(true);
+                    new uiAdmin(cl.getUid()).setVisible(true);
                     break;
                 case "C":
                     new uiCustomer().setVisible(true);
@@ -165,9 +176,9 @@ public class uiLogin extends javax.swing.JFrame {
             if (check.equals("Failed"))
                 LBL_message.setText("Invalid User ID or Password. Please Try Again. ");
             else if (check.equals("block"))
-                LBL_message.setText("Your account is blocked. Please contact support.");
+                LBL_message.setText("Your account is blocked. ");
             else
-                LBL_message.setText("Your account has been deleted.");
+                LBL_message.setText("Your account has been deactivated. ");
         }
     }//GEN-LAST:event_BTN_loginActionPerformed
 
