@@ -8,7 +8,7 @@ public class ClassIni {
             return null;
         } catch (FileNotFoundException e) {
             new zWriteFile().write("users.txt", "A160001,123,admin,A,pending", false);
-            return "A160001,123,admin,A,pending";
+            return "ID: A160001\nPassword: 123";
         } catch (IOException e) {
             System.out.println("Error Found in reader file");
             return null;
