@@ -23,6 +23,26 @@ class UserMangement extends ClassAdmin{
     private String Uname;
     private String Utype;
     private String Ustatus; // active, blocked, deactived, pending
+
+    public String getUid() {
+        return Uid;
+    }
+
+    public String getUpass() {
+        return Upass;
+    }
+
+    public String getUname() {
+        return Uname;
+    }
+
+    public String getUtype() {
+        return Utype;
+    }
+
+    public String getUstatus() {
+        return Ustatus;
+    }
     
     // S - scheduler, C - customer, A - admin, M - manager
 
