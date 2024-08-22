@@ -1,9 +1,5 @@
 package assignment;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-
 public class uiLogin extends javax.swing.JFrame {    
     public uiLogin() {
         initComponents();
@@ -147,26 +143,19 @@ public class uiLogin extends javax.swing.JFrame {
         // S - scheduler, C - customer, A - admin, M - manager
         
         if (check.equals("Login") | check.equals("pending")) {
-            if (check.equals("pending")){
-                try (BufferedWriter w = new BufferedWriter(new FileWriter("users.txt"))) {
-                    // modify the stAtus from inactive to active
-                } catch (IOException e2){
-                    System.out.println("Error when adding a new user. ");
-                }
-            }
             this.dispose();
             switch (type) {
                 case "A":
                     new uiAdmin(cl.getUid()).setVisible(true);
                     break;
                 case "C":
-                    new uiCustomer().setVisible(true);
+                    new uiCustomer(cl.getUid()).setVisible(true);
                     break;
                 case "M":
-                    new uiManager().setVisible(true);
+                    new uiManager(cl.getUid()).setVisible(true);
                     break;
                 case "S":
-                    new uiScheduler().setVisible(true);
+                    new uiScheduler(cl.getUid()).setVisible(true);
                     break;
                 default:
                     break;

@@ -1,6 +1,6 @@
 package assignment;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 public class Main extends javax.swing.JFrame {
 
@@ -39,14 +39,12 @@ public class Main extends javax.swing.JFrame {
                 Main m = new Main();
                 m.setVisible(true);
                 
-                ClassIni ini = new ClassIni();
-                String result = ini.Ini();
+                String result = new ClassIni().Ini();
                 
                 if (result != null)
                     JOptionPane.showMessageDialog(null, result, "First Admin Account Information", JOptionPane.INFORMATION_MESSAGE);
                 new uiLogin().setVisible(true);
                 m.dispose();
-
             }
         });
     }

@@ -7,9 +7,9 @@ public class uiAdmin extends javax.swing.JFrame {
         initComponents();
     }
     
-    public uiAdmin(String id){
+    public uiAdmin(String ID) {
         initComponents();
-        this.ID = id;
+        this.ID = ID;
     }
     
     @SuppressWarnings("unchecked")

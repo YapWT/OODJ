@@ -1,6 +1,6 @@
 package assignment;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class uiAdminUserManage extends javax.swing.JFrame {
     public uiAdminUserManage() {
