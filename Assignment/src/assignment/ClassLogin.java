@@ -16,22 +16,24 @@ public class ClassLogin {
     
     public String checkUser() {
         List<List<String>> data = new zReadFile("users.txt", 0, Uid).getAllData();
-            
-        if (data != null) {
+
+        if (!data.isEmpty()) {
             if (data.get(0).get(0).equals(Uid) && data.get(0).get(1).equals(Upass)){
                 this.Utype = data.get(0).get(3);
                 this.Uname = data.get(0).get(2);
                 this.Ustatus = data.get(0).get(4);
 
-                if (Ustatus.equals("active"))
-                    return "Login";
-                else if (Ustatus.equals("blocked"))
-                    return "block";
-                else if (Ustatus.equals("pending")) {
-                    changeStatus();
-                    return "pending";
-                } else
-                    return "deactivate";
+                switch (Ustatus) {
+                    case "active":
+                        return "Login";
+                    case "blocked":
+                        return "block";
+                    case "pending":
+                        changeStatus();
+                        return "pending";
+                    default:
+                        return "deactivate";
+                }
             }
         }
         return "Failed";
