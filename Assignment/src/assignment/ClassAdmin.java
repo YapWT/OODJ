@@ -1,18 +1,19 @@
 package assignment;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.*;
+import java.util.*;
+import javax.swing.*;
 
 public class ClassAdmin {
-    protected void writeFile(String filename, String data){
-        try (BufferedWriter w = new BufferedWriter(new FileWriter(filename, true))) {    
-            w.write(data);
-        } catch (IOException e2){
-            System.out.println("Error when adding a new user. ");
+
+    public String getSelectedButton(ButtonGroup group){
+        for (var buttons = group.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+            if (button.isSelected()) {
+                return button.getText();
+            }
         }
+        return null;
     }
 }
 
@@ -23,35 +24,35 @@ class UserMangement extends ClassAdmin{
     private String Utype;
     private String Ustatus; // active, blocked, deactived, pending
     
-    private ConcurrentHashMap<String, AtomicInteger> count = new ConcurrentHashMap<>();
-
     // S - scheduler, C - customer, A - admin, M - manager
-    public String generateID(String type) {
-       
-        count.putIfAbsent(type, new AtomicInteger(0));
-        int i = count.get(type).incrementAndGet();
-        
-        return String.format("%s%d%03d", type, 160, i);
-    }
-    
+
     public void addUser(String name, String type) {
-        this.Uid = generateID(type);
+        this.Uid = new IDGenerator(type.substring(0, 1)).GetID();
         this.Upass = "123";
         this.Uname = name;
-        this.Utype = type;
+        this.Utype = type.substring(0, 1);
         this.Ustatus = "pending";
-        writeFile("users.txt", String.format("%s,%s,%s,%s,%s", Uid, Upass, Uname, Utype, Ustatus));
+        
+        new zWriteFile().write("users.txt", String.format("%s,%s,%s,%s,%s", Uid, Upass, Uname, Utype, Ustatus), true);
+    }
+
+}
+
+class IDGenerator extends UserMangement {
+    private String type;
+    private int count;
+    
+    protected IDGenerator(String type){
+        this.type = type;
+        count = loadCounter("users.txt", type);
     }
     
-    @Override
-    protected void writeFile(String filename, String data){
-        try (BufferedWriter w = new BufferedWriter(new FileWriter(filename, true))) {
-            w.write("\n" + data);
-        } catch (IOException e2){
-            System.out.println("Error when adding a new user. ");
-        }
+    private int loadCounter(String filename, String t){
+        List<String> type = new zReadFile("users.txt").getSplit3();
+        return Collections.frequency(type, t);
     }
     
-    
-    
+    public String GetID(){      
+        return String.format("%s%d%03d", type, 160, count + 1);
+    }
 }
