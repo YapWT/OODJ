@@ -143,7 +143,10 @@ public class uiAdminAddUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTN_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_addActionPerformed
-        new UserMangement().addUser(TXT_name.getText(), new ClassAdmin().getSelectedButton(buttonGroup1));
+        UserMangement newUser = new UserMangement();
+        newUser.addUser(TXT_name.getText(), new ClassAdmin().getSelectedButton(buttonGroup1));
+        jTextArea1.setText(String.format("ID: %s\nPassword: %s, User Type: %s, User Name: %s, Status: %s", newUser.getUid(), newUser.getUpass(), newUser.getUtype(), newUser.getUname(), newUser.getUstatus()));
+        
     }//GEN-LAST:event_BTN_addActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
