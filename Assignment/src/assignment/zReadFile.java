@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class zReadFile {
-    private ArrayList<ArrayList<Object>> allData = new ArrayList<>();
+    private List<List<String>> allData = new ArrayList<>(); // [[], []
     private List<String> split0 = new ArrayList<>(); // []
     private List<String> split1 = new ArrayList<>();
     private List<String> split2 = new ArrayList<>();
@@ -15,7 +15,7 @@ public class zReadFile {
         try (BufferedReader rd = new BufferedReader(new FileReader(filename))){
             String line;
             while ((line = rd.readLine()) != null) {
-                allData.add(new ArrayList<> (Arrays.asList(line.split(","))));
+                allData.add(Arrays.asList(line.split(",")));
                 split0.add(line.split(",")[0]);
                 split1.add(line.split(",")[1]);
                 split2.add(line.split(",")[2]);
@@ -31,15 +31,15 @@ public class zReadFile {
         try (BufferedReader rd = new BufferedReader(new FileReader(filename))){
             String line;
             while ((line = rd.readLine()) != null) {
-                if (line.split(",")[splitNumber].equals(search)) 
-                    allData.add(new ArrayList<> (Arrays.asList(line.split(","))));
+                if (line.split(",")[splitNumber].equals(search))
+                    allData.add(Arrays.asList(line.split(",")));
             }
         } catch (IOException e2){
             System.out.println("Error when reading a file. ");
         }
     }
 
-    public ArrayList<ArrayList<Object>> getAllData() {
+    public List<List<String>> getAllData() {
         return allData;
     }
     

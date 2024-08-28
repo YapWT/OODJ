@@ -1,7 +1,7 @@
 package assignment;
 
 import java.io.*;
-import java.util.*;
+import java.util.List;
 
 public class zWriteFile {
     public void write(String filename, String data, boolean append){
@@ -12,25 +12,14 @@ public class zWriteFile {
         }
     }
     
-    public void write(String filename, ArrayList<ArrayList<Object>> data, boolean append){
+    public void write(String filename, List<List<String>> data, boolean append){
         try (BufferedWriter w = new BufferedWriter(new FileWriter(filename, append))) {
-            for (ArrayList<Object> row : data) 
-                w.write(toString(row));
-            
+            for (List<String> row: data) {
+                w.write(String.join(",", row));
+                w.newLine();
+            }
         } catch (IOException e2){
             System.out.println("Error when writing a file. ");
         }
-    }
-    
-    private String toString(ArrayList<Object> row) {
-        StringBuilder line = new StringBuilder();
-
-        for (Object obj : row){
-            if (line.length() > 0)
-                line.append(",");
-            line.append(obj.toString());
-        }
-        line.append("\n");
-        return line.toString();
     }
 }
