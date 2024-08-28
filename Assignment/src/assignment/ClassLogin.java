@@ -15,13 +15,13 @@ public class ClassLogin {
     }
     
     public String checkUser() {
-        List<List<String>> data = new zReadFile("users.txt", 0, Uid).getAllData();
+        ArrayList<ArrayList<Object>> data = new zReadFile("users.txt", 0, Uid).getAllData();
 
         if (!data.isEmpty()) {
             if (data.get(0).get(0).equals(Uid) && data.get(0).get(1).equals(Upass)){
-                this.Utype = data.get(0).get(3);
-                this.Uname = data.get(0).get(2);
-                this.Ustatus = data.get(0).get(4);
+                this.Utype = data.get(0).get(3).toString();
+                this.Uname = data.get(0).get(2).toString();
+                this.Ustatus = data.get(0).get(4).toString();
 
                 switch (Ustatus) {
                     case "active":
@@ -40,9 +40,10 @@ public class ClassLogin {
     }
     
     public void changeStatus(){
-        List<List<String>> data = new zReadFile("users.txt").getAllData();
-        for (List<String> row : data) {
-            if (row.get(0).equals(Uid)) {
+        ArrayList<ArrayList<Object>> data = new zReadFile("users.txt").getAllData();
+        
+        for (ArrayList<Object> row : data) {
+            if (row.get(0).toString().equals(Uid)) {
                 row.set(4, "active");
                 break;
             }
