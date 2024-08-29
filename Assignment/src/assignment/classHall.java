@@ -8,7 +8,6 @@ package assignment;
  *
  * @author zhusheng
  */
-public class ClassScheduler {
- 
+public class classHall {
     
 }
