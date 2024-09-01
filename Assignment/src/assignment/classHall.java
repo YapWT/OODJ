@@ -9,5 +9,34 @@ package assignment;
  * @author zhusheng
  */
 public class classHall {
+    private int hallCapacity;//hall capacity
+    private String hallType;//hall type
+    private int hallNumber;//hall number
+    private double bookingRate;
     
+    public classHall(){}
+
+    public classHall(String hallType, int hallNumber) {
+        this.hallType = hallType;
+        this.hallNumber = hallNumber;
+        if(this.hallType=="audi")
+        {
+            this.hallCapacity=1000;
+            this.bookingRate=300.00;
+        }
+        else if(this.hallType=="banquet")
+        {
+            this.hallCapacity=300;
+            this.bookingRate=100.00;
+        }
+        else if(this.hallType=="meeting")
+        {
+            this.hallCapacity=30;
+            this.bookingRate=50.00;
+        }
+    }
+    
+    
+
+        
 }
