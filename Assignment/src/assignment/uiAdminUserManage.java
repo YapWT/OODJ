@@ -52,7 +52,7 @@ public class uiAdminUserManage extends javax.swing.JFrame {
         );
         PNL_userManageLayout.setVerticalGroup(
             PNL_userManageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGap(0, 359, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout PNL_userManagementLayout = new javax.swing.GroupLayout(PNL_userManagement);
