@@ -1,9 +1,12 @@
 package assignment;
 
 public class uiLogin extends javax.swing.JFrame {    
+    ClassLogin cl;
+    
     public uiLogin() {
         initComponents();
         LBL_message.setVisible(false);
+        cl = new ClassLogin();
     }
 
     @SuppressWarnings("unchecked")
@@ -138,7 +141,9 @@ public class uiLogin extends javax.swing.JFrame {
 
     private void BTN_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_loginActionPerformed
 
-        ClassLogin cl = new ClassLogin(TXT_id.getText(),TXT_pass.getText());
+        cl.setUid(TXT_id.getText());
+        cl.setUpass(TXT_pass.getText());
+        
         String check = cl.checkUser();
         String type = cl.getUtype(); 
         // S - scheduler, C - customer, A - admin, M - manager

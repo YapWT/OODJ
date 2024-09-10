@@ -5,23 +5,26 @@ import java.util.*;
 public class ClassLogin {
     private String Uid;
     private String Upass;
-    private String Uname;
     private String Utype;
     private String Ustatus; // active, blocked, deactived, pending
+    private zUserToString userToString;
 
-    public ClassLogin(String Uid, String Upass) {
+    public void setUid(String Uid) {
         this.Uid = Uid;
+    }
+
+    public void setUpass(String Upass) {
         this.Upass = Upass;
     }
-    
+
     public String checkUser() {
         ArrayList<ArrayList<Object>> data = new zReadFile("users.txt", 0, Uid).getAllData();
+        userToString = new zUserToString(data);
 
         if (!data.isEmpty()) {
-            if (data.get(0).get(0).equals(Uid) && data.get(0).get(1).equals(Upass)){
-                this.Utype = data.get(0).get(3).toString();
-                this.Uname = data.get(0).get(2).toString();
-                this.Ustatus = data.get(0).get(5).toString();
+            if (userToString.getSplit(0).equals(Uid) && userToString.getSplit(1).equals(Upass)){
+                this.Utype = userToString.getSplit(3);
+                this.Ustatus = userToString.getSplit(5);
 
                 switch (Ustatus) {
                     case "active":
