@@ -22,6 +22,7 @@ class UserMangement extends ClassAdmin{
     private String Upass;
     private String Uname;
     private String Utype;
+    private String Ucontact;
     private String Ustatus; // active, blocked, deactived, pending
 
     public String getUid() {
@@ -40,6 +41,10 @@ class UserMangement extends ClassAdmin{
         return Utype;
     }
 
+    public String getUcontact() {
+        return Ucontact;
+    }
+
     public String getUstatus() {
         return Ustatus;
     }
@@ -51,9 +56,10 @@ class UserMangement extends ClassAdmin{
         this.Upass = "123";
         this.Uname = name;
         this.Utype = type.substring(0, 1);
+        this.Ucontact = "";
         this.Ustatus = "pending";
         
-        new zWriteFile().write("users.txt", String.format("%s,%s,%s,%s,%s", Uid, Upass, Uname, Utype, Ustatus), true);
+        new zWriteFile().write("users.txt", String.format("\n%s,%s,%s,%s,%s", Uid, Upass, Uname, Utype, Ustatus), true);
     }
 
 }
