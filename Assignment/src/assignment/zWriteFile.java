@@ -22,10 +22,8 @@ public class zWriteFile implements writeFile{
     @Override
     public void write(String filename, ArrayList<ArrayList<Object>> data, boolean append){
         try (BufferedWriter w = new BufferedWriter(new FileWriter(filename, append))) {
-            for (ArrayList<Object> row : data) {
+            for (ArrayList<Object> row : data)
                 w.write(toString(row));
-                w.newLine();
-            }
                 
                 
         } catch (IOException e2){
