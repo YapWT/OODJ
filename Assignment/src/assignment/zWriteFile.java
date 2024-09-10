@@ -3,7 +3,14 @@ package assignment;
 import java.io.*;
 import java.util.*;
 
-public class zWriteFile {
+interface writeFile {
+    void write(String filename, String data, boolean append);
+    void write(String filename, ArrayList<ArrayList<Object>> data, boolean append);
+}
+
+public class zWriteFile implements writeFile{
+    
+    @Override
     public void write(String filename, String data, boolean append){
         try (BufferedWriter w = new BufferedWriter(new FileWriter(filename, append))) {
             w.write(data);
@@ -12,6 +19,7 @@ public class zWriteFile {
         }
     }
     
+    @Override
     public void write(String filename, ArrayList<ArrayList<Object>> data, boolean append){
         try (BufferedWriter w = new BufferedWriter(new FileWriter(filename, append))) {
             for (ArrayList<Object> row : data) 
@@ -22,6 +30,7 @@ public class zWriteFile {
         }
     }
 
+    
     private String toString(ArrayList<Object> row) {
         StringBuilder line = new StringBuilder();
 

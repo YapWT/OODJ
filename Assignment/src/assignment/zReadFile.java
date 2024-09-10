@@ -3,7 +3,16 @@ package assignment;
 import java.io.*;
 import java.util.*;
 
-public class zReadFile {
+interface readFile {
+    ArrayList<ArrayList<Object>> getAllData();
+    List<String> getSplit0();
+    List<String> getSplit1();
+    List<String> getSplit2();
+    List<String> getSplit3();
+    List<String> getSplit4();
+}
+
+public class zReadFile implements readFile {
     private ArrayList<ArrayList<Object>> allData = new ArrayList<>(); // [[], []
     private List<String> split0 = new ArrayList<>(); // []
     private List<String> split1 = new ArrayList<>();
@@ -39,26 +48,32 @@ public class zReadFile {
         }
     }
 
+    @Override
     public ArrayList<ArrayList<Object>> getAllData() {
         return allData;
     }
     
+    @Override
     public List<String> getSplit0() {
         return split0;
     }
 
+    @Override
     public List<String> getSplit1() {
         return split1;
     }
 
+    @Override
     public List<String> getSplit2() {
         return split2;
     }
 
+    @Override
     public List<String> getSplit3() {
         return split3;
     }
 
+    @Override
     public List<String> getSplit4() {
         return split4;
     }
