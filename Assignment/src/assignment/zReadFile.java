@@ -10,6 +10,7 @@ interface readFile {
     List<String> getSplit2();
     List<String> getSplit3();
     List<String> getSplit4();
+    List<String> getSplit5();
 }
 
 public class zReadFile implements readFile {
@@ -19,6 +20,7 @@ public class zReadFile implements readFile {
     private List<String> split2 = new ArrayList<>();
     private List<String> split3 = new ArrayList<>();
     private List<String> split4 = new ArrayList<>();
+    private List<String> split5 = new ArrayList<>();
     
     public zReadFile(String filename){
         try (BufferedReader rd = new BufferedReader(new FileReader(filename))){
@@ -30,6 +32,7 @@ public class zReadFile implements readFile {
                 split2.add(line.split(",")[2]);
                 split3.add(line.split(",")[3]);
                 split4.add(line.split(",")[4]);
+                split5.add(line.split(",")[5]);
             }
         } catch (IOException e2){
             System.out.println("Error when reading a file. ");
@@ -77,5 +80,9 @@ public class zReadFile implements readFile {
     public List<String> getSplit4() {
         return split4;
     }
-
+    
+    @Override
+    public List<String> getSplit5() {
+        return split5;
+    }
 }

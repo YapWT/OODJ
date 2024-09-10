@@ -7,7 +7,7 @@ public class ClassIni {
         try (BufferedReader rd = new BufferedReader(new FileReader("users.txt"))) {
             return null;
         } catch (FileNotFoundException e) {
-            new zWriteFile().write("users.txt", "A160001,123,admin,A,pending", false);
+            new zWriteFile().write("users.txt", "A160001,123,admin,A,,pending", false);
             return "ID: A160001\nPassword: 123";
         } catch (IOException e) {
             System.out.println("Error Found in reader file");

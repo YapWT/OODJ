@@ -41,8 +41,11 @@ public class Main extends javax.swing.JFrame {
                 
                 String result = new ClassIni().Ini();
                 
-                if (result != null)
+                if (result != null) {
                     JOptionPane.showMessageDialog(null, result, "First Admin Account Information", JOptionPane.INFORMATION_MESSAGE);
+                    System.out.println("First Admin Account Information\n" + result);
+                }
+                    
                 new uiLogin().setVisible(true);
                 m.dispose();
             }

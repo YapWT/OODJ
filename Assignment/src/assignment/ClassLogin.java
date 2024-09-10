@@ -21,7 +21,7 @@ public class ClassLogin {
             if (data.get(0).get(0).equals(Uid) && data.get(0).get(1).equals(Upass)){
                 this.Utype = data.get(0).get(3).toString();
                 this.Uname = data.get(0).get(2).toString();
-                this.Ustatus = data.get(0).get(4).toString();
+                this.Ustatus = data.get(0).get(5).toString();
 
                 switch (Ustatus) {
                     case "active":
@@ -44,7 +44,7 @@ public class ClassLogin {
         
         for (ArrayList<Object> row : data) {
             if (row.get(0).toString().equals(Uid)) {
-                row.set(4, "active");
+                row.set(5, "active");
                 break;
             }
         }
