@@ -1,6 +1,5 @@
 package assignment;
 
-import java.io.*;
 import java.util.*;
 import javax.swing.*;
 
@@ -74,7 +73,7 @@ class IDGenerator extends UserMangement {
     }
     
     private int loadCounter(String filename, String t){
-        List<String> type = new zReadFile("users.txt").getSplits(3);
+        List<String> type = new zReadFile("users.txt").getSplit3();
         return Collections.frequency(type, t);
     }
     
