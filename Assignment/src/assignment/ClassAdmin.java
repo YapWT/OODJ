@@ -59,7 +59,7 @@ class UserMangement extends ClassAdmin{
         this.Ucontact = "";
         this.Ustatus = "pending";
         
-        new zWriteFile().write("users.txt", String.format("\n%s,%s,%s,%s,%s", Uid, Upass, Uname, Utype, Ustatus), true);
+        new zWriteFile().write("users.txt", String.format("\n%s,%s,%s,%s,%s,%s", Uid, Upass, Uname, Utype, Ucontact, Ustatus), true);
     }
 
 }
@@ -74,7 +74,7 @@ class IDGenerator extends UserMangement {
     }
     
     private int loadCounter(String filename, String t){
-        List<String> type = new zReadFile("users.txt").getSplit3();
+        List<String> type = new zReadFile("users.txt").getSplits(3);
         return Collections.frequency(type, t);
     }
     
