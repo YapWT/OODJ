@@ -62,23 +62,26 @@ public class User {
         new zWriteFile().write("users.txt", data, false);
     }
 
-    
     public void logout() {
-        new uiLogin();
+        
     }
 
     public void updateProfile() {}
-    
-    
-    
-    
-    
+
     public String getUid() {
         return Uid;
     }
 
     public void setUid(String Uid) {
         this.Uid = Uid;
+    }
+
+    public String getUname() {
+        return Uname;
+    }
+
+    public void setUname(String Uname) {
+        this.Uname = Uname;
     }
 
     public String getUpass() {
@@ -104,5 +107,12 @@ public class User {
     public void setUstatus(String Ustatus) {
         this.Ustatus = Ustatus;
     }
-    
+
+    public String getUcontact() {
+        return Ucontact;
+    }
+
+    public void setUcontact(String Ucontact) {
+        this.Ucontact = Ucontact;
+    }   
 }
