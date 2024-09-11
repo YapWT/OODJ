@@ -4,9 +4,11 @@ import java.util.*;
 
 public class User {
     private String Uid;
+    private String Uname;
     private String Upass;
     private String Utype;
     private String Ustatus; // active, blocked, deactived, pending
+    private String Ucontact;
     private zUserToString userToString;
 
     public String login() {
@@ -34,7 +36,7 @@ public class User {
         return "Failed";    
     }
     
-    public void changeStatus(){
+    private void changeStatus(){
         ArrayList<ArrayList<Object>> data = new zReadFile("users.txt").getAllData();
         
         for (ArrayList<Object> row : data) {
