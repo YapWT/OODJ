@@ -1,3 +1,6 @@
+package assignment;
+
+
 public class Admin extends Staff {
   public Admin() {}
 

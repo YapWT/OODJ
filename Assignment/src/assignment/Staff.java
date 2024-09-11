@@ -1,7 +1,9 @@
+package assignment;
+
 public class Staff extends User {
-  private String position;
+    private String position;
 
-  public Staff() {}
+    public Staff() {}
 
-  public void viewBookings() {}
+    public void viewBookings() {}
 }

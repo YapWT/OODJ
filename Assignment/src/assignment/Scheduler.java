@@ -1,3 +1,6 @@
+package assignment;
+
+
 public class Scheduler extends Staff {
   public Scheduler() {}
 
