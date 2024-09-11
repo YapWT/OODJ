@@ -1,12 +1,12 @@
 package assignment;
 
 public class uiLogin extends javax.swing.JFrame {    
-    ClassLogin cl;
+    User cl;
     
     public uiLogin() {
         initComponents();
         LBL_message.setVisible(false);
-        cl = new ClassLogin();
+        cl = new User();
     }
 
     @SuppressWarnings("unchecked")
@@ -144,11 +144,11 @@ public class uiLogin extends javax.swing.JFrame {
         cl.setUid(TXT_id.getText());
         cl.setUpass(TXT_pass.getText());
         
-        String check = cl.checkUser();
+        String status = cl.login();
         String type = cl.getUtype(); 
         // S - scheduler, C - customer, A - admin, M - manager
         
-        if (check.equals("Login") | check.equals("pending")) {
+        if (status.equals("Login") | status.equals("pending")) {
             this.dispose();
             switch (type) {
                 case "A":
@@ -168,9 +168,9 @@ public class uiLogin extends javax.swing.JFrame {
                 }
         } else {
             LBL_message.setVisible(true);
-            if (check.equals("Failed"))
+            if (status.equals("Failed"))
                 LBL_message.setText("Invalid User ID or Password. Please Try Again. ");
-            else if (check.equals("block"))
+            else if (status.equals("block"))
                 LBL_message.setText("Your account is blocked. ");
             else
                 LBL_message.setText("Your account has been deactivated. ");

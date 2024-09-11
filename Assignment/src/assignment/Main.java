@@ -29,9 +29,6 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -39,7 +36,7 @@ public class Main extends javax.swing.JFrame {
                 Main m = new Main();
                 m.setVisible(true);
                 
-                String result = new ClassIni().Ini();
+                String result = new User().checkFile();
                 
                 if (result != null) {
                     JOptionPane.showMessageDialog(null, result, "First Admin Account Information", JOptionPane.INFORMATION_MESSAGE);

@@ -1,5 +1,6 @@
 package assignment;
 
+import java.io.*;
 import java.util.*;
 
 public class User {
@@ -10,7 +11,20 @@ public class User {
     private String Ustatus; // active, blocked, deactived, pending
     private String Ucontact;
     private zUserToString userToString;
-
+    
+    
+    public String checkFile() {
+        try (BufferedReader rd = new BufferedReader(new FileReader("users.txt"))) {
+            return null;
+        } catch (FileNotFoundException e) {
+            new zWriteFile().write("users.txt", "A160001,123,admin,A,,pending", false);
+            return "ID: A160001\nPassword: 123";
+        } catch (IOException e) {
+            System.out.println("Error Found in reader file");
+            return null;
+        }
+    }
+    
     public String login() {
         ArrayList<ArrayList<Object>> data = new zReadFile("users.txt", 0, Uid).getAllData();
         userToString = new zUserToString(data);
@@ -48,7 +62,10 @@ public class User {
         new zWriteFile().write("users.txt", data, false);
     }
 
-    public void logout() {}
+    
+    public void logout() {
+        new uiLogin();
+    }
 
     public void updateProfile() {}
     
