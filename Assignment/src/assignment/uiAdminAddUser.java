@@ -1,8 +1,10 @@
 package assignment;
 
 import javax.swing.*;
+import java.util.*;
 
 public class uiAdminAddUser extends javax.swing.JFrame {
+    private ClassAdmin classA;
 
     public uiAdminAddUser() {
         initComponents();
@@ -87,15 +89,14 @@ public class uiAdminAddUser extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(PNL_addUserLayout.createSequentialGroup()
-                                .addGap(55, 55, 55)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PNL_addUserLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 71, Short.MAX_VALUE))
+                        .addGap(0, 138, Short.MAX_VALUE))
                     .addGroup(PNL_addUserLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(TXT_name)))
+                        .addGroup(PNL_addUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TXT_name)
+                            .addComponent(jScrollPane2))))
                 .addContainerGap())
         );
         PNL_addUserLayout.setVerticalGroup(
@@ -118,8 +119,8 @@ public class uiAdminAddUser extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addComponent(BTN_add)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -143,9 +144,17 @@ public class uiAdminAddUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTN_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_addActionPerformed
-        UserMangement newUser = new UserMangement();
-        newUser.addUser(TXT_name.getText(), new ClassAdmin().getSelectedButton(buttonGroup1));
-        jTextArea1.setText(String.format("ID: %s\nPassword: %s, User Type: %s, User Name: %s, Status: %s", newUser.getUid(), newUser.getUpass(), newUser.getUtype(), newUser.getUname(), newUser.getUstatus()));
+        String type = new RadioBtnSettings().getValue(buttonGroup1);
+        String name = TXT_name.getText();
+        
+        if (type != null && name != null && !name.isEmpty()){
+            classA.addUser(name, type);
+            jTextArea1.setText(String.format("ID: %s\nPassword: %s\nUser Type: %s\nUser Name: %s\nStatus: %s", classA.getUid(), classA.getUpass(), classA.getUtype(), classA.getUname(), classA.getUstatus()));
+            buttonGroup1.clearSelection();
+            new ComponentAction(new ArrayList<>(Arrays.asList(TXT_name))).deleteAll();
+        } else
+            jTextArea1.setText("There Empty Input Found. ");
+        
         
     }//GEN-LAST:event_BTN_addActionPerformed
 
@@ -188,7 +197,8 @@ public class uiAdminAddUser extends javax.swing.JFrame {
         });
     }
     
-    public JPanel getPNL_addUser() {
+    public JPanel getPNL_addUser(ClassAdmin classA) {
+        this.classA = classA;
         return PNL_addUser;
     }
 
