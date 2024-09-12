@@ -3,6 +3,8 @@ package assignment;
 import javax.swing.*;
 
 public class uiAdminUserManage extends javax.swing.JFrame {
+    private ClassAdmin classA;
+    
     public uiAdminUserManage() {
         initComponents();
         setContentPane(PNL_userManagement);
@@ -52,7 +54,7 @@ public class uiAdminUserManage extends javax.swing.JFrame {
         );
         PNL_userManageLayout.setVerticalGroup(
             PNL_userManageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 359, Short.MAX_VALUE)
+            .addGap(0, 360, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout PNL_userManagementLayout = new javax.swing.GroupLayout(PNL_userManagement);
@@ -110,7 +112,7 @@ public class uiAdminUserManage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         PNL_userManage.removeAll();
-        PNL_userManage.add(new uiAdminAddUser().getPNL_addUser());
+        PNL_userManage.add(new uiAdminAddUser().getPNL_addUser(classA));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -152,7 +154,8 @@ public class uiAdminUserManage extends javax.swing.JFrame {
         });
     }
     
-    public JPanel getPNL_userManagement() {
+    public JPanel getPNL_userManagement(ClassAdmin classA) {
+        this.classA = classA;
         return PNL_userManagement;
     }
 
