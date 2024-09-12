@@ -2,6 +2,9 @@ package assignment;
 
 public class uiAdmin extends javax.swing.JFrame {
     private String ID;
+    private ClassAdmin classAuser;
+    private ClassAdmin classAhall;
+    private User updateProfile;
 
     public uiAdmin() {
         initComponents();
@@ -10,6 +13,8 @@ public class uiAdmin extends javax.swing.JFrame {
     public uiAdmin(String ID) {
         initComponents();
         this.ID = ID;
+        this.classAuser = new UserMangement();
+        this.updateProfile = new User();
     }
     
     @SuppressWarnings("unchecked")
@@ -92,7 +97,7 @@ public class uiAdmin extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(59, 59, 59)
                                 .addComponent(jLabel2)))))
-                .addGap(0, 29, Short.MAX_VALUE))
+                .addGap(0, 9, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BTN_accM, BTN_hallM, BTN_userM});
@@ -116,7 +121,9 @@ public class uiAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,12 +140,12 @@ public class uiAdmin extends javax.swing.JFrame {
 
     private void BTN_accMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_accMActionPerformed
         PNL_adminMain.removeAll();
-        PNL_adminMain.add(new uiAdminAccManage().getPNL_accManagement()); 
+        PNL_adminMain.add(new uiAdminAccManage().getPNL_accManagement(updateProfile, ID)); 
     }//GEN-LAST:event_BTN_accMActionPerformed
 
     private void BTN_userMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_userMActionPerformed
         PNL_adminMain.removeAll();
-        PNL_adminMain.add(new uiAdminUserManage().getPNL_userManagement());
+        PNL_adminMain.add(new uiAdminUserManage().getPNL_userManagement(classAuser));
     }//GEN-LAST:event_BTN_userMActionPerformed
 
     /**
