@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.*;
 
 public class uiAdminAddUser extends javax.swing.JFrame {
-    private ClassAdmin classA;
+    private Admin classA;
 
     public uiAdminAddUser() {
         initComponents();
@@ -148,7 +148,7 @@ public class uiAdminAddUser extends javax.swing.JFrame {
         String name = TXT_name.getText();
         
         if (type != null && name != null && !name.isEmpty()){
-            classA.addUser(name, type);
+            classA.addStaff(name, type);
             jTextArea1.setText(String.format("ID: %s\nPassword: %s\nUser Type: %s\nUser Name: %s\nStatus: %s", classA.getUid(), classA.getUpass(), classA.getUtype(), classA.getUname(), classA.getUstatus()));
             buttonGroup1.clearSelection();
             new ComponentAction(new ArrayList<>(Arrays.asList(TXT_name))).deleteAll();
@@ -197,7 +197,7 @@ public class uiAdminAddUser extends javax.swing.JFrame {
         });
     }
     
-    public JPanel getPNL_addUser(ClassAdmin classA) {
+    public JPanel getPNL_addUser(Admin classA) {
         this.classA = classA;
         return PNL_addUser;
     }

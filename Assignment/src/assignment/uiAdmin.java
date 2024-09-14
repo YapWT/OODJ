@@ -2,8 +2,8 @@ package assignment;
 
 public class uiAdmin extends javax.swing.JFrame {
     private String ID;
-    private ClassAdmin classAuser;
-    private ClassAdmin classAhall;
+    private Admin classAstaff;
+    private classHall classAhall;
     private User updateProfile;
 
     public uiAdmin() {
@@ -13,8 +13,9 @@ public class uiAdmin extends javax.swing.JFrame {
     public uiAdmin(String ID) {
         initComponents();
         this.ID = ID;
-        this.classAuser = new UserMangement();
+        this.classAstaff = new Admin();
         this.updateProfile = new User();
+        this.classAhall = new classHall();
     }
     
     @SuppressWarnings("unchecked")
@@ -145,7 +146,7 @@ public class uiAdmin extends javax.swing.JFrame {
 
     private void BTN_userMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_userMActionPerformed
         PNL_adminMain.removeAll();
-        PNL_adminMain.add(new uiAdminUserManage().getPNL_userManagement(classAuser));
+        PNL_adminMain.add(new uiAdminUserManage().getPNL_userManagement(classAstaff));
     }//GEN-LAST:event_BTN_userMActionPerformed
 
     /**

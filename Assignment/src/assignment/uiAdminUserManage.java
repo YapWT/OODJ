@@ -3,7 +3,7 @@ package assignment;
 import javax.swing.*;
 
 public class uiAdminUserManage extends javax.swing.JFrame {
-    private ClassAdmin classA;
+    private Admin classA;
     
     public uiAdminUserManage() {
         initComponents();
@@ -154,7 +154,7 @@ public class uiAdminUserManage extends javax.swing.JFrame {
         });
     }
     
-    public JPanel getPNL_userManagement(ClassAdmin classA) {
+    public JPanel getPNL_userManagement(Admin classA) {
         this.classA = classA;
         return PNL_userManagement;
     }
