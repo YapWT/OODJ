@@ -2,17 +2,17 @@ package assignment;
 
 
 public class Admin extends Staff {
-  public Admin() {}
+    public Admin() {}
 
-  public void addStaff() {}
+    public void addStaff() {}
 
-  public void editStaff() {}
+    public void editStaff() {}
 
-  public void deleteStaff() {}
+    public void deleteStaff() {}
 
-  public void viewUsers() {}
+    public void viewUsers() {}
 
-  public void blockUsers() {}
+    public void blockUsers() {}
 
-  public void deleteUsers() {}
+    public void deleteUsers() {}
 }

@@ -149,6 +149,7 @@ public class uiLogin extends javax.swing.JFrame {
         // S - scheduler, C - customer, A - admin, M - manager
         
         if (status.equals("Login") | status.equals("pending")) {
+            cl.changeStatus();
             this.dispose();
             switch (type) {
                 case "A":

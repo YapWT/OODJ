@@ -3,7 +3,21 @@ package assignment;
 import java.io.*;
 import java.util.*;
 
-public class User {
+interface initialize {
+    abstract String checkFile();
+}
+
+interface login_logout {
+    String login();
+    void changeStatus();
+    void logout();
+}
+
+interface profile {
+    
+}
+
+public class User implements initialize, login_logout, profile{
     private String Uid;
     private String Uname;
     private String Upass;
@@ -35,22 +49,17 @@ public class User {
                 this.Ustatus = userToString.getSplit(5);
 
                 switch (Ustatus) {
-                    case "active":
-                        return "Login";
-                    case "blocked":
-                        return "block";
-                    case "pending":
-                        changeStatus();
-                        return "pending";
-                    default:
-                        return "deactivate";
+                    case "active": return "Login";
+                    case "blocked": return "block";
+                    case "pending": return "pending";
+                    default: return "deactivate";
                 }
             }
         }
         return "Failed";    
     }
     
-    private void changeStatus(){
+    public void changeStatus(){
         ArrayList<ArrayList<Object>> data = new zReadFile("users.txt").getAllData();
         
         for (ArrayList<Object> row : data) {
@@ -66,7 +75,9 @@ public class User {
         
     }
 
-    public void updateProfile() {}
+    public void updateProfile() {
+    
+    }
 
     public String getUid() {
         return Uid;

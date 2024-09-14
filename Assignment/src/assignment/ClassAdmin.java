@@ -1,22 +1,19 @@
 package assignment;
 
 import java.util.*;
-import javax.swing.*;
 
-public class ClassAdmin {
-
-    public String getSelectedButton(ButtonGroup group){
-        for (var buttons = group.getElements(); buttons.hasMoreElements();) {
-            AbstractButton button = buttons.nextElement();
-            if (button.isSelected()) {
-                return button.getText();
-            }
-        }
-        return null;
-    }
+interface ClassAdmin {
+    String getUid();
+    String getUpass();
+    String getUname();
+    String getUtype();
+    String getUcontact();
+    String getUstatus();
+    
+    void addUser(String name, String type);
 }
 
-class UserMangement extends ClassAdmin{
+class UserMangement implements ClassAdmin{
     private String Uid;
     private String Upass;
     private String Uname;
@@ -24,32 +21,38 @@ class UserMangement extends ClassAdmin{
     private String Ucontact;
     private String Ustatus; // active, blocked, deactived, pending
 
+    @Override
     public String getUid() {
         return Uid;
     }
 
+    @Override
     public String getUpass() {
         return Upass;
     }
 
+    @Override
     public String getUname() {
         return Uname;
     }
 
+    @Override
     public String getUtype() {
         return Utype;
     }
 
+    @Override
     public String getUcontact() {
         return Ucontact;
     }
 
+    @Override
     public String getUstatus() {
         return Ustatus;
     }
     
     // S - scheduler, C - customer, A - admin, M - manager
-
+    @Override
     public void addUser(String name, String type) {
         this.Uid = new IDGenerator(type.substring(0, 1)).GetID();
         this.Upass = "123";
