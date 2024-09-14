@@ -179,7 +179,9 @@ public class uiLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_loginActionPerformed
 
     private void BTN_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_registerActionPerformed
-        // customer register
+        this.dispose();
+        new uiCustomerRegister().setVisible(true);
+// customer register
     }//GEN-LAST:event_BTN_registerActionPerformed
 
     /**
