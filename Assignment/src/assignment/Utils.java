@@ -4,11 +4,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class Utils {
-  public String generateID(String type) {
+  public static String generateID(String type) {
     List<String> typeOfUser = new zReadFile("users.txt").getSplit3();
 
     int count = Collections.frequency(typeOfUser, type);
 
-    return String.format("%s%d", type, count+1);
+    return String.format("%s%08d", type, count+1);
   }
 }
