@@ -321,7 +321,7 @@ public class uiAccountManagement extends javax.swing.JFrame {
     
     public JPanel getPNL_accManagement(User user, String Uid) {
         this.user = user;
-        user.setUidAndGetAllData(Uid);
+        user.setUid(Uid);
         jTextArea1.setText(String.format("User ID: %s \nUser Name: %s \nContact: %s", user.getUid(), user.getUname(), user.getUcontact()));
         return PNL_accManagement;
     }
