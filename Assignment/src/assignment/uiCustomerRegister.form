@@ -59,18 +59,16 @@
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="33" pref="33" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                  <Component id="passwordTxt" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
-                                  <Component id="contactTxt" alignment="1" min="-2" pref="115" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="nameTxt" alignment="1" min="-2" pref="115" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="contactTxt" alignment="0" pref="115" max="32767" attributes="0"/>
+                              <Component id="nameTxt" alignment="0" pref="115" max="32767" attributes="0"/>
+                              <Component id="passwordTxt" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                           <Component id="backButton" min="-2" pref="90" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="39" max="32767" attributes="0"/>
                           <Component id="registerButton" min="-2" pref="90" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -98,7 +96,7 @@
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="passwordTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="46" max="32767" attributes="0"/>
+                  <EmptySpace pref="49" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="backButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="registerButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -133,8 +131,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="nameTxt">
         </Component>
-        <Component class="javax.swing.JTextField" name="passwordTxt">
-        </Component>
         <Component class="javax.swing.JButton" name="backButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Go Back"/>
@@ -150,6 +146,8 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerButtonActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="passwordTxt">
         </Component>
       </SubComponents>
     </Container>
