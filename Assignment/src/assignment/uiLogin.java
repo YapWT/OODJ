@@ -142,14 +142,14 @@ public class uiLogin extends javax.swing.JFrame {
     private void BTN_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_loginActionPerformed
 
         cl.setUid(TXT_id.getText());
-        cl.setUpass(TXT_pass.getText());
+        cl.setUpass(TXT_pass.getText().toUpperCase());
         
         String status = cl.login();
         String type = cl.getUtype(); 
         // S - scheduler, C - customer, A - admin, M - manager
         
         if (status.equals("Login") | status.equals("pending")) {
-            cl.changeStatus();
+            Utils.editFile("users.txt", cl.getUid(), 5, "active");
             this.dispose();
             switch (type) {
                 case "A":
