@@ -8,7 +8,7 @@ interface writeFile {
     void write(String filename, ArrayList<ArrayList<Object>> data, boolean append);
 }
 
-public class zWriteFile extends User implements writeFile{
+public class zWriteFile extends Utils implements writeFile{
     
     @Override
     public void write(String filename, String data, boolean append){

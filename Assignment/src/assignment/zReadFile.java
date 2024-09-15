@@ -13,7 +13,7 @@ interface readFile {
     List<String> getSplit5();
 }
 
-public class zReadFile extends User implements readFile {
+public class zReadFile extends Utils implements readFile {
     private ArrayList<ArrayList<Object>> allData = new ArrayList<>(); // [[], []
     private List<String> split0 = new ArrayList<>(); // []
     private List<String> split1 = new ArrayList<>();
