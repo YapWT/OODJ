@@ -130,11 +130,13 @@ public class User implements initialize, login_logout, profile{
         this.Uid = Uid;
 
         zUserToString data = Utils.idGetRow(Uid);
-        this.Upass = data.getSplit(1);
-        this.Uname = data.getSplit(2);
-        this.Utype = data.getSplit(3);
-        this.Ustatus = data.getSplit(5);
-        this.Ucontact = data.getSplit(4);
+        if (!(data == null)){
+            this.Upass = data.getSplit(1);
+            this.Uname = data.getSplit(2);
+            this.Utype = data.getSplit(3);
+            this.Ustatus = data.getSplit(5);
+            this.Ucontact = data.getSplit(4);
+        }
     }
 
     public void setUname(String Uname) {
