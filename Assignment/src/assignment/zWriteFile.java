@@ -10,7 +10,7 @@ interface writeFile {
 
 public class zWriteFile extends Utils implements writeFile{
     
-    @Override // apppend (no need \n in front)
+    @Override 
     public void write(String filename, String data, boolean append){
         try (BufferedWriter w = new BufferedWriter(new FileWriter(filename, append))) {
             w.write(data);
