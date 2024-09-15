@@ -11,6 +11,14 @@ public class Customer extends User {
     this.setUcontact(contact);
     this.setUstatus("pending");
     
+    System.out.println(String.format("\n%s,%s,%s,%s,%s,%s", 
+                    this.getUid(), 
+                    this.getUpass(), 
+                    this.getUname(), 
+                    this.getUtype(), 
+                    this.getUcontact(), 
+                    this.getUstatus()));
+    
     new zWriteFile()
         .write(
             "users.txt",
