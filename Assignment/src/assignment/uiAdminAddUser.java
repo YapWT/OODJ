@@ -151,7 +151,7 @@ public class uiAdminAddUser extends javax.swing.JFrame {
             classA.addStaff(name, type);
             jTextArea1.setText(String.format("ID: %s\nPassword: %s\nUser Type: %s\nUser Name: %s\nStatus: %s", classA.getUid(), classA.getUpass(), classA.getUtype(), classA.getUname(), classA.getUstatus()));
             buttonGroup1.clearSelection();
-            new ComponentAction(new ArrayList<>(Arrays.asList(TXT_name))).deleteAll();
+            TXT_name.setText("");
         } else
             jTextArea1.setText("There Empty Input Found. ");
         

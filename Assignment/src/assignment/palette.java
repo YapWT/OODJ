@@ -3,10 +3,11 @@ package assignment;
 import javax.swing.*;
 import java.util.*;
 
-public class palette extends User {
+public class palette {
     public String getValue(ButtonGroup group) { return null; }
     public void set(boolean b){}
     public void deleteAll() {}
+    public boolean emptyPassword() {return true; }
 }
 
 class RadioBtnSettings extends palette {
@@ -24,7 +25,8 @@ class RadioBtnSettings extends palette {
 class ComponentAction extends palette {
     ArrayList<JComponent> object;
 
-    public ComponentAction(ArrayList<JComponent> object) {
+//    new ComponentAction(new ArrayList<>(Arrays.asList(TXT_name))).deleteAll();
+    public ComponentAction (ArrayList<JComponent> object) {
         this.object = object;
     }
     
@@ -46,5 +48,14 @@ class ComponentAction extends palette {
             else
                 System.out.println("Error on deleteAll()");
         }
+    }
+    
+    @Override
+    public boolean emptyPassword() {
+        for (JComponent ob : object) {
+            if (((JPasswordField) ob).getPassword().length == 0) 
+                return true; 
+        }
+        return false; 
     }
 }

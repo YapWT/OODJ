@@ -141,7 +141,7 @@ public class uiAdmin extends javax.swing.JFrame {
 
     private void BTN_accMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_accMActionPerformed
         PNL_adminMain.removeAll();
-        PNL_adminMain.add(new uiAdminAccManage().getPNL_accManagement(updateProfile, ID)); 
+        PNL_adminMain.add(new uiAccountManagement().getPNL_accManagement(updateProfile, ID)); 
     }//GEN-LAST:event_BTN_accMActionPerformed
 
     private void BTN_userMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_userMActionPerformed
