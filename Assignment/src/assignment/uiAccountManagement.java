@@ -335,7 +335,19 @@ public class uiAccountManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_logoutActionPerformed
 
     private void BTN_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_deleteActionPerformed
-        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(
+            null, 
+            "Are you sure you want to delete your account?", 
+            "Delete Account Confirmation", 
+            JOptionPane.YES_NO_OPTION, 
+            JOptionPane.WARNING_MESSAGE
+        );
+
+        if (result == JOptionPane.YES_OPTION) {
+            
+            jLabel8.setText("Account deleted.");
+        } else 
+            jLabel8.setText("Account deletion canceled.");
     }//GEN-LAST:event_BTN_deleteActionPerformed
 
     public static void main(String args[]) {

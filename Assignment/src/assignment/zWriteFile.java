@@ -10,7 +10,7 @@ interface writeFile {
 
 public class zWriteFile extends Utils implements writeFile{
     
-    @Override
+    @Override // apppend (no need \n in front)
     public void write(String filename, String data, boolean append){
         try (BufferedWriter w = new BufferedWriter(new FileWriter(filename, append))) {
             w.write(data);
@@ -23,8 +23,7 @@ public class zWriteFile extends Utils implements writeFile{
     public void write(String filename, ArrayList<ArrayList<Object>> data, boolean append){
         try (BufferedWriter w = new BufferedWriter(new FileWriter(filename, append))) {
             for (ArrayList<Object> row : data)
-                w.write(toString(row));
-                
+                w.write(toString(row)); 
                 
         } catch (IOException e2){
             System.out.println("Error when writing a file. ");

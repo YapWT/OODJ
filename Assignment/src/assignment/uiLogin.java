@@ -39,8 +39,8 @@ public class uiLogin extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
-                .addComponent(LBL_message, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE)
+                .addComponent(LBL_message, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
         jPanel2Layout.setVerticalGroup(
@@ -180,8 +180,8 @@ public class uiLogin extends javax.swing.JFrame {
 
     private void BTN_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_loginActionPerformed
 
-        cl.setUid(TXT_id.getText());
-        cl.setUpass(TXT_pass.getText().toUpperCase());
+        cl.setUid(TXT_id.getText().toUpperCase());
+        cl.setUpass(TXT_pass.getText());
         
         String status = cl.login();
         String type = cl.getUtype(); 

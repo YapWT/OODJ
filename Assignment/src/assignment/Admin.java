@@ -16,9 +16,10 @@ class Admin{
         this.Utype = type.substring(0, 1);
         this.Ucontact = "";
         this.Ustatus = "pending";
-        this.Uid = new Utils().generateID(type);
+        this.Uid = new Utils().generateID(Utype);
         
-        new zWriteFile().write("users.txt", String.format("\n%s,%s,%s,%s,%s,%s", Uid, Upass, Uname, Utype, Ucontact, Ustatus), true);
+//        new zWriteFile().write("users.txt", String.format("\n%s,%s,%s,%s,%s,%s", Uid, Upass, Uname, type, Ucontact, Ustatus), true);
+        System.out.print(String.format("\n%s,%s,%s,%s,%s,%s", Uid, Upass, Uname, type, Ucontact, Ustatus));
     } 
     
 
