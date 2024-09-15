@@ -22,7 +22,7 @@ public class Customer extends User {
     new zWriteFile()
         .write(
             "users.txt",
-            String.format("\n%s,%s,%s,%s,%s,%s", 
+            String.format("%s,%s,%s,%s,%s,%s", 
                     this.getUid(), 
                     this.getUpass(), 
                     this.getUname(), 

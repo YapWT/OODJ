@@ -13,7 +13,7 @@ public class zWriteFile extends Utils implements writeFile{
     @Override 
     public void write(String filename, String data, boolean append){
         try (BufferedWriter w = new BufferedWriter(new FileWriter(filename, append))) {
-            w.write(data);
+            w.write(data + "\n");
         } catch (IOException e2){
             System.out.println("Error when writing a file. ");
         }
