@@ -52,7 +52,8 @@ public class User implements initialize, login_logout, profile{
                 switch (Ustatus) {
                     case "active": return "Login";
                     case "blocked": return "block";
-                    case "pending": return "pending";
+                    case "pending": Utils.editFile("users.txt", Uid, 5, "active"); return "pending";
+                    case "delete" : return "Failed";
                     default: return "deactivate";
                 }
             }

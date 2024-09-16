@@ -1,5 +1,7 @@
 package assignment;
 
+import java.util.*;
+
 public class uiLogin extends javax.swing.JFrame {    
     User cl;
     
@@ -180,41 +182,49 @@ public class uiLogin extends javax.swing.JFrame {
 
     private void BTN_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_loginActionPerformed
 
-        cl.setUid(TXT_id.getText().toUpperCase());
-        cl.setUpass(TXT_pass.getText());
+        String id = TXT_id.getText().toUpperCase();
         
-        String status = cl.login();
-        String type = cl.getUtype(); 
-        // S - scheduler, C - customer, A - admin, M - manager
-        
-        if (status.equals("Login") | status.equals("pending")) {
-            
-            this.dispose();
-            switch (type) {
-                case "A":
-                    new uiAdmin(cl.getUid()).setVisible(true);
-                    break;
-                case "C":
-                    new uiCustomer(cl.getUid()).setVisible(true);
-                    break;
-                case "M":
-                    new uiManager(cl.getUid()).setVisible(true);
-                    break;
-                case "S":
-                    new uiScheduler(cl.getUid()).setVisible(true);
-                    break;
-                default:
-                    break;
-                }
-        } else {
+        if (id.isEmpty() | new ComponentAction(new ArrayList<>(Arrays.asList(TXT_pass))).emptyPassword()) {
             LBL_message.setVisible(true);
-            if (status.equals("Failed"))
-                LBL_message.setText("Invalid User ID or Password. Please Try Again. ");
-            else if (status.equals("block"))
-                LBL_message.setText("Your account is blocked. ");
-            else
-                LBL_message.setText("Your account has been deactivated. ");
+            LBL_message.setText("Empty Input Found");
         }
+        else {
+            cl.setUid(id);
+            cl.setUpass(TXT_pass.getText());
+
+            String status = cl.login();
+            String type = cl.getUtype(); 
+            // S - scheduler, C - customer, A - admin, M - manager
+
+            if (status.equals("Login") | status.equals("pending")) {
+                this.dispose();
+                switch (type) {
+                    case "A":
+                        new uiAdmin(cl.getUid()).setVisible(true);
+                        break;
+                    case "C":
+                        new uiCustomer(cl.getUid()).setVisible(true);
+                        break;
+                    case "M":
+                        new uiManager(cl.getUid()).setVisible(true);
+                        break;
+                    case "S":
+                        new uiScheduler(cl.getUid()).setVisible(true);
+                        break;
+                    default:
+                        break;
+                    }
+            } else {
+                LBL_message.setVisible(true);
+                if (status.equals("Failed"))
+                    LBL_message.setText("Invalid User ID or Password. Please Try Again. ");
+                else if (status.equals("block"))
+                    LBL_message.setText("Your account is blocked. ");
+                else
+                    LBL_message.setText("Your account has been deactivated. ");
+            }
+        }
+
     }//GEN-LAST:event_BTN_loginActionPerformed
 
     private void BTN_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_registerActionPerformed
