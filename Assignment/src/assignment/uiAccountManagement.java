@@ -346,8 +346,9 @@ public class uiAccountManagement extends javax.swing.JFrame {
         );
 
         if (result == JOptionPane.YES_OPTION) {
-            
+            new Utils().editFile("users.txt", user.getUid(), 5, "deleted");
             jLabel8.setText("Account deleted.");
+            user.logout(PNL_accManagement);
         } else 
             jLabel8.setText("Account deletion canceled.");
     }//GEN-LAST:event_BTN_deleteActionPerformed
