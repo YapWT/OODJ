@@ -148,7 +148,7 @@ public class uiAdminAddUser extends javax.swing.JFrame {
         String name = TXT_name.getText();
         
         if (type != null && name != null && !name.isEmpty()){
-            classA.addStaff(name, type);
+            classA.addStaff(name, "123", type, "");
             jTextArea1.setText(String.format("ID: %s\nPassword: %s\nUser Type: %s\nUser Name: %s\nStatus: %s", classA.getUid(), classA.getUpass(), classA.getUtype(), classA.getUname(), classA.getUstatus()));
             buttonGroup1.clearSelection();
             TXT_name.setText("");

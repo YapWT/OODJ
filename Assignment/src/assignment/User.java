@@ -33,13 +33,25 @@ public class User implements initialize, login_logout, profile{
         try (BufferedReader rd = new BufferedReader(new FileReader("users.txt"))) {
             return null;
         } catch (FileNotFoundException e) {
-            new zWriteFile().write("users.txt", "A160001,123,admin,A,,pending", false);
-            return "ID: A160001\nPassword: 123";
+            addUser("First Admin", "123", "A", "");
+            return String.format("ID: %s\nPassword: %s", Uid, Upass);
         } catch (IOException e) {
             System.out.println("Error Found in reader file");
+            e.printStackTrace(); e.getMessage();
             return null;
         }
     }
+    
+    public void addUser(String Uname, String Upass, String Utype, String Ucontact) {
+        this.Upass = Upass;
+        this.Uname = Uname;
+        this.Utype = Utype.substring(0, 1);
+        this.Ucontact = Ucontact;
+        this.Ustatus = "pending";
+        this.Uid = new Utils().generateID(Utype);
+        
+        new zWriteFile().write("users.txt", String.format("%s,%s,%s,%s,%s,%s", Uid, Upass, Uname, Utype, Ucontact, Ustatus), true);
+    } 
     
     public String login() {
         zUserToString data = Utils.idGetRow(Uid);
