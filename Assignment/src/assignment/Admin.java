@@ -18,7 +18,7 @@ class Admin{
         this.Ustatus = "pending";
         this.Uid = new Utils().generateID(Utype);
         
-        new zWriteFile().write("users.txt", String.format("%s,%s,%s,%s,%s,%s", Uid, Upass, Uname, type, Ucontact, Ustatus), true);
+        new zWriteFile().write("users.txt", String.format("%s,%s,%s,%s,%s,%s", Uid, Upass, Uname, Utype, Ucontact, Ustatus), true);
     } 
     
 
