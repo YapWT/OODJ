@@ -12,6 +12,7 @@ public class uiAccountManagement extends javax.swing.JFrame {
         setContentPane(PNL_accManagement);
 
         new ComponentAction(new ArrayList<>(Arrays.asList(TXT_name, TXT_c, TXT_old, TXT_new, BTN_delete))).set(false);
+        jLabel8.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -282,6 +283,8 @@ public class uiAccountManagement extends javax.swing.JFrame {
 
     private void BTN_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_changeActionPerformed
         boolean flag = false;
+        
+        if (buttonPress != "") jLabel8.setVisible(true);
 
         switch (buttonPress) {
             case "p": 
@@ -297,7 +300,7 @@ public class uiAccountManagement extends javax.swing.JFrame {
                             break;
                         case "Done":
                             jLabel8.setText("Password Change Succesfully!");
-                            new ComponentAction(new ArrayList<>(Arrays.asList(TXT_name))).deleteAll();
+                            new ComponentAction(new ArrayList<>(Arrays.asList(TXT_old, TXT_new))).deleteAll();
                             flag = true;
                             break;
                         default:
