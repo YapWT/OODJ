@@ -188,7 +188,7 @@ public class uiLogin extends javax.swing.JFrame {
         // S - scheduler, C - customer, A - admin, M - manager
         
         if (status.equals("Login") | status.equals("pending")) {
-            Utils.editFile("users.txt", cl.getUid(), 5, "active");
+            
             this.dispose();
             switch (type) {
                 case "A":

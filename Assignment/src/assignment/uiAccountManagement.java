@@ -331,7 +331,7 @@ public class uiAccountManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_changeActionPerformed
 
     private void BTN_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_logoutActionPerformed
-        user.logout();
+        user.logout(PNL_accManagement);
     }//GEN-LAST:event_BTN_logoutActionPerformed
 
     private void BTN_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_deleteActionPerformed

@@ -2,6 +2,7 @@ package assignment;
 
 import java.io.*;
 import java.util.*;
+import javax.swing.*;
 
 interface initialize {
     abstract String checkFile();
@@ -9,7 +10,7 @@ interface initialize {
 
 interface login_logout {
     String login();
-    void logout();
+    void logout(JPanel p);
 }
 
 interface profile {
@@ -59,7 +60,9 @@ public class User implements initialize, login_logout, profile{
         return "Failed";    
     }
 
-    public void logout() {
+    public void logout(JPanel p) {
+        ((JFrame) SwingUtilities.getWindowAncestor(p)).dispose();
+        new uiLogin().setVisible(true);
         
     }
 
@@ -68,18 +71,16 @@ public class User implements initialize, login_logout, profile{
             return false;
         
         this.Uname = Uname;
-        zUserToString data = Utils.idGetRow(Uid);
         Utils.editFile("users.txt", Uid, 2, Uname);
         return true;
     }
 
     public String updatePass(String Upass, String newPass) {
-        if (Upass.equals(this.Upass)) {
-            zUserToString data = Utils.idGetRow(Uid);
+        if (Upass.equals(this.Upass)) 
             Utils.editFile("users.txt", Uid, 1, newPass);
-        } else if (Upass.equals(newPass)) {
+        else if (Upass.equals(newPass)) 
             return "Same";
-        } else
+        else
             return "Incorrect";
         
         this.Upass = newPass;
@@ -87,9 +88,7 @@ public class User implements initialize, login_logout, profile{
             
     }
 
-    public boolean updateC(String Ucontact) {
-        zUserToString data = Utils.idGetRow(Uid);
-        
+    public boolean updateC(String Ucontact) {      
         if (Ucontact == null | Ucontact.isEmpty())
             return false;
         
