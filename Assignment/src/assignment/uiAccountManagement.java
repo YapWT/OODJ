@@ -5,7 +5,7 @@ import java.util.*;
 
 public class uiAccountManagement extends javax.swing.JFrame {
     private User user;
-    private String buttonPress;
+    private String buttonPress = "";
     
     public uiAccountManagement() {
         initComponents();
@@ -324,6 +324,8 @@ public class uiAccountManagement extends javax.swing.JFrame {
                     jLabel8.setText("Name Changed!");
                 }
                 break;
+                
+            default: break;
         }
         
         if (flag)
