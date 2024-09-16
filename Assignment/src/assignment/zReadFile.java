@@ -34,6 +34,8 @@ public class zReadFile extends Utils implements readFile {
                 split4.add(line.split(",")[4]);
                 split5.add(line.split(",")[5]);
             }
+        } catch (FileNotFoundException e) {
+            
         } catch (IOException e2){
             System.out.println("Error when reading a file. ");
         }

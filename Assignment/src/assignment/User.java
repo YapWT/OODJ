@@ -37,7 +37,6 @@ public class User implements initialize, login_logout, profile{
             return String.format("ID: %s\nPassword: %s", Uid, Upass);
         } catch (IOException e) {
             System.out.println("Error Found in reader file");
-            e.printStackTrace(); e.getMessage();
             return null;
         }
     }
