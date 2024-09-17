@@ -2,6 +2,7 @@ package assignment;
 
 import javax.swing.*;
 import java.util.*;
+import javax.swing.table.DefaultTableModel;
 
 public class palette {
     public String getValue(ButtonGroup group) { return null; }
@@ -30,7 +31,6 @@ class ComponentAction extends palette {
         this.object = object;
     }
     
-    
     @Override
     public void set(boolean b) {
         for (JComponent ob : object) {
@@ -57,5 +57,54 @@ class ComponentAction extends palette {
                 return true; 
         }
         return false; 
+    }
+}
+
+class table extends palette {
+    private JTable t;
+    private Object[] tableRow = new Object[3];
+    private User user;
+    private DefaultTableModel model;
+    
+    public table(User user, JTable t, String Uid){
+        this.t = t;
+        this.user = user;
+        model = (DefaultTableModel) t.getModel();
+        user.setUid(Uid);
+    }
+    
+    public void addRow(){
+        tableRow[0] = user.getUid();
+        tableRow[1] = user.getUname();
+        tableRow[2] = user.getUcontact();
+
+        model.addRow(tableRow);        
+    }
+    
+    public void refreshTable(int c, int column, int row){
+        String x = null;
+        switch (c){
+            case 0: x = user.getUid(); break;
+            case 1: x = user.getUpass(); break;
+            case 2: x = user.getUname(); break;
+            case 3: x = user.getUtype(); break;
+            case 4: x = user.getUcontact(); break;
+            case 5: x = user.getUstatus(); break;
+        }
+
+        model.setValueAt(x, row, column);
+    }
+}
+
+class label extends palette {
+    private JLabel l;
+    
+    public label(JLabel l){
+        this.l = l;
+    }
+    
+    public void setVisibleAndText(String message){
+        l.setVisible(true);
+        l.setText(message);
     }
 }
