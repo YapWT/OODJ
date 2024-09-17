@@ -88,12 +88,12 @@ public class User implements initialize, login_logout, profile{
     }
 
     public String updatePass(String Upass, String newPass) {
-        if (Upass.equals(this.Upass)) 
-            Utils.editFile("users.txt", Uid, 1, newPass);
+        if (!Upass.equals(this.Upass)) 
+            return "Incorrect";
         else if (Upass.equals(newPass)) 
             return "Same";
         else
-            return "Incorrect";
+            Utils.editFile("users.txt", Uid, 1, newPass);
         
         this.Upass = newPass;
         return "Done";
