@@ -21,7 +21,7 @@ public class uiAccountManagement extends javax.swing.JFrame {
             if (option == JOptionPane.OK_OPTION) {
                 
                 if (user.updateC(contact.getText())) {
-                    new table(user, jTable1, user.getUid()).refreshTable(4, 2, 0);
+                    new table(user, jTable1, user.getUid()).refreshTable(user.getUcontact(), 2, 0);
                     new label(jLabel8).setVisibleAndText("Contact Number Change!.");
                 } else
                     new label(jLabel8).setVisibleAndText("Incorrect Contact Number or Empty Input Found. ");
@@ -38,7 +38,7 @@ public class uiAccountManagement extends javax.swing.JFrame {
             
             if (option == JOptionPane.OK_OPTION) {
                 if (user.updateName(name.getText())) {
-                    new table(user, jTable1, user.getUid()).refreshTable(2, 1, 0);
+                    new table(user, jTable1, user.getUid()).refreshTable(user.getUname(), 1, 0);
                     new label(jLabel8).setVisibleAndText("Name Updated! "); 
                 } else
                     new label(jLabel8).setVisibleAndText("Empty Input Found"); 
@@ -340,8 +340,7 @@ public class uiAccountManagement extends javax.swing.JFrame {
     public JPanel getPNL_accManagement(User user, String Uid) {
         this.user = user;
         user.setUid(Uid);
-        
-        new table(user, jTable1, Uid).addRow();
+        new table(user, jTable1, Uid).addRow(3, new ArrayList<> (Arrays.asList(Uid, user.getUname(), user.getUcontact())));
         
         if (user.getUtype().equals("C")) BTN_delete.setEnabled(true);
         return PNL_accManagement;

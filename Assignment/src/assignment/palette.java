@@ -52,25 +52,15 @@ class table extends palette {
         user.setUid(Uid);
     }
     
-    public void addRow(){
-        tableRow[0] = user.getUid();
-        tableRow[1] = user.getUname();
-        tableRow[2] = user.getUcontact();
+    
+    public void addRow(int numColumn, ArrayList<String> x){
+        for (int i = 0; i < numColumn; i++)
+                tableRow[i] = x.get(i);
 
         model.addRow(tableRow);        
     }
     
-    public void refreshTable(int c, int column, int row){
-        String x = null;
-        switch (c){
-            case 0: x = user.getUid(); break;
-            case 1: x = user.getUpass(); break;
-            case 2: x = user.getUname(); break;
-            case 3: x = user.getUtype(); break;
-            case 4: x = user.getUcontact(); break;
-            case 5: x = user.getUstatus(); break;
-        }
-
+    public void refreshTable(String x, int column, int row){
         model.setValueAt(x, row, column);
     }
 }
