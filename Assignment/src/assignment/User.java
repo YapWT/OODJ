@@ -94,37 +94,7 @@ public class User implements initialize, login_logout, profile {
 
     return "Failed";
   }
-    
-    public void addUser(String Uname, String Upass, String Utype, String Ucontact) {
-        this.Upass = Upass;
-        this.Uname = Uname;
-        this.Utype = Utype.substring(0, 1);
-        this.Ucontact = Ucontact;
-        this.Ustatus = "pending";
-        this.Uid = Utils.generateID(Utype);
-        
-        new zWriteFile().write("users.txt", String.format("%s,%s,%s,%s,%s,%s", Uid, Upass, Uname, Utype, Ucontact, Ustatus), true);
-    } 
-    
-    public String login() {
-        zUserToString data = Utils.idGetRow(Uid);
-        
-        if (data != null) {
-            if (data.getSplit(0).equals(Uid) && data.getSplit(1).equals(Upass)){
-                this.Utype = data.getSplit(3);
-                this.Ustatus = data.getSplit(5);
 
-                switch (Ustatus) {
-                    case "active": return "Login";
-                    case "blocked": return "block";
-                    case "pending": Utils.editFile("users.txt", Uid, 5, "active"); return "pending";
-                    case "deleted" : return "Failed";
-                    default: return "deactivate";
-                }
-            }
-        }
-        return "Failed";    
-    }
 
   public void logout(JPanel p) {
     ((JFrame) SwingUtilities.getWindowAncestor(p)).dispose();
