@@ -57,7 +57,8 @@ class table extends palette {
         for (int i = 0; i < numColumn; i++)
                 tableRow[i] = x.get(i);
 
-        model.addRow(tableRow);        
+        model.addRow(tableRow);   
+        System.out.println(tableRow);
     }
     
     public void refreshTable(String x, int column, int row){

@@ -47,7 +47,7 @@ public class User implements initialize, login_logout, profile{
         this.Utype = Utype.substring(0, 1);
         this.Ucontact = Ucontact;
         this.Ustatus = "pending";
-        this.Uid = new Utils().generateID(Utype);
+        this.Uid = Utils.generateID(Utype);
         
         new zWriteFile().write("users.txt", String.format("%s,%s,%s,%s,%s,%s", Uid, Upass, Uname, Utype, Ucontact, Ustatus), true);
     } 
