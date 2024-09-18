@@ -32,7 +32,7 @@ public class FileOperations {
     try (BufferedWriter w = new BufferedWriter(new FileWriter("users.txt", true))) {
       w.write(user.toString() + "\n");
     } catch (IOException e) {
-      System.out.println("Error when reading users.txt. \n" + e);
+      System.out.println("Error when writting to users.txt. \n" + e);
     }
   }
 
@@ -42,7 +42,7 @@ public class FileOperations {
         w.write(user.toString() + "\n");
       }
     } catch (IOException e) {
-      System.out.println("Error when reading users.txt.\n " + e);
+      System.out.println("Error when writting to users.txt.\n " + e);
     }
   }
 
@@ -71,5 +71,23 @@ public class FileOperations {
       System.out.println("Error when reading halls.txt.\n " + e);
     }
     return halls;
+  }
+
+  public static void writeHalls(Hall hall) {
+    try (BufferedWriter w = new BufferedWriter(new FileWriter("halls.txt", true))) {
+      w.write(hall.toString() + "\n");
+    } catch (IOException e) {
+      System.out.println("Error when writing to halls.txt.\n " + e);
+    }
+  }
+
+  public static void writeHalls(ArrayList<Hall> halls) {
+    try (BufferedWriter w = new BufferedWriter(new FileWriter("halls.txt", false))) {
+      for (Hall hall : halls) {
+        w.write(hall.toString() + "\n");
+      }
+    } catch (IOException e) {
+      System.out.println("Error when writing to halls.txt.\n " + e);
+    }
   }
 }
