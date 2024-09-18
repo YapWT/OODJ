@@ -4,7 +4,12 @@ import java.util.*;
 
 public class Utils {
   public static String generateID(String type) {
-    List<String> typeOfUser = new zReadFile("users.txt").getSplit3();
+    ArrayList<User> users = FileOperations.readUsers();
+    List<String> typeOfUser;
+
+    for (User user : users) {
+      typeOfUser.add(user.getUtype());
+    }
 
     int count = Collections.frequency(typeOfUser, type);
 
