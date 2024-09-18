@@ -10,26 +10,18 @@ public class Customer extends User {
     this.setUtype("C");
     this.setUcontact(contact);
     this.setUstatus("pending");
-    
-    System.out.println(String.format("\n%s,%s,%s,%s,%s,%s", 
-                    this.getUid(), 
-                    this.getUpass(), 
-                    this.getUname(), 
-                    this.getUtype(), 
-                    this.getUcontact(), 
-                    this.getUstatus()));
-    
-    new zWriteFile()
-        .write(
-            "users.txt",
-            String.format("%s,%s,%s,%s,%s,%s", 
-                    this.getUid(), 
-                    this.getUpass(), 
-                    this.getUname(), 
-                    this.getUtype(), 
-                    this.getUcontact(), 
-                    this.getUstatus()),
-            true);
+
+    System.out.println(
+        String.format(
+            "\n%s,%s,%s,%s,%s,%s",
+            this.getUid(),
+            this.getUpass(),
+            this.getUname(),
+            this.getUtype(),
+            this.getUcontact(),
+            this.getUstatus()));
+
+    FileOperations.writeUsers(this);
   }
 
   public void viewAvailableHalls() {}

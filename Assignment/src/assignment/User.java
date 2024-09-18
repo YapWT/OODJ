@@ -182,4 +182,10 @@ public class User implements initialize, login_logout, profile {
   public void setUcontact(String Ucontact) {
     this.Ucontact = Ucontact;
   }
+
+  public String toString() {
+    return String.format(
+        "%s,%s,%s,%s,%s,%s",
+        this.Uid, this.Upass, this.Uname, this.Utype, this.Ucontact, this.Ustatus);
+  }
 }
