@@ -29,12 +29,20 @@ public class FileOperations {
   }
 
   public static void writeUsers(User user) {
-    try (BufferedWriter w = new BufferedWriter(new FileWriter("user.txt", true))) {
+    try (BufferedWriter w = new BufferedWriter(new FileWriter("users.txt", true))) {
       w.write(user.toString() + "\n");
     } catch (IOException e2) {
       System.out.println("Error when writing a file. ");
     }
   }
 
-  public static void writeUsers(ArrayList<User> users) {}
+  public static void writeUsers(ArrayList<User> users) {
+    try (BufferedWriter w = new BufferedWriter(new FileWriter("users.txt", false))) {
+      for (User user : users) {
+        w.write(user.toString() + "\n");
+      }
+    } catch (IOException e) {
+      System.out.println("Error when writing a file. ");
+    }
+  }
 }
