@@ -18,6 +18,7 @@ public class FileOperations {
         users.add(
             new User(data.get(0), data.get(1), data.get(2), data.get(3), data.get(4), data.get(5)));
       }
+      return users;
     } catch (FileNotFoundException e) {
 
     } catch (IOException e2) {
