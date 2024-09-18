@@ -90,4 +90,40 @@ public class FileOperations {
       System.out.println("Error when writing to halls.txt.\n " + e);
     }
   }
+
+  public static ArrayList<Payment> readPayments() {
+    ArrayList<Payment> payments = new ArrayList<>();
+
+    try (BufferedReader rd = new BufferedReader(new FileReader("payments.txt"))) {
+      String line;
+      while ((line = rd.readLine()) != null) {
+        ArrayList<String> data = new ArrayList<>(Arrays.asList(line.split(",")));
+        payments.add(
+            new Payment(data.get(0), data.get(1), Integer.parseInt(data.get(2)), data.get(3)));
+      }
+    } catch (FileNotFoundException e) {
+
+    } catch (IOException e) {
+      System.out.println("Error when reading payments.txt.\n " + e);
+    }
+    return payments;
+  }
+
+  public static void writePayments(Payment payment) {
+    try (BufferedWriter w = new BufferedWriter(new FileWriter("payments.txt", true))) {
+      w.write(payment.toString() + "\n");
+    } catch (IOException e) {
+      System.out.println("Error when writing to payments.txt.\n " + e);
+    }
+  }
+
+  public static void writePayments(ArrayList<Payment> payments) {
+    try (BufferedWriter w = new BufferedWriter(new FileWriter("payments.txt", false))) {
+      for (Payment payment : payments) {
+        w.write(payment.toString() + "\n");
+      }
+    } catch (IOException e) {
+      System.out.println("Error when writing to payments.txt.\n " + e);
+    }
+  }
 }
