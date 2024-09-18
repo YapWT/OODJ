@@ -29,7 +29,7 @@ public class FileOperations {
   }
 
   public static void writeUsers(User user) {
-    try (BufferedWriter w = new BufferedWriter(new FileWriter("user.txt", true))) {
+    try (BufferedWriter w = new BufferedWriter(new FileWriter("users.txt", true))) {
       w.write(user.toString() + "\n");
     } catch (IOException e) {
       System.out.println("Error when reading users.txt. \n" + e);
