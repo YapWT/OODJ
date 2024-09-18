@@ -18,61 +18,108 @@ public class uiScheduler extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        addHall = new javax.swing.JButton();
+        editHall = new javax.swing.JButton();
+        viewHall = new javax.swing.JButton();
+        deleteHall = new javax.swing.JButton();
+        SchedulerPanel = new javax.swing.JPanel();
+        maintainHall = new javax.swing.JButton();
+        scheduleHall = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Hall Management");
 
-        jButton1.setText("Add Hall");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addHall.setBackground(new java.awt.Color(153, 153, 153));
+        addHall.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        addHall.setForeground(new java.awt.Color(0, 0, 0));
+        addHall.setText("Add Hall");
+        addHall.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        addHall.setBorderPainted(false);
+        addHall.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addHallActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Edit Hall");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        editHall.setBackground(new java.awt.Color(153, 153, 153));
+        editHall.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        editHall.setForeground(new java.awt.Color(0, 0, 0));
+        editHall.setText("Edit Hall");
+        editHall.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        editHall.setBorderPainted(false);
+        editHall.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                editHallActionPerformed(evt);
             }
         });
 
-        jButton3.setText("View Hall");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        viewHall.setBackground(new java.awt.Color(153, 153, 153));
+        viewHall.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        viewHall.setForeground(new java.awt.Color(0, 0, 0));
+        viewHall.setText("View Hall");
+        viewHall.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        viewHall.setBorderPainted(false);
+        viewHall.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                viewHallActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Delete Hall");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        deleteHall.setBackground(new java.awt.Color(153, 153, 153));
+        deleteHall.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        deleteHall.setForeground(new java.awt.Color(0, 0, 0));
+        deleteHall.setText("Delete Hall");
+        deleteHall.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        deleteHall.setBorderPainted(false);
+        deleteHall.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                deleteHallActionPerformed(evt);
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        SchedulerPanel.setBackground(new java.awt.Color(255, 255, 255));
+        SchedulerPanel.setPreferredSize(new java.awt.Dimension(500, 500));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 641, Short.MAX_VALUE)
+        javax.swing.GroupLayout SchedulerPanelLayout = new javax.swing.GroupLayout(SchedulerPanel);
+        SchedulerPanel.setLayout(SchedulerPanelLayout);
+        SchedulerPanelLayout.setHorizontalGroup(
+            SchedulerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        SchedulerPanelLayout.setVerticalGroup(
+            SchedulerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        maintainHall.setBackground(new java.awt.Color(153, 153, 153));
+        maintainHall.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        maintainHall.setForeground(new java.awt.Color(0, 0, 0));
+        maintainHall.setText("Hall Maintenance");
+        maintainHall.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        maintainHall.setBorderPainted(false);
+        maintainHall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maintainHallActionPerformed(evt);
+            }
+        });
+
+        scheduleHall.setBackground(new java.awt.Color(153, 153, 153));
+        scheduleHall.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        scheduleHall.setForeground(new java.awt.Color(0, 0, 0));
+        scheduleHall.setText("Hall Schedule");
+        scheduleHall.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        scheduleHall.setBorderPainted(false);
+        scheduleHall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scheduleHallActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -81,33 +128,40 @@ public class uiScheduler extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(viewHall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editHall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(addHall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(deleteHall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(maintainHall, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                            .addComponent(scheduleHall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(jLabel1)))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(SchedulerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(70, 70, 70)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(viewHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(addHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deleteHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(maintainHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scheduleHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
+            .addComponent(SchedulerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,21 +178,36 @@ public class uiScheduler extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void addHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addHallActionPerformed
+        SchedulerPanel.removeAll();
+        SchedulerPanel.repaint();
+        SchedulerPanel.add(new uiAddHall().getPanel());// TODO add your handling code here:
+    }//GEN-LAST:event_addHallActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void editHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editHallActionPerformed
+        SchedulerPanel.removeAll();
+        SchedulerPanel.repaint();
+        SchedulerPanel.add(new uiEditHall().getPanel());
+    }//GEN-LAST:event_editHallActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void viewHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewHallActionPerformed
+        SchedulerPanel.removeAll();
+        SchedulerPanel.repaint();
+        SchedulerPanel.add(new uiViewHall().getPanel());
+        
+    }//GEN-LAST:event_viewHallActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void deleteHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteHallActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_deleteHallActionPerformed
+
+    private void maintainHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintainHallActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_maintainHallActionPerformed
+
+    private void scheduleHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleHallActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_scheduleHallActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,12 +245,14 @@ public class uiScheduler extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JPanel SchedulerPanel;
+    private javax.swing.JButton addHall;
+    private javax.swing.JButton deleteHall;
+    private javax.swing.JButton editHall;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton maintainHall;
+    private javax.swing.JButton scheduleHall;
+    private javax.swing.JButton viewHall;
     // End of variables declaration//GEN-END:variables
 }

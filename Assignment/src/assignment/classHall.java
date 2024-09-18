@@ -10,7 +10,7 @@ package assignment;
  */
 public class classHall {
     private int hallCapacity;//hall capacity
-    private String hallType;//hall type
+    public String hallType;//hall type
     private int hallNumber;//hall number
     private double bookingRate;
     
@@ -34,9 +34,5 @@ public class classHall {
             this.hallCapacity=30;
             this.bookingRate=50.00;
         }
-    }
-    
-    
-
-        
+    }        
 }
