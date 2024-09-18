@@ -48,7 +48,7 @@ public class FileOperations {
 
   public static ArrayList<Hall> readHalls() {
     ArrayList<Hall> halls = new ArrayList<>();
-    String[] timeSlots;
+    String[] timeSlots = null;
 
     try (BufferedReader rd = new BufferedReader(new FileReader("halls.txt"))) {
       String line;
