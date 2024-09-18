@@ -22,8 +22,8 @@ public class FileOperations {
       }
     } catch (FileNotFoundException e) {
 
-    } catch (IOException e2) {
-      System.out.println("Error when reading users.txt. ");
+    } catch (IOException e) {
+      System.out.println("Error when reading users.txt.\n " + e);
     }
     return users;
   }
@@ -31,8 +31,8 @@ public class FileOperations {
   public static void writeUsers(User user) {
     try (BufferedWriter w = new BufferedWriter(new FileWriter("user.txt", true))) {
       w.write(user.toString() + "\n");
-    } catch (IOException e2) {
-      System.out.println("Error when reading users.txt. ");
+    } catch (IOException e) {
+      System.out.println("Error when reading users.txt. \n" + e);
     }
   }
 
@@ -42,7 +42,7 @@ public class FileOperations {
         w.write(user.toString() + "\n");
       }
     } catch (IOException e) {
-      System.out.println("Error when reading users.txt. ");
+      System.out.println("Error when reading users.txt.\n " + e);
     }
   }
 
@@ -67,8 +67,8 @@ public class FileOperations {
       }
     } catch (FileNotFoundException e) {
 
-    } catch (IOException e2) {
-      System.out.println("Error when reading halls.txt. ");
+    } catch (IOException e) {
+      System.out.println("Error when reading halls.txt.\n " + e);
     }
     return halls;
   }
