@@ -57,7 +57,7 @@ public class FileOperations {
     try (BufferedWriter w = new BufferedWriter(new FileWriter(filename, true))) {
       w.write(data.toString() + "\n");
     } catch (IOException e) {
-      System.out.println("Error when writting to users.txt. \n" + e);
+      System.out.println("Error when writting to " + filename + "\n" + e);
     }
   }
 
@@ -67,7 +67,7 @@ public class FileOperations {
         w.write(datapoint.toString() + "\n");
       }
     } catch (IOException e) {
-      System.out.println("Error when writting to users.txt.\n " + e);
+      System.out.println("Error when writting to " + filename + "\n" + e);
     }
   }
 }
