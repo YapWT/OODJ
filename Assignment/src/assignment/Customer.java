@@ -21,7 +21,7 @@ public class Customer extends User {
             this.getUcontact(),
             this.getUstatus()));
 
-    FileOperations.writeUsers(this);
+    FileOperations.write("users.txt", this);
   }
 
   public void viewAvailableHalls() {}

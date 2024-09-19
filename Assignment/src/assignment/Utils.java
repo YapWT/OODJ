@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Utils {
   public static String generateID(String type) {
-    ArrayList<User> users = FileOperations.readUsers();
+    ArrayList<User> users = FileOperations.read("users.txt");
     List<String> typeOfUser = new ArrayList<>();
 
     for (User user : users) {
