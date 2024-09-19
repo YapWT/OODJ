@@ -16,6 +16,18 @@ public class Utils {
     return String.format("%s%08d", type, count + 1);
   }
 
+  public static <T extends User> T IDtoObject(String id, String filename, Class<T> runtimeClass) {
+    ArrayList<T> objects = FileOperations.read(filename);
+    char IDtype = id.charAt(0);
+    if (runtimeClass == Customer.class && IDtype == 'C') {
+      for (T obj : objects) {
+        if (obj.getUid().equals(id)) {
+          return obj;
+        }
+      }
+    }
+  }
+
   public static zUserToString idGetRow(String Uid) {
     ArrayList<ArrayList<Object>> data = new zReadFile("users.txt", 0, Uid).getAllData();
     if (data.isEmpty()) return null;
