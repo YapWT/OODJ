@@ -18,5 +18,15 @@ public class Booking {
       int[] timeSlots,
       int totalPrice,
       String bookingStatus,
-      String paymentID) {}
+      String paymentID) {
+
+    this.bookingID = bookingID;
+    this.hallID = hallID;
+    this.timeSlots = timeSlots;
+    this.totalPrice = totalPrice;
+    this.bookingStatus = bookingStatus;
+
+    this.customer = Utils.IDtoObject(customerID, "users.txt", Customer.class);
+    this.payment = Utils.IDtoObject(paymentID, "payments.txt", Payment.class);
+  }
 }
