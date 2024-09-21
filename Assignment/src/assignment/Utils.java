@@ -26,6 +26,7 @@ public class Utils {
         }
       }
     }
+    return null;
   }
 
   public static zUserToString idGetRow(String Uid) {

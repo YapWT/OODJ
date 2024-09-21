@@ -43,6 +43,19 @@ public class FileOperations {
               (T)
                   new Payment(
                       data.get(0), data.get(1), Integer.parseInt(data.get(2)), data.get(3)));
+        } else if (filename.contains("bookings")) {
+          int[] timeSlots =
+              new int[] {Integer.parseInt(data.get(3)), Integer.parseInt(data.get(4))};
+          result.add(
+              (T)
+                  new Booking(
+                      data.get(0),
+                      Integer.parseInt(data.get(1)),
+                      data.get(2),
+                      timeSlots,
+                      Integer.parseInt(data.get(5)),
+                      data.get(6),
+                      data.get(7)));
         }
       }
     } catch (FileNotFoundException e) {
