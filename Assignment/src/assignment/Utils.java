@@ -16,16 +16,25 @@ public class Utils {
     return String.format("%s%08d", type, count + 1);
   }
 
-  public static <T extends User> T IDtoObject(String id, String filename, Class<T> runtimeClass) {
+  public static <T> T IDtoObject(String id, String filename, Class<T> runtimeClass) {
     ArrayList<T> objects = FileOperations.read(filename);
     char IDtype = id.charAt(0);
     if (runtimeClass == Customer.class && IDtype == 'C') {
       for (T obj : objects) {
-        if (obj.getUid().equals(id)) {
+        User user = (User) obj;
+        if (user.getUid().equals(id)) {
+          return obj;
+        }
+      }
+    } else if (runtimeClass == Payment.class && IDtype == 'P') {
+      for (T obj : objects) {
+        Payment payment = (Payment) obj;
+        if (payment.getPaymentID().equals(id)) {
           return obj;
         }
       }
     }
+    return null;
   }
 
   public static zUserToString idGetRow(String Uid) {
