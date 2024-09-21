@@ -51,15 +51,13 @@ public class User implements initialize, login_logout, profile {
       this.Ucontact = "";
       this.Ustatus = "pending";
       this.Uid = Utils.generateID("A");
-      FileOpeations.writeUsers(this);
+      FileOperations.write("users.txt", this);
       return String.format("ID: %s\nPassword: %s", Uid, Upass);
     } catch (IOException e) {
       System.out.println("Error Found in reader file");
       return null;
     }
   }
-
-
 
   public String login() {
     zUserToString data = Utils.idGetRow(Uid);

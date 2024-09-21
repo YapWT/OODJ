@@ -1,5 +1,7 @@
 package assignment;
 
+import java.util.ArrayList;
+
 public class Customer extends User {
   public Customer() {}
 
@@ -24,9 +26,28 @@ public class Customer extends User {
     FileOperations.write("users.txt", this);
   }
 
-  public void viewAvailableHalls() {}
+  public ArrayList<Hall> viewAvailableHalls() {
+    ArrayList<Hall> halls = FileOperations.read("halls.txt");
+    // this is retarded
+    
+    return null;
+  }
 
-  public void bookHalls() {}
+  public void bookHalls(int hallID, int[] timeSlots) {
+    if (timeSlots.length > 2) {
+      throw new IllegalArgumentException("Timeslots only accept an array of length 2");
+    }
+    ArrayList<Hall> halls = FileOperations.read("halls.txt");
+
+    for (Hall hall : halls) {
+      if (hall.getHallID() == hallID) {
+        for (int i = timeSlots[0]; i < timeSlots[1]; i++) {
+          hall.setTimeSlot(i, "booked");
+        }
+        break;
+      }
+    }
+  }
 
   public void viewBookings() {}
 
