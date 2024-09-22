@@ -200,7 +200,7 @@ public class uiLogin extends javax.swing.JFrame {
                 this.dispose();
                 switch (type) {
                     case "A":
-                        new uiAdmin(cl.getUid()).setVisible(true);
+                        new uiAdmin(cl.getUid(), new Admin()).setVisible(true);
                         break;
                     case "C":
                         new uiCustomer(Utils.IDtoObject(cl.getUid(), "user.txt", Customer.class)).setVisible(true);

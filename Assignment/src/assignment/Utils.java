@@ -116,8 +116,10 @@ public class Utils {
     return false;
   }
   
+    // table without any filter
     public static <T> void viewTable(JTable t, String filename, Class<T> runtimeClass, String id){
         DefaultTableModel model = (DefaultTableModel) t.getModel();
+        model.setRowCount(0); 
         ArrayList<T> object = FileOperations.read(filename);
         Object[] tableRow = new Object[7];
         
@@ -128,15 +130,18 @@ public class Utils {
                 for (T row : object) {
                     User a = (User) row;
 
-                    tableRow[0] = i++;
-                    tableRow[1] = a.getUid();
-                    tableRow[2] = a.getUpass();
-                    tableRow[3] = a.getUname();
-                    tableRow[4] = a.getUtype();
-                    tableRow[5] = a.getUcontact();
-                    tableRow[6] = a.getUstatus();
-                    
-                    model.addRow(tableRow);
+                    if (!a.getUstatus().equals("deleted")) {
+                        tableRow[0] = i++;
+                        tableRow[1] = a.getUid();
+                        tableRow[2] = a.getUpass().replaceAll(".", "*");
+                        tableRow[3] = a.getUname();
+                        tableRow[4] = a.getUtype();
+                        tableRow[5] = a.getUcontact();
+                        tableRow[6] = a.getUstatus();
+
+                        model.addRow(tableRow);
+                    }
+
                 }
             } else if (runtimeClass == User.class && id != null){
                 User a = Utils.IDtoObject(id, "users.txt", User.class);
@@ -148,6 +153,43 @@ public class Utils {
                 model.addRow(tableRow);
                 
             }
+        }
+    }
+    
+    // filter table
+    public static <T> void viewTable(JTable t, String filename, Class<T> runtimeClass, int column, String filter) {
+        DefaultTableModel model = (DefaultTableModel) t.getModel();
+        model.setRowCount(0); 
+        ArrayList<T> object = FileOperations.read(filename);
+        Object[] tableRow = new Object[7];
+
+        int i = 1;
+
+        if (object != null) {
+            if (runtimeClass == User.class ) {
+                for (T row : object) {
+                    User a = (User) row;
+                    String f = null;
+                    
+                    switch (column){
+                        case 3:  f = a.getUtype(); break;
+                        case 5:  f = a.getUstatus(); break;
+                    }
+                    
+                    if (!a.getUstatus().equals("deleted") && f.equals(filter)){
+                        tableRow[0] = i++;
+                        tableRow[1] = a.getUid();
+                        tableRow[2] = a.getUpass().replaceAll(".", "*");
+                        tableRow[3] = a.getUname();
+                        tableRow[4] = a.getUtype();
+                        tableRow[5] = a.getUcontact();
+                        tableRow[6] = a.getUstatus();
+
+                        model.addRow(tableRow);
+                    }
+
+                }
+            } 
         }
     }
     
