@@ -1,6 +1,6 @@
 package assignment;
 
-class Admin extends User{
+class Admin extends Staff{
     public Admin() {}
     
     public void addStaff(String Uname, String Upass, String Utype, String Ucontact) {
