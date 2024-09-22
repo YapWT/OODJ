@@ -36,7 +36,7 @@ public class Utils {
       }
     }
 
-    int count = Collections.frequency(typeOfData, type);
+    int count = typeOfData.size();
 
     return String.format("%s%08d", type, count + 1);
   }
