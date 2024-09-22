@@ -15,8 +15,6 @@ public class uiAdmin extends javax.swing.JFrame {
     
     public uiAdmin(String Uid) {
         initComponents();
-        this.updateProfile = new User();
-        updateProfile.setUid(Uid);
         
         this.classA = new Admin();
         this.classH = new Hall();
@@ -25,15 +23,17 @@ public class uiAdmin extends javax.swing.JFrame {
 
         
         // update profile
+        this.updateProfile = new User();
+        updateProfile.setUid(Uid);
+        BTN_delete.setEnabled(false);
+        jLabel8.setVisible(false);
         
         new table(updateProfile, TBL_profile, Uid).addRow(3, new ArrayList<> (Arrays.asList(Uid, updateProfile.getUname(), updateProfile.getUcontact())));
         
         if (updateProfile.getUtype().equals("C")) BTN_delete.setEnabled(true);
         
-        jLabel8.setVisible(false);
-        BTN_delete.setEnabled(false);
-        
         BTN_c.addActionListener(e -> {
+            jLabel8.setVisible(false);
             JTextField contact = new JTextField();
             
             int option = JOptionPane.showConfirmDialog(null, new Object[]{"Enter Contact: ", contact}, "Change Contact", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
@@ -52,6 +52,7 @@ public class uiAdmin extends javax.swing.JFrame {
         });
         
         BTN_name.addActionListener(e -> {
+            jLabel8.setVisible(false);
             JTextField name = new JTextField();
             
             int option = JOptionPane.showConfirmDialog(null, new Object[]{"Enter New Name: ", name}, "Change Name", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
@@ -68,6 +69,8 @@ public class uiAdmin extends javax.swing.JFrame {
         });
         
         BTN_pass.addActionListener(e -> {
+            jLabel8.setVisible(false);
+            
             JPasswordField oldP = new JPasswordField();
             JPasswordField newP = new JPasswordField();
             
