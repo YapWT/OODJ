@@ -2,6 +2,7 @@ package assignment;
 
 import javax.swing.*;
 import java.util.*;
+import javax.swing.table.DefaultTableModel;
 
 
 public class uiAdmin extends javax.swing.JFrame {
@@ -19,7 +20,7 @@ public class uiAdmin extends javax.swing.JFrame {
         // user management
         this.classA = new Admin();
 
-        new table(TBL_view).addRow("users.txt", User.class, null);
+        Utils.viewTable(TBL_view, "users.txt", User.class, null);
         
         BTN_add.addActionListener(e -> {
             Panel_addUser PNL_add = new Panel_addUser();
@@ -58,7 +59,7 @@ public class uiAdmin extends javax.swing.JFrame {
         updateProfile.setUid(Uid);
         BTN_delete.setEnabled(false);
         jLabel8.setVisible(false);
-        new table(TBL_profile).addRow("users.txt", User.class, updateProfile.getUid());
+        Utils.viewTable(TBL_profile, "users.txt", User.class, updateProfile.getUid());
 
         if (updateProfile.getUtype().equals("C")) BTN_delete.setEnabled(true);
         
@@ -71,7 +72,7 @@ public class uiAdmin extends javax.swing.JFrame {
             if (option == JOptionPane.OK_OPTION) {
                 
                 if (updateProfile.updateC(contact.getText())) {
-                    new table(TBL_profile).refreshTable(updateProfile.getUcontact(), 2, 0);
+                    ((DefaultTableModel) TBL_profile.getModel()).setValueAt(updateProfile.getUcontact(), 2, 0);
                     jLabel8.setVisible(true);
                     jLabel8.setText("Contact Number Change!.");
                 } else {
@@ -93,7 +94,7 @@ public class uiAdmin extends javax.swing.JFrame {
             
             if (option == JOptionPane.OK_OPTION) {
                 if (updateProfile.updateName(name.getText())) {
-                    new table(TBL_profile).refreshTable(updateProfile.getUname(), 1, 0);
+                    ((DefaultTableModel) TBL_profile.getModel()).setValueAt(updateProfile.getUname(), 1, 0);
                     jLabel8.setVisible(true);
                     jLabel8.setText("Name Updated! "); 
                 } else {
