@@ -5,21 +5,21 @@ import java.util.*;
 import javax.swing.*;
 
 interface initialize {
-  abstract String checkFile();
+    abstract String checkFile();
 }
 
 interface login_logout {
-  String login();
+    String login();
 
-  void logout(JPanel p);
+    void logout(JPanel p);
 }
 
 interface profile {
-  boolean updateName(String Uname);
+    boolean updateName(String Uname);
 
-  String updatePass(String Upass, String newPass);
+    String updatePass(String Upass, String newPass);
 
-  boolean updateC(String Ucontact);
+    boolean updateC(String Ucontact);
 }
 
 public class User implements initialize, login_logout, profile {
