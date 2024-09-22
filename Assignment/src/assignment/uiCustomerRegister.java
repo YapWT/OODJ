@@ -140,6 +140,8 @@ public class uiCustomerRegister extends javax.swing.JFrame {
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
         customer.register(nameTxt.getText(), passwordTxt.getText(), contactTxt.getText());
+        this.dispose();
+        new uiCustomer(customer).setVisible(true);
     }//GEN-LAST:event_registerButtonActionPerformed
 
     /**
