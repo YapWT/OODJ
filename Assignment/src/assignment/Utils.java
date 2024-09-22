@@ -1,6 +1,7 @@
 package assignment;
 
 import java.util.*;
+import javax.swing.*;
 
 public class Utils {
   public static String generateID(String type) {
@@ -116,5 +117,14 @@ public class Utils {
     if (contact.matches("01\\d{8}") || contact.matches("01\\d{9}")) return true;
     return false;
   }
+  
+  public static boolean emptyPassword(ArrayList<JComponent> object) {
+        for (JComponent ob : object) {
+            if (((JPasswordField) ob).getPassword().length == 0) 
+                return true; 
+        }
+        return false; 
+    }
+
 }
 
