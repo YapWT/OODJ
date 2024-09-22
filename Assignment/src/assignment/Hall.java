@@ -5,7 +5,7 @@ public class Hall {
   private String hallType;
   private int capacity;
   private int ratePerHour;
-  private String[] timeSlots = new String[12];
+  private String[] timeSlots = new String[10];
 
   public Hall() {}
 
@@ -65,7 +65,7 @@ public class Hall {
     if (timeSlots != null && timeSlots.length == 12) {
       this.timeSlots = timeSlots;
     } else {
-      throw new IllegalArgumentException("Time slots must be an array of 12 elements.");
+      throw new IllegalArgumentException("Time slots must be an array of 10 elements.");
     }
   }
 
@@ -79,7 +79,7 @@ public class Hall {
 
   public String toString() {
     return String.format(
-        "%d,%s,%d,%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",
+        "%d,%s,%d,%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",
         this.hallID,
         this.hallType,
         this.capacity,
@@ -93,51 +93,42 @@ public class Hall {
         this.timeSlots[6],
         this.timeSlots[7],
         this.timeSlots[8],
-        this.timeSlots[9],
-        this.timeSlots[10],
-        this.timeSlots[11]);
-  } 
+        this.timeSlots[9]);
+  }
 }
 
-class Auditorium extends Hall{
+class Auditorium extends Hall {
 
-    public Auditorium() {
-    }
+  public Auditorium() {}
 
-    public Auditorium(int id, String type, int capacity, int ratePerHour, String[] timeSlots) {
-        super(id, type, capacity, ratePerHour, timeSlots);
-        type = "auditorium";
-        capacity = 1000;
-        ratePerHour = 300;
-    }
-    
+  public Auditorium(int id, String type, int capacity, int ratePerHour, String[] timeSlots) {
+    super(id, type, capacity, ratePerHour, timeSlots);
+    type = "auditorium";
+    capacity = 1000;
+    ratePerHour = 300;
+  }
 }
 
-class Banquet extends Hall{
+class Banquet extends Hall {
 
-    public Banquet() {
-    }
+  public Banquet() {}
 
-    public Banquet(int id, String type, int capacity, int ratePerHour, String[] timeSlots) {
-        super(id, type, capacity, ratePerHour, timeSlots);
-        type="banquet";
-        capacity = 300;
-        ratePerHour = 100;
-    }
-    
-    
+  public Banquet(int id, String type, int capacity, int ratePerHour, String[] timeSlots) {
+    super(id, type, capacity, ratePerHour, timeSlots);
+    type = "banquet";
+    capacity = 300;
+    ratePerHour = 100;
+  }
 }
 
-class MeetingRoom extends Hall{
+class MeetingRoom extends Hall {
 
-    public MeetingRoom() {
-    }
+  public MeetingRoom() {}
 
-    public MeetingRoom(int id, String type, int capacity, int ratePerHour, String[] timeSlots) {
-        super(id, type, capacity, ratePerHour, timeSlots);
-        type = "meeting";
-        capacity = 30;
-        ratePerHour = 50;
-    }
-    
+  public MeetingRoom(int id, String type, int capacity, int ratePerHour, String[] timeSlots) {
+    super(id, type, capacity, ratePerHour, timeSlots);
+    type = "meeting";
+    capacity = 30;
+    ratePerHour = 50;
+  }
 }
