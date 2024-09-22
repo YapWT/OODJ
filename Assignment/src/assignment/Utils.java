@@ -4,14 +4,48 @@ import java.util.*;
 
 public class Utils {
   public static String generateID(String type) {
-    ArrayList<User> users = FileOperations.read("users.txt");
-    List<String> typeOfUser = new ArrayList<>();
+    ArrayList<?> data = null;
+    List<String> typeOfData = new ArrayList<>();
 
-    for (User user : users) {
-      typeOfUser.add(user.getUtype());
+    switch (type) {
+      case "C":
+      case "A":
+      case "S":
+      case "M":
+        {
+          data = FileOperations.read("users.txt");
+          for (Object obj : data) {
+            User user = (User) obj;
+            typeOfData.add(user.getUid());
+          }
+          break;
+        }
+      case "P":
+        {
+          data = FileOperations.read("payments.txt");
+          for (Object obj : data) {
+            Payment payment = (Payment) obj;
+            typeOfData.add(payment.getPaymentID());
+          }
+          break;
+        }
+      case "H":
+        {
+          data = FileOperations.read("halls.txt");
+          for (Object obj : data) {
+            Hall hall = (Hall) obj;
+            typeOfData.add(Integer.toString(hall.getHallID()));
+          }
+          break;
+        }
+      case "B":
+        {
+          data = FileOperations.read("bookings.txt");
+          break;
+        }
     }
 
-    int count = Collections.frequency(typeOfUser, type);
+    int count = Collections.frequency(typeOfData, type);
 
     return String.format("%s%08d", type, count + 1);
   }

@@ -17,6 +17,66 @@ public class Hall {
     this.timeSlots = timeSlots;
   }
 
+  public int getHallID() {
+    return hallID;
+  }
+
+  public String getHallType() {
+    return hallType;
+  }
+
+  public int getCapacity() {
+    return capacity;
+  }
+
+  public int getRatePerHour() {
+    return ratePerHour;
+  }
+
+  public String[] getTimeSlots() {
+    return timeSlots;
+  }
+
+  public String getTimeSlot(int index) {
+    if (index >= 0 && index < timeSlots.length) {
+      return timeSlots[index];
+    } else {
+      throw new IllegalArgumentException("Index out of bounds");
+    }
+  }
+
+  public void setHallID(int hallID) {
+    this.hallID = hallID;
+  }
+
+  public void setHallType(String hallType) {
+    this.hallType = hallType;
+  }
+
+  public void setCapacity(int capacity) {
+    this.capacity = capacity;
+  }
+
+  public void setRatePerHour(int ratePerHour) {
+    this.ratePerHour = ratePerHour;
+  }
+
+  public void setTimeSlots(String[] timeSlots) {
+    if (timeSlots != null && timeSlots.length == 12) {
+      this.timeSlots = timeSlots;
+    } else {
+      throw new IllegalArgumentException("Time slots must be an array of 12 elements.");
+    }
+  }
+
+  public void setTimeSlot(int index, String timeSlot) {
+    if (index >= 0 && index < timeSlots.length) {
+      this.timeSlots[index] = timeSlot;
+    } else {
+      throw new IllegalArgumentException("Index out of bounds");
+    }
+  }
+
   public String toString() {
     return String.format(
         "%d,%s,%d,%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",
