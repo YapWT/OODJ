@@ -150,4 +150,22 @@ public class Utils {
             }
         }
     }
+    
+    public static <T> void addTableRow(JTable t, Class<T> runtimeClass, T data){
+        DefaultTableModel model = (DefaultTableModel) t.getModel();
+        Object[] tableRow = new Object[7];
+        
+        if (runtimeClass == User.class){
+            User user = (User) data;
+            tableRow[0] = model.getRowCount() + 1;
+            tableRow[1] = user.getUid();
+            tableRow[2] = user.getUpass();
+            tableRow[3] = user.getUname();
+            tableRow[4] = user.getUtype();
+            tableRow[5] = user.getUcontact();
+            tableRow[6] = user.getUstatus();
+                    
+            model.addRow(tableRow);
+        }
+    }
 }

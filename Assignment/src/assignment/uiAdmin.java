@@ -19,10 +19,13 @@ public class uiAdmin extends javax.swing.JFrame {
         
         // user management
         this.classA = new Admin();
-
+        jLabel6.setVisible(false);
+        
         Utils.viewTable(TBL_view, "users.txt", User.class, null);
         
         BTN_add.addActionListener(e -> {
+            jLabel6.setVisible(false);
+            
             Panel_addUser PNL_add = new Panel_addUser();
             
             int option = JOptionPane.showConfirmDialog(null, PNL_add, "AddUser", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
@@ -34,8 +37,7 @@ public class uiAdmin extends javax.swing.JFrame {
                 
                 if (type != null && name != null && !name.isEmpty()){
                     classA.addStaff(name, "123", type, "");
-//                    addRow("users.txt", User.class, null);
-//                    new table(TBL_profile).addRow(3, new ArrayList<> (Arrays.asList(classA.getUid(), classA.getUname(), classA.getUtype())));
+                    Utils.addTableRow(TBL_view, User.class, this.classA);
                     jLabel6.setVisible(true);
                     jLabel6.setText(name + " Added!");
                 } else {

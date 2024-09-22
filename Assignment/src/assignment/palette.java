@@ -20,5 +20,3 @@ class RadioBtnSettings extends palette {
         return null;
     }
  }
-
-
