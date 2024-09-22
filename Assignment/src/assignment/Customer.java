@@ -33,7 +33,7 @@ public class Customer extends User {
     return null;
   }
 
-  public void bookHalls(int hallID, int[] timeSlots) {
+  public void bookHalls(String hallID, int[] timeSlots) {
     if (timeSlots.length > 2) {
       throw new IllegalArgumentException("Timeslots only accept an array of length 2");
     }
@@ -43,9 +43,7 @@ public class Customer extends User {
 
     for (Hall hall : halls) {
       if (hall.getHallID() == hallID) {
-        for (int i = timeSlots[0]; i < timeSlots[1]; i++) {
-          hall.setTimeSlot(i, "booked");
-        }
+        for (int i = timeSlots[0]; i < timeSlots[1]; i++) {}
 
         amount = hall.getRatePerHour() * (timeSlots[1] - timeSlots[0]);
         break;

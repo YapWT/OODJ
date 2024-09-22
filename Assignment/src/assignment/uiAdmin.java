@@ -16,11 +16,18 @@ public class uiAdmin extends javax.swing.JFrame {
     public uiAdmin(String Uid) {
         initComponents();
         
+        // add user
         this.classA = new Admin();
         this.classH = new Hall();
         
         jLabel4.setVisible(false);
 
+        // modify
+        BTN_mPass.setEnabled(false);
+        BTN_mName.setEnabled(false);
+        BTN_mStatus.setEnabled(false);
+        LST_filter.setEnabled(false);
+//        new table(classA, TBL_view).addRow(5, x);
         
         // update profile
         this.updateProfile = new User();
@@ -42,12 +49,16 @@ public class uiAdmin extends javax.swing.JFrame {
                 
                 if (updateProfile.updateC(contact.getText())) {
                     new table(updateProfile, TBL_profile, updateProfile.getUid()).refreshTable(updateProfile.getUcontact(), 2, 0);
-                    new label(jLabel8).setVisibleAndText("Contact Number Change!.");
-                } else
-                    new label(jLabel8).setVisibleAndText("Incorrect Contact Number or Empty Input Found. ");
-                
-            } else
-                new label(jLabel8).setVisibleAndText("Contact change was canceled.");
+                    jLabel8.setVisible(true);
+                    jLabel8.setText("Contact Number Change!.");
+                } else {
+                    jLabel8.setVisible(true);
+                    jLabel8.setText("Incorrect Contact Number or Empty Input Found. ");
+                }                
+            } else {
+                jLabel8.setVisible(true);
+                jLabel8.setText("Contact change was canceled.");
+            }
             
         });
         
@@ -60,12 +71,16 @@ public class uiAdmin extends javax.swing.JFrame {
             if (option == JOptionPane.OK_OPTION) {
                 if (updateProfile.updateName(name.getText())) {
                     new table(updateProfile, TBL_profile, updateProfile.getUid()).refreshTable(updateProfile.getUname(), 1, 0);
-                    new label(jLabel8).setVisibleAndText("Name Updated! "); 
-                } else
-                    new label(jLabel8).setVisibleAndText("Empty Input Found"); 
-
-            } else
-                new label(jLabel8).setVisibleAndText("Name change was canceled."); 
+                    jLabel8.setVisible(true);
+                    jLabel8.setText("Name Updated! "); 
+                } else {
+                    jLabel8.setVisible(true);
+                    jLabel8.setText("Empty Input Found"); 
+                }
+            } else {
+                    jLabel8.setVisible(true);
+                    jLabel8.setText("Name change was canceled."); 
+            }
         });
         
         BTN_pass.addActionListener(e -> {
@@ -83,23 +98,30 @@ public class uiAdmin extends javax.swing.JFrame {
             
             if (option == JOptionPane.OK_OPTION) {
                
-                if (new ComponentAction(new ArrayList<>(Arrays.asList(oldP, newP))).emptyPassword())
-                    new label(jLabel8).setVisibleAndText("Empty Input Found"); 
+                if (Utils.emptyPassword(new ArrayList<>(Arrays.asList(oldP, newP)))) {
+                    jLabel8.setVisible(true);
+                    jLabel8.setText("Empty Input Found");
+                }
                 else {
                     switch (updateProfile.updatePass(new String(oldP.getPassword()), new String(newP.getPassword()))){
                         case "Same":
-                            new label(jLabel8).setVisibleAndText("Please provide a different password from old password. "); 
+                            jLabel8.setVisible(true);
+                            jLabel8.setText("Please provide a different password from old password. "); 
                             break;
                         case "Incorrect":
-                            new label(jLabel8).setVisibleAndText("Old Password is Incorrect! "); 
+                            jLabel8.setVisible(true);
+                            jLabel8.setText("Old Password is Incorrect! "); 
                             break;
                         case "Done":
-                            new label(jLabel8).setVisibleAndText("Password Change Succesfully!"); 
+                            jLabel8.setVisible(true);
+                            jLabel8.setText("Password Change Succesfully!"); 
                             break;
                     }
                 }
-            } else
-                new label(jLabel8).setVisibleAndText("Password change was canceled.");
+            } else {
+                jLabel8.setVisible(true);
+                jLabel8.setText("Password change was canceled.");
+            }
         });
     }
     
@@ -126,15 +148,15 @@ public class uiAdmin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        TBL_profile1 = new javax.swing.JTable();
+        TBL_view = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         BTN_mPass = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        LST_filter = new javax.swing.JList<>();
         BTN_mContact = new javax.swing.JButton();
         BTN_mName = new javax.swing.JButton();
         BTN_mStatus = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BTN_modify = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         TBL_profile = new javax.swing.JTable();
@@ -275,7 +297,7 @@ public class uiAdmin extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Add User", jPanel2);
 
-        TBL_profile1.setModel(new javax.swing.table.DefaultTableModel(
+        TBL_view.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -298,19 +320,29 @@ public class uiAdmin extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        TBL_profile1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane4.setViewportView(TBL_profile1);
+        TBL_view.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(TBL_view);
 
         jButton1.setText("Filter User");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         BTN_mPass.setText("Edit Password");
+        BTN_mPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_mPassActionPerformed(evt);
+            }
+        });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        LST_filter.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "User Type", "Status" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(LST_filter);
 
         BTN_mContact.setText("Edit Contact");
 
@@ -318,7 +350,12 @@ public class uiAdmin extends javax.swing.JFrame {
 
         BTN_mStatus.setText("Edit Status");
 
-        jButton2.setText("Make Modify");
+        BTN_modify.setText("Make Modify");
+        BTN_modify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_modifyActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -326,51 +363,45 @@ public class uiAdmin extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(BTN_mName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BTN_mContact)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BTN_mStatus)
-                        .addGap(29, 29, 29)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(108, 108, 108)
-                .addComponent(jButton1)
-                .addGap(142, 142, 142))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(36, 36, 36)
-                    .addComponent(BTN_mPass)
-                    .addContainerGap(461, Short.MAX_VALUE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BTN_modify)
+                            .addGap(108, 108, 108)
+                            .addComponent(jButton1)
+                            .addGap(105, 105, 105))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(BTN_mPass)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(BTN_mName)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(BTN_mContact)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(BTN_mStatus)
+                            .addGap(29, 29, 29)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(BTN_modify))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(BTN_mContact)
                         .addComponent(BTN_mStatus)
-                        .addComponent(BTN_mName)))
-                .addContainerGap(262, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(141, 141, 141)
-                    .addComponent(BTN_mPass)
-                    .addContainerGap(263, Short.MAX_VALUE)))
+                        .addComponent(BTN_mName)
+                        .addComponent(BTN_mPass))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(84, 84, 84))
         );
 
         jTabbedPane1.addTab("tab2", jPanel3);
@@ -565,9 +596,12 @@ public class uiAdmin extends javax.swing.JFrame {
             new table(classA, TBL_add, classA.getUid()).addRow(3, new ArrayList<> (Arrays.asList(classA.getUid(), classA.getUname(), classA.getUtype())));
             BTN_groupAdd.clearSelection();
             TXT_name.setText("");
-            new label(jLabel4).setVisibleAndText(name + " Added!");
-        } else
-        new label(jLabel4).setVisibleAndText("There Empty Input Found. ");
+            jLabel8.setVisible(true);
+            jLabel8.setText(name + " Added!");
+        } else {
+            jLabel8.setVisible(true);
+            jLabel8.setText("There Empty Input Found. ");
+        }
     }//GEN-LAST:event_BTN_addActionPerformed
 
     private void BTN_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_nameActionPerformed
@@ -602,6 +636,24 @@ public class uiAdmin extends javax.swing.JFrame {
     private void BTN_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_logoutActionPerformed
         updateProfile.logout(jPanel5);
     }//GEN-LAST:event_BTN_logoutActionPerformed
+
+    private void BTN_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_modifyActionPerformed
+        BTN_mPass.setEnabled(true);
+        BTN_mName.setEnabled(true);
+        BTN_mStatus.setEnabled(true);
+        LST_filter.setEnabled(false);
+    }//GEN-LAST:event_BTN_modifyActionPerformed
+
+    private void BTN_mPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_mPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_mPassActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        BTN_mPass.setEnabled(false);
+        BTN_mName.setEnabled(false);
+        BTN_mStatus.setEnabled(false);
+        LST_filter.setEnabled(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -649,21 +701,21 @@ public class uiAdmin extends javax.swing.JFrame {
     private javax.swing.JButton BTN_mName;
     private javax.swing.JButton BTN_mPass;
     private javax.swing.JButton BTN_mStatus;
+    private javax.swing.JButton BTN_modify;
     private javax.swing.JButton BTN_name;
     private javax.swing.JButton BTN_pass;
+    private javax.swing.JList<String> LST_filter;
     private javax.swing.JTable TBL_add;
     private javax.swing.JTable TBL_profile;
-    private javax.swing.JTable TBL_profile1;
+    private javax.swing.JTable TBL_view;
     private javax.swing.JTextField TXT_name;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -7,11 +7,10 @@ class Admin extends User{
         this.setUpass(Upass);
         this.setUname(Uname);
         this.setUtype(Utype.substring(0, 1));
-        System.out.println(getUtype());
         this.setUcontact(Ucontact);
         this.setUstatus("pending");
-//        this.setUid(Utils.generateID(Utype));
+        this.setUid(Utils.generateID(getUtype()));
 
-//        FileOperations.write("users.txt", this);
+        FileOperations.write("users.txt", this);
   }
 }

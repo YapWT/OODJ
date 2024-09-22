@@ -57,33 +57,31 @@ public void setHallStatus(String hallStatus) {
     this.ratePerHour = ratePerHour;
   }
 }
+
 class Auditorium extends Hall {
   public Auditorium() {
-        super();
-        setHallType("auditorium");
-        setCapacity(1000);
-        setRatePerHour(300);
-    }
+    super();
+    setHallType("auditorium");
+    setCapacity(1000);
+    setRatePerHour(300);
+  }
 }
 
 class Banquet extends Hall {
 
-    public Banquet() {
-        super();
-        setHallType("banquet");
-        setCapacity(300);
-        setRatePerHour(100);
-    }
-
+  public Banquet() {
+    super();
+    setHallType("banquet");
+    setCapacity(300);
+    setRatePerHour(100);
+  }
 }
 
 class MeetingRoom extends Hall {
-    public MeetingRoom() {
-        super();
-        setHallType("meeting");
-        setCapacity(30);
-        setRatePerHour(50);
-    }
-    }
-
-
+  public MeetingRoom() {
+    super();
+    setHallType("meeting");
+    setCapacity(30);
+    setRatePerHour(50);
+  }
+}

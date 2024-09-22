@@ -2,7 +2,7 @@ package assignment;
 
 public class Booking {
   private String bookingID;
-  private int hallID;
+  private String hallID;
   private Customer customer;
   private int[] timeSlots;
   private int totalPrice;
@@ -13,7 +13,7 @@ public class Booking {
 
   public Booking(
       String bookingID,
-      int hallID,
+      String hallID,
       String customerID,
       int[] timeSlots,
       int totalPrice,
@@ -32,7 +32,7 @@ public class Booking {
 
   public Booking(
       String bookingID,
-      int hallID,
+      String hallID,
       Customer customer,
       int[] timeSlots,
       int totalPrice,
@@ -52,7 +52,7 @@ public class Booking {
     return bookingID;
   }
 
-  public int getHallID() {
+  public String getHallID() {
     return hallID;
   }
 
@@ -80,7 +80,7 @@ public class Booking {
     this.bookingID = bookingID;
   }
 
-  public void setHallID(int hallID) {
+  public void setHallID(String hallID) {
     this.hallID = hallID;
   }
 

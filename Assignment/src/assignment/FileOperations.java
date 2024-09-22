@@ -33,11 +33,10 @@ public class FileOperations {
           result.add(
               (T)
                   new Hall(
-                      Integer.parseInt(data.get(0)),
+                      data.get(0),
                       data.get(1),
                       Integer.parseInt(data.get(2)),
-                      Integer.parseInt(data.get(3)),
-                      timeSlots));
+                      Integer.parseInt(data.get(3))));
         } else if (filename.contains("payments")) {
           result.add(
               (T)
@@ -50,7 +49,7 @@ public class FileOperations {
               (T)
                   new Booking(
                       data.get(0),
-                      Integer.parseInt(data.get(1)),
+                      data.get(1),
                       data.get(2),
                       timeSlots,
                       Integer.parseInt(data.get(5)),
