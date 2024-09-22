@@ -101,29 +101,45 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Component id="jScrollPane5" min="-2" pref="537" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="BTN_add" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="BTN_add1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="BTN_add2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="BTN_ftype" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="BTN_add1" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="BTN_add2" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
-                                      <Component id="jScrollPane5" min="-2" pref="537" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
-                                  <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                  <Component id="BTN_fadmin" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="BTN_cancelf" min="-2" max="-2" attributes="0"/>
-                                      <Component id="BTN_fstatus" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="BTN_fcustomer" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="BTN_fmanager" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="BTN_fscheduler" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                                  <Component id="BTN_cancelf" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="BTN_factive" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="BTN_fpending" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="BTN_fdeactived" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="BTN_fblock" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="30" max="32767" attributes="0"/>
+                          <EmptySpace pref="40" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -137,21 +153,25 @@
                               <Component id="BTN_add" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="BTN_add1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="BTN_add2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="BTN_ftype" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="BTN_fstatus" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="BTN_factive" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BTN_fpending" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BTN_fdeactived" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BTN_fblock" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="BTN_cancelf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BTN_fadmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BTN_fcustomer" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BTN_fmanager" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BTN_fscheduler" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="16" max="32767" attributes="0"/>
+                          <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="BTN_cancelf" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="45" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -231,6 +251,54 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_addActionPerformed"/>
                   </Events>
                 </Component>
+                <Component class="javax.swing.JButton" name="BTN_add1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modify Name"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_add1ActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="BTN_add2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modify Status"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_add2ActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="BTN_fadmin">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Admin"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_fadminActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="BTN_factive">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="active"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_factiveActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="BTN_cancelf">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cancel Filter"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_cancelfActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="BTN_fpending">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="pending"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_fpendingActionPerformed"/>
+                  </Events>
+                </Component>
                 <Container class="javax.swing.JPanel" name="jPanel8">
 
                   <Layout>
@@ -257,44 +325,44 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="BTN_add1">
+                <Component class="javax.swing.JButton" name="BTN_fcustomer">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Modify Name"/>
+                    <Property name="text" type="java.lang.String" value="Customer"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_add1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_fcustomerActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="BTN_add2">
+                <Component class="javax.swing.JButton" name="BTN_fmanager">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Modify Status"/>
+                    <Property name="text" type="java.lang.String" value="Manager"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_add2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_fmanagerActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="BTN_ftype">
+                <Component class="javax.swing.JButton" name="BTN_fscheduler">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Filter By User Type"/>
+                    <Property name="text" type="java.lang.String" value="Scheduler"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ftypeActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_fschedulerActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="BTN_fstatus">
+                <Component class="javax.swing.JButton" name="BTN_fdeactived">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Filter By User Status"/>
+                    <Property name="text" type="java.lang.String" value="deactived"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_fstatusActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_fdeactivedActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="BTN_cancelf">
+                <Component class="javax.swing.JButton" name="BTN_fblock">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Cancel Filter"/>
+                    <Property name="text" type="java.lang.String" value="blocked"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_cancelfActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_fblockActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
