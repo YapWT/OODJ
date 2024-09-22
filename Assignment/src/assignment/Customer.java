@@ -11,7 +11,7 @@ public class Customer extends User {
     this.setUname(name);
     this.setUtype("C");
     this.setUcontact(contact);
-    this.setUstatus("pending");
+    this.setUstatus("active");
 
     System.out.println(
         String.format(
