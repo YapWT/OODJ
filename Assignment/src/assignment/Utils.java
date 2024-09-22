@@ -2,6 +2,7 @@ package assignment;
 
 import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class Utils {
   public static String generateID(String type) {
@@ -114,4 +115,39 @@ public class Utils {
     }
     return false;
   }
+  
+    public static <T> void viewTable(JTable t, String filename, Class<T> runtimeClass, String id){
+        DefaultTableModel model = (DefaultTableModel) t.getModel();
+        ArrayList<T> object = FileOperations.read(filename);
+        Object[] tableRow = new Object[7];
+        
+        int i = 1;
+
+        if (object != null) {
+            if (runtimeClass == User.class && id == null) {
+                for (T row : object) {
+                    User a = (User) row;
+
+                    tableRow[0] = i++;
+                    tableRow[1] = a.getUid();
+                    tableRow[2] = a.getUpass();
+                    tableRow[3] = a.getUname();
+                    tableRow[4] = a.getUtype();
+                    tableRow[5] = a.getUcontact();
+                    tableRow[6] = a.getUstatus();
+                    
+                    model.addRow(tableRow);
+                }
+            } else if (runtimeClass == User.class && id != null){
+                User a = Utils.IDtoObject(id, "users.txt", User.class);
+
+                tableRow[0] = a.getUid();
+                tableRow[1] = a.getUname();
+                tableRow[2] = a.getUcontact();
+
+                model.addRow(tableRow);
+                
+            }
+        }
+    }
 }
