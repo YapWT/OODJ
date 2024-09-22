@@ -17,6 +17,8 @@ public class uiAddHall extends javax.swing.JFrame {
     public uiAddHall() {
         initComponents();
         setContentPane(addHall);
+        FileOperations file = new FileOperations();
+        
     }
     
 
@@ -34,8 +36,6 @@ public class uiAddHall extends javax.swing.JFrame {
         hallSelector = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        txtHallNumber = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,13 +70,6 @@ public class uiAddHall extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Hall Number");
-
-        txtHallNumber.setBackground(new java.awt.Color(255, 255, 255));
-        txtHallNumber.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-
         javax.swing.GroupLayout addHallLayout = new javax.swing.GroupLayout(addHall);
         addHall.setLayout(addHallLayout);
         addHallLayout.setHorizontalGroup(
@@ -85,16 +78,12 @@ public class uiAddHall extends javax.swing.JFrame {
                 .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addHallLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(addHallLayout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(hallSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(addHallLayout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtHallNumber))))
+                                .addComponent(hallSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(addHallLayout.createSequentialGroup()
                         .addGap(166, 166, 166)
                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -105,15 +94,11 @@ public class uiAddHall extends javax.swing.JFrame {
             .addGroup(addHallLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtHallNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(hallSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 292, Short.MAX_VALUE)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
@@ -184,7 +169,5 @@ public class uiAddHall extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> hallSelector;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtHallNumber;
     // End of variables declaration//GEN-END:variables
 }

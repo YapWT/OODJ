@@ -5,8 +5,7 @@ public class Scheduler extends Staff {
   public Scheduler() {}
 
   public void addHall(String hallType) {
-      classHall newHall = new classHall();
-      newHall.hallType = hallType;
+      
   }
 
   public void editHall() {}
