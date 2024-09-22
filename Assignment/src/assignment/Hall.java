@@ -99,6 +99,7 @@ public class Hall {
 
 class Auditorium extends Hall {
 
+<<<<<<< Updated upstream
   public Auditorium() {}
 
   public Auditorium(int id, String type, int capacity, int ratePerHour, String[] timeSlots) {
@@ -131,4 +132,38 @@ class MeetingRoom extends Hall {
     capacity = 30;
     ratePerHour = 50;
   }
+=======
+    public Auditorium() {
+        super();
+        setHallType("auditorium");
+        setCapacity(1000);
+        setRatePerHour(300);
+    }
 }
+
+
+
+class Banquet extends Hall {
+
+    public Banquet() {
+        super();
+        setHallType("banquet");
+        setCapacity(300);
+        setRatePerHour(100);
+    }
+
+}
+
+
+class MeetingRoom extends Hall {
+
+    public MeetingRoom() {
+        super();
+        setHallType("meeting");
+        setCapacity(30);
+        setRatePerHour(50);
+    }
+
+>>>>>>> Stashed changes
+}
+

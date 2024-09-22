@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package assignment;
+import java.util.Arrays;
 import javax.swing.*;
 
 /**
@@ -10,7 +11,7 @@ import javax.swing.*;
  * @author zhusheng
  */
 public class uiAddHall extends javax.swing.JFrame {
-
+    private Scheduler scheduler;
     /**
      * Creates new form uiAddHall
      */
@@ -20,7 +21,7 @@ public class uiAddHall extends javax.swing.JFrame {
     public uiAddHall(Scheduler scheduler) {
         initComponents();
         setContentPane(addHall);
-        
+        this.scheduler = scheduler;
     }
     
 
@@ -39,6 +40,7 @@ public class uiAddHall extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
         lblHallFare = new javax.swing.JLabel();
+        lblHallSeating = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,25 +78,29 @@ public class uiAddHall extends javax.swing.JFrame {
         lblHallFare.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         lblHallFare.setForeground(new java.awt.Color(0, 0, 0));
 
+        lblHallSeating.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        lblHallSeating.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout addHallLayout = new javax.swing.GroupLayout(addHall);
         addHall.setLayout(addHallLayout);
         addHallLayout.setHorizontalGroup(
             addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addHallLayout.createSequentialGroup()
-                .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addHallLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(addHallLayout.createSequentialGroup()
-                                .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblHallFare, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(hallSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(addHallLayout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblHallSeating, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHallFare, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(addHallLayout.createSequentialGroup()
+                            .addGap(32, 32, 32)
+                            .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(addHallLayout.createSequentialGroup()
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(hallSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(addHallLayout.createSequentialGroup()
+                            .addGap(166, 166, 166)
+                            .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(84, Short.MAX_VALUE))
         );
         addHallLayout.setVerticalGroup(
@@ -108,7 +114,9 @@ public class uiAddHall extends javax.swing.JFrame {
                     .addComponent(hallSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(lblHallFare, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(lblHallSeating, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
@@ -128,11 +136,22 @@ public class uiAddHall extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        
+        scheduler.addHall(hallSelector.getSelectedItem().toString());
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void hallSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hallSelectorActionPerformed
-        // TODO add your handling code here:
+        if("Auditorium".equals(hallSelector.getSelectedItem().toString())){
+            lblHallFare.setText("Rate per Hour: RM " + new Auditorium().getRatePerHour());
+            lblHallSeating.setText("Number of seating: " + new Auditorium().getCapacity());
+        }
+        else if("Banquet Hall".equals(hallSelector.getSelectedItem().toString())){
+            lblHallFare.setText("Rate per Hour: RM " + new Banquet().getRatePerHour());
+            lblHallSeating.setText("Number of seating: " + new Banquet().getCapacity());
+        }
+        else if("Meeting Room".equals(hallSelector.getSelectedItem().toString())){
+            lblHallFare.setText("Rate per Hour: RM " + new MeetingRoom().getRatePerHour());
+            lblHallSeating.setText("Number of seating: " + new MeetingRoom().getCapacity());
+        }
     }//GEN-LAST:event_hallSelectorActionPerformed
 
     /**
@@ -180,5 +199,6 @@ public class uiAddHall extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblHallFare;
+    private javax.swing.JLabel lblHallSeating;
     // End of variables declaration//GEN-END:variables
 }
