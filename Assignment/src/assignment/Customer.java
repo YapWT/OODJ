@@ -29,7 +29,7 @@ public class Customer extends User {
   public ArrayList<Hall> viewAvailableHalls() {
     ArrayList<Hall> halls = FileOperations.read("halls.txt");
     // this is retarded
-    
+
     return null;
   }
 
@@ -37,16 +37,31 @@ public class Customer extends User {
     if (timeSlots.length > 2) {
       throw new IllegalArgumentException("Timeslots only accept an array of length 2");
     }
+
     ArrayList<Hall> halls = FileOperations.read("halls.txt");
+    int amount = 0;
 
     for (Hall hall : halls) {
       if (hall.getHallID() == hallID) {
         for (int i = timeSlots[0]; i < timeSlots[1]; i++) {
           hall.setTimeSlot(i, "booked");
         }
+
+        amount = hall.getRatePerHour() * (timeSlots[1] - timeSlots[0]);
         break;
+      } else {
+        throw new IllegalArgumentException("Invalid hall number");
       }
     }
+    FileOperations.write("halls.txt", halls);
+
+    Payment payment = new Payment(Utils.generateID("payment"), this.getUid(), amount, "success");
+    FileOperations.write("payments.txt", payment);
+
+    Booking booking =
+        new Booking(
+            Utils.generateID("booking"), hallID, this, timeSlots, amount, "success", payment);
+    FileOperations.write("bookings.txt", booking);
   }
 
   public void viewBookings() {}
