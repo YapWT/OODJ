@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class Panel_updateProfile extends javax.swing.JPanel {
+    private User updateProfile;
 
     public Panel_updateProfile() {
         
@@ -15,6 +16,8 @@ public class Panel_updateProfile extends javax.swing.JPanel {
     
     public Panel_updateProfile(String Uid, User updateProfile) {
         initComponents();
+
+        this.updateProfile = updateProfile;
 
         // update profile
         updateProfile.setUid(Uid);
@@ -24,6 +27,7 @@ public class Panel_updateProfile extends javax.swing.JPanel {
 
         if (updateProfile.getUtype().equals("C")) BTN_delete.setEnabled(true);
         
+        // change contact
         BTN_c.addActionListener(e -> {
             jLabel8.setVisible(false);
             JTextField contact = new JTextField();
@@ -47,6 +51,7 @@ public class Panel_updateProfile extends javax.swing.JPanel {
             
         });
         
+        //change name
         BTN_name.addActionListener(e -> {
             jLabel8.setVisible(false);
             JTextField name = new JTextField();
@@ -68,6 +73,7 @@ public class Panel_updateProfile extends javax.swing.JPanel {
             }
         });
         
+        // change password
         BTN_pass.addActionListener(e -> {
             jLabel8.setVisible(false);
             
@@ -271,11 +277,24 @@ public class Panel_updateProfile extends javax.swing.JPanel {
     }//GEN-LAST:event_BTN_passActionPerformed
 
     private void BTN_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_deleteActionPerformed
-        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(
+            null,
+            "Are you sure you want to delete your account?",
+            "Delete Account Confirmation",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.WARNING_MESSAGE
+        );
+
+        if (result == JOptionPane.YES_OPTION) {
+            Utils.editFile("users.txt", updateProfile.getUid(), 5, "deleted", User.class);
+            jLabel8.setText("Account deleted.");
+            updateProfile.logout(this);
+        } else
+        jLabel8.setText("Account deletion canceled.");
     }//GEN-LAST:event_BTN_deleteActionPerformed
 
     private void BTN_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_logoutActionPerformed
-        // TODO add your handling code here:
+        updateProfile.logout(this);
     }//GEN-LAST:event_BTN_logoutActionPerformed
 
 
