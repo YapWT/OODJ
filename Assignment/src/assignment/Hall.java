@@ -9,7 +9,7 @@ public class Hall {
 
   public Hall() {}
 
-  public Hall(String id, String type, int capacity, int ratePerHour, String hallStatus) {
+  public Hall(String id, String type, int capacity,int ratePerHour, String hallStatus) {
     this.hallID = id;
     this.hallType = type;
     this.capacity = capacity;
@@ -59,6 +59,7 @@ public void setHallStatus(String hallStatus) {
 }
 
 class Auditorium extends Hall {
+
   public Auditorium() {
     super();
     setHallType("auditorium");
@@ -68,7 +69,7 @@ class Auditorium extends Hall {
 }
 
 class Banquet extends Hall {
-
+    
   public Banquet() {
     super();
     setHallType("banquet");
@@ -78,6 +79,8 @@ class Banquet extends Hall {
 }
 
 class MeetingRoom extends Hall {
+
+    
   public MeetingRoom() {
     super();
     setHallType("meeting");

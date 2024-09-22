@@ -36,7 +36,7 @@ public class FileOperations {
                       data.get(0),
                       data.get(1),
                       Integer.parseInt(data.get(2)),
-                      Integer.parseInt(data.get(3))));
+                      Integer.parseInt(data.get(3)),data.get(4)));
         } else if (filename.contains("payments")) {
           result.add(
               (T)

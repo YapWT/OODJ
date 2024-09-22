@@ -40,6 +40,7 @@ public class uiAddHall extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
         lblHallFare = new javax.swing.JLabel();
+        lblRemarks = new javax.swing.JLabel();
         lblHallSeating = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,6 +56,7 @@ public class uiAddHall extends javax.swing.JFrame {
         hallSelector.setBackground(new java.awt.Color(255, 255, 255));
         hallSelector.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         hallSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Auditorium", "Banquet Hall", "Meeting Room" }));
+        hallSelector.setSelectedIndex(-1);
         hallSelector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hallSelectorActionPerformed(evt);
@@ -78,6 +80,9 @@ public class uiAddHall extends javax.swing.JFrame {
         lblHallFare.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         lblHallFare.setForeground(new java.awt.Color(0, 0, 0));
 
+        lblRemarks.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        lblRemarks.setForeground(new java.awt.Color(0, 0, 0));
+
         lblHallSeating.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         lblHallSeating.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -86,21 +91,25 @@ public class uiAddHall extends javax.swing.JFrame {
         addHallLayout.setHorizontalGroup(
             addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addHallLayout.createSequentialGroup()
-                .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblHallSeating, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHallFare, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(addHallLayout.createSequentialGroup()
-                            .addGap(32, 32, 32)
-                            .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(addHallLayout.createSequentialGroup()
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(hallSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(addHallLayout.createSequentialGroup()
-                            .addGap(166, 166, 166)
-                            .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblHallFare, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(addHallLayout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addGroup(addHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(addHallLayout.createSequentialGroup()
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(hallSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(addHallLayout.createSequentialGroup()
+                                .addGap(166, 166, 166)
+                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(addHallLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(lblHallSeating, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(84, Short.MAX_VALUE))
         );
         addHallLayout.setVerticalGroup(
@@ -114,9 +123,11 @@ public class uiAddHall extends javax.swing.JFrame {
                     .addComponent(hallSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(lblHallFare, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblHallSeating, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addComponent(lblRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
@@ -136,21 +147,28 @@ public class uiAddHall extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        scheduler.addHall(hallSelector.getSelectedItem().toString());
+        if(hallSelector.getSelectedIndex()==-1)
+            lblRemarks.setText("Please select a hall type first.");
+        else
+            scheduler.addHall(hallSelector.getSelectedIndex());
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void hallSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hallSelectorActionPerformed
-        if("Auditorium".equals(hallSelector.getSelectedItem().toString())){
-            lblHallFare.setText("Rate per Hour: RM " + new Auditorium().getRatePerHour());
-            lblHallSeating.setText("Number of seating: " + new Auditorium().getCapacity());
-        }
-        else if("Banquet Hall".equals(hallSelector.getSelectedItem().toString())){
-            lblHallFare.setText("Rate per Hour: RM " + new Banquet().getRatePerHour());
-            lblHallSeating.setText("Number of seating: " + new Banquet().getCapacity());
-        }
-        else if("Meeting Room".equals(hallSelector.getSelectedItem().toString())){
-            lblHallFare.setText("Rate per Hour: RM " + new MeetingRoom().getRatePerHour());
-            lblHallSeating.setText("Number of seating: " + new MeetingRoom().getCapacity());
+        switch (hallSelector.getSelectedIndex()) {
+            case 0:
+                lblHallFare.setText("Rate per Hour: RM " + new Auditorium().getRatePerHour());
+                lblHallSeating.setText("Number of seating: " + new Auditorium().getCapacity());
+                break;
+            case 1:
+                lblHallFare.setText("Rate per Hour: RM " + new Banquet().getRatePerHour());
+                lblHallSeating.setText("Number of seating: " + new Banquet().getCapacity());
+                break;
+            case 2:
+                lblHallFare.setText("Rate per Hour: RM " + new MeetingRoom().getRatePerHour());
+                lblHallSeating.setText("Number of seating: " + new MeetingRoom().getCapacity());
+                break;
+            default:
+                break;
         }
     }//GEN-LAST:event_hallSelectorActionPerformed
 
@@ -200,5 +218,6 @@ public class uiAddHall extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblHallFare;
     private javax.swing.JLabel lblHallSeating;
+    private javax.swing.JLabel lblRemarks;
     // End of variables declaration//GEN-END:variables
 }
