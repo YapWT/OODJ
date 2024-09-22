@@ -1,8 +1,8 @@
 package assignment;
 
 public class uiScheduler extends javax.swing.JFrame {
+    Scheduler currentScheduler = new Scheduler();
     private String ID;
-
     public uiScheduler() {
         initComponents();
     }
@@ -177,11 +177,11 @@ public class uiScheduler extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void addHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addHallActionPerformed
         SchedulerPanel.removeAll();
         SchedulerPanel.repaint();
-        SchedulerPanel.add(new uiAddHall().getPanel());// TODO add your handling code here:
+        SchedulerPanel.add(new uiAddHall(currentScheduler).getPanel());// TODO add your handling code here:
     }//GEN-LAST:event_addHallActionPerformed
 
     private void editHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editHallActionPerformed

@@ -6,7 +6,7 @@ import java.util.*;
 
 public class uiAdmin extends javax.swing.JFrame {
     private Admin classA;
-    private classHall classH;
+    private Hall classH;
     private User updateProfile;
 
     public uiAdmin() {
@@ -19,7 +19,7 @@ public class uiAdmin extends javax.swing.JFrame {
         updateProfile.setUid(Uid);
         
         this.classA = new Admin();
-        this.classH = new classHall();
+        this.classH = new Hall();
         
         jLabel4.setVisible(false);
 
