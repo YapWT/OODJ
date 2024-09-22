@@ -1,6 +1,7 @@
 package assignment;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import javax.swing.*;
 import java.util.*;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +21,7 @@ public class uiAdmin extends javax.swing.JFrame {
         
         Utils.viewTable(TBL_view, "users.txt", User.class, null);
         
+        // add user
         BTN_add.addActionListener(e -> {
             jLabel6.setVisible(false);
             
@@ -48,8 +50,6 @@ public class uiAdmin extends javax.swing.JFrame {
         
         });
 
-        
-        
         // hall
 //        this.classH = new Hall();
         
@@ -57,8 +57,6 @@ public class uiAdmin extends javax.swing.JFrame {
         Panel_updateProfile PNL_profile = new Panel_updateProfile(Uid, new User());
             jPanel5.setLayout(new BorderLayout());
             jPanel5.add(PNL_profile, BorderLayout.CENTER);
-
-
     }
     
     @SuppressWarnings("unchecked")
@@ -73,13 +71,19 @@ public class uiAdmin extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         TBL_view = new javax.swing.JTable();
         BTN_add = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         BTN_add1 = new javax.swing.JButton();
         BTN_add2 = new javax.swing.JButton();
-        BTN_ftype = new javax.swing.JButton();
-        BTN_fstatus = new javax.swing.JButton();
+        BTN_fadmin = new javax.swing.JButton();
+        BTN_factive = new javax.swing.JButton();
         BTN_cancelf = new javax.swing.JButton();
+        BTN_fpending = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        BTN_fcustomer = new javax.swing.JButton();
+        BTN_fmanager = new javax.swing.JButton();
+        BTN_fscheduler = new javax.swing.JButton();
+        BTN_fdeactived = new javax.swing.JButton();
+        BTN_fblock = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -119,6 +123,48 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        BTN_add1.setText("Modify Name");
+        BTN_add1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_add1ActionPerformed(evt);
+            }
+        });
+
+        BTN_add2.setText("Modify Status");
+        BTN_add2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_add2ActionPerformed(evt);
+            }
+        });
+
+        BTN_fadmin.setText("Admin");
+        BTN_fadmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_fadminActionPerformed(evt);
+            }
+        });
+
+        BTN_factive.setText("active");
+        BTN_factive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_factiveActionPerformed(evt);
+            }
+        });
+
+        BTN_cancelf.setText("Cancel Filter");
+        BTN_cancelf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_cancelfActionPerformed(evt);
+            }
+        });
+
+        BTN_fpending.setText("pending");
+        BTN_fpending.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_fpendingActionPerformed(evt);
+            }
+        });
+
         jLabel6.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -135,38 +181,38 @@ public class uiAdmin extends javax.swing.JFrame {
             .addComponent(jLabel6)
         );
 
-        BTN_add1.setText("Modify Name");
-        BTN_add1.addActionListener(new java.awt.event.ActionListener() {
+        BTN_fcustomer.setText("Customer");
+        BTN_fcustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_add1ActionPerformed(evt);
+                BTN_fcustomerActionPerformed(evt);
             }
         });
 
-        BTN_add2.setText("Modify Status");
-        BTN_add2.addActionListener(new java.awt.event.ActionListener() {
+        BTN_fmanager.setText("Manager");
+        BTN_fmanager.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_add2ActionPerformed(evt);
+                BTN_fmanagerActionPerformed(evt);
             }
         });
 
-        BTN_ftype.setText("Filter By User Type");
-        BTN_ftype.addActionListener(new java.awt.event.ActionListener() {
+        BTN_fscheduler.setText("Scheduler");
+        BTN_fscheduler.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_ftypeActionPerformed(evt);
+                BTN_fschedulerActionPerformed(evt);
             }
         });
 
-        BTN_fstatus.setText("Filter By User Status");
-        BTN_fstatus.addActionListener(new java.awt.event.ActionListener() {
+        BTN_fdeactived.setText("deactived");
+        BTN_fdeactived.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_fstatusActionPerformed(evt);
+                BTN_fdeactivedActionPerformed(evt);
             }
         });
 
-        BTN_cancelf.setText("Cancel Filter");
-        BTN_cancelf.addActionListener(new java.awt.event.ActionListener() {
+        BTN_fblock.setText("blocked");
+        BTN_fblock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_cancelfActionPerformed(evt);
+                BTN_fblockActionPerformed(evt);
             }
         });
 
@@ -179,23 +225,37 @@ public class uiAdmin extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addComponent(BTN_add)
                                 .addGap(18, 18, 18)
-                                .addComponent(BTN_add1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BTN_add2)
-                                .addGap(18, 18, 18)
-                                .addComponent(BTN_ftype))
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(BTN_add1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(BTN_add2))))))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(BTN_fadmin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BTN_cancelf)
-                            .addComponent(BTN_fstatus))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addComponent(BTN_fcustomer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BTN_fmanager)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BTN_fscheduler)
+                        .addGap(73, 73, 73)
+                        .addComponent(BTN_cancelf))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(BTN_factive)
+                        .addGap(18, 18, 18)
+                        .addComponent(BTN_fpending)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BTN_fdeactived)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BTN_fblock)))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,18 +266,23 @@ public class uiAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTN_add)
                     .addComponent(BTN_add1)
-                    .addComponent(BTN_add2)
-                    .addComponent(BTN_ftype))
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(BTN_fstatus)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BTN_cancelf)
-                .addContainerGap(45, Short.MAX_VALUE))
+                    .addComponent(BTN_add2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BTN_factive)
+                    .addComponent(BTN_fpending)
+                    .addComponent(BTN_fdeactived)
+                    .addComponent(BTN_fblock))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BTN_cancelf)
+                    .addComponent(BTN_fadmin)
+                    .addComponent(BTN_fcustomer)
+                    .addComponent(BTN_fmanager)
+                    .addComponent(BTN_fscheduler))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("User Management", jPanel7);
@@ -290,17 +355,41 @@ public class uiAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BTN_add2ActionPerformed
 
-    private void BTN_ftypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ftypeActionPerformed
+    private void BTN_fadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fadminActionPerformed
         Utils.viewTable(TBL_view, "users.txt", User.class, 3, "A");
-    }//GEN-LAST:event_BTN_ftypeActionPerformed
+    }//GEN-LAST:event_BTN_fadminActionPerformed
 
-    private void BTN_fstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fstatusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_fstatusActionPerformed
+    private void BTN_factiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_factiveActionPerformed
+        Utils.viewTable(TBL_view, "users.txt", User.class, 5, "active");
+    }//GEN-LAST:event_BTN_factiveActionPerformed
 
     private void BTN_cancelfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BTN_cancelfActionPerformed
+
+    private void BTN_fpendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpendingActionPerformed
+        Utils.viewTable(TBL_view, "users.txt", User.class, 5, "pending");
+    }//GEN-LAST:event_BTN_fpendingActionPerformed
+
+    private void BTN_fcustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fcustomerActionPerformed
+        Utils.viewTable(TBL_view, "users.txt", User.class, 3, "C");
+    }//GEN-LAST:event_BTN_fcustomerActionPerformed
+
+    private void BTN_fmanagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fmanagerActionPerformed
+        Utils.viewTable(TBL_view, "users.txt", User.class, 3, "M");
+    }//GEN-LAST:event_BTN_fmanagerActionPerformed
+
+    private void BTN_fschedulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fschedulerActionPerformed
+        Utils.viewTable(TBL_view, "users.txt", User.class, 3, "S");
+    }//GEN-LAST:event_BTN_fschedulerActionPerformed
+
+    private void BTN_fdeactivedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fdeactivedActionPerformed
+        Utils.viewTable(TBL_view, "users.txt", User.class, 5, "deactived");
+    }//GEN-LAST:event_BTN_fdeactivedActionPerformed
+
+    private void BTN_fblockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fblockActionPerformed
+        Utils.viewTable(TBL_view, "users.txt", User.class, 5, "blocked");
+    }//GEN-LAST:event_BTN_fblockActionPerformed
 
     /**
      * @param args the command line arguments
@@ -343,8 +432,14 @@ public class uiAdmin extends javax.swing.JFrame {
     private javax.swing.JButton BTN_add1;
     private javax.swing.JButton BTN_add2;
     private javax.swing.JButton BTN_cancelf;
-    private javax.swing.JButton BTN_fstatus;
-    private javax.swing.JButton BTN_ftype;
+    private javax.swing.JButton BTN_factive;
+    private javax.swing.JButton BTN_fadmin;
+    private javax.swing.JButton BTN_fblock;
+    private javax.swing.JButton BTN_fcustomer;
+    private javax.swing.JButton BTN_fdeactived;
+    private javax.swing.JButton BTN_fmanager;
+    private javax.swing.JButton BTN_fpending;
+    private javax.swing.JButton BTN_fscheduler;
     private javax.swing.ButtonGroup BTN_groupAdd;
     private javax.swing.JTable TBL_view;
     private javax.swing.JLabel jLabel2;

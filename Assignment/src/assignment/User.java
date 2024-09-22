@@ -28,7 +28,7 @@ public class User implements initialize, login_logout, profile {
     private String Uname;
     private String Utype;
     private String Ucontact;
-    private String Ustatus; // active, blocked, deactived, pending
+    private String Ustatus; // active, blocked, deactived, pending, deleted
 
     public User() {}
 
