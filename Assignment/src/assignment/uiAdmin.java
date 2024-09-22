@@ -33,7 +33,8 @@ public class uiAdmin extends javax.swing.JFrame {
                 
                 if (type != null && name != null && !name.isEmpty()){
                     classA.addStaff(name, "123", type, "");
-        //            new table(classA, TBL_add, classA.getUid()).addRow(3, new ArrayList<> (Arrays.asList(classA.getUid(), classA.getUname(), classA.getUtype())));
+//                    addRow("users.txt", User.class, null);
+//                    new table(TBL_profile).addRow(3, new ArrayList<> (Arrays.asList(classA.getUid(), classA.getUname(), classA.getUtype())));
                     jLabel6.setVisible(true);
                     jLabel6.setText(name + " Added!");
                 } else {
