@@ -150,7 +150,8 @@ public class uiAddHall extends javax.swing.JFrame {
         if(hallSelector.getSelectedIndex()==-1)
             lblRemarks.setText("Please select a hall type first.");
         else
-            scheduler.addHall(hallSelector.getSelectedIndex());
+            scheduler.addHall(hallSelector.getSelectedItem().toString());
+            lblRemarks.setText("Hall Added");
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void hallSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hallSelectorActionPerformed

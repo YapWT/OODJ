@@ -9,11 +9,9 @@ public class Hall {
 
   public Hall() {}
 
-  public Hall(String id, String type, int capacity,int ratePerHour, String hallStatus) {
+  public Hall(String id, String type, String hallStatus) {
     this.hallID = id;
     this.hallType = type;
-    this.capacity = capacity;
-    this.ratePerHour = ratePerHour;
     this.hallStatus = hallStatus;
   }
 
