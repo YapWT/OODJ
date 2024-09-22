@@ -1,7 +1,7 @@
 package assignment;
 
 public class Hall {
-  private int hallID;
+  private String hallID;
   private String hallType;
   private int capacity;
   private int ratePerHour;
@@ -9,7 +9,7 @@ public class Hall {
 
   public Hall() {}
 
-  public Hall(int id, String type, int capacity, int ratePerHour, String[] timeSlots) {
+  public Hall(String id, String type, int capacity, int ratePerHour, String[] timeSlots) {
     this.hallID = id;
     this.hallType = type;
     this.capacity = capacity;
@@ -17,7 +17,7 @@ public class Hall {
     this.timeSlots = timeSlots;
   }
 
-  public int getHallID() {
+  public String getHallID() {
     return hallID;
   }
 
@@ -45,7 +45,7 @@ public class Hall {
     }
   }
 
-  public void setHallID(int hallID) {
+  public void setHallID(String hallID) {
     this.hallID = hallID;
   }
 
@@ -98,42 +98,7 @@ public class Hall {
 }
 
 class Auditorium extends Hall {
-
-<<<<<<< Updated upstream
-  public Auditorium() {}
-
-  public Auditorium(int id, String type, int capacity, int ratePerHour, String[] timeSlots) {
-    super(id, type, capacity, ratePerHour, timeSlots);
-    type = "auditorium";
-    capacity = 1000;
-    ratePerHour = 300;
-  }
-}
-
-class Banquet extends Hall {
-
-  public Banquet() {}
-
-  public Banquet(int id, String type, int capacity, int ratePerHour, String[] timeSlots) {
-    super(id, type, capacity, ratePerHour, timeSlots);
-    type = "banquet";
-    capacity = 300;
-    ratePerHour = 100;
-  }
-}
-
-class MeetingRoom extends Hall {
-
-  public MeetingRoom() {}
-
-  public MeetingRoom(int id, String type, int capacity, int ratePerHour, String[] timeSlots) {
-    super(id, type, capacity, ratePerHour, timeSlots);
-    type = "meeting";
-    capacity = 30;
-    ratePerHour = 50;
-  }
-=======
-    public Auditorium() {
+  public Auditorium() {
         super();
         setHallType("auditorium");
         setCapacity(1000);
@@ -156,7 +121,6 @@ class Banquet extends Hall {
 
 
 class MeetingRoom extends Hall {
-
     public MeetingRoom() {
         super();
         setHallType("meeting");
@@ -164,6 +128,5 @@ class MeetingRoom extends Hall {
         setRatePerHour(50);
     }
 
->>>>>>> Stashed changes
 }
 
