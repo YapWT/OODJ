@@ -16,27 +16,49 @@ public class uiAdmin extends javax.swing.JFrame {
     public uiAdmin(String Uid) {
         initComponents();
         
-        // add user
+        // user management
         this.classA = new Admin();
+
+        new table(TBL_view).addRow("users.txt", User.class, null);
+        
+        BTN_add.addActionListener(e -> {
+            Panel_addUser PNL_add = new Panel_addUser();
+            
+            int option = JOptionPane.showConfirmDialog(null, PNL_add, "AddUser", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            
+            if (option == JOptionPane.OK_OPTION) {
+                String name = PNL_add.getName();
+                String type = PNL_add.getType();
+                System.out.println(name + "." + type);
+                
+                if (type != null && name != null && !name.isEmpty()){
+                    classA.addStaff(name, "123", type, "");
+        //            new table(classA, TBL_add, classA.getUid()).addRow(3, new ArrayList<> (Arrays.asList(classA.getUid(), classA.getUname(), classA.getUtype())));
+                    jLabel6.setVisible(true);
+                    jLabel6.setText(name + " Added!");
+                } else {
+                    jLabel6.setVisible(true);
+                    jLabel6.setText("There Empty Input Found. ");
+                }
+            } else {
+                jLabel6.setVisible(true);
+                jLabel6.setText("Cancel Add User");
+            }
+        
+        });
+
+        
+        // hall
         this.classH = new Hall();
         
-        jLabel4.setVisible(false);
 
-        // modify
-        BTN_mPass.setEnabled(false);
-        BTN_mName.setEnabled(false);
-        BTN_mStatus.setEnabled(false);
-        LST_filter.setEnabled(false);
-//        new table(classA, TBL_view).addRow(5, x);
-        
         // update profile
         this.updateProfile = new User();
         updateProfile.setUid(Uid);
         BTN_delete.setEnabled(false);
         jLabel8.setVisible(false);
-        
-        new table(updateProfile, TBL_profile, Uid).addRow(3, new ArrayList<> (Arrays.asList(Uid, updateProfile.getUname(), updateProfile.getUcontact())));
-        
+        new table(TBL_profile).addRow("users.txt", User.class, updateProfile.getUid());
+
         if (updateProfile.getUtype().equals("C")) BTN_delete.setEnabled(true);
         
         BTN_c.addActionListener(e -> {
@@ -48,7 +70,7 @@ public class uiAdmin extends javax.swing.JFrame {
             if (option == JOptionPane.OK_OPTION) {
                 
                 if (updateProfile.updateC(contact.getText())) {
-                    new table(updateProfile, TBL_profile, updateProfile.getUid()).refreshTable(updateProfile.getUcontact(), 2, 0);
+                    new table(TBL_profile).refreshTable(updateProfile.getUcontact(), 2, 0);
                     jLabel8.setVisible(true);
                     jLabel8.setText("Contact Number Change!.");
                 } else {
@@ -70,7 +92,7 @@ public class uiAdmin extends javax.swing.JFrame {
             
             if (option == JOptionPane.OK_OPTION) {
                 if (updateProfile.updateName(name.getText())) {
-                    new table(updateProfile, TBL_profile, updateProfile.getUid()).refreshTable(updateProfile.getUname(), 1, 0);
+                    new table(TBL_profile).refreshTable(updateProfile.getUname(), 1, 0);
                     jLabel8.setVisible(true);
                     jLabel8.setText("Name Updated! "); 
                 } else {
@@ -123,6 +145,7 @@ public class uiAdmin extends javax.swing.JFrame {
                 jLabel8.setText("Password change was canceled.");
             }
         });
+    
     }
     
     @SuppressWarnings("unchecked")
@@ -133,30 +156,12 @@ public class uiAdmin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TBL_add = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        TXT_name = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        BTN_add = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
         TBL_view = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        BTN_mPass = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        LST_filter = new javax.swing.JList<>();
-        BTN_mContact = new javax.swing.JButton();
-        BTN_mName = new javax.swing.JButton();
-        BTN_mStatus = new javax.swing.JButton();
-        BTN_modify = new javax.swing.JButton();
+        BTN_add = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         TBL_profile = new javax.swing.JTable();
@@ -172,130 +177,6 @@ public class uiAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setText("Admin Page");
-
-        TBL_add.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Uid", "Name", "Type"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, true, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(TBL_add);
-
-        jLabel1.setText("User Name: ");
-
-        jLabel3.setText("User Type: ");
-
-        BTN_groupAdd.add(jRadioButton1);
-        jRadioButton1.setText("Adminstrator");
-
-        BTN_groupAdd.add(jRadioButton3);
-        jRadioButton3.setText("Customer");
-
-        BTN_groupAdd.add(jRadioButton2);
-        jRadioButton2.setText("Manager");
-
-        BTN_groupAdd.add(jRadioButton4);
-        jRadioButton4.setText("Scheduler");
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
-            }
-        });
-
-        BTN_add.setText("Add");
-        BTN_add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_addActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setText("jLabel3");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4)
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addComponent(BTN_add))
-                            .addComponent(TXT_name, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(98, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TXT_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BTN_add))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(162, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Add User", jPanel2);
 
         TBL_view.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -321,90 +202,60 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
         TBL_view.getTableHeader().setReorderingAllowed(false);
-        jScrollPane4.setViewportView(TBL_view);
+        jScrollPane5.setViewportView(TBL_view);
 
-        jButton1.setText("Filter User");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BTN_add.setText("Add User");
+        BTN_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BTN_addActionPerformed(evt);
             }
         });
 
-        BTN_mPass.setText("Edit Password");
-        BTN_mPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_mPassActionPerformed(evt);
-            }
-        });
+        jLabel6.setText("jLabel3");
 
-        LST_filter.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "User Type", "Status" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(LST_filter);
-
-        BTN_mContact.setText("Edit Contact");
-
-        BTN_mName.setText("Edit Name");
-
-        BTN_mStatus.setText("Edit Status");
-
-        BTN_modify.setText("Make Modify");
-        BTN_modify.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_modifyActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BTN_modify)
-                            .addGap(108, 108, 108)
-                            .addComponent(jButton1)
-                            .addGap(105, 105, 105))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(BTN_mPass)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(BTN_mName)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(BTN_mContact)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(BTN_mStatus)
-                            .addGap(29, 29, 29)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(BTN_modify))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(BTN_mContact)
-                        .addComponent(BTN_mStatus)
-                        .addComponent(BTN_mName)
-                        .addComponent(BTN_mPass))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(84, 84, 84))
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6)
         );
 
-        jTabbedPane1.addTab("tab2", jPanel3);
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BTN_add)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BTN_add)
+                .addGap(31, 31, 31)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(94, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("User Management", jPanel7);
 
         TBL_profile.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -544,14 +395,13 @@ public class uiAdmin extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(264, 264, 264)
-                        .addComponent(jLabel2)))
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addGap(264, 264, 264)
+                .addComponent(jLabel2)
+                .addGap(0, 317, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -583,38 +433,13 @@ public class uiAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
-
     private void BTN_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_addActionPerformed
-        String type = new RadioBtnSettings().getValue(BTN_groupAdd);
-        String name = TXT_name.getText();
 
-        if (type != null && name != null && !name.isEmpty()){
-            classA.addStaff(name, "123", type, "");
-            new table(classA, TBL_add, classA.getUid()).addRow(3, new ArrayList<> (Arrays.asList(classA.getUid(), classA.getUname(), classA.getUtype())));
-            BTN_groupAdd.clearSelection();
-            TXT_name.setText("");
-            jLabel8.setVisible(true);
-            jLabel8.setText(name + " Added!");
-        } else {
-            jLabel8.setVisible(true);
-            jLabel8.setText("There Empty Input Found. ");
-        }
     }//GEN-LAST:event_BTN_addActionPerformed
 
-    private void BTN_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_nameActionPerformed
-
-    private void BTN_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_cActionPerformed
-
-    private void BTN_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_passActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_passActionPerformed
+    private void BTN_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_logoutActionPerformed
+        updateProfile.logout(jPanel5);
+    }//GEN-LAST:event_BTN_logoutActionPerformed
 
     private void BTN_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_deleteActionPerformed
         int result = JOptionPane.showConfirmDialog(
@@ -633,27 +458,17 @@ public class uiAdmin extends javax.swing.JFrame {
         jLabel8.setText("Account deletion canceled.");
     }//GEN-LAST:event_BTN_deleteActionPerformed
 
-    private void BTN_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_logoutActionPerformed
-        updateProfile.logout(jPanel5);
-    }//GEN-LAST:event_BTN_logoutActionPerformed
-
-    private void BTN_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_modifyActionPerformed
-        BTN_mPass.setEnabled(true);
-        BTN_mName.setEnabled(true);
-        BTN_mStatus.setEnabled(true);
-        LST_filter.setEnabled(false);
-    }//GEN-LAST:event_BTN_modifyActionPerformed
-
-    private void BTN_mPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_mPassActionPerformed
+    private void BTN_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_passActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_mPassActionPerformed
+    }//GEN-LAST:event_BTN_passActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        BTN_mPass.setEnabled(false);
-        BTN_mName.setEnabled(false);
-        BTN_mStatus.setEnabled(false);
-        LST_filter.setEnabled(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void BTN_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_cActionPerformed
+
+    private void BTN_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_nameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -697,39 +512,21 @@ public class uiAdmin extends javax.swing.JFrame {
     private javax.swing.JButton BTN_delete;
     private javax.swing.ButtonGroup BTN_groupAdd;
     private javax.swing.JButton BTN_logout;
-    private javax.swing.JButton BTN_mContact;
-    private javax.swing.JButton BTN_mName;
-    private javax.swing.JButton BTN_mPass;
-    private javax.swing.JButton BTN_mStatus;
-    private javax.swing.JButton BTN_modify;
     private javax.swing.JButton BTN_name;
     private javax.swing.JButton BTN_pass;
-    private javax.swing.JList<String> LST_filter;
-    private javax.swing.JTable TBL_add;
     private javax.swing.JTable TBL_profile;
     private javax.swing.JTable TBL_view;
-    private javax.swing.JTextField TXT_name;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
