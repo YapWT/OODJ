@@ -589,7 +589,7 @@ public class uiAdmin extends javax.swing.JFrame {
         );
 
         if (result == JOptionPane.YES_OPTION) {
-            Utils.editFile("users.txt", updateProfile.getUid(), 5, "deleted");
+            Utils.editFile("users.txt", updateProfile.getUid(), 5, "deleted", User.class);
             jLabel8.setText("Account deleted.");
             updateProfile.logout(jPanel5);
         } else

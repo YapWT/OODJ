@@ -52,44 +52,56 @@ public class Utils {
 
   public static <T> T IDtoObject(String id, String filename, Class<T> runtimeClass) {
     ArrayList<T> objects = FileOperations.read(filename);
+    ArrayList<Character> userTypes = new ArrayList<>(Arrays.asList('A', 'S', 'C', 'M'));
+    
     char IDtype = id.charAt(0);
-    if (runtimeClass == Customer.class && IDtype == 'C') {
-      for (T obj : objects) {
-        User user = (User) obj;
-        if (user.getUid().equals(id)) {
-          return obj;
+    
+    if (runtimeClass == User.class && userTypes.contains(IDtype)) {
+        for (T obj : objects) {
+            User user = (User) obj;
+            if (user.getUid().equals(id))
+                return obj;
         }
-      }
     } else if (runtimeClass == Payment.class && IDtype == 'P') {
-      for (T obj : objects) {
-        Payment payment = (Payment) obj;
-        if (payment.getPaymentID().equals(id)) {
-          return obj;
+        for (T obj : objects) {
+            Payment payment = (Payment) obj;
+            if (payment.getPaymentID().equals(id)) {
+                return obj;
+            }
         }
-      }
-    }
+    } 
     return null;
   }
 
-  public static zUserToString idGetRow(String Uid) {
-    ArrayList<ArrayList<Object>> data = new zReadFile("users.txt", 0, Uid).getAllData();
-    if (data.isEmpty()) return null;
-
-    return new zUserToString(data);
-  }
-
   // edit one column of a row
-  public static void editFile(String filename, String comparation, int column, String edition) {
-    ArrayList<ArrayList<Object>> data = new zReadFile(filename).getAllData();
+  public static <T> void editFile(String filename, String id, int column, String newData, Class<T> runtimeClass) {
+    ArrayList<T> obj = FileOperations.read(filename);
 
-    for (ArrayList<Object> row : data) {
-      if (row.get(0).toString().equals(comparation)) {
-        row.set(column, edition);
-        break;
-      }
+    if (runtimeClass == User.class) {
+        for (T row : obj) {
+            User user = (User) row;
+            if (user.getUid().equals(id)) {
+                setColumnValue(column, newData, row);
+                break;
+            }
+        }
     }
     // edit with rewrite all data
-    new zWriteFile().write(filename, data, false);
+    FileOperations.write(filename, obj);
+  }
+  
+  private static <T> void setColumnValue(int column, String value, T row) {
+      // id is not avalable to make modify
+      if (row instanceof User) {
+          // type is not avaible to edit
+          User user = (User) row; 
+          switch (column) {
+              case 1: user.setUpass(value);break;
+              case 2: user.setUname(value);break;
+              case 4: user.setUcontact(value);break;
+              case 5: user.setUstatus(value);break;
+          }
+      }
   }
 
   public static boolean checkContact(String contact) {
