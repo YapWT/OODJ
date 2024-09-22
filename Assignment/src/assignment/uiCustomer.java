@@ -1,15 +1,15 @@
 package assignment;
 
 public class uiCustomer extends javax.swing.JFrame {
-    private String ID;
+    Customer customer;
 
     public uiCustomer() {
         initComponents();
     }
     
-    public uiCustomer(String ID) {
+    public uiCustomer(Customer customer) {
         initComponents();
-        this.ID = ID;
+        this.customer = customer;
     }
 
     @SuppressWarnings("unchecked")
