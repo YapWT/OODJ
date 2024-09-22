@@ -8,42 +8,32 @@ public class Utils {
     ArrayList<?> data = null;
     List<String> typeOfData = new ArrayList<>();
 
-    switch (type) {
-      case "C":
-      case "A":
-      case "S":
-      case "M":
-        {
-          data = FileOperations.read("users.txt");
-          for (Object obj : data) {
-            User user = (User) obj;
-            typeOfData.add(user.getUid());
-          }
-          break;
+    if (type.equals("C") || type.equals("A") || type.equals("S") || type.equals("M")) {
+      data = FileOperations.read("users.txt");
+      for (Object obj : data) {
+        User user = (User) obj;
+        if (user.getUtype().equals(type)) {
+          typeOfData.add(user.getUid());
         }
-      case "P":
-        {
-          data = FileOperations.read("payments.txt");
-          for (Object obj : data) {
-            Payment payment = (Payment) obj;
-            typeOfData.add(payment.getPaymentID());
-          }
-          break;
-        }
-      case "H":
-        {
-          data = FileOperations.read("halls.txt");
-          for (Object obj : data) {
-            Hall hall = (Hall) obj;
-            typeOfData.add(hall.getHallID());
-          }
-          break;
-        }
-      case "B":
-        {
-          data = FileOperations.read("bookings.txt");
-          break;
-        }
+      }
+    } else if (type.equals("P")) {
+      data = FileOperations.read("payments.txt");
+      for (Object obj : data) {
+        Payment payment = (Payment) obj;
+        typeOfData.add(payment.getPaymentID());
+      }
+    } else if (type.equals("H")) {
+      data = FileOperations.read("halls.txt");
+      for (Object obj : data) {
+        Hall hall = (Hall) obj;
+        typeOfData.add(hall.getHallID());
+      }
+    } else if (type.equals("B")) {
+      data = FileOperations.read("bookings.txt");
+      for (Object obj : data) {
+        Booking booking = (Booking) obj;
+        typeOfData.add(booking.getBookingID());
+      }
     }
 
     int count = Collections.frequency(typeOfData, type);
@@ -117,14 +107,11 @@ public class Utils {
     if (contact.matches("01\\d{8}") || contact.matches("01\\d{9}")) return true;
     return false;
   }
-  
+
   public static boolean emptyPassword(ArrayList<JComponent> object) {
-        for (JComponent ob : object) {
-            if (((JPasswordField) ob).getPassword().length == 0) 
-                return true; 
-        }
-        return false; 
+    for (JComponent ob : object) {
+      if (((JPasswordField) ob).getPassword().length == 0) return true;
     }
-
+    return false;
+  }
 }
-
