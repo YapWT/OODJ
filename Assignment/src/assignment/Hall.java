@@ -96,5 +96,48 @@ public class Hall {
         this.timeSlots[9],
         this.timeSlots[10],
         this.timeSlots[11]);
-  }
+  } 
+}
+
+class Auditorium extends Hall{
+
+    public Auditorium() {
+    }
+
+    public Auditorium(int id, String type, int capacity, int ratePerHour, String[] timeSlots) {
+        super(id, type, capacity, ratePerHour, timeSlots);
+        type = "auditorium";
+        capacity = 1000;
+        ratePerHour = 300;
+    }
+    
+}
+
+class Banquet extends Hall{
+
+    public Banquet() {
+    }
+
+    public Banquet(int id, String type, int capacity, int ratePerHour, String[] timeSlots) {
+        super(id, type, capacity, ratePerHour, timeSlots);
+        type="banquet";
+        capacity = 300;
+        ratePerHour = 100;
+    }
+    
+    
+}
+
+class MeetingRoom extends Hall{
+
+    public MeetingRoom() {
+    }
+
+    public MeetingRoom(int id, String type, int capacity, int ratePerHour, String[] timeSlots) {
+        super(id, type, capacity, ratePerHour, timeSlots);
+        type = "meeting";
+        capacity = 30;
+        ratePerHour = 50;
+    }
+    
 }
