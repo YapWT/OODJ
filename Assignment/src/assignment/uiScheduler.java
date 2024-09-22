@@ -209,7 +209,7 @@ public class uiScheduler extends javax.swing.JFrame {
     private void viewHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewHallActionPerformed
         SchedulerPanel.removeAll();
         SchedulerPanel.repaint();
-        SchedulerPanel.add(new uiViewHall().getPanel());
+        SchedulerPanel.add(new uiViewHall(currentScheduler).getPanel());
         
     }//GEN-LAST:event_viewHallActionPerformed
 

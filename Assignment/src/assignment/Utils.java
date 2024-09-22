@@ -152,6 +152,15 @@ public class Utils {
 
                 model.addRow(tableRow);
                 
+            }else if (runtimeClass == Hall.class && id==null){
+                for (T row : object){
+                    Hall a = (Hall) row;
+                    tableRow[0] = a.getHallID();
+                    tableRow[1] = a.getHallType();
+                    tableRow[2] = a.getHallStatus();
+                    
+                    model.addRow(tableRow);
+                }
             }
         }
     }

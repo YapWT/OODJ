@@ -11,13 +11,16 @@ import javax.swing.*;
  * @author zhusheng
  */
 public class uiViewHall extends javax.swing.JFrame {
-
     /**
      * Creates new form uiViewHall
      */
-    public uiViewHall() {
+    public uiViewHall(){
+        
+    }
+    public uiViewHall(Scheduler scheduler) {
         initComponents();
         setContentPane(viewHall);
+        Utils.viewTable(TblHall, "halls.txt", Hall.class, null);
     }
 
     /**
@@ -29,9 +32,10 @@ public class uiViewHall extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         viewHall = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TblHall = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(500, 500));
@@ -39,31 +43,37 @@ public class uiViewHall extends javax.swing.JFrame {
         viewHall.setBackground(new java.awt.Color(255, 255, 255));
         viewHall.setPreferredSize(new java.awt.Dimension(500, 500));
 
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TblHall.setFont(new java.awt.Font("Liberation Sans", 0, 14)); // NOI18N
+        TblHall.setForeground(new java.awt.Color(0, 0, 0));
+        TblHall.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Hall ID", "Hall Type", "Hall Status"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TblHall);
 
         javax.swing.GroupLayout viewHallLayout = new javax.swing.GroupLayout(viewHall);
         viewHall.setLayout(viewHallLayout);
         viewHallLayout.setHorizontalGroup(
             viewHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewHallLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 154, Short.MAX_VALUE))
         );
         viewHallLayout.setVerticalGroup(
             viewHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -74,7 +84,7 @@ public class uiViewHall extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(viewHall, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
+            .addComponent(viewHall, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
         );
 
         pack();
@@ -119,8 +129,9 @@ public class uiViewHall extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TblHall;
+    private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel viewHall;
     // End of variables declaration//GEN-END:variables
 

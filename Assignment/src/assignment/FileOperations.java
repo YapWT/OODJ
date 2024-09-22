@@ -29,7 +29,6 @@ public class FileOperations {
                       data.get(4),
                       data.get(5)));
         } else if (filename.contains("halls")) {
-          String[] timeSlots = null;
           result.add(
               (T)
                   new Hall(

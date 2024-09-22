@@ -1,18 +1,21 @@
 package assignment;
 
+import javax.swing.JTable;
+import javax.swing.table.TableModel;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
 public class Scheduler extends Staff {
   public Scheduler() {}
   private String data;
   private String hallID;
-  
+
   public void addHall(String hallType) {
-      Utils utils = new Utils();
-      FileOperations files = new FileOperations();
       switch(hallType){
           case "Auditorium":
           {
-            hallID = utils.generateID("H");
+            hallID = Utils.generateID("H");
             Auditorium audi = new Auditorium();
             audi.setHallID(hallID);
             audi.setHallStatus("Active");
@@ -20,7 +23,7 @@ public class Scheduler extends Staff {
           }
           case "Banquet Hall":
           {
-            hallID = utils.generateID("H");
+            hallID = Utils.generateID("H");
             Banquet banquet = new Banquet();
             banquet.setHallID(hallID);
             banquet.setHallStatus("Active");
@@ -28,16 +31,16 @@ public class Scheduler extends Staff {
           }
           case "Meeting Room":
           {
-            hallID = utils.generateID("H");
+            hallID = Utils.generateID("H");
             MeetingRoom meetingRoom = new MeetingRoom();
             meetingRoom.setHallID(hallID);
             meetingRoom.setHallStatus("Active");
             data = meetingRoom.getHallID()+", "+meetingRoom.getHallType()+", "+meetingRoom.getHallStatus();
           }
         }
-        files.write("halls.txt", data);      
+        FileOperations.write("halls.txt", data);      
   }
-
+    
   public void editHall() {}
 
   public void deleteHall() {}
