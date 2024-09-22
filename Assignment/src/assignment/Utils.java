@@ -60,6 +60,13 @@ public class Utils {
           return obj;
         }
       }
+    } else if (runtimeClass == Hall.class && IDtype == 'H') {
+      for (T obj : objects) {
+        Hall hall = (Hall) obj;
+        if (hall.getHallID().equals(id)) {
+          return obj;
+        }
+      }
     }
     return null;
   }
@@ -115,108 +122,111 @@ public class Utils {
     }
     return false;
   }
-  
-    // table without any filter
-    public static <T> void viewTable(JTable t, String filename, Class<T> runtimeClass, String id){
-        DefaultTableModel model = (DefaultTableModel) t.getModel();
-        model.setRowCount(0); 
-        ArrayList<T> object = FileOperations.read(filename);
-        Object[] tableRow = new Object[7];
-        
-        int i = 1;
 
-        if (object != null) {
-            if (runtimeClass == User.class && id == null) {
-                for (T row : object) {
-                    User a = (User) row;
+  // table without any filter
+  public static <T> void viewTable(JTable t, String filename, Class<T> runtimeClass, String id) {
+    DefaultTableModel model = (DefaultTableModel) t.getModel();
+    model.setRowCount(0);
+    ArrayList<T> object = FileOperations.read(filename);
+    Object[] tableRow = new Object[7];
 
-                    if (!a.getUstatus().equals("deleted")) {
-                        tableRow[0] = i++;
-                        tableRow[1] = a.getUid();
-                        tableRow[2] = a.getUpass().replaceAll(".", "*");
-                        tableRow[3] = a.getUname();
-                        tableRow[4] = a.getUtype();
-                        tableRow[5] = a.getUcontact();
-                        tableRow[6] = a.getUstatus();
+    int i = 1;
 
-                        model.addRow(tableRow);
-                    }
+    if (object != null) {
+      if (runtimeClass == User.class && id == null) {
+        for (T row : object) {
+          User a = (User) row;
 
-                }
-            } else if (runtimeClass == User.class && id != null){
-                User a = Utils.IDtoObject(id, "users.txt", User.class);
+          if (!a.getUstatus().equals("deleted")) {
+            tableRow[0] = i++;
+            tableRow[1] = a.getUid();
+            tableRow[2] = a.getUpass().replaceAll(".", "*");
+            tableRow[3] = a.getUname();
+            tableRow[4] = a.getUtype();
+            tableRow[5] = a.getUcontact();
+            tableRow[6] = a.getUstatus();
 
-                tableRow[0] = a.getUid();
-                tableRow[1] = a.getUname();
-                tableRow[2] = a.getUcontact();
-
-                model.addRow(tableRow);
-                
-            }else if (runtimeClass == Hall.class && id==null){
-                for (T row : object){
-                    Hall a = (Hall) row;
-                    tableRow[0] = a.getHallID();
-                    tableRow[1] = a.getHallType();
-                    tableRow[2] = a.getHallStatus();
-                    
-                    model.addRow(tableRow);
-                }
-            }
-        }
-    }
-    
-    // filter table
-    public static <T> void viewTable(JTable t, String filename, Class<T> runtimeClass, int column, String filter) {
-        DefaultTableModel model = (DefaultTableModel) t.getModel();
-        model.setRowCount(0); 
-        ArrayList<T> object = FileOperations.read(filename);
-        Object[] tableRow = new Object[7];
-
-        int i = 1;
-
-        if (object != null) {
-            if (runtimeClass == User.class ) {
-                for (T row : object) {
-                    User a = (User) row;
-                    String f = null;
-                    
-                    switch (column){
-                        case 3:  f = a.getUtype(); break;
-                        case 5:  f = a.getUstatus(); break;
-                    }
-                    
-                    if (!a.getUstatus().equals("deleted") && f.equals(filter)){
-                        tableRow[0] = i++;
-                        tableRow[1] = a.getUid();
-                        tableRow[2] = a.getUpass().replaceAll(".", "*");
-                        tableRow[3] = a.getUname();
-                        tableRow[4] = a.getUtype();
-                        tableRow[5] = a.getUcontact();
-                        tableRow[6] = a.getUstatus();
-
-                        model.addRow(tableRow);
-                    }
-
-                }
-            } 
-        }
-    }
-    
-    public static <T> void addTableRow(JTable t, Class<T> runtimeClass, T data){
-        DefaultTableModel model = (DefaultTableModel) t.getModel();
-        Object[] tableRow = new Object[7];
-        
-        if (runtimeClass == User.class){
-            User user = (User) data;
-            tableRow[0] = model.getRowCount() + 1;
-            tableRow[1] = user.getUid();
-            tableRow[2] = user.getUpass();
-            tableRow[3] = user.getUname();
-            tableRow[4] = user.getUtype();
-            tableRow[5] = user.getUcontact();
-            tableRow[6] = user.getUstatus();
-                    
             model.addRow(tableRow);
+          }
         }
+      } else if (runtimeClass == User.class && id != null) {
+        User a = Utils.IDtoObject(id, "users.txt", User.class);
+
+        tableRow[0] = a.getUid();
+        tableRow[1] = a.getUname();
+        tableRow[2] = a.getUcontact();
+
+        model.addRow(tableRow);
+
+      } else if (runtimeClass == Hall.class && id == null) {
+        for (T row : object) {
+          Hall a = (Hall) row;
+          tableRow[0] = a.getHallID();
+          tableRow[1] = a.getHallType();
+          tableRow[2] = a.getHallStatus();
+
+          model.addRow(tableRow);
+        }
+      }
     }
+  }
+
+  // filter table
+  public static <T> void viewTable(
+      JTable t, String filename, Class<T> runtimeClass, int column, String filter) {
+    DefaultTableModel model = (DefaultTableModel) t.getModel();
+    model.setRowCount(0);
+    ArrayList<T> object = FileOperations.read(filename);
+    Object[] tableRow = new Object[7];
+
+    int i = 1;
+
+    if (object != null) {
+      if (runtimeClass == User.class) {
+        for (T row : object) {
+          User a = (User) row;
+          String f = null;
+
+          switch (column) {
+            case 3:
+              f = a.getUtype();
+              break;
+            case 5:
+              f = a.getUstatus();
+              break;
+          }
+
+          if (!a.getUstatus().equals("deleted") && f.equals(filter)) {
+            tableRow[0] = i++;
+            tableRow[1] = a.getUid();
+            tableRow[2] = a.getUpass().replaceAll(".", "*");
+            tableRow[3] = a.getUname();
+            tableRow[4] = a.getUtype();
+            tableRow[5] = a.getUcontact();
+            tableRow[6] = a.getUstatus();
+
+            model.addRow(tableRow);
+          }
+        }
+      }
+    }
+  }
+
+  public static <T> void addTableRow(JTable t, Class<T> runtimeClass, T data) {
+    DefaultTableModel model = (DefaultTableModel) t.getModel();
+    Object[] tableRow = new Object[7];
+
+    if (runtimeClass == User.class) {
+      User user = (User) data;
+      tableRow[0] = model.getRowCount() + 1;
+      tableRow[1] = user.getUid();
+      tableRow[2] = user.getUpass();
+      tableRow[3] = user.getUname();
+      tableRow[4] = user.getUtype();
+      tableRow[5] = user.getUcontact();
+      tableRow[6] = user.getUstatus();
+
+      model.addRow(tableRow);
+    }
+  }
 }

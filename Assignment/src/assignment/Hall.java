@@ -13,16 +13,31 @@ public class Hall {
     this.hallID = id;
     this.hallType = type;
     this.hallStatus = hallStatus;
+
+    switch (type) {
+      case "banquet":
+        this.capacity = 300;
+        this.ratePerHour = 100;
+        break;
+      case "auditorium":
+        this.capacity = 1000;
+        this.ratePerHour = 300;
+        break;
+      case "meeting":
+        this.capacity = 30;
+        this.ratePerHour = 50;
+        break;
+    }
   }
 
-public String getHallStatus() {
+  public String getHallStatus() {
     return hallStatus;
   }
 
-public void setHallStatus(String hallStatus) {
+  public void setHallStatus(String hallStatus) {
     this.hallStatus = hallStatus;
   }
-  
+
   public String getHallID() {
     return hallID;
   }
@@ -67,7 +82,7 @@ class Auditorium extends Hall {
 }
 
 class Banquet extends Hall {
-    
+
   public Banquet() {
     super();
     setHallType("banquet");
@@ -78,7 +93,6 @@ class Banquet extends Hall {
 
 class MeetingRoom extends Hall {
 
-    
   public MeetingRoom() {
     super();
     setHallType("meeting");
