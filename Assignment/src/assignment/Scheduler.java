@@ -2,11 +2,10 @@ package assignment;
 
 
 public class Scheduler extends Staff {
-  FileOperations file = new FileOperations();
   public Scheduler() {}
 
   public void addHall(String hallType) {
-      
+      private String hallType;
   }
 
   public void editHall() {}

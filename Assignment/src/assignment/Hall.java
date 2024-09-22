@@ -5,16 +5,26 @@ public class Hall {
   private String hallType;
   private int capacity;
   private int ratePerHour;
+  private String hallStatus;
 
   public Hall() {}
 
-  public Hall(String id, String type, int capacity, int ratePerHour) {
+  public Hall(String id, String type, int capacity, int ratePerHour, String hallStatus) {
     this.hallID = id;
     this.hallType = type;
     this.capacity = capacity;
     this.ratePerHour = ratePerHour;
+    this.hallStatus = hallStatus;
   }
 
+public String getHallStatus() {
+    return hallStatus;
+  }
+
+public void setHallStatus(String hallStatus) {
+    this.hallStatus = hallStatus;
+  }
+  
   public String getHallID() {
     return hallID;
   }
