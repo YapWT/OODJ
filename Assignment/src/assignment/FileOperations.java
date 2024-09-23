@@ -2,13 +2,14 @@ package assignment;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.io.File;
 import java.util.Scanner;
 
 @SuppressWarnings("unchecked")
@@ -31,12 +32,7 @@ public class FileOperations {
                       data.get(4),
                       data.get(5)));
         } else if (filename.contains("halls")) {
-          result.add(
-              (T)
-                  new Hall(
-                      data.get(0),
-                      data.get(1),
-                      data.get(2)));
+          result.add((T) new Hall(data.get(0), data.get(1), data.get(2)));
         } else if (filename.contains("payments")) {
           result.add(
               (T)
@@ -55,6 +51,11 @@ public class FileOperations {
                       Integer.parseInt(data.get(5)),
                       data.get(6),
                       data.get(7)));
+        } else if (filename.contains("schedules")) {
+          int[] timeSlots =
+              new int[] {Integer.parseInt(data.get(3)), Integer.parseInt(data.get(4))};
+          result.add(
+              (T) new Schedule(data.get(0), LocalDate.parse(data.get(1)), data.get(2), timeSlots));
         }
       }
     } catch (FileNotFoundException e) {
@@ -82,5 +83,4 @@ public class FileOperations {
       System.out.println("Error when writting to " + filename + "\n" + e);
     }
   }
-  
 }
