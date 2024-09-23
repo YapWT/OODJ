@@ -122,7 +122,7 @@ public class Utils {
     }
     return false;
   }
-
+  
   // table without any filter
   public static <T> void viewTable(JTable t, String filename, Class<T> runtimeClass) {
     DefaultTableModel model = (DefaultTableModel) t.getModel();

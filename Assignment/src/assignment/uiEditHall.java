@@ -3,18 +3,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package assignment;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 /**
  *
  * @author zhusheng
  */
 public class uiEditHall extends javax.swing.JFrame {
-
+    private Scheduler scheduler;
     /**
      * Creates new form uiEditHall
      */
-    public uiEditHall() {
+    public uiEditHall(){
+        
+    }
+    public uiEditHall(Scheduler scheduler) {
+        this.scheduler = scheduler;
         initComponents();
+        ArrayList<Hall> halls = FileOperations.read("halls.txt");
+        for(Hall hall : halls) {
+            comboHallID.addItem(hall.getHallID());
+        }
+        comboHallID.setSelectedIndex(-1);
+        lblHallType.setVisible(Boolean.FALSE);
+        lblHallStatus.setVisible(Boolean.FALSE);
+        comboHallStatus.setVisible(Boolean.FALSE);
+        comboHallType.setVisible(Boolean.FALSE);
+        btnSave.setVisible(Boolean.FALSE);
     }
 
     /**
@@ -28,12 +46,13 @@ public class uiEditHall extends javax.swing.JFrame {
 
         pnlEditHall = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        comboHallID = new javax.swing.JComboBox<>();
+        lblHallType = new javax.swing.JLabel();
+        comboHallType = new javax.swing.JComboBox<>();
+        lblHallStatus = new javax.swing.JLabel();
+        comboHallStatus = new javax.swing.JComboBox<>();
+        btnSave = new javax.swing.JButton();
+        lblRemarks = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,36 +63,43 @@ public class uiEditHall extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Choose Hall:");
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-
-        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Hall Type");
-
-        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hall Type", "Hall Status" }));
-        jComboBox2.setSelectedIndex(-1);
-
-        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Hall Status");
-
-        jComboBox3.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox3.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Unactive" }));
-        jComboBox3.setSelectedIndex(-1);
-
-        jButton1.setBackground(new java.awt.Color(153, 204, 255));
-        jButton1.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        comboHallID.setBackground(new java.awt.Color(255, 255, 255));
+        comboHallID.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        comboHallID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                comboHallIDActionPerformed(evt);
             }
         });
+
+        lblHallType.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        lblHallType.setForeground(new java.awt.Color(0, 0, 0));
+        lblHallType.setText("Hall Type");
+
+        comboHallType.setBackground(new java.awt.Color(255, 255, 255));
+        comboHallType.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        comboHallType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Auditorium", "Banquet Hall", "Meeting Room" }));
+        comboHallType.setSelectedIndex(-1);
+
+        lblHallStatus.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        lblHallStatus.setForeground(new java.awt.Color(0, 0, 0));
+        lblHallStatus.setText("Hall Status");
+
+        comboHallStatus.setBackground(new java.awt.Color(255, 255, 255));
+        comboHallStatus.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        comboHallStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+
+        btnSave.setBackground(new java.awt.Color(153, 204, 255));
+        btnSave.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(0, 0, 0));
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        lblRemarks.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        lblRemarks.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout pnlEditHallLayout = new javax.swing.GroupLayout(pnlEditHall);
         pnlEditHall.setLayout(pnlEditHallLayout);
@@ -83,23 +109,24 @@ public class uiEditHall extends javax.swing.JFrame {
                 .addGroup(pnlEditHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEditHallLayout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addGroup(pnlEditHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlEditHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pnlEditHallLayout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblHallStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(comboHallStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlEditHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditHallLayout.createSequentialGroup()
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblHallType, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(comboHallType, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(pnlEditHallLayout.createSequentialGroup()
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(comboHallID, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblRemarks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(pnlEditHallLayout.createSequentialGroup()
                         .addGap(162, 162, 162)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
         pnlEditHallLayout.setVerticalGroup(
@@ -108,17 +135,19 @@ public class uiEditHall extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addGroup(pnlEditHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboHallID, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlEditHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblHallType, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboHallType, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlEditHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHallStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboHallStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(lblRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
 
@@ -136,9 +165,31 @@ public class uiEditHall extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        if(comboHallType.getSelectedIndex()==-1 || comboHallStatus.getSelectedIndex()==-1)
+        {
+            lblRemarks.setText("Hall type and status cannot be empty.");
+        }
+        else{
+            String hallID = String.valueOf(comboHallID.getSelectedItem());
+            try {
+                scheduler.editHall(hallID, comboHallType.getSelectedIndex(),comboHallType.getSelectedIndex());
+                lblRemarks.setText("Hall Updated");
+            } catch (IOException ex) {
+                Logger.getLogger(uiEditHall.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void comboHallIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboHallIDActionPerformed
+        lblHallType.setVisible(Boolean.TRUE);
+        lblHallStatus.setVisible(Boolean.TRUE);
+        comboHallStatus.setVisible(Boolean.TRUE);
+        comboHallType.setVisible(Boolean.TRUE);
+        btnSave.setVisible(Boolean.TRUE);
+    }//GEN-LAST:event_comboHallIDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,13 +230,14 @@ public class uiEditHall extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox<String> comboHallID;
+    private javax.swing.JComboBox<String> comboHallStatus;
+    private javax.swing.JComboBox<String> comboHallType;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblHallStatus;
+    private javax.swing.JLabel lblHallType;
+    private javax.swing.JLabel lblRemarks;
     private javax.swing.JPanel pnlEditHall;
     // End of variables declaration//GEN-END:variables
 }

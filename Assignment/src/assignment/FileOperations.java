@@ -8,6 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.io.File;
+import java.util.Scanner;
 
 @SuppressWarnings("unchecked")
 public class FileOperations {
@@ -80,4 +82,22 @@ public class FileOperations {
       System.out.println("Error when writting to " + filename + "\n" + e);
     }
   }
+  public static void overwrite(String filename, String hallID,String data) throws IOException {
+
+        Scanner sc = new Scanner(new File(filename));
+        StringBuffer buffer = new StringBuffer();
+        while (sc.hasNextLine()) {
+            String line = sc.nextLine();
+            if (line.contains(hallID)) {
+                line = data;
+            }
+            buffer.append(line).append(System.lineSeparator());
+        }
+        sc.close();
+
+        // Write the updated content back to the file
+        FileWriter writer = new FileWriter(filename);
+        writer.write(buffer.toString());
+        writer.close();
+    } 
 }
