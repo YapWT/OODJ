@@ -72,43 +72,25 @@ public class Utils {
   }
 
   // edit one column of a row
-  public static <T> void editFile(
-      String filename, String id, int column, String newData, Class<T> runtimeClass) {
+  public static <T> void editFile(String filename, String id, int column, String newData, Class<T> runtimeClass) {
     ArrayList<T> obj = FileOperations.read(filename);
 
     if (runtimeClass == User.class) {
-      for (T row : obj) {
-        User user = (User) row;
-        if (user.getUid().equals(id)) {
-          setColumnValue(column, newData, row);
-          break;
+        for (T row : obj) {
+            User user = (User) row;
+            if (user.getUid().equals(id)) {
+                switch (column) {
+                    case 1: user.setUpass(newData); break;
+                    case 2: user.setUname(newData); break;
+                    case 4: user.setUcontact(newData); break;
+                    case 5: user.setUstatus(newData); break;
+                }
+            break;
+            }
         }
-      }
     }
     // edit with rewrite all data
     FileOperations.write(filename, obj);
-  }
-
-  private static <T> void setColumnValue(int column, String value, T row) {
-    // id is not avalable to make modify
-    if (row instanceof User) {
-      // type is not avaible to edit
-      User user = (User) row;
-      switch (column) {
-        case 1:
-          user.setUpass(value);
-          break;
-        case 2:
-          user.setUname(value);
-          break;
-        case 4:
-          user.setUcontact(value);
-          break;
-        case 5:
-          user.setUstatus(value);
-          break;
-      }
-    }
   }
 
   public static boolean checkContact(String contact) {
