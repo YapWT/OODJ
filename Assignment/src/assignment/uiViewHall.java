@@ -43,7 +43,6 @@ public class uiViewHall extends javax.swing.JFrame {
         viewHall.setBackground(new java.awt.Color(255, 255, 255));
         viewHall.setPreferredSize(new java.awt.Dimension(500, 500));
 
-        TblHall.setFont(new java.awt.Font("Liberation Sans", 0, 14)); // NOI18N
         TblHall.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -60,30 +59,29 @@ public class uiViewHall extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        TblHall.setFont(new java.awt.Font("Liberation Sans", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(TblHall);
 
         javax.swing.GroupLayout viewHallLayout = new javax.swing.GroupLayout(viewHall);
         viewHall.setLayout(viewHallLayout);
         viewHallLayout.setHorizontalGroup(
             viewHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewHallLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 154, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
         viewHallLayout.setVerticalGroup(
             viewHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(viewHall, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
+            .addComponent(viewHall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(viewHall, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+            .addComponent(viewHall, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

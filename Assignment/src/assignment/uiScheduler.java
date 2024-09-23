@@ -19,7 +19,6 @@ public class uiScheduler extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         viewHall = new javax.swing.JButton();
-        deleteHall = new javax.swing.JButton();
         SchedulerPanel = new javax.swing.JPanel();
         maintainHall = new javax.swing.JButton();
         scheduleHall = new javax.swing.JButton();
@@ -29,7 +28,7 @@ public class uiScheduler extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
@@ -48,18 +47,6 @@ public class uiScheduler extends javax.swing.JFrame {
             }
         });
 
-        deleteHall.setBackground(new java.awt.Color(255, 255, 255));
-        deleteHall.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        deleteHall.setForeground(new java.awt.Color(0, 0, 0));
-        deleteHall.setText("Delete Hall");
-        deleteHall.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        deleteHall.setBorderPainted(false);
-        deleteHall.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteHallActionPerformed(evt);
-            }
-        });
-
         SchedulerPanel.setBackground(new java.awt.Color(255, 255, 255));
         SchedulerPanel.setPreferredSize(new java.awt.Dimension(500, 500));
 
@@ -67,11 +54,11 @@ public class uiScheduler extends javax.swing.JFrame {
         SchedulerPanel.setLayout(SchedulerPanelLayout);
         SchedulerPanelLayout.setHorizontalGroup(
             SchedulerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 534, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
         SchedulerPanelLayout.setVerticalGroup(
             SchedulerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 523, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
         maintainHall.setBackground(new java.awt.Color(255, 255, 255));
@@ -147,15 +134,14 @@ public class uiScheduler extends javax.swing.JFrame {
                             .addComponent(maintainHall, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(scheduleHall, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(deleteHall, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(editHall, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(addHall, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
                             .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(83, 83, 83)
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(SchedulerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(SchedulerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,15 +155,13 @@ public class uiScheduler extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(editHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scheduleHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(maintainHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(SchedulerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
+                .addGap(31, 31, 31))
+            .addComponent(SchedulerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -212,10 +196,6 @@ public class uiScheduler extends javax.swing.JFrame {
         SchedulerPanel.add(new uiViewHall(currentScheduler).getPanel());
         
     }//GEN-LAST:event_viewHallActionPerformed
-
-    private void deleteHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteHallActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deleteHallActionPerformed
 
     private void maintainHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintainHallActionPerformed
         // TODO add your handling code here:
@@ -268,7 +248,6 @@ public class uiScheduler extends javax.swing.JFrame {
     private javax.swing.JPanel SchedulerPanel;
     private javax.swing.JButton addHall;
     private javax.swing.JButton btnLogOut;
-    private javax.swing.JButton deleteHall;
     private javax.swing.JButton editHall;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

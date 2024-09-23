@@ -11,34 +11,35 @@ public class Scheduler extends Staff {
   private String data;
   private String hallID;
 
-  public void addHall(String hallType) {
+  public String addHall(int hallType) {
+      data=null;
+      hallID = Utils.generateID("H");
       switch(hallType){
-          case "Auditorium":
+          case 0:
           {
-            hallID = Utils.generateID("H");
+            
             Auditorium audi = new Auditorium();
             audi.setHallID(hallID);
             audi.setHallStatus("Active");
             data = audi.getHallID()+", "+audi.getHallType()+", "+audi.getHallStatus();;
           }
-          case "Banquet Hall":
+          case 1:
           {
-            hallID = Utils.generateID("H");
             Banquet banquet = new Banquet();
             banquet.setHallID(hallID);
             banquet.setHallStatus("Active");
             data = banquet.getHallID()+", "+banquet.getHallType()+", "+banquet.getHallStatus();
           }
-          case "Meeting Room":
+          case 2:
           {
-            hallID = Utils.generateID("H");
             MeetingRoom meetingRoom = new MeetingRoom();
             meetingRoom.setHallID(hallID);
             meetingRoom.setHallStatus("Active");
             data = meetingRoom.getHallID()+", "+meetingRoom.getHallType()+", "+meetingRoom.getHallStatus();
           }
         }
-        FileOperations.write("halls.txt", data);      
+        FileOperations.write("halls.txt", data); 
+        return ("Hall Added");
   }
     
   public void editHall() {}
