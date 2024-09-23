@@ -153,7 +153,26 @@ public class Utils {
         for (T row : object) {
           Hall a = (Hall) row;
           tableRow[0] = a.getHallID();
-          tableRow[1] = a.getHallType();
+          String hallType = a.getHallType();
+          String Type = null;
+          switch(hallType){
+              case "auditorium":
+              {
+                  Type="Auditorium";
+                  break;
+              }
+              case "banquet":
+              {
+                  Type="Banquet Hall";
+                  break;
+              }
+              case "meeting":
+              {
+                  Type="Meeting Room";
+                  break;
+              }    
+          }
+          tableRow[1]= Type;
           tableRow[2] = a.getHallStatus();
 
           model.addRow(tableRow);

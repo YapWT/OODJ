@@ -5,17 +5,17 @@ public class Scheduler extends Staff {
 
   private String data;
   private String hallID;
-
+  private String hallStatus = "Active";
   public String addHall(int hallType) {
     data = null;
     hallID = Utils.generateID("H");
-    System.out.println(hallType);
+    
     switch (hallType) {
       case 0:
         {
           Auditorium audi = new Auditorium();
           audi.setHallID(hallID);
-          audi.setHallStatus("Active");
+          audi.setHallStatus(hallStatus);
           data = audi.getHallID() + "," + audi.getHallType() + "," + audi.getHallStatus();
           break;
         }
@@ -23,7 +23,7 @@ public class Scheduler extends Staff {
         {
           Banquet banquet = new Banquet();
           banquet.setHallID(hallID);
-          banquet.setHallStatus("Active");
+          banquet.setHallStatus(hallStatus);
           data = banquet.getHallID() + "," + banquet.getHallType() + "," + banquet.getHallStatus();
           break;
         }
@@ -31,13 +31,8 @@ public class Scheduler extends Staff {
         {
           MeetingRoom meetingRoom = new MeetingRoom();
           meetingRoom.setHallID(hallID);
-          meetingRoom.setHallStatus("Active");
-          data =
-              meetingRoom.getHallID()
-                  + ","
-                  + meetingRoom.getHallType()
-                  + ","
-                  + meetingRoom.getHallStatus();
+          meetingRoom.setHallStatus(hallStatus);
+          data =meetingRoom.getHallID()+ ","+ meetingRoom.getHallType()+ ","+ meetingRoom.getHallStatus();
         }
         break;
     }
