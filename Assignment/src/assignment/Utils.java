@@ -223,7 +223,7 @@ public class Utils {
           tableRow[0] = a.getUid();
           tableRow[1] = a.getUname();
           tableRow[2] = a.getUcontact();
-          System.out.println(a.getUid());
+
           model.addRow(tableRow);
         }
       }
