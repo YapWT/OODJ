@@ -90,7 +90,22 @@ public class uiAdmin extends javax.swing.JFrame {
             int option = JOptionPane.showConfirmDialog(null, new Object[] {"Row: ", row}, "Active or Deactive Staff", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
             
             if (option == JOptionPane.OK_OPTION) {
-            
+                if (!(row.getText().isEmpty())) {
+                    if (classA.check(TBL_view, row.getText())) {
+                        if (classA.getUtype().equals("C")) {
+                            jLabel6.setVisible(true);
+                            jLabel6.setText("Customer are not allowed to deactive or reactive. ");
+                        } else {
+                            classA.modifyStatus(false);
+                        }
+                    } else {
+                    jLabel6.setVisible(true);
+                    jLabel6.setText("Invalid Row Number. ");    
+                    }
+                } else {
+                    jLabel6.setVisible(true);
+                    jLabel6.setText("Empty input found. ");                    
+                }
             } else {
                     jLabel6.setVisible(true);
                     jLabel6.setText("Cancel Modify User's Password Action. ");
@@ -105,7 +120,22 @@ public class uiAdmin extends javax.swing.JFrame {
             int option = JOptionPane.showConfirmDialog(null, new Object[] {"Row: ", row}, "Delete Customer", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
             
             if (option == JOptionPane.OK_OPTION) {
-            
+                if (!(row.getText().isEmpty())) {
+                    if (classA.check(TBL_view, row.getText())) {
+                        if (!classA.getUtype().equals("C")) {
+                            jLabel6.setVisible(true);
+                            jLabel6.setText("Only allow to delete Customer. ");
+                        } else {
+                            classA.modifyStatus();
+                        }
+                    } else {
+                    jLabel6.setVisible(true);
+                    jLabel6.setText("Invalid Row Number. ");    
+                    }
+                } else {
+                    jLabel6.setVisible(true);
+                    jLabel6.setText("Empty input found. ");                    
+                }
             } else {
                     jLabel6.setVisible(true);
                     jLabel6.setText("Cancel Delete Customer Action. ");
@@ -120,7 +150,22 @@ public class uiAdmin extends javax.swing.JFrame {
             int option = JOptionPane.showConfirmDialog(null, new Object[] {"Row: ", row}, "Block or Unblock Customer", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         
             if (option == JOptionPane.OK_OPTION) {
-            
+                if (!(row.getText().isEmpty())) {
+                    if (classA.check(TBL_view, row.getText())) {
+                        if (!classA.getUtype().equals("C")) {
+                            jLabel6.setVisible(true);
+                            jLabel6.setText("Only allow to block or unblock Customer. ");
+                        } else {
+                            classA.modifyStatus(true);
+                        }
+                    } else {
+                    jLabel6.setVisible(true);
+                    jLabel6.setText("Invalid Row Number. ");    
+                    }
+                } else {
+                    jLabel6.setVisible(true);
+                    jLabel6.setText("Empty input found. ");                    
+                }
             } else {
                     jLabel6.setVisible(true);
                     jLabel6.setText("Cancel Blocks or Unblock Customer Action. ");
