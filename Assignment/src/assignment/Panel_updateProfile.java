@@ -37,7 +37,7 @@ public class Panel_updateProfile extends javax.swing.JPanel {
             if (option == JOptionPane.OK_OPTION) {
                 
                 if (updateProfile.updateC(contact.getText())) {
-                    ((DefaultTableModel) TBL_profile.getModel()).setValueAt(updateProfile.getUcontact(), 2, 0);
+                    ((DefaultTableModel) TBL_profile.getModel()).setValueAt(updateProfile.getUcontact(), 0, 2);
                     jLabel8.setVisible(true);
                     jLabel8.setText("Contact Number Change!.");
                 } else {
@@ -60,7 +60,7 @@ public class Panel_updateProfile extends javax.swing.JPanel {
             
             if (option == JOptionPane.OK_OPTION) {
                 if (updateProfile.updateName(name.getText())) {
-                    ((DefaultTableModel) TBL_profile.getModel()).setValueAt(updateProfile.getUname(), 1, 0);
+                    ((DefaultTableModel) TBL_profile.getModel()).setValueAt(updateProfile.getUname(), 0, 1);
                     jLabel8.setVisible(true);
                     jLabel8.setText("Name Updated! "); 
                 } else {
