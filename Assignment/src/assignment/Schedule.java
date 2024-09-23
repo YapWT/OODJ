@@ -17,6 +17,39 @@ public class Schedule {
     this.timeSlot = timeSlot;
   }
 
+  public String getScheduleID() {
+    return scheduleID;
+  }
+
+  public LocalDate getScheduleDate() {
+    return scheduleDate;
+  }
+
+  public String getHallID() {
+    return hallID;
+  }
+
+  public int[] getTimeSlot() {
+    return timeSlot;
+  }
+
+  public void setScheduleID(String scheduleID) {
+    this.scheduleID = scheduleID;
+  }
+
+  public void setScheduleDate(LocalDate scheduleDate) {
+    this.scheduleDate = scheduleDate;
+  }
+
+  public void setHallID(String hallID) {
+    this.hallID = hallID;
+  }
+
+  public void setTimeSlot(int[] timeSlot) {
+    this.timeSlot = timeSlot;
+  }
+
+  @Override
   public String toString() {
     return String.format(
         "%s,%s,%s,%d,%d",
