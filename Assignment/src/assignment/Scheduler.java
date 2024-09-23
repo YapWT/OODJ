@@ -1,6 +1,9 @@
 package assignment;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 
 public class Scheduler extends Staff {
@@ -73,7 +76,19 @@ public class Scheduler extends Staff {
           }
       }
       data = HallID+","+HallType+","+HallStatus;
-      FileOperations.overwrite("halls.txt",HallID,data);
+      Scanner sc = new Scanner(new File("halls.txt"));
+        StringBuffer buffer = new StringBuffer();
+        while (sc.hasNextLine()) {
+            String line = sc.nextLine();
+            if (line.contains(HallID)) {
+                line = data;
+            }
+            buffer.append(line).append(System.lineSeparator());
+        }
+        sc.close();
+        FileWriter writer = new FileWriter("halls.txt");
+        writer.write(buffer.toString());
+        writer.close();
   }
 
 }
