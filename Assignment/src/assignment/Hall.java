@@ -75,7 +75,7 @@ class Auditorium extends Hall {
 
   public Auditorium() {
     super();
-    setHallType("Auditorium");
+    setHallType("auditorium");
     setCapacity(1000);
     setRatePerHour(300);
   }
@@ -85,7 +85,7 @@ class Banquet extends Hall {
 
   public Banquet() {
     super();
-    setHallType("Banquet Hall");
+    setHallType("banquet");
     setCapacity(300);
     setRatePerHour(100);
   }
@@ -95,7 +95,7 @@ class MeetingRoom extends Hall {
 
   public MeetingRoom() {
     super();
-    setHallType("Meeting Room");
+    setHallType("meeting");
     setCapacity(30);
     setRatePerHour(50);
   }
