@@ -16,4 +16,14 @@ public class Schedule {
     this.hallID = hallID;
     this.timeSlot = timeSlot;
   }
+
+  public String toString() {
+    return String.format(
+        "%s,%s,%s,%d,%d",
+        this.scheduleID,
+        this.scheduleDate.toString(),
+        this.hallID,
+        this.timeSlot[0],
+        this.timeSlot[1]);
+  }
 }
