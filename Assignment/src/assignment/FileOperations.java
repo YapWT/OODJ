@@ -53,9 +53,8 @@ public class FileOperations {
                       data.get(7)));
         } else if (filename.contains("schedules")) {
           int[] timeSlots =
-              new int[] {Integer.parseInt(data.get(3)), Integer.parseInt(data.get(4))};
-          result.add(
-              (T) new Schedule(data.get(0), LocalDate.parse(data.get(1)), data.get(2), timeSlots));
+              new int[] {Integer.parseInt(data.get(2)), Integer.parseInt(data.get(3))};
+          result.add((T) new Schedule(LocalDate.parse(data.get(0)), data.get(1), timeSlots));
         }
       }
     } catch (FileNotFoundException e) {
