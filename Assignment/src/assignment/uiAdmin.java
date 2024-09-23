@@ -19,7 +19,7 @@ public class uiAdmin extends javax.swing.JFrame {
         // user management
         jLabel6.setVisible(false);
         
-        Utils.viewTable(TBL_view, "users.txt", User.class, null);
+        Utils.viewTable(TBL_view, "users.txt", User.class);
         
         // add user
         BTN_add.addActionListener(e -> {
@@ -364,7 +364,7 @@ public class uiAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_factiveActionPerformed
 
     private void BTN_cancelfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelfActionPerformed
-        // TODO add your handling code here:
+        Utils.viewTable(TBL_view, "users.txt", User.class);
     }//GEN-LAST:event_BTN_cancelfActionPerformed
 
     private void BTN_fpendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpendingActionPerformed

@@ -23,7 +23,7 @@ public class Panel_updateProfile extends javax.swing.JPanel {
         updateProfile.setUid(Uid);
         BTN_delete.setEnabled(false);
         jLabel8.setVisible(false);
-        Utils.viewTable(TBL_profile, "users.txt", User.class, updateProfile.getUid());
+        Utils.viewTable(TBL_profile, "users.txt", User.class, 0, updateProfile.getUid());
 
         if (updateProfile.getUtype().equals("C")) BTN_delete.setEnabled(true);
         

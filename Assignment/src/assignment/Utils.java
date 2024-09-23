@@ -124,7 +124,7 @@ public class Utils {
   }
 
   // table without any filter
-  public static <T> void viewTable(JTable t, String filename, Class<T> runtimeClass, String id) {
+  public static <T> void viewTable(JTable t, String filename, Class<T> runtimeClass) {
     DefaultTableModel model = (DefaultTableModel) t.getModel();
     model.setRowCount(0);
     ArrayList<T> object = FileOperations.read(filename);
@@ -133,7 +133,7 @@ public class Utils {
     int i = 1;
 
     if (object != null) {
-      if (runtimeClass == User.class && id == null) {
+      if (runtimeClass == User.class) {
         for (T row : object) {
           User a = (User) row;
 
@@ -149,16 +149,7 @@ public class Utils {
             model.addRow(tableRow);
           }
         }
-      } else if (runtimeClass == User.class && id != null) {
-        User a = Utils.IDtoObject(id, "users.txt", User.class);
-
-        tableRow[0] = a.getUid();
-        tableRow[1] = a.getUname();
-        tableRow[2] = a.getUcontact();
-
-        model.addRow(tableRow);
-
-      } else if (runtimeClass == Hall.class && id == null) {
+      } else if (runtimeClass == Hall.class) {
         for (T row : object) {
           Hall a = (Hall) row;
           tableRow[0] = a.getHallID();
@@ -172,45 +163,54 @@ public class Utils {
   }
 
   // filter table
-  public static <T> void viewTable(
-      JTable t, String filename, Class<T> runtimeClass, int column, String filter) {
-    DefaultTableModel model = (DefaultTableModel) t.getModel();
-    model.setRowCount(0);
-    ArrayList<T> object = FileOperations.read(filename);
-    Object[] tableRow = new Object[7];
+    public static <T> void viewTable(JTable t, String filename, Class<T> runtimeClass, int column, String filter) {
+        DefaultTableModel model = (DefaultTableModel) t.getModel();
+        model.setRowCount(0);
+        ArrayList<T> object = FileOperations.read(filename);
+        Object[] tableRow = new Object[7];
 
-    int i = 1;
+        int i = 1;
 
-    if (object != null) {
-      if (runtimeClass == User.class) {
-        for (T row : object) {
-          User a = (User) row;
-          String f = null;
+        if (object != null) {
+            if (runtimeClass == User.class) {
+                if (column != 0) {
+                    for (T row : object) {
+                        User a = (User) row;
+                        String f = null;
 
-          switch (column) {
-            case 3:
-              f = a.getUtype();
-              break;
-            case 5:
-              f = a.getUstatus();
-              break;
-          }
+                        switch (column) {
+                            case 3:
+                                f = a.getUtype();
+                                break;
+                            case 5:
+                                f = a.getUstatus();
+                                break;
+                        }
 
-          if (!a.getUstatus().equals("deleted") && f.equals(filter)) {
-            tableRow[0] = i++;
-            tableRow[1] = a.getUid();
-            tableRow[2] = a.getUpass().replaceAll(".", "*");
-            tableRow[3] = a.getUname();
-            tableRow[4] = a.getUtype();
-            tableRow[5] = a.getUcontact();
-            tableRow[6] = a.getUstatus();
+                        if (!a.getUstatus().equals("deleted") && f.equals(filter)) {
+                            tableRow[0] = i++;
+                            tableRow[1] = a.getUid();
+                            tableRow[2] = a.getUpass().replaceAll(".", "*");
+                            tableRow[3] = a.getUname();
+                            tableRow[4] = a.getUtype();
+                            tableRow[5] = a.getUcontact();
+                            tableRow[6] = a.getUstatus();
 
-            model.addRow(tableRow);
-          }
+                            model.addRow(tableRow);
+                        }
+                    }
+                } else {
+                    User a = IDtoObject(filter, "users.txt", User.class);
+
+                    tableRow[0] = a.getUid();
+                    tableRow[1] = a.getUname();
+                    tableRow[2] = a.getUcontact();
+                    System.out.println(a.getUid());
+                    model.addRow(tableRow);
+                }
+            }
         }
-      }
     }
-  }
 
   public static <T> void addTableRow(JTable t, Class<T> runtimeClass, T data) {
     DefaultTableModel model = (DefaultTableModel) t.getModel();

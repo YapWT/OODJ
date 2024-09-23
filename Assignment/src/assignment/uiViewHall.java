@@ -20,7 +20,7 @@ public class uiViewHall extends javax.swing.JFrame {
     public uiViewHall(Scheduler scheduler) {
         initComponents();
         setContentPane(viewHall);
-        Utils.viewTable(TblHall, "halls.txt", Hall.class, null);
+        Utils.viewTable(TblHall, "halls.txt", Hall.class);
     }
 
     /**
@@ -44,7 +44,6 @@ public class uiViewHall extends javax.swing.JFrame {
         viewHall.setPreferredSize(new java.awt.Dimension(500, 500));
 
         TblHall.setFont(new java.awt.Font("Liberation Sans", 0, 14)); // NOI18N
-        TblHall.setForeground(new java.awt.Color(0, 0, 0));
         TblHall.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
