@@ -2,6 +2,7 @@ package assignment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -11,12 +12,14 @@ public class Panel_updateProfile extends javax.swing.JPanel {
     private User updateProfile;
 
     public Panel_updateProfile() {
-        
+        initComponents();
     }
     
     public Panel_updateProfile(String Uid, User updateProfile) {
         initComponents();
 
+        jLabel8.setHorizontalAlignment(JLabel.CENTER);
+        
         this.updateProfile = updateProfile;
 
         // update profile
@@ -133,6 +136,7 @@ public class Panel_updateProfile extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
 
         BTN_name.setText("Change User Name");
+        BTN_name.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_nameActionPerformed(evt);
@@ -140,6 +144,7 @@ public class Panel_updateProfile extends javax.swing.JPanel {
         });
 
         BTN_c.setText("Change Contact");
+        BTN_c.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_c.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_cActionPerformed(evt);
@@ -147,6 +152,7 @@ public class Panel_updateProfile extends javax.swing.JPanel {
         });
 
         BTN_pass.setText("Change Password");
+        BTN_pass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_passActionPerformed(evt);
@@ -154,6 +160,7 @@ public class Panel_updateProfile extends javax.swing.JPanel {
         });
 
         BTN_delete.setText("Delete Account");
+        BTN_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_deleteActionPerformed(evt);
@@ -161,6 +168,7 @@ public class Panel_updateProfile extends javax.swing.JPanel {
         });
 
         BTN_logout.setText("Log Out");
+        BTN_logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_logoutActionPerformed(evt);
@@ -201,8 +209,8 @@ public class Panel_updateProfile extends javax.swing.JPanel {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,19 +225,17 @@ public class Panel_updateProfile extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(212, 212, 212)
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(BTN_pass)
                             .addComponent(BTN_delete)
                             .addComponent(BTN_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BTN_name)
-                            .addComponent(BTN_c)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                            .addComponent(BTN_name, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BTN_c)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BTN_c, BTN_delete, BTN_logout, BTN_name, BTN_pass});
@@ -237,9 +243,9 @@ public class Panel_updateProfile extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(30, 30, 30)
                 .addComponent(BTN_name)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BTN_c)
@@ -249,7 +255,7 @@ public class Panel_updateProfile extends javax.swing.JPanel {
                 .addComponent(BTN_logout)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BTN_delete)
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
