@@ -32,7 +32,6 @@ public class uiAdmin extends javax.swing.JFrame {
             if (option == JOptionPane.OK_OPTION) {
                 String name = PNL_add.getName();
                 String type = PNL_add.getType();
-                System.out.println(name + "." + type);
                 
                 if (type != null && name != null && !name.isEmpty()){
                     classA.addStaff(name, "123", type, "");

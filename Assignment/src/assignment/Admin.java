@@ -47,8 +47,9 @@ class Admin extends Staff{
         
         model.removeRow(n - 1);
         
-        for (int i = 0; i < n - 2; i++)
+        for (int i = 0; i < model.getRowCount(); i++) {
             model.setValueAt(i + 1, i, 0); 
+        }
     }
     
     public boolean check(JTable t, String row) {
