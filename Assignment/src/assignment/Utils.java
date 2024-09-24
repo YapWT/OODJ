@@ -204,9 +204,43 @@ public class Utils {
           tableRow[2] = a.getUcontact();
 
           model.addRow(tableRow);
-        }
+        } 
+      }else if(runtimeClass == Hall.class){
+          for(T row:object){
+              Hall a = (Hall) row;
+              String hallType=null;
+              String Type= null;
+              switch(column){
+              case 0:
+              {
+                  hallType = "auditorium";
+                  Type="Auditorium";
+                  break;
+              }
+              case 1:
+              {
+                  hallType="banquet";
+                  Type="Banquet Hall";
+                  break;
+              }
+              case 2:
+              {
+                  hallType="meeting";
+                  Type="Meeting Room";
+                  break;
+              }
+              }
+              if (a.getHallType()==hallType && a.getHallStatus()==filter)
+              {
+                  tableRow[0]=a.getHallID();
+                  tableRow[1]=Type;
+                  tableRow[2]=filter;
+                  
+                  model.addRow(tableRow);
+               }
       }
     }
+  }
   }
 
   public static <T> void addTableRow(JTable t, Class<T> runtimeClass, T data) {

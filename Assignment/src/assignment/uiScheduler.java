@@ -1,5 +1,7 @@
 package assignment;
 
+import java.awt.BorderLayout;
+
 public class uiScheduler extends javax.swing.JFrame {
     Scheduler currentScheduler = new Scheduler();
     private String ID;
@@ -24,7 +26,7 @@ public class uiScheduler extends javax.swing.JFrame {
         scheduleHall = new javax.swing.JButton();
         editHall = new javax.swing.JButton();
         addHall = new javax.swing.JButton();
-        btnLogOut = new javax.swing.JButton();
+        btnUpdateProfile = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,15 +111,15 @@ public class uiScheduler extends javax.swing.JFrame {
             }
         });
 
-        btnLogOut.setBackground(new java.awt.Color(255, 255, 255));
-        btnLogOut.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        btnLogOut.setForeground(new java.awt.Color(0, 0, 0));
-        btnLogOut.setText("Log Out");
-        btnLogOut.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnLogOut.setBorderPainted(false);
-        btnLogOut.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdateProfile.setBackground(new java.awt.Color(255, 255, 255));
+        btnUpdateProfile.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        btnUpdateProfile.setForeground(new java.awt.Color(0, 0, 0));
+        btnUpdateProfile.setText("My Profile");
+        btnUpdateProfile.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnUpdateProfile.setBorderPainted(false);
+        btnUpdateProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogOutActionPerformed(evt);
+                btnUpdateProfileActionPerformed(evt);
             }
         });
 
@@ -136,7 +138,7 @@ public class uiScheduler extends javax.swing.JFrame {
                                 .addComponent(scheduleHall, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(editHall, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(addHall, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
-                            .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnUpdateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(83, 83, 83)
                         .addComponent(jLabel1)))
@@ -159,7 +161,7 @@ public class uiScheduler extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(maintainHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnUpdateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
             .addComponent(SchedulerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -205,9 +207,16 @@ public class uiScheduler extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_scheduleHallActionPerformed
 
-    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
-        currentScheduler.logout(jPanel1);
-    }//GEN-LAST:event_btnLogOutActionPerformed
+    private void btnUpdateProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateProfileActionPerformed
+        SchedulerPanel.removeAll();
+        SchedulerPanel.repaint();
+        SchedulerPanel.setLayout(new BorderLayout());
+        Panel_updateProfile myprofile = new Panel_updateProfile(ID, new User());
+        myprofile.setSize(500, 500);
+        myprofile.setVisible(true);
+        
+        
+    }//GEN-LAST:event_btnUpdateProfileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,7 +256,7 @@ public class uiScheduler extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel SchedulerPanel;
     private javax.swing.JButton addHall;
-    private javax.swing.JButton btnLogOut;
+    private javax.swing.JButton btnUpdateProfile;
     private javax.swing.JButton editHall;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

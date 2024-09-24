@@ -55,7 +55,7 @@
                                   <Component id="editHall" alignment="0" max="32767" attributes="0"/>
                                   <Component id="addHall" alignment="1" pref="273" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="btnLogOut" alignment="0" min="-2" pref="273" max="-2" attributes="0"/>
+                              <Component id="btnUpdateProfile" alignment="0" min="-2" pref="273" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -84,7 +84,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="maintainHall" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="btnLogOut" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="btnUpdateProfile" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               </Group>
               <Component id="SchedulerPanel" max="32767" attributes="0"/>
@@ -244,7 +244,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addHallActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnLogOut">
+        <Component class="javax.swing.JButton" name="btnUpdateProfile">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -255,7 +255,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Log Out"/>
+            <Property name="text" type="java.lang.String" value="My Profile"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                 <EtchetBorder/>
@@ -264,7 +264,7 @@
             <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogOutActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateProfileActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
