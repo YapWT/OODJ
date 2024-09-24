@@ -1,6 +1,8 @@
 package assignment;
 
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Schedule {
   private LocalDate scheduleDate;
@@ -8,6 +10,11 @@ public class Schedule {
   private int[] timeSlot;
 
   public Schedule() {}
+
+  public Schedule(LocalDate date, String hallID) {
+    this.scheduleDate = date;
+    this.hallID = hallID;
+  }
 
   public Schedule(LocalDate date, String hallID, int[] timeSlot) {
     this.scheduleDate = date;
@@ -44,5 +51,20 @@ public class Schedule {
     return String.format(
         "%s,%s,%d,%d",
         this.scheduleDate.toString(), this.hallID, this.timeSlot[0], this.timeSlot[1]);
+  }
+
+  public Schedule checkIfScheduleExists(LocalDate scheduleDate, String hallID) {
+    try {
+      ArrayList<Schedule> schedules = FileOperations.read("schedules.txt");
+      for (Schedule schedule : schedules) {
+        if (schedule.getScheduleDate() == scheduleDate && schedule.getHallID() == hallID) {
+          return schedule;
+        }
+      }
+    } catch (IOException e) {
+      System.out.println("schedules file not found");
+      return new Schedule(scheduleDate, hallID);
+    } 
+    return null;
   }
 }

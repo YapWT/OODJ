@@ -1,5 +1,6 @@
 package assignment;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -27,14 +28,14 @@ public class Customer extends User {
     FileOperations.write("users.txt", this);
   }
 
-  public ArrayList<Hall> viewAvailableHalls() {
+  public ArrayList<Hall> viewAvailableHalls() throws IOException {
     ArrayList<Hall> halls = FileOperations.read("halls.txt");
     // this is retarded
 
     return null;
   }
 
-  public void bookHalls(String hallID, int[] timeSlots, LocalDate date) {
+  public void bookHalls(String hallID, int[] timeSlots, LocalDate date) throws IOException {
     if (timeSlots.length > 2) {
       throw new IllegalArgumentException("Timeslots only accept an array of length 2");
     }

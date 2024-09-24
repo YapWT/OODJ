@@ -3,7 +3,6 @@ package assignment;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,7 +13,7 @@ import java.util.Scanner;
 
 @SuppressWarnings("unchecked")
 public class FileOperations {
-  public static <T> ArrayList<T> read(String filename) {
+  public static <T> ArrayList<T> read(String filename) throws IOException {
     ArrayList<T> result = new ArrayList<>();
 
     try (BufferedReader rd = new BufferedReader(new FileReader(filename))) {
@@ -57,8 +56,6 @@ public class FileOperations {
           result.add((T) new Schedule(LocalDate.parse(data.get(0)), data.get(1), timeSlots));
         }
       }
-    } catch (FileNotFoundException e) {
-      System.out.println("File not found: " + filename);
     } catch (IOException e) {
       System.out.println("Error when reading " + filename + ".\n " + e);
     }
