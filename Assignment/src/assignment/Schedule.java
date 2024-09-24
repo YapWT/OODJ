@@ -2,11 +2,13 @@ package assignment;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class Schedule {
   private LocalDate scheduleDate;
   private String hallID;
-  private int[] timeSlot;
+  private String[] timeSlot;
 
   public Schedule() {}
 
@@ -15,7 +17,7 @@ public class Schedule {
     this.hallID = hallID;
   }
 
-  public Schedule(LocalDate date, String hallID, int[] timeSlot) {
+  public Schedule(LocalDate date, String hallID, String[] timeSlot) {
     this.scheduleDate = date;
     this.hallID = hallID;
     this.timeSlot = timeSlot;
@@ -29,7 +31,7 @@ public class Schedule {
     return hallID;
   }
 
-  public int[] getTimeSlot() {
+  public String[] getTimeSlot() {
     return timeSlot;
   }
 
@@ -41,15 +43,26 @@ public class Schedule {
     this.hallID = hallID;
   }
 
-  public void setTimeSlot(int[] timeSlot) {
+  public void setTimeSlot(String[] timeSlot) {
     this.timeSlot = timeSlot;
   }
 
   @Override
   public String toString() {
     return String.format(
-        "%s|%s|%d|%d",
-        this.scheduleDate.toString(), this.hallID, this.timeSlot[0], this.timeSlot[1]);
+        "%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s",
+        this.scheduleDate.toString(),
+        this.hallID,
+        this.timeSlot[0],
+        this.timeSlot[1],
+        this.timeSlot[2],
+        this.timeSlot[3],
+        this.timeSlot[4],
+        this.timeSlot[5],
+        this.timeSlot[6],
+        this.timeSlot[7],
+        this.timeSlot[8],
+        this.timeSlot[9]);
   }
 
   public static boolean checkIfScheduleExists(LocalDate scheduleDate, String hallID) {
@@ -70,5 +83,10 @@ public class Schedule {
       }
     }
     return null;
+  }
+
+  public static void displaySchedule(JTable t) {
+    DefaultTableModel model = (DefaultTableModel) t.getModel();
+    model.setRowCount(0);
   }
 }
