@@ -1,5 +1,6 @@
 package assignment;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Customer extends User {
@@ -33,7 +34,7 @@ public class Customer extends User {
     return null;
   }
 
-  public void bookHalls(String hallID, int[] timeSlots) {
+  public void bookHalls(String hallID, int[] timeSlots, LocalDate date) {
     if (timeSlots.length > 2) {
       throw new IllegalArgumentException("Timeslots only accept an array of length 2");
     }
@@ -51,7 +52,6 @@ public class Customer extends User {
         throw new IllegalArgumentException("Invalid hall number");
       }
     }
-    FileOperations.write("halls.txt", halls);
 
     Payment payment = new Payment(Utils.generateID("payment"), this.getUid(), amount, "success");
     FileOperations.write("payments.txt", payment);
@@ -60,6 +60,9 @@ public class Customer extends User {
         new Booking(
             Utils.generateID("booking"), hallID, this, timeSlots, amount, "success", payment);
     FileOperations.write("bookings.txt", booking);
+
+    Schedule schedule = new Schedule(date, hallID, timeSlots);
+    FileOperations.write("schedules.txt", schedule);
   }
 
   public void viewBookings() {}

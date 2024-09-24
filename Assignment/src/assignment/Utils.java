@@ -35,12 +35,6 @@ public class Utils {
         Booking booking = (Booking) obj;
         typeOfData.add(booking.getBookingID());
       }
-    } else if (type.equals("s")) {
-      data = FileOperations.read("schedules.txt");
-      for (Object obj : data) {
-        Schedule schedule = (Schedule) obj;
-        typeOfData.add(schedule.getScheduleID());
-      }
     }
 
     int count = typeOfData.size();
@@ -70,13 +64,6 @@ public class Utils {
       for (T obj : objects) {
         Hall hall = (Hall) obj;
         if (hall.getHallID().equals(id)) {
-          return obj;
-        }
-      }
-    } else if (runtimeClass == Schedule.class && IDtype == 's') {
-      for (T obj : objects) {
-        Schedule schedule = (Schedule) obj;
-        if (schedule.getScheduleID().equals(id)) {
           return obj;
         }
       }
