@@ -184,7 +184,7 @@ public class uiLogin extends javax.swing.JFrame {
 
         String id = TXT_id.getText().toUpperCase();
         
-        if (id.isEmpty() | Utils.emptyPassword(new ArrayList<>(Arrays.asList(TXT_pass)))) {
+        if (id.isEmpty() | TXT_pass.getPassword().length == 0) {
             LBL_message.setVisible(true);
             LBL_message.setText("Empty Input Found");
         }

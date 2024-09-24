@@ -103,13 +103,6 @@ public class Utils {
     return false;
   }
 
-  public static boolean emptyPassword(ArrayList<JComponent> object) {
-    for (JComponent ob : object) {
-      if (((JPasswordField) ob).getPassword().length == 0) return true;
-    }
-    return false;
-  }
-
   // table without any filter
   public static <T> void viewTable(JTable t, String filename, Class<T> runtimeClass) {
     DefaultTableModel model = (DefaultTableModel) t.getModel();

@@ -92,7 +92,7 @@ public class Panel_updateProfile extends javax.swing.JPanel {
             
             if (option == JOptionPane.OK_OPTION) {
                
-                if (Utils.emptyPassword(new ArrayList<>(Arrays.asList(oldP, newP)))) {
+                if (oldP.getPassword().length == 0 || newP.getPassword().length == 0) {
                     jLabel8.setVisible(true);
                     jLabel8.setText("Empty Input Found");
                 }
