@@ -83,7 +83,7 @@ public class Utils {
     ArrayList<T> obj = FileOperations.read(filename);
 
     if (runtimeClass == User.class) {
-        User u = (User) data;
+        User u = (User) data; 
         for (int i = 0; i < obj.size(); i++) {
             User user = (User) obj.get(i);
             if (user.getUid().equals(u.getUid())){
