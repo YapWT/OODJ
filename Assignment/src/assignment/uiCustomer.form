@@ -237,6 +237,9 @@
             <Component class="javax.swing.JLabel" name="RatePerHourLBL">
             </Component>
             <Component class="com.github.lgooddatepicker.components.DatePicker" name="datePicker">
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="datePickerFocusGained"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>

@@ -1,6 +1,5 @@
 package assignment;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -53,13 +52,23 @@ public class Schedule {
         this.scheduleDate.toString(), this.hallID, this.timeSlot[0], this.timeSlot[1]);
   }
 
-  public Schedule checkIfScheduleExists(LocalDate scheduleDate, String hallID) {
-      ArrayList<Schedule> schedules = FileOperations.read("schedules.txt");
-      for (Schedule schedule : schedules) {
-        if (schedule.getScheduleDate() == scheduleDate && schedule.getHallID() == hallID) {
-          return schedule;
-        }
+  public static boolean checkIfScheduleExists(LocalDate scheduleDate, String hallID) {
+    ArrayList<Schedule> schedules = FileOperations.read("schedules.txt");
+    for (Schedule schedule : schedules) {
+      if (schedule.getScheduleDate() == scheduleDate && schedule.getHallID() == hallID) {
+        return true;
       }
+    }
+    return false;
+  }
+
+  public static Schedule scheduleObjectify(LocalDate scheduleDate, String hallID) {
+    ArrayList<Schedule> schedules = FileOperations.read("schedules.txt");
+    for (Schedule schedule : schedules) {
+      if (schedule.getScheduleDate() == scheduleDate && schedule.getHallID() == hallID) {
+        return schedule;
+      }
+    }
     return null;
   }
 }
