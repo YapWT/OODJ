@@ -35,7 +35,7 @@ public class Customer extends User {
     int amount = 0;
 
     for (Hall hall : halls) {
-      if (hall.getHallID() == hallID) {
+      if (hall.getHallID().equals(hallID)) {
         for (int i = timeSlots[0]; i < timeSlots[1]; i++) {}
 
         amount = hall.getRatePerHour() * (timeSlots[1] - timeSlots[0]);

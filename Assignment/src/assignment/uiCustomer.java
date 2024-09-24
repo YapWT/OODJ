@@ -49,9 +49,29 @@ public class uiCustomer extends javax.swing.JFrame {
     });
   }
 
-  public uiCustomer(Customer customer) {
-      initComponents();
-      this.customer = customer;
+  public uiCustomer(User customer) {        
+    this.customer = (Customer) customer;
+    System.out.println(customer.toString());
+    initComponents();
+
+    datePicker.setDateToToday();
+    for(String slot : timeSlotComboStrings) {
+        startSlot.addItem(slot);
+        endSlot.addItem(slot);
+    }
+
+    ArrayList<Hall> halls = FileOperations.read("halls.txt");
+    for (Hall hall : halls) {
+        hallComboBox.addItem(hall.getHallID());
+    }
+    
+    datePicker.addDateChangeListener(new DateChangeListener () {
+        public void dateChanged(DateChangeEvent event) {
+            System.out.println("table display is called" + schedule.toString());
+            datePicker.setDate(event.getNewDate());
+            Schedule.displaySchedule(scheduleTable, schedule);
+        }
+    });
   }
 
   @SuppressWarnings("unchecked")
@@ -335,6 +355,9 @@ public class uiCustomer extends javax.swing.JFrame {
     private void bookHallBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookHallBtnActionPerformed
         if(startSlot.getSelectedIndex() > endSlot.getSelectedIndex()) {
             bookStatus.setText("Start time must be before or equals to end time!");
+        } else {
+            int[] bookingSlot = new int[] {startSlot.getSelectedIndex(), endSlot.getSelectedIndex()-1};
+            customer.bookHalls(hallComboBox.getSelectedItem().toString(), bookingSlot, datePicker.getDate());
         }
     }//GEN-LAST:event_bookHallBtnActionPerformed
 
