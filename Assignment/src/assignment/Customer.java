@@ -44,12 +44,8 @@ public class Customer extends User {
       }
     }
 
-    Payment payment = new Payment(Utils.generateID("payment"), this.getUid(), amount, "success");
-    FileOperations.write("payments.txt", payment);
-
     Booking booking =
-        new Booking(
-            Utils.generateID("booking"), hallID, this, timeSlots, amount, "success", payment);
+        new Booking(Utils.generateID("booking"), hallID, this, timeSlots, amount, "success");
     FileOperations.write("bookings.txt", booking);
 
     Schedule schedule = new Schedule(date, hallID, timeSlots);

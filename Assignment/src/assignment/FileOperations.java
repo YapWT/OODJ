@@ -2,14 +2,12 @@ package assignment;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 
 @SuppressWarnings("unchecked")
 public class FileOperations {
@@ -32,11 +30,6 @@ public class FileOperations {
                       data.get(5)));
         } else if (filename.contains("halls")) {
           result.add((T) new Hall(data.get(0), data.get(1), data.get(2)));
-        } else if (filename.contains("payments")) {
-          result.add(
-              (T)
-                  new Payment(
-                      data.get(0), data.get(1), Integer.parseInt(data.get(2)), data.get(3)));
         } else if (filename.contains("bookings")) {
           int[] timeSlots =
               new int[] {Integer.parseInt(data.get(3)), Integer.parseInt(data.get(4))};

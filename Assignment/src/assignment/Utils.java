@@ -1,8 +1,5 @@
-  package assignment;
+package assignment;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -55,13 +52,6 @@ public class Utils {
       for (T obj : objects) {
         User user = (User) obj;
         if (user.getUid().equals(id)) {
-            return obj;
-        }
-      }
-    } else if (runtimeClass == Payment.class && IDtype == 'P') {
-      for (T obj : objects) {
-        Payment payment = (Payment) obj;
-        if (payment.getPaymentID().equals(id)) {
           return obj;
         }
       }
@@ -72,12 +62,19 @@ public class Utils {
           return obj;
         }
       }
+    } else if (runtimeClass == Booking.class && IDtype == 'B') {
+      for (T obj : objects) {
+        Booking booking = (Booking) obj;
+        if (booking.getBookingID().equals(id)) {
+          return obj;
+        }
+      }
     }
     return null;
   }
 
   // need to set before calling
-  /* 
+  /*
     setUpass(newPass);
     Utils.editFile("users.txt", this, User.class);
   */
@@ -85,14 +82,14 @@ public class Utils {
     ArrayList<T> obj = FileOperations.read(filename);
 
     if (runtimeClass == User.class) {
-        User u = (User) data; 
-        for (int i = 0; i < obj.size(); i++) {
-            User user = (User) obj.get(i);
-            if (user.getUid().equals(u.getUid())){
-                obj.set(i, (T) u);
-                break;
-            }
+      User u = (User) data;
+      for (int i = 0; i < obj.size(); i++) {
+        User user = (User) obj.get(i);
+        if (user.getUid().equals(u.getUid())) {
+          obj.set(i, (T) u);
+          break;
         }
+      }
     }
     // edit with rewrite all data
     FileOperations.write(filename, obj);
@@ -229,5 +226,4 @@ public class Utils {
       model.addRow(tableRow);
     }
   }
-  
 }

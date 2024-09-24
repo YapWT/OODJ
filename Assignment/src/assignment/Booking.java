@@ -7,9 +7,25 @@ public class Booking {
   private int[] timeSlots;
   private int totalPrice;
   private String bookingStatus;
-  private Payment payment;
+  private Issue issue;
 
   public Booking() {}
+
+  public Booking(
+      String bookingID,
+      String hallID,
+      Customer customer,
+      int[] timeSlots,
+      int totalPrice,
+      String bookingStatus) {
+
+    this.bookingID = bookingID;
+    this.hallID = hallID;
+    this.customer = customer;
+    this.timeSlots = timeSlots;
+    this.totalPrice = totalPrice;
+    this.bookingStatus = bookingStatus;
+  }
 
   public Booking(
       String bookingID,
@@ -18,7 +34,7 @@ public class Booking {
       int[] timeSlots,
       int totalPrice,
       String bookingStatus,
-      String paymentID) {
+      String issueID) {
 
     this.bookingID = bookingID;
     this.hallID = hallID;
@@ -27,7 +43,7 @@ public class Booking {
     this.bookingStatus = bookingStatus;
 
     this.customer = Utils.IDtoObject(customerID, "users.txt", Customer.class);
-    this.payment = Utils.IDtoObject(paymentID, "payments.txt", Payment.class);
+    this.issue = Utils.IDtoObject(issueID, "issues.txt", Issue.class);
   }
 
   public Booking(
@@ -37,7 +53,7 @@ public class Booking {
       int[] timeSlots,
       int totalPrice,
       String bookingStatus,
-      Payment payment) {
+      Issue issue) {
 
     this.bookingID = bookingID;
     this.hallID = hallID;
@@ -45,7 +61,7 @@ public class Booking {
     this.totalPrice = totalPrice;
     this.bookingStatus = bookingStatus;
     this.customer = customer;
-    this.payment = payment;
+    this.issue = issue;
   }
 
   public String getBookingID() {
@@ -72,8 +88,8 @@ public class Booking {
     return bookingStatus;
   }
 
-  public Payment getPayment() {
-    return payment;
+  public Issue getIssue() {
+    return issue;
   }
 
   public void setBookingID(String bookingID) {
@@ -100,7 +116,20 @@ public class Booking {
     this.bookingStatus = bookingStatus;
   }
 
-  public void setPayment(Payment payment) {
-    this.payment = payment;
+  public void setIssue(Issue issue) {
+    this.issue = issue;
+  }
+
+  public String toString() {
+    return String.format(
+        "%s|%s|%s|%d|%d|%d|%s|%s",
+        bookingID,
+        hallID,
+        customer.getUid(),
+        timeSlots[0],
+        timeSlots[1],
+        totalPrice,
+        bookingStatus,
+        issue.getIssueID());
   }
 }
