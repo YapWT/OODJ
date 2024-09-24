@@ -86,9 +86,10 @@ public class Utils {
         User u = (User) data;
         for (int i = 0; i < obj.size(); i++) {
             User user = (User) obj.get(i);
-            if (user.getUid().equals(u.getUid()))
+            if (user.getUid().equals(u.getUid())){
                 obj.set(i, (T) u);
-            break;
+                break;
+            }
         }
     }
     // edit with rewrite all data
