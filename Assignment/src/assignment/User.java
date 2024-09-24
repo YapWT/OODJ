@@ -32,7 +32,7 @@ public class User implements initialize, login_logout, profile {
 
   public User() {}
 
-  public User(String id, String pass, String name, String type, String contact, String status) {
+public User(String id, String pass, String name, String type, String contact, String status) {
     this.Uid = id;
     this.Upass = pass;
     this.Uname = name;
@@ -40,7 +40,7 @@ public class User implements initialize, login_logout, profile {
     this.Ucontact = contact;
     this.Ustatus = status;
   }
-
+  
   public String checkFile() {
     try (BufferedReader rd = new BufferedReader(new FileReader("users.txt"))) {
       return null;
@@ -77,7 +77,7 @@ public class User implements initialize, login_logout, profile {
                     return "block";
                 case "pending":
                     setUstatus("active");
-                    Utils.editFile("users.txt", Uid, User.class);
+                    Utils.editFile("users.txt", this, User.class);
                     return "pending";
                 case "deleted":
                     return "Failed";
@@ -98,10 +98,12 @@ public class User implements initialize, login_logout, profile {
   public boolean updateName(String Uname) {
     if (Uname.isEmpty() | Uname == null) return false;
 
-
+        System.out.println(Uname);
         this.Uname = Uname;
         setUname(Uname);
-        Utils.editFile("users.txt", Uid, User.class);
+        System.out.println(this);
+        Utils.editFile("users.txt", this, User.class);
+        System.out.println(this.Uname);
         return true;
     }
 
@@ -110,7 +112,7 @@ public class User implements initialize, login_logout, profile {
         else if (Upass.equals(newPass)) return "Same";
         else {
             setUpass(newPass);
-            Utils.editFile("users.txt", Uid, User.class);
+            Utils.editFile("users.txt", this, User.class);
         }
 
     this.Upass = newPass;
@@ -122,7 +124,7 @@ public class User implements initialize, login_logout, profile {
 
          if (Utils.checkContact(Ucontact)) {
              setUcontact(Ucontact);
-             Utils.editFile("users.txt", Uid, User.class);
+             Utils.editFile("users.txt", this, User.class);
          }
          else return false;
 

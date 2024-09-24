@@ -78,19 +78,17 @@ public class Utils {
 
   // edit file
   // need to set before calling
-  public static <T> void editFile(String filename, String id, Class<T> runtimeClass) {
+
+  public static <T> void editFile(String filename, T data, Class<T> runtimeClass) {
     ArrayList<T> obj = FileOperations.read(filename);
 
     if (runtimeClass == User.class) {
-        User newD = IDtoObject(id, filename, User.class);
-        for (T row : obj) {
-            User user = (User) row;
-            if (user.getUid().equals(id)) {
-                user.setUpass(newD.getUpass());
-                user.setUname(newD.getUname());
-                user.setUstatus(newD.getUstatus());
-                user.setUcontact(newD.getUstatus());
-            }
+        User u = (User) data;
+        for (int i = 0; i < obj.size(); i++) {
+            User user = (User) obj.get(i);
+            if (user.getUid().equals(u.getUid()))
+                obj.set(i, (T) u);
+            break;
         }
     }
     // edit with rewrite all data
