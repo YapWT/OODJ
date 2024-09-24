@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class uiCustomer extends javax.swing.JFrame {
   Customer customer;
   Schedule schedule = new Schedule();
-  String[] timeSlotList = new String[] {"1","2","3","4","5","6","7","8","9","10"};
+  String[] timeSlotList = new String[] {"available","available","available","available","available","available","available","available","available","available"};
 
   public uiCustomer() {
     initComponents();
@@ -27,7 +27,7 @@ public class uiCustomer extends javax.swing.JFrame {
     
     datePicker.addDateChangeListener(new DateChangeListener () {
         public void dateChanged(DateChangeEvent event) {
-            System.out.println("New date selected: " + event.getNewDate());
+            datePicker.setDate(event.getNewDate());
         }
     });
   }
@@ -318,6 +318,8 @@ public class uiCustomer extends javax.swing.JFrame {
     } else {
         schedule.setScheduleDate(datePicker.getDate());
         schedule.setHallID(selectedHall);
+        schedule.setTimeSlot(timeSlotList);
+        FileOperations.write("schedules.txt", schedule);
     }
   } // GEN-LAST:event_hallComboBoxActionPerformed
 

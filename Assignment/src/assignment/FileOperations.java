@@ -45,8 +45,19 @@ public class FileOperations {
                       data.get(6),
                       data.get(7)));
         } else if (filename.contains("schedules")) {
-          int[] timeSlots =
-              new int[] {Integer.parseInt(data.get(2)), Integer.parseInt(data.get(3))};
+          String[] timeSlots =
+              new String[] {
+                data.get(2),
+                data.get(3),
+                data.get(4),
+                data.get(5),
+                data.get(6),
+                data.get(7),
+                data.get(8),
+                data.get(9),
+                data.get(10),
+                data.get(11),
+              };
           result.add((T) new Schedule(LocalDate.parse(data.get(0)), data.get(1), timeSlots));
         }
       }

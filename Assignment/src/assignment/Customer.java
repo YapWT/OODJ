@@ -3,6 +3,7 @@ package assignment;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Customer extends User {
   public Customer() {}
@@ -48,7 +49,14 @@ public class Customer extends User {
         new Booking(Utils.generateID("booking"), hallID, this, timeSlots, amount, "success");
     FileOperations.write("bookings.txt", booking);
 
-    Schedule schedule = new Schedule(date, hallID, timeSlots);
+    String[] scheduleSlots = new String[10];
+    Arrays.fill(scheduleSlots, "available");
+
+    for (int i = timeSlots[0]; i < timeSlots[1]; i++) {
+      scheduleSlots[i] = "booked";
+    }
+
+    Schedule schedule = new Schedule(date, hallID, scheduleSlots);
     FileOperations.write("schedules.txt", schedule);
   }
 
