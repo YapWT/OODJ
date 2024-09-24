@@ -19,7 +19,7 @@ public class FileOperations {
     try (BufferedReader rd = new BufferedReader(new FileReader(filename))) {
       String line;
       while ((line = rd.readLine()) != null) {
-        ArrayList<String> data = new ArrayList<>(Arrays.asList(line.split(",")));
+        ArrayList<String> data = new ArrayList<>(Arrays.asList(line.split("\\|")));
         if (filename.contains("users")) {
           result.add(
               (T)

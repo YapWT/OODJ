@@ -86,7 +86,7 @@ public class User implements initialize, login_logout, profile {
                 }
             }
         }
-        return null;
+        return "Failed";
       }
     
 

@@ -54,7 +54,9 @@ public class Utils {
     if (runtimeClass == User.class && userTypes.contains(IDtype)) {
       for (T obj : objects) {
         User user = (User) obj;
-        if (user.getUid().equals(id)) return obj;
+        if (user.getUid().equals(id)) {
+            return obj;
+        }
       }
     } else if (runtimeClass == Payment.class && IDtype == 'P') {
       for (T obj : objects) {
