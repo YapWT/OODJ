@@ -12,22 +12,17 @@ public class uiCustomer extends javax.swing.JFrame {
   public uiCustomer() {
     initComponents();
     ArrayList<Hall> halls;
-      try {
           halls = FileOperations.read("halls.txt");    
           for (Hall hall : halls) {
             hallComboBox.addItem(hall.getHallID());    
             datePicker.setDateToToday();
            }
-      } catch (IOException ex) {
-          Logger.getLogger(uiCustomer.class.getName()).log(Level.SEVERE, null, ex);
-      }
 
 
   }
 
   public uiCustomer(Customer customer) {
       initComponents();
-      try {
           
           ArrayList<Hall> halls = FileOperations.read("halls.txt");
           for (Hall hall : halls) {
@@ -35,9 +30,6 @@ public class uiCustomer extends javax.swing.JFrame {
           }
           
           this.customer = customer;
-      } catch (IOException ex) {
-          Logger.getLogger(uiCustomer.class.getName()).log(Level.SEVERE, null, ex);
-      }
   }
 
   @SuppressWarnings("unchecked")

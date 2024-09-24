@@ -38,18 +38,6 @@ public class Utils {
         Booking booking = (Booking) obj;
         typeOfData.add(booking.getBookingID());
       }
-    } else if (type.equals("s")) {
-      data = FileOperations.read("schedules.txt");
-      for (Object obj : data) {
-        Schedule schedule = (Schedule) obj;
-        typeOfData.add(schedule.getScheduleID());
-      }
-    } else if (type.equals("I")) {
-      data = FileOperations.read("issues.txt");
-      for (Object obj : data) {
-        Schedule schedule = (Schedule) obj;
-        typeOfData.add(schedule.getScheduleID());
-      }
     }
 
     int count = typeOfData.size();

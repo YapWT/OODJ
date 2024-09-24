@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 @SuppressWarnings("unchecked")
 public class FileOperations {
-  public static <T> ArrayList<T> read(String filename) throws IOException {
+  public static <T> ArrayList<T> read(String filename) {
     ArrayList<T> result = new ArrayList<>();
 
     try (BufferedReader rd = new BufferedReader(new FileReader(filename))) {

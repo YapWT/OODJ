@@ -54,17 +54,12 @@ public class Schedule {
   }
 
   public Schedule checkIfScheduleExists(LocalDate scheduleDate, String hallID) {
-    try {
       ArrayList<Schedule> schedules = FileOperations.read("schedules.txt");
       for (Schedule schedule : schedules) {
         if (schedule.getScheduleDate() == scheduleDate && schedule.getHallID() == hallID) {
           return schedule;
         }
       }
-    } catch (IOException e) {
-      System.out.println("schedules file not found");
-      return new Schedule(scheduleDate, hallID);
-    }
     return null;
   }
 }

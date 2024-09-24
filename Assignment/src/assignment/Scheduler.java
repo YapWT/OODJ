@@ -84,6 +84,18 @@ public class Scheduler extends Staff {
         }
     }
     data = HallID + "|" + HallType + "|" + HallStatus;
-    FileOperations.overwrite("halls.txt", HallID, data);
+    Scanner sc = new Scanner(new File("halls.txt"));
+    StringBuffer buffer = new StringBuffer();
+    while(sc.hasNextLine()) {
+        String line = sc.nextLine();
+        if(line.contains(hallID)){
+            line = data;
+        }
+        buffer.append(line).append(System.lineSeparator());
+    }
+    sc.close();
+    FileWriter writer = new FileWriter("hall.txt");
+    writer.write(buffer.toString());
+    writer.close();
   }
 }

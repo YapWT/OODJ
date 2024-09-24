@@ -86,10 +86,9 @@ public class User implements initialize, login_logout, profile {
                 }
             }
         }
+        return null;
       }
-    }
-    return "Failed";
-  }
+    
 
   public void logout(JPanel p) {
     ((JFrame) SwingUtilities.getWindowAncestor(p)).dispose();
