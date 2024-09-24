@@ -49,7 +49,7 @@ public class Schedule {
   @Override
   public String toString() {
     return String.format(
-        "%s,%s,%d,%d",
+        "%s|%s|%d|%d",
         this.scheduleDate.toString(), this.hallID, this.timeSlot[0], this.timeSlot[1]);
   }
 
@@ -64,7 +64,7 @@ public class Schedule {
     } catch (IOException e) {
       System.out.println("schedules file not found");
       return new Schedule(scheduleDate, hallID);
-    } 
+    }
     return null;
   }
 }
