@@ -82,13 +82,6 @@ public class Utils {
           return obj;
         }
       }
-    } else if (runtimeClass == Schedule.class && IDtype == 's') {
-      for (T obj : objects) {
-        Schedule schedule = (Schedule) obj;
-        if (schedule.getScheduleID().equals(id)) {
-          return obj;
-        }
-      }
     }
     return null;
   }

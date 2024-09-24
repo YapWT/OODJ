@@ -50,6 +50,6 @@ public class Payment {
   @Override
   public String toString() {
     return String.format(
-        "%s,%s,%d,%s", this.paymentID, this.customerID, this.paymentAmount, this.paymentStatus);
+        "%s|%s|%d|%s", this.paymentID, this.customerID, this.paymentAmount, this.paymentStatus);
   }
 }
