@@ -44,6 +44,12 @@ public class Utils {
         Schedule schedule = (Schedule) obj;
         typeOfData.add(schedule.getScheduleID());
       }
+    } else if (type.equals("I")) {
+      data = FileOperations.read("issues.txt");
+      for (Object obj : data) {
+        Schedule schedule = (Schedule) obj;
+        typeOfData.add(schedule.getScheduleID());
+      }
     }
 
     int count = typeOfData.size();
