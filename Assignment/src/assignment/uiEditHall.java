@@ -56,7 +56,7 @@ public class uiEditHall extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pnlEditHall.setBackground(new java.awt.Color(204, 255, 204));
+        pnlEditHall.setBackground(new java.awt.Color(255, 255, 255));
         pnlEditHall.setPreferredSize(new java.awt.Dimension(500, 500));
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
@@ -87,6 +87,7 @@ public class uiEditHall extends javax.swing.JFrame {
         comboHallStatus.setBackground(new java.awt.Color(255, 255, 255));
         comboHallStatus.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         comboHallStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+        comboHallStatus.setSelectedIndex(-1);
 
         btnSave.setBackground(new java.awt.Color(153, 204, 255));
         btnSave.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N

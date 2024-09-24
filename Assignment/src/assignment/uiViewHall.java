@@ -36,9 +36,14 @@ public class uiViewHall extends javax.swing.JFrame {
         viewHall = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TblHall = new javax.swing.JTable();
+        filterHallType = new javax.swing.JComboBox<>();
+        filterHallStatus = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        labelFilter = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 500));
 
         viewHall.setBackground(new java.awt.Color(255, 255, 255));
         viewHall.setPreferredSize(new java.awt.Dimension(500, 500));
@@ -62,15 +67,86 @@ public class uiViewHall extends javax.swing.JFrame {
         TblHall.setFont(new java.awt.Font("Liberation Sans", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(TblHall);
 
+        filterHallType.setBackground(new java.awt.Color(255, 255, 255));
+        filterHallType.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        filterHallType.setForeground(new java.awt.Color(0, 0, 0));
+        filterHallType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Auditorium", "Banquet Hall", "Meeting Room" }));
+        filterHallType.setSelectedIndex(-1);
+        filterHallType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterHallTypeActionPerformed(evt);
+            }
+        });
+
+        filterHallStatus.setBackground(new java.awt.Color(255, 255, 255));
+        filterHallStatus.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        filterHallStatus.setForeground(new java.awt.Color(0, 0, 0));
+        filterHallStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+        filterHallStatus.setSelectedIndex(-1);
+
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Hall Status");
+
+        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Hall Type:");
+
+        jButton1.setText("Filter");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        labelFilter.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+
         javax.swing.GroupLayout viewHallLayout = new javax.swing.GroupLayout(viewHall);
         viewHall.setLayout(viewHallLayout);
         viewHallLayout.setHorizontalGroup(
             viewHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addGroup(viewHallLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(viewHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewHallLayout.createSequentialGroup()
+                        .addComponent(labelFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(viewHallLayout.createSequentialGroup()
+                        .addGroup(viewHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addGap(34, 34, 34)
+                        .addGroup(viewHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(filterHallStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(filterHallType, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         viewHallLayout.setVerticalGroup(
             viewHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addGroup(viewHallLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addGroup(viewHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(filterHallType, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(viewHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(filterHallStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(viewHallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewHallLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(viewHallLayout.createSequentialGroup()
+                        .addComponent(labelFilter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(3, 3, 3)))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -81,11 +157,25 @@ public class uiViewHall extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(viewHall, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(viewHall, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void filterHallTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterHallTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filterHallTypeActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(filterHallStatus.getSelectedIndex()==-1 || filterHallType.getSelectedIndex()==-1)
+        {
+            labelFilter.setText("Filter cannot be empty.");
+        }
+        else{
+            Utils.viewTable(TblHall, "halls.txt", Hall.class, filterHallType.getSelectedIndex(), filterHallStatus.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,7 +218,13 @@ public class uiViewHall extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TblHall;
     private com.github.lgooddatepicker.components.DatePicker datePicker1;
+    private javax.swing.JComboBox<String> filterHallStatus;
+    private javax.swing.JComboBox<String> filterHallType;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelFilter;
     private javax.swing.JPanel viewHall;
     // End of variables declaration//GEN-END:variables
 
