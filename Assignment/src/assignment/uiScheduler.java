@@ -209,13 +209,11 @@ public class uiScheduler extends javax.swing.JFrame {
 
     private void btnUpdateProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateProfileActionPerformed
         SchedulerPanel.removeAll();
-        SchedulerPanel.repaint();
-        SchedulerPanel.setLayout(new BorderLayout());
         Panel_updateProfile myprofile = new Panel_updateProfile(ID, new User());
-        myprofile.setSize(500, 500);
-        myprofile.setVisible(true);
-        
-        
+        SchedulerPanel.setLayout(new BorderLayout());
+        SchedulerPanel.add(myprofile, BorderLayout.CENTER);
+        SchedulerPanel.revalidate();
+
     }//GEN-LAST:event_btnUpdateProfileActionPerformed
 
     /**
