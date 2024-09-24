@@ -56,7 +56,7 @@ public class FileOperations {
                 data.get(8),
                 data.get(9),
                 data.get(10),
-                data.get(11),
+                data.get(11)
               };
           result.add((T) new Schedule(LocalDate.parse(data.get(0)), data.get(1), timeSlots));
         }
