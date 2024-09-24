@@ -46,10 +46,8 @@ class Admin extends Staff{
         Utils.editFile("users.txt", this, User.class);
         
         model.removeRow(n - 1);
-        
-        for (int i = 0; i < model.getRowCount(); i++) {
-            model.setValueAt(i + 1, i, 0); 
-        }
+        reCountRow();
+
     }
     
     public boolean check(JTable t, String row) {
@@ -76,5 +74,22 @@ class Admin extends Staff{
     
     public void search() {
         
+    }
+    
+    public void removeCurrentAdmin(JTable t, String currentAdmin){
+        this.model = (DefaultTableModel) t.getModel();
+        
+        for (int i = 0; i <= model.getRowCount(); i++) {
+            if (model.getValueAt(i, 1).toString().equals(currentAdmin)) {
+                model.removeRow(i);
+                break;
+            }
+        }
+        reCountRow();
+    }
+    
+    private void reCountRow() {
+        for (int i = 0; i < model.getRowCount(); i++) 
+            model.setValueAt(i + 1, i, 0);
     }
 }
