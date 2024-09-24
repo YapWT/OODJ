@@ -1,5 +1,7 @@
 package assignment;
 
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Customer extends User {
@@ -13,27 +15,17 @@ public class Customer extends User {
     this.setUcontact(contact);
     this.setUstatus("active");
 
-    System.out.println(
-        String.format(
-            "\n%s,%s,%s,%s,%s,%s",
-            this.getUid(),
-            this.getUpass(),
-            this.getUname(),
-            this.getUtype(),
-            this.getUcontact(),
-            this.getUstatus()));
-
     FileOperations.write("users.txt", this);
   }
 
-  public ArrayList<Hall> viewAvailableHalls() {
+  public ArrayList<Hall> viewAvailableHalls() throws IOException {
     ArrayList<Hall> halls = FileOperations.read("halls.txt");
     // this is retarded
 
     return null;
   }
 
-  public void bookHalls(String hallID, int[] timeSlots) {
+  public void bookHalls(String hallID, int[] timeSlots, LocalDate date) throws IOException {
     if (timeSlots.length > 2) {
       throw new IllegalArgumentException("Timeslots only accept an array of length 2");
     }
@@ -51,7 +43,6 @@ public class Customer extends User {
         throw new IllegalArgumentException("Invalid hall number");
       }
     }
-    FileOperations.write("halls.txt", halls);
 
     Payment payment = new Payment(Utils.generateID("payment"), this.getUid(), amount, "success");
     FileOperations.write("payments.txt", payment);
@@ -60,6 +51,9 @@ public class Customer extends User {
         new Booking(
             Utils.generateID("booking"), hallID, this, timeSlots, amount, "success", payment);
     FileOperations.write("bookings.txt", booking);
+
+    Schedule schedule = new Schedule(date, hallID, timeSlots);
+    FileOperations.write("schedules.txt", schedule);
   }
 
   public void viewBookings() {}

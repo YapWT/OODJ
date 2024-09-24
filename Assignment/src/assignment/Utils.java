@@ -38,12 +38,6 @@ public class Utils {
         Booking booking = (Booking) obj;
         typeOfData.add(booking.getBookingID());
       }
-    } else if (type.equals("s")) {
-      data = FileOperations.read("schedules.txt");
-      for (Object obj : data) {
-        Schedule schedule = (Schedule) obj;
-        typeOfData.add(schedule.getScheduleID());
-      }
     }
 
     int count = typeOfData.size();
@@ -60,7 +54,9 @@ public class Utils {
     if (runtimeClass == User.class && userTypes.contains(IDtype)) {
       for (T obj : objects) {
         User user = (User) obj;
-        if (user.getUid().equals(id)) return obj;
+        if (user.getUid().equals(id)) {
+            return obj;
+        }
       }
     } else if (runtimeClass == Payment.class && IDtype == 'P') {
       for (T obj : objects) {
@@ -76,32 +72,23 @@ public class Utils {
           return obj;
         }
       }
-    } else if (runtimeClass == Schedule.class && IDtype == 's') {
-      for (T obj : objects) {
-        Schedule schedule = (Schedule) obj;
-        if (schedule.getScheduleID().equals(id)) {
-          return obj;
-        }
-      }
     }
     return null;
   }
 
   // edit file
   // need to set before calling
-  public static <T> void editFile(String filename, String id, Class<T> runtimeClass) {
+
+  public static <T> void editFile(String filename, T data, Class<T> runtimeClass) {
     ArrayList<T> obj = FileOperations.read(filename);
 
     if (runtimeClass == User.class) {
-        User newD = IDtoObject(id, filename, User.class);
-        for (T row : obj) {
-            User user = (User) row;
-            if (user.getUid().equals(id)) {
-                user.setUpass(newD.getUpass());
-                user.setUname(newD.getUname());
-                user.setUstatus(newD.getUstatus());
-                user.setUcontact(newD.getUstatus());
-            }
+        User u = (User) data;
+        for (int i = 0; i < obj.size(); i++) {
+            User user = (User) obj.get(i);
+            if (user.getUid().equals(u.getUid()))
+                obj.set(i, (T) u);
+            break;
         }
     }
     // edit with rewrite all data

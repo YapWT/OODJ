@@ -23,7 +23,7 @@ class Admin extends Staff{
     public boolean modifyPass(JTable t, String row, String pass) {
         if (check(t, row)) {
             setUpass(pass);
-            Utils.editFile("users.txt", getUid(), User.class);
+            Utils.editFile("users.txt", this, User.class);
             model.setValueAt(pass.replaceAll(".", "*"), n - 1, 2);
             return true;
         } return false; // row is out of range or invalid data type = invalid row number
@@ -37,13 +37,13 @@ class Admin extends Staff{
             if (getUstatus().equals("blocked")) setUstatus("pending");
             else setUstatus("blocked");
         }
-        Utils.editFile("users.txt", getUid(), User.class);
+        Utils.editFile("users.txt", this, User.class);
         model.setValueAt(getUstatus(), n - 1, 6);
     }
     
     public void modifyStatus() { 
         setUstatus("deleted");
-        Utils.editFile("users.txt", getUid(), User.class);
+        Utils.editFile("users.txt", this, User.class);
         
         model.removeRow(n - 1);
         
