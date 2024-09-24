@@ -220,7 +220,7 @@ public class Utils {
       User user = (User) data;
       tableRow[0] = model.getRowCount() + 1;
       tableRow[1] = user.getUid();
-      tableRow[2] = user.getUpass();
+      tableRow[2] = user.getUpass().replaceAll(".", "*");
       tableRow[3] = user.getUname();
       tableRow[4] = user.getUtype();
       tableRow[5] = user.getUcontact();

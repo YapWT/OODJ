@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class uiAdmin extends javax.swing.JFrame {
     private Admin classA;
+    private String Uid;
 
     public uiAdmin() {
         initComponents();
@@ -19,10 +20,12 @@ public class uiAdmin extends javax.swing.JFrame {
         
         // user management
         this.classA = classA;
+        this.Uid = Uid;
         jLabel6.setVisible(false);
         jLabel6.setHorizontalAlignment(JLabel.CENTER);
         
         Utils.viewTable(TBL_view, "users.txt", User.class);
+        classA.removeCurrentAdmin(TBL_view, Uid);
         
         // add user
         BTN_add.addActionListener(e -> {
@@ -34,8 +37,7 @@ public class uiAdmin extends javax.swing.JFrame {
             
             if (option == JOptionPane.OK_OPTION) {
                 String name = PNL_add.getName();
-                String type = PNL_add.getType();
-                
+                String type = PNL_add.getType();     
                 if (type != null && name != null && !name.isEmpty()){
                     classA.addStaff(name, "123", type, "");
                     Utils.addTableRow(TBL_view, User.class, classA);
@@ -637,10 +639,12 @@ public class uiAdmin extends javax.swing.JFrame {
 
     private void BTN_fadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fadminActionPerformed
         Utils.viewTable(TBL_view, "users.txt", User.class, 3, "A");
+        classA.removeCurrentAdmin(TBL_view, Uid);
     }//GEN-LAST:event_BTN_fadminActionPerformed
 
     private void BTN_factiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_factiveActionPerformed
         Utils.viewTable(TBL_view, "users.txt", User.class, 5, "active");
+        classA.removeCurrentAdmin(TBL_view, Uid);
     }//GEN-LAST:event_BTN_factiveActionPerformed
 
     private void BTN_cancelfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelfActionPerformed
