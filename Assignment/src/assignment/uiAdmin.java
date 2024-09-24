@@ -40,6 +40,7 @@ public class uiAdmin extends javax.swing.JFrame {
                 String type = PNL_add.getType();     
                 if (type != null && name != null && !name.isEmpty()){
                     classA.addStaff(name, "123", type, "");
+                    Utils.viewTable(TBL_view, "users.txt", User.class);
                     Utils.addTableRow(TBL_view, User.class, classA);
                     jLabel6.setVisible(true);
                     jLabel6.setText(name + " Added!");
