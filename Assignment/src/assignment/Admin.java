@@ -1,5 +1,6 @@
 package assignment;
 
+import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -72,7 +73,16 @@ class Admin extends Staff{
         }
     }
     
-    public void search() {
+    public <T> void search(JTable t, String s) {
+        ((DefaultTableModel) t.getModel()).setRowCount(0);
+        ArrayList<T> objects = FileOperations.read("users.txt");
+        
+        for (T obj : objects) {
+            User user = (User) obj;
+            if (user.getUname().contains(s) && !user.getUstatus().equals("deleted"))
+                Utils.addTableRow(t, User.class, user);
+        }
+        
         
     }
     

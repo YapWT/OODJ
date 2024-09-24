@@ -693,7 +693,7 @@ public class uiAdmin extends javax.swing.JFrame {
 
     private void BTN_cancelf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelf2ActionPerformed
         if (jTextField1 != null)
-            classA.search();
+            classA.search(TBL_view, jTextField1.getText());
     }//GEN-LAST:event_BTN_cancelf2ActionPerformed
 
     /**
