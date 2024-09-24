@@ -10,6 +10,8 @@ import javax.swing.table.DefaultTableModel;
 public class uiAdmin extends javax.swing.JFrame {
     private Admin classA;
     private String Uid;
+    private boolean defaultPending = true;
+    private Character RoleSelected = null;
 
     public uiAdmin() {
         initComponents();
@@ -40,8 +42,8 @@ public class uiAdmin extends javax.swing.JFrame {
                 String type = PNL_add.getType();     
                 if (type != null && name != null && !name.isEmpty()){
                     classA.addStaff(name, "123", type, "");
-                    Utils.viewTable(TBL_view, "users.txt", User.class);
-                    Utils.addTableRow(TBL_view, User.class, classA);
+                    if (defaultPending && (classA.getUtype().equals(RoleSelected) || RoleSelected == null))
+                        Utils.addTableRow(TBL_view, User.class, classA);
                     jLabel6.setVisible(true);
                     jLabel6.setText(name + " Added!");
                 } else {
@@ -639,40 +641,50 @@ public class uiAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_modifyPassActionPerformed
 
     private void BTN_fadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fadminActionPerformed
+        RoleSelected = 'A';
         Utils.viewTable(TBL_view, "users.txt", User.class, 3, "A");
         classA.removeCurrentAdmin(TBL_view, Uid);
     }//GEN-LAST:event_BTN_fadminActionPerformed
 
     private void BTN_factiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_factiveActionPerformed
+        defaultPending = false;
         Utils.viewTable(TBL_view, "users.txt", User.class, 5, "active");
         classA.removeCurrentAdmin(TBL_view, Uid);
     }//GEN-LAST:event_BTN_factiveActionPerformed
 
     private void BTN_cancelfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelfActionPerformed
+        defaultPending = true;
+        RoleSelected = null;
         Utils.viewTable(TBL_view, "users.txt", User.class);
     }//GEN-LAST:event_BTN_cancelfActionPerformed
 
     private void BTN_fpendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpendingActionPerformed
+        defaultPending = true;
         Utils.viewTable(TBL_view, "users.txt", User.class, 5, "pending");
     }//GEN-LAST:event_BTN_fpendingActionPerformed
 
     private void BTN_fcustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fcustomerActionPerformed
+        RoleSelected = 'C';
         Utils.viewTable(TBL_view, "users.txt", User.class, 3, "C");
     }//GEN-LAST:event_BTN_fcustomerActionPerformed
 
     private void BTN_fmanagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fmanagerActionPerformed
+        RoleSelected = 'M';
         Utils.viewTable(TBL_view, "users.txt", User.class, 3, "M");
     }//GEN-LAST:event_BTN_fmanagerActionPerformed
 
     private void BTN_fschedulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fschedulerActionPerformed
+        RoleSelected = 'S';
         Utils.viewTable(TBL_view, "users.txt", User.class, 3, "S");
     }//GEN-LAST:event_BTN_fschedulerActionPerformed
 
     private void BTN_fdeactivedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fdeactivedActionPerformed
+        defaultPending = false;
         Utils.viewTable(TBL_view, "users.txt", User.class, 5, "deactived");
     }//GEN-LAST:event_BTN_fdeactivedActionPerformed
 
     private void BTN_fblockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fblockActionPerformed
+        defaultPending = false;
         Utils.viewTable(TBL_view, "users.txt", User.class, 5, "blocked");
     }//GEN-LAST:event_BTN_fblockActionPerformed
 
@@ -693,6 +705,8 @@ public class uiAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_cancelf1ActionPerformed
 
     private void BTN_cancelf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelf2ActionPerformed
+        defaultPending = true;
+        RoleSelected = null;
         if (jTextField1 != null)
             classA.search(TBL_view, jTextField1.getText());
     }//GEN-LAST:event_BTN_cancelf2ActionPerformed
