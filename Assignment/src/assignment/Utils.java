@@ -87,21 +87,20 @@ public class Utils {
     return null;
   }
 
-  // edit one column of a row
-  public static <T> void editFile(String filename, String id, int column, String newData, Class<T> runtimeClass) {
+  // edit file
+  // need to set before calling
+  public static <T> void editFile(String filename, String id, Class<T> runtimeClass) {
     ArrayList<T> obj = FileOperations.read(filename);
 
     if (runtimeClass == User.class) {
+        User newD = IDtoObject(id, filename, User.class);
         for (T row : obj) {
             User user = (User) row;
             if (user.getUid().equals(id)) {
-                switch (column) {
-                    case 1: user.setUpass(newData); break;
-                    case 2: user.setUname(newData); break;
-                    case 4: user.setUcontact(newData); break;
-                    case 5: user.setUstatus(newData); break;
-                }
-            break;
+                user.setUpass(newD.getUpass());
+                user.setUname(newD.getUname());
+                user.setUstatus(newD.getUstatus());
+                user.setUcontact(newD.getUstatus());
             }
         }
     }

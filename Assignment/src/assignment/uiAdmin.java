@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class uiAdmin extends javax.swing.JFrame {
+    private Admin classA;
 
     public uiAdmin() {
         initComponents();
@@ -17,6 +18,7 @@ public class uiAdmin extends javax.swing.JFrame {
         initComponents();
         
         // user management
+        this.classA = classA;
         jLabel6.setVisible(false);
         jLabel6.setHorizontalAlignment(JLabel.CENTER);
         
@@ -173,8 +175,7 @@ public class uiAdmin extends javax.swing.JFrame {
         });
         
 
-        // hall
-//        this.classH = new Hall();
+        // view booking
         
         // updateProfile
         Panel_updateProfile PNL_profile = new Panel_updateProfile(Uid, new User());
@@ -187,6 +188,7 @@ public class uiAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         BTN_groupAdd = new javax.swing.ButtonGroup();
+        BTN_cancelf1 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -212,11 +214,20 @@ public class uiAdmin extends javax.swing.JFrame {
         BTN_fdeactived = new javax.swing.JButton();
         BTN_fpending = new javax.swing.JButton();
         BTN_cancelf = new javax.swing.JButton();
+        BTN_cancelf2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         TBL_view1 = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+
+        BTN_cancelf1.setText("Cancel Filter");
+        BTN_cancelf1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTN_cancelf1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_cancelf1ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -389,6 +400,14 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        BTN_cancelf2.setText("Go");
+        BTN_cancelf2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTN_cancelf2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_cancelf2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -401,40 +420,45 @@ public class uiAdmin extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BTN_cancelf2))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                            .addComponent(BTN_factive)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(BTN_fpending)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(BTN_fdeactived)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(BTN_fblock, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                            .addComponent(BTN_fadmin)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(BTN_fcustomer)
-                                            .addGap(6, 6, 6)
-                                            .addComponent(BTN_fmanager)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(BTN_fscheduler)))
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(BTN_blockC)
-                                            .addGap(47, 47, 47)
-                                            .addComponent(BTN_deactive))
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(BTN_add)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(BTN_modifyPass)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(BTN_deleteC)))))))
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(5, 5, 5)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                    .addComponent(BTN_factive)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(BTN_fpending)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(BTN_fdeactived)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(BTN_fblock, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                    .addComponent(BTN_fadmin)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(BTN_fcustomer)
+                                                    .addGap(6, 6, 6)
+                                                    .addComponent(BTN_fmanager)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(BTN_fscheduler)))
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                                    .addComponent(BTN_blockC)
+                                                    .addGap(47, 47, 47)
+                                                    .addComponent(BTN_deactive))
+                                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                                    .addComponent(BTN_add)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(BTN_modifyPass)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(BTN_deleteC))))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(144, 144, 144)
                         .addComponent(BTN_cancelf)))
@@ -478,7 +502,8 @@ public class uiAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(jLabel9)
+                    .addComponent(BTN_cancelf2))
                 .addGap(18, 18, 18)
                 .addComponent(BTN_cancelf))
         );
@@ -504,7 +529,7 @@ public class uiAdmin extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -584,7 +609,7 @@ public class uiAdmin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(224, 224, 224)
                         .addComponent(jLabel2)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -658,6 +683,15 @@ public class uiAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BTN_deleteCActionPerformed
 
+    private void BTN_cancelf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelf1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_cancelf1ActionPerformed
+
+    private void BTN_cancelf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelf2ActionPerformed
+        if (jTextField1 != null)
+            classA.search();
+    }//GEN-LAST:event_BTN_cancelf2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -698,6 +732,8 @@ public class uiAdmin extends javax.swing.JFrame {
     private javax.swing.JButton BTN_add;
     private javax.swing.JButton BTN_blockC;
     private javax.swing.JButton BTN_cancelf;
+    private javax.swing.JButton BTN_cancelf1;
+    private javax.swing.JButton BTN_cancelf2;
     private javax.swing.JButton BTN_deactive;
     private javax.swing.JButton BTN_deleteC;
     private javax.swing.JButton BTN_factive;

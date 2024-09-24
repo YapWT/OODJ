@@ -283,7 +283,8 @@ public class Panel_updateProfile extends javax.swing.JPanel {
         );
 
         if (result == JOptionPane.YES_OPTION) {
-            Utils.editFile("users.txt", updateProfile.getUid(), 5, "deleted", User.class);
+            setUstatus("deleted");
+            Utils.editFile("users.txt", updateProfile.getUid(), User.class);
             jLabel8.setText("Account deleted.");
             updateProfile.logout(this);
         } else
