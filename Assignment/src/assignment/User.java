@@ -76,7 +76,8 @@ public class User implements initialize, login_logout, profile {
                 case "blocked":
                     return "block";
                 case "pending":
-                    Utils.editFile("users.txt", Uid, 5, "active", User.class);
+                    setUstatus("active");
+                    Utils.editFile("users.txt", Uid, User.class);
                     return "pending";
                 case "deleted":
                     return "Failed";
@@ -97,14 +98,18 @@ public class User implements initialize, login_logout, profile {
         if (Uname.isEmpty() | Uname == null) return false;
 
         this.Uname = Uname;
-        Utils.editFile("users.txt", Uid, 2, Uname, User.class);
+        setUname(Uname);
+        Utils.editFile("users.txt", Uid, User.class);
         return true;
     }
 
     public String updatePass(String Upass, String newPass) {
         if (!Upass.equals(this.Upass)) return "Incorrect";
         else if (Upass.equals(newPass)) return "Same";
-        else Utils.editFile("users.txt", Uid, 1, newPass, User.class);
+        else {
+            setUpass(newPass);
+            Utils.editFile("users.txt", Uid, User.class);
+        }
 
         this.Upass = newPass;
         return "Done";
@@ -113,7 +118,10 @@ public class User implements initialize, login_logout, profile {
     public boolean updateC(String Ucontact) {
         if (Ucontact == null | Ucontact.isEmpty()) return false;
 
-         if (Utils.checkContact(Ucontact)) Utils.editFile("users.txt", Uid, 4, Ucontact, User.class);
+         if (Utils.checkContact(Ucontact)) {
+             setUcontact(Ucontact);
+             Utils.editFile("users.txt", Uid, User.class);
+         }
          else return false;
 
         this.Ucontact = Ucontact;
