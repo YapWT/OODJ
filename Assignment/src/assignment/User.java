@@ -97,14 +97,11 @@ public User(String id, String pass, String name, String type, String contact, St
 
   public boolean updateName(String Uname) {
     if (Uname.isEmpty() | Uname == null) return false;
-
-        System.out.println(Uname);
-        this.Uname = Uname;
-        setUname(Uname);
-        System.out.println(this);
-        Utils.editFile("users.txt", this, User.class);
-        System.out.println(this.Uname);
-        return true;
+    
+    this.Uname = Uname;
+    setUname(Uname);
+    Utils.editFile("users.txt", this, User.class);
+    return true;
     }
 
     public String updatePass(String Upass, String newPass) {
@@ -122,11 +119,11 @@ public User(String id, String pass, String name, String type, String contact, St
   public boolean updateC(String Ucontact) {
     if (Ucontact == null | Ucontact.isEmpty()) return false;
 
-         if (Utils.checkContact(Ucontact)) {
-             setUcontact(Ucontact);
-             Utils.editFile("users.txt", this, User.class);
-         }
-         else return false;
+    if (Utils.checkContact(Ucontact)) {
+        setUcontact(Ucontact);
+        Utils.editFile("users.txt", this, User.class);
+    }
+    else return false;
 
     this.Ucontact = Ucontact;
     return true;
