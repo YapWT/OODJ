@@ -25,7 +25,7 @@ public class Customer extends User {
     return null;
   }
 
-  public void bookHalls(String hallID, int[] timeSlots, LocalDate date) throws IOException {
+  public void bookHalls(String hallID, int[] timeSlots, LocalDate date) {
     if (timeSlots.length > 2) {
       throw new IllegalArgumentException("Timeslots only accept an array of length 2");
     }

@@ -2,6 +2,7 @@ package assignment;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -48,6 +49,11 @@ public class FileOperations {
               new int[] {Integer.parseInt(data.get(2)), Integer.parseInt(data.get(3))};
           result.add((T) new Schedule(LocalDate.parse(data.get(0)), data.get(1), timeSlots));
         }
+      }
+    } catch (FileNotFoundException e) {
+      if (filename.contains("schedules")) {
+        result.add((T) new Schedule());
+        return result;
       }
     } catch (IOException e) {
       System.out.println("Error when reading " + filename + ".\n " + e);
