@@ -1,5 +1,8 @@
-package assignment;
+  package assignment;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -34,6 +37,18 @@ public class Utils {
       for (Object obj : data) {
         Booking booking = (Booking) obj;
         typeOfData.add(booking.getBookingID());
+      }
+    } else if (type.equals("s")) {
+      data = FileOperations.read("schedules.txt");
+      for (Object obj : data) {
+        Schedule schedule = (Schedule) obj;
+        typeOfData.add(schedule.getScheduleID());
+      }
+    } else if (type.equals("I")) {
+      data = FileOperations.read("issues.txt");
+      for (Object obj : data) {
+        Schedule schedule = (Schedule) obj;
+        typeOfData.add(schedule.getScheduleID());
       }
     }
 
@@ -71,44 +86,25 @@ public class Utils {
     return null;
   }
 
-  // edit one column of a row
-  public static <T> void editFile(
-      String filename, String id, int column, String newData, Class<T> runtimeClass) {
+  // edit file
+  // need to set before calling
+  public static <T> void editFile(String filename, String id, Class<T> runtimeClass) {
     ArrayList<T> obj = FileOperations.read(filename);
 
     if (runtimeClass == User.class) {
-      for (T row : obj) {
-        User user = (User) row;
-        if (user.getUid().equals(id)) {
-          setColumnValue(column, newData, row);
-          break;
+        User newD = IDtoObject(id, filename, User.class);
+        for (T row : obj) {
+            User user = (User) row;
+            if (user.getUid().equals(id)) {
+                user.setUpass(newD.getUpass());
+                user.setUname(newD.getUname());
+                user.setUstatus(newD.getUstatus());
+                user.setUcontact(newD.getUstatus());
+            }
         }
-      }
     }
     // edit with rewrite all data
     FileOperations.write(filename, obj);
-  }
-
-  private static <T> void setColumnValue(int column, String value, T row) {
-    // id is not avalable to make modify
-    if (row instanceof User) {
-      // type is not avaible to edit
-      User user = (User) row;
-      switch (column) {
-        case 1:
-          user.setUpass(value);
-          break;
-        case 2:
-          user.setUname(value);
-          break;
-        case 4:
-          user.setUcontact(value);
-          break;
-        case 5:
-          user.setUstatus(value);
-          break;
-      }
-    }
   }
 
   public static boolean checkContact(String contact) {
@@ -225,7 +221,7 @@ public class Utils {
           tableRow[0] = a.getUid();
           tableRow[1] = a.getUname();
           tableRow[2] = a.getUcontact();
-          System.out.println(a.getUid());
+
           model.addRow(tableRow);
         }
       }
@@ -249,4 +245,5 @@ public class Utils {
       model.addRow(tableRow);
     }
   }
+  
 }

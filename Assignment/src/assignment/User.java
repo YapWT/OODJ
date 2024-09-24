@@ -62,26 +62,29 @@ public class User implements initialize, login_logout, profile {
     }
   }
 
-  public String login() {
-    User data = Utils.IDtoObject(Uid, "users.txt", User.class);
+    public String login() {
+        User data = Utils.IDtoObject(Uid, "users.txt", User.class);
 
-    if (data != null) {
-      if (data.getUid().equals(Uid) && data.getUpass().equals(Upass)) {
-        this.Utype = data.getUtype();
-        this.Ustatus = data.getUstatus();
+        if (data != null) {
+            if (data.getUid().equals(Uid) && data.getUpass().equals(Upass)) {
+              this.Utype = data.getUtype();
+              this.Ustatus = data.getUstatus();
 
-        switch (Ustatus) {
-          case "active":
-            return "Login";
-          case "blocked":
-            return "block";
-          case "pending":
-            Utils.editFile("users.txt", Uid, 5, "active", User.class);
-            return "pending";
-          case "deleted":
-            return "Failed";
-          default:
-            return "deactivate";
+              switch (Ustatus) {
+                case "active":
+                    return "Login";
+                case "blocked":
+                    return "block";
+                case "pending":
+                    setUstatus("active");
+                    Utils.editFile("users.txt", Uid, User.class);
+                    return "pending";
+                case "deleted":
+                    return "Failed";
+                default:
+                    return "deactivate";
+                }
+            }
         }
       }
     }
@@ -96,15 +99,20 @@ public class User implements initialize, login_logout, profile {
   public boolean updateName(String Uname) {
     if (Uname.isEmpty() | Uname == null) return false;
 
-    this.Uname = Uname;
-    Utils.editFile("users.txt", Uid, 2, Uname, User.class);
-    return true;
-  }
 
-  public String updatePass(String Upass, String newPass) {
-    if (!Upass.equals(this.Upass)) return "Incorrect";
-    else if (Upass.equals(newPass)) return "Same";
-    else Utils.editFile("users.txt", Uid, 1, newPass, User.class);
+        this.Uname = Uname;
+        setUname(Uname);
+        Utils.editFile("users.txt", Uid, User.class);
+        return true;
+    }
+
+    public String updatePass(String Upass, String newPass) {
+        if (!Upass.equals(this.Upass)) return "Incorrect";
+        else if (Upass.equals(newPass)) return "Same";
+        else {
+            setUpass(newPass);
+            Utils.editFile("users.txt", Uid, User.class);
+        }
 
     this.Upass = newPass;
     return "Done";
@@ -113,8 +121,11 @@ public class User implements initialize, login_logout, profile {
   public boolean updateC(String Ucontact) {
     if (Ucontact == null | Ucontact.isEmpty()) return false;
 
-    if (Utils.checkContact(Ucontact)) Utils.editFile("users.txt", Uid, 4, Ucontact, User.class);
-    else return false;
+         if (Utils.checkContact(Ucontact)) {
+             setUcontact(Ucontact);
+             Utils.editFile("users.txt", Uid, User.class);
+         }
+         else return false;
 
     this.Ucontact = Ucontact;
     return true;

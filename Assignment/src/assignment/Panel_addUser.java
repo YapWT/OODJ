@@ -88,7 +88,13 @@ public class Panel_addUser extends javax.swing.JPanel {
     }
     
     public String getType() {
-        return new RadioBtnSettings().getValue(buttonGroup1);
+        for (var buttons = buttonGroup1.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+            if (button.isSelected()) {
+                return button.getText();
+            }
+        }
+        return null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
