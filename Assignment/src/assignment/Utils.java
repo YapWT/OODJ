@@ -76,9 +76,11 @@ public class Utils {
     return null;
   }
 
-  // edit file
   // need to set before calling
-
+  /* 
+    setUpass(newPass);
+    Utils.editFile("users.txt", this, User.class);
+  */
   public static <T> void editFile(String filename, T data, Class<T> runtimeClass) {
     ArrayList<T> obj = FileOperations.read(filename);
 
