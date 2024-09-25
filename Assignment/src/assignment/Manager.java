@@ -23,4 +23,8 @@ public class Manager extends Staff {
           }
       }
   }
+  
+  public void showStatus(JComboBox cb) {
+      
+  }
 }
