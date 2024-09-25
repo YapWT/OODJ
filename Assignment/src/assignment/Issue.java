@@ -7,22 +7,13 @@ package assignment;
 public class Issue {
       
     private String issueID;
-    private String booking;
+    private Booking booking;
     private String description;
     private String response;
     private String status;
     private String assignedStaff;
 
-    public Issue() {}
-
-    public Issue(String issueID, String booking, String description, String response, String status, String assignedStaff) {
-        this.issueID = issueID;
-        this.booking = booking;
-        this.description = description;
-        this.response = response;
-        this.status = status;
-        this.assignedStaff = assignedStaff;
-    }    
+    
     
     public String getAssignedStaff() {
         return assignedStaff;
@@ -56,11 +47,11 @@ public class Issue {
         this.response = response;
     }
 
-    public String getBooking() {
+    public Booking getBooking() {
         return booking;
     }
 
-    public void setBooking(String booking) {
+    public void setBooking(Booking booking) {
         this.booking = booking;
     }
 

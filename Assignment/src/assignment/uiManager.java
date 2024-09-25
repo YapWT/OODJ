@@ -22,11 +22,9 @@ public class uiManager extends javax.swing.JFrame {
         
         // update profile
         // updateProfile
-        /*
         Panel_updateProfile PNL_profile = new Panel_updateProfile(ID, new User());
         jPanel8.setLayout(new BorderLayout());
         jPanel8.add(PNL_profile, BorderLayout.CENTER);
-        */
     }
 
     @SuppressWarnings("unchecked")
