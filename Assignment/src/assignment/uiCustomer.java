@@ -57,8 +57,20 @@ public class uiCustomer extends javax.swing.JFrame {
     datePicker.addDateChangeListener(
         new DateChangeListener() {
           public void dateChanged(DateChangeEvent event) {
-            System.out.println("table display is called" + schedule.toString());
             datePicker.setDate(event.getNewDate());
+            schedule.setScheduleDate(datePicker.getDate());
+            if (Schedule.checkIfScheduleExists(datePicker.getDate(), hallComboBox.getSelectedItem().toString())) {
+                schedule = Schedule.scheduleObjectify(datePicker.getDate(), hallComboBox.getSelectedItem().toString());
+            } else {
+                schedule.setScheduleDate(datePicker.getDate());
+                schedule.setHallID(hallComboBox.getSelectedItem().toString());
+                String[] scheduleSlots = new String[10];
+                Arrays.fill(scheduleSlots, "available");
+
+                schedule.setTimeSlot(scheduleSlots);
+                FileOperations.write("schedules.txt", schedule);
+            }
+            System.out.println("table display is called" + schedule.toString());
             Schedule.displaySchedule(scheduleTable, schedule);
           }
         });
