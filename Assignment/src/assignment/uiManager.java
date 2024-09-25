@@ -23,11 +23,9 @@ public class uiManager extends javax.swing.JFrame {
         
         // update profile
         // updateProfile
-        /*
         Panel_updateProfile PNL_profile = new Panel_updateProfile(ID, new User());
         jPanel8.setLayout(new BorderLayout());
         jPanel8.add(PNL_profile, BorderLayout.CENTER);
-        */
     }
 
     @SuppressWarnings("unchecked")
@@ -434,10 +432,6 @@ public class uiManager extends javax.swing.JFrame {
     private void responseTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_responseTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_responseTxtActionPerformed
-
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
 
     /**
      * @param args the command line arguments

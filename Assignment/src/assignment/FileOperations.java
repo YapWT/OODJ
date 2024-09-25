@@ -88,7 +88,6 @@ public class FileOperations {
               }
         }
       }
-      
     } catch (FileNotFoundException e) {
       if (filename.contains("schedules")) {
         result.add((T) new Schedule());

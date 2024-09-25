@@ -68,7 +68,7 @@ public class Utils {
           return obj;
         }
       }
-    } 
+    }
     return null;
   }
 
@@ -172,7 +172,6 @@ public class Utils {
               tableRow[4] = issue.getStatus();
               tableRow[5] = issue.getAssignedStaff();
               model.addRow(tableRow);
-              System.out.println(tableRow);
           }
       }
     }

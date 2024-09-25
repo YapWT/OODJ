@@ -26,6 +26,7 @@ public class uiScheduler extends javax.swing.JFrame {
         editHall = new javax.swing.JButton();
         addHall = new javax.swing.JButton();
         btnUpdateProfile = new javax.swing.JButton();
+        viewSchedule = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,6 +111,18 @@ public class uiScheduler extends javax.swing.JFrame {
             }
         });
 
+        viewSchedule.setBackground(new java.awt.Color(255, 255, 255));
+        viewSchedule.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        viewSchedule.setForeground(new java.awt.Color(0, 0, 0));
+        viewSchedule.setText("View Schedule");
+        viewSchedule.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        viewSchedule.setBorderPainted(false);
+        viewSchedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewScheduleActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -123,7 +136,8 @@ public class uiScheduler extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(scheduleHall, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(editHall, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(addHall, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
+                                .addComponent(addHall, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+                                .addComponent(viewSchedule, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(btnUpdateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(83, 83, 83)
@@ -144,6 +158,8 @@ public class uiScheduler extends javax.swing.JFrame {
                 .addComponent(editHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scheduleHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnUpdateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
@@ -198,6 +214,12 @@ public class uiScheduler extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnUpdateProfileActionPerformed
 
+    private void viewScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewScheduleActionPerformed
+        SchedulerPanel.removeAll();
+        SchedulerPanel.repaint();
+        SchedulerPanel.add(new uiViewSchedule().getPanel());
+    }//GEN-LAST:event_viewScheduleActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -242,5 +264,6 @@ public class uiScheduler extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton scheduleHall;
     private javax.swing.JButton viewHall;
+    private javax.swing.JButton viewSchedule;
     // End of variables declaration//GEN-END:variables
 }
