@@ -4,6 +4,7 @@
  */
 package assignment;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
@@ -227,6 +228,7 @@ public class uiScheduleHall extends javax.swing.JFrame {
     }//GEN-LAST:event_endSlotActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        System.out.print(datePicker.getDate());
         if(startSlot.getSelectedIndex() > endSlot.getSelectedIndex()) {
             lblRemarks.setText("Start time must be before or equals to end time!");
         }else{
