@@ -87,7 +87,10 @@ public class Scheduler extends Staff {
           break;
         }
     }
-    data = HallID + "|" + HallType + "|" + HallStatus;
+    Hall hall = Utils.IDtoObject(HallID, "halls.txt",Hall.class);
+    hall.setHallType(HallType);
+    hall.setHallType(HallType);
+    data = hall.getHallID()+"|"+hall.getHallType()+"|"+hall.getHallStatus();
       Scanner sc = new Scanner(new File("halls.txt"));
         StringBuffer buffer = new StringBuffer();
         while (sc.hasNextLine()) {
