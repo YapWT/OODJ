@@ -137,27 +137,15 @@ public class Panel_updateProfile extends javax.swing.JPanel {
 
         BTN_name.setText("Change User Name");
         BTN_name.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BTN_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_nameActionPerformed(evt);
-            }
-        });
+
 
         BTN_c.setText("Change Contact");
         BTN_c.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BTN_c.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_cActionPerformed(evt);
-            }
-        });
+
 
         BTN_pass.setText("Change Password");
         BTN_pass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BTN_pass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_passActionPerformed(evt);
-            }
-        });
+
 
         BTN_delete.setText("Delete Account");
         BTN_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -261,17 +249,6 @@ public class Panel_updateProfile extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BTN_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_nameActionPerformed
-
-    private void BTN_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_cActionPerformed
-
-    private void BTN_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_passActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_passActionPerformed
 
     private void BTN_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_deleteActionPerformed
         int result = JOptionPane.showConfirmDialog(

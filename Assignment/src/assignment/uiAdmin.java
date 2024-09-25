@@ -228,11 +228,7 @@ public class uiAdmin extends javax.swing.JFrame {
 
         BTN_cancelf1.setText("Cancel Filter");
         BTN_cancelf1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BTN_cancelf1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_cancelf1ActionPerformed(evt);
-            }
-        });
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -288,43 +284,23 @@ public class uiAdmin extends javax.swing.JFrame {
 
         BTN_deactive.setText("Deactive/Reactivate Staff");
         BTN_deactive.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BTN_deactive.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_deactiveActionPerformed(evt);
-            }
-        });
+
 
         BTN_deleteC.setText("Delete Customer");
         BTN_deleteC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BTN_deleteC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_deleteCActionPerformed(evt);
-            }
-        });
+
 
         BTN_modifyPass.setText("Modify Password");
         BTN_modifyPass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BTN_modifyPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_modifyPassActionPerformed(evt);
-            }
-        });
+
 
         BTN_add.setText("Add User");
         BTN_add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BTN_add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_addActionPerformed(evt);
-            }
-        });
+
 
         BTN_blockC.setText("Block/Unblock Customer");
         BTN_blockC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BTN_blockC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_blockCActionPerformed(evt);
-            }
-        });
+
 
         jLabel7.setText("Filter User by Status: ");
 
@@ -632,14 +608,6 @@ public class uiAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BTN_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_addActionPerformed
-
-    }//GEN-LAST:event_BTN_addActionPerformed
-
-    private void BTN_modifyPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_modifyPassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_modifyPassActionPerformed
-
     private void BTN_fadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fadminActionPerformed
         RoleSelected = 'A';
         Utils.viewTable(TBL_view, "users.txt", User.class, 3, "A");
@@ -687,22 +655,6 @@ public class uiAdmin extends javax.swing.JFrame {
         defaultPending = false;
         Utils.viewTable(TBL_view, "users.txt", User.class, 5, "blocked");
     }//GEN-LAST:event_BTN_fblockActionPerformed
-
-    private void BTN_blockCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_blockCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_blockCActionPerformed
-
-    private void BTN_deactiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_deactiveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_deactiveActionPerformed
-
-    private void BTN_deleteCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_deleteCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_deleteCActionPerformed
-
-    private void BTN_cancelf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelf1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_cancelf1ActionPerformed
 
     private void BTN_cancelf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelf2ActionPerformed
         defaultPending = true;
