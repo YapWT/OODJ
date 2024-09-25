@@ -200,11 +200,15 @@ public class uiScheduler extends javax.swing.JFrame {
     }//GEN-LAST:event_viewHallActionPerformed
 
     private void maintainHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintainHallActionPerformed
-        // TODO add your handling code here:
+        SchedulerPanel.removeAll();
+        SchedulerPanel.repaint();
+        SchedulerPanel.add(new uiMaintainence().getPanel());
     }//GEN-LAST:event_maintainHallActionPerformed
 
     private void scheduleHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleHallActionPerformed
-        // TODO add your handling code here:
+        SchedulerPanel.removeAll();
+        SchedulerPanel.repaint();
+        SchedulerPanel.add(new uiScheduleHall().getPanel());
     }//GEN-LAST:event_scheduleHallActionPerformed
 
     private void btnUpdateProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateProfileActionPerformed
