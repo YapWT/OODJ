@@ -67,7 +67,9 @@ public class Schedule {
 
   public static boolean checkIfScheduleExists(LocalDate scheduleDate, String hallID) {
     ArrayList<Schedule> schedules = FileOperations.read("schedules.txt", Schedule.class);
-    if (schedules != null && !schedules.isEmpty()) {
+    if (schedules != null && !schedules.isEmpty() && !schedules.get(0).isEmpty()) {
+      System.out.println("Schedule is null");
+      System.out.println(schedules.size());
       for (Schedule schedule : schedules) {
         if (schedule.getScheduleDate().toString().equals(scheduleDate.toString())
             && schedule.getHallID().equals(hallID)) {
@@ -121,19 +123,20 @@ public class Schedule {
   public static void overwriteOldSchedule(Schedule newSchedule) {
     String targetDate = newSchedule.getScheduleDate().toString();
     String targetHallID = newSchedule.getHallID();
-    System.out.println(targetDate + targetHallID);
-    System.out.println(newSchedule.getTimeSlot()[0]);
 
     ArrayList<Schedule> schedules = FileOperations.read("schedules.txt", Schedule.class);
 
     for (Schedule schedule : schedules) {
       if (targetDate.equals(schedule.getScheduleDate().toString())
           && targetHallID.equals(schedule.getHallID())) {
-        System.out.println("Found a old record");
         schedule.setTimeSlot(newSchedule.getTimeSlot());
       }
     }
 
     FileOperations.write("schedules.txt", schedules);
+  }
+
+  public boolean isEmpty() {
+    return hallID == null;
   }
 }
