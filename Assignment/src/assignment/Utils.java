@@ -215,11 +215,10 @@ public class Utils {
       model.setRowCount(0);
       ArrayList<Hall> halls = FileOperations.read("halls.txt");
       Object[] tableRow = new Object[3];
-      if(halls!=null)
-      {
-          for(Hall hall : halls)
-          {
-              if (hall.getHallType()==hallType && hall.getHallStatus()==hallStatus)
+        for(Hall hall : halls)
+          {   
+              System.out.println(hall.getHallType()+" "+hall.getHallID());
+              if (hall.getHallType().equals(hallType) && hall.getHallStatus().equals(hallStatus))
               {
                   tableRow[0]=hall.getHallID();
                   tableRow[1]=hallType;
@@ -227,11 +226,8 @@ public class Utils {
                   
                   model.addRow(tableRow);
                }
-
-
           }
-                        }
-      }
+  }
 
   public static <T> void addTableRow(JTable t, Class<T> runtimeClass, T data) {
     DefaultTableModel model = (DefaultTableModel) t.getModel();

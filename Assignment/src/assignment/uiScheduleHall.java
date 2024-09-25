@@ -229,6 +229,9 @@ public class uiScheduleHall extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if(startSlot.getSelectedIndex() > endSlot.getSelectedIndex()) {
             lblRemarks.setText("Start time must be before or equals to end time!");
+        }else{
+            int[] bookingSlot = new int[] {startSlot.getSelectedIndex(), endSlot.getSelectedIndex()-1};
+            
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
