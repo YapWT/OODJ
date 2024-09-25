@@ -120,7 +120,7 @@ public class Scheduler extends Staff {
             availableSlots[i] = status;
             }
           schedule.setTimeSlot(availableSlots);
-          FileOperations.write("schedules.txt", schedule.toString()); 
+          FileOperations.write("schedules.txt", schedule); 
       }
   }
 }
