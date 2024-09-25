@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  * @author zhusheng
  */
 public class uiScheduleHall extends javax.swing.JFrame {
-
+    private Scheduler scheduler;
     /**
      * Creates new form uiScheduleHall
      */
@@ -31,8 +31,13 @@ public class uiScheduleHall extends javax.swing.JFrame {
       "5:00pm",
       "6:00pm"
     };
-    public uiScheduleHall() {
+    public uiScheduleHall()
+    {
+        
+    }
+    public uiScheduleHall(Scheduler scheduler) {
         initComponents();
+        this.scheduler = scheduler;
         datePicker.setDateToToday();
         ArrayList<Hall> halls = FileOperations.read("halls.txt", Hall.class);
         for(String slot : timeSlotComboStrings) {
@@ -229,8 +234,8 @@ public class uiScheduleHall extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         System.out.print(datePicker.getDate());
-        if(startSlot.getSelectedIndex() > endSlot.getSelectedIndex()) {
-            lblRemarks.setText("Start time must be before or equals to end time!");
+        if(startSlot.getSelectedIndex() >= endSlot.getSelectedIndex()) {
+            lblRemarks.setText("Start time must be before end time!");
         }else{
             int[] bookingSlot = new int[] {startSlot.getSelectedIndex(), endSlot.getSelectedIndex()-1};
             
