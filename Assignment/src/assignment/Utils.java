@@ -10,27 +10,21 @@ public class Utils {
     List<String> typeOfData = new ArrayList<>();
 
     if (type.equals("C") || type.equals("A") || type.equals("S") || type.equals("M")) {
-      data = FileOperations.read("users.txt");
+      data = FileOperations.read("users.txt", User.class);
       for (Object obj : data) {
         User user = (User) obj;
         if (user.getUtype().equals(type)) {
           typeOfData.add(user.getUid());
         }
       }
-    } else if (type.equals("P")) {
-      data = FileOperations.read("payments.txt");
-      for (Object obj : data) {
-        Payment payment = (Payment) obj;
-        typeOfData.add(payment.getPaymentID());
-      }
     } else if (type.equals("H")) {
-      data = FileOperations.read("halls.txt");
+      data = FileOperations.read("halls.txt", Hall.class);
       for (Object obj : data) {
         Hall hall = (Hall) obj;
         typeOfData.add(hall.getHallID());
       }
     } else if (type.equals("B")) {
-      data = FileOperations.read("bookings.txt");
+      data = FileOperations.read("bookings.txt", Booking.class);
       for (Object obj : data) {
         Booking booking = (Booking) obj;
         typeOfData.add(booking.getBookingID());
@@ -43,19 +37,10 @@ public class Utils {
   }
 
   public static <T> T IDtoObject(String id, String filename, Class<T> runtimeClass) {
-    ArrayList<T> objects = FileOperations.read(filename);
-    ArrayList<Character> userTypes = new ArrayList<>(Arrays.asList('A', 'S', 'C', 'M'));
-
+    ArrayList<T> objects = FileOperations.read(filename, runtimeClass);
     char IDtype = id.charAt(0);
 
-    if (runtimeClass == User.class && userTypes.contains(IDtype)) {
-      for (T obj : objects) {
-        User user = (User) obj;
-        if (user.getUid().equals(id)) {
-          return obj;
-        }
-      }
-    } else if (runtimeClass == Hall.class && IDtype == 'H') {
+    if (runtimeClass == Hall.class && IDtype == 'H') {
       for (T obj : objects) {
         Hall hall = (Hall) obj;
         if (hall.getHallID().equals(id)) {
@@ -69,6 +54,20 @@ public class Utils {
           return obj;
         }
       }
+    } else if (runtimeClass == Customer.class && IDtype == 'C') {
+      for (T obj : objects) {
+        Customer customer = (Customer) obj;
+        if (customer.getUid().equals(id)) {
+          return obj;
+        }
+      }
+    } else if (runtimeClass == User.class) {
+      for (T obj : objects) {
+        User user = (User) obj;
+        if (user.getUid().equals(id)) {
+          return obj;
+        }
+      }
     }
     return null;
   }
@@ -79,7 +78,7 @@ public class Utils {
     Utils.editFile("users.txt", this, User.class);
   */
   public static <T> void editFile(String filename, T data, Class<T> runtimeClass) {
-    ArrayList<T> obj = FileOperations.read(filename);
+    ArrayList<T> obj = FileOperations.read(filename, runtimeClass);
 
     if (runtimeClass == User.class) {
       User u = (User) data;
@@ -104,7 +103,7 @@ public class Utils {
   public static <T> void viewTable(JTable t, String filename, Class<T> runtimeClass) {
     DefaultTableModel model = (DefaultTableModel) t.getModel();
     model.setRowCount(0);
-    ArrayList<T> object = FileOperations.read(filename);
+    ArrayList<T> object = FileOperations.read(filename, runtimeClass);
     Object[] tableRow = new Object[7];
 
     int i = 1;
@@ -163,7 +162,7 @@ public class Utils {
       JTable t, String filename, Class<T> runtimeClass, int column, String filter) {
     DefaultTableModel model = (DefaultTableModel) t.getModel();
     model.setRowCount(0);
-    ArrayList<T> object = FileOperations.read(filename);
+    ArrayList<T> object = FileOperations.read(filename, runtimeClass);
     Object[] tableRow = new Object[7];
 
     int i = 1;
@@ -204,29 +203,27 @@ public class Utils {
           tableRow[2] = a.getUcontact();
 
           model.addRow(tableRow);
-        } 
+        }
       }
+    }
   }
-  }
-  //for filter hall only 
-  public static <T> void viewTable(JTable t, String hallType, String hallStatus)
-  {
-      DefaultTableModel model = (DefaultTableModel) t.getModel();
-      model.setRowCount(0);
-      ArrayList<Hall> halls = FileOperations.read("halls.txt");
-      Object[] tableRow = new Object[3];
-        for(Hall hall : halls)
-          {   
-              System.out.println(hall.getHallType()+" "+hall.getHallID());
-              if (hall.getHallType().equals(hallType) && hall.getHallStatus().equals(hallStatus))
-              {
-                  tableRow[0]=hall.getHallID();
-                  tableRow[1]=hallType;
-                  tableRow[2]=hallStatus;
-                  
-                  model.addRow(tableRow);
-               }
-          }
+
+  // for filter hall only
+  public static <T> void viewTable(JTable t, String hallType, String hallStatus) {
+    DefaultTableModel model = (DefaultTableModel) t.getModel();
+    model.setRowCount(0);
+    ArrayList<Hall> halls = FileOperations.read("halls.txt", Hall.class);
+    Object[] tableRow = new Object[3];
+    for (Hall hall : halls) {
+      System.out.println(hall.getHallType() + " " + hall.getHallID());
+      if (hall.getHallType().equals(hallType) && hall.getHallStatus().equals(hallStatus)) {
+        tableRow[0] = hall.getHallID();
+        tableRow[1] = hallType;
+        tableRow[2] = hallStatus;
+
+        model.addRow(tableRow);
+      }
+    }
   }
 
   public static <T> void addTableRow(JTable t, Class<T> runtimeClass, T data) {

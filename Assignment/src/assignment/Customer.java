@@ -8,6 +8,15 @@ import java.util.Arrays;
 public class Customer extends User {
   public Customer() {}
 
+  public Customer(String id, String pass, String name, String type, String contact, String status) {
+    this.setUid(id);
+    this.setUpass(pass);
+    this.setUname(name);
+    this.setUtype(type);
+    this.setUcontact(contact);
+    this.setUstatus(status);
+  }
+
   public void register(String name, String password, String contact) {
     this.setUid(Utils.generateID("C"));
     this.setUpass(password);
@@ -20,7 +29,7 @@ public class Customer extends User {
   }
 
   public ArrayList<Hall> viewAvailableHalls() throws IOException {
-    ArrayList<Hall> halls = FileOperations.read("halls.txt");
+    ArrayList<Hall> halls = FileOperations.read("halls.txt", Hall.class);
     // this is retarded
 
     return null;
@@ -31,7 +40,7 @@ public class Customer extends User {
       throw new IllegalArgumentException("Timeslots only accept an array of length 2");
     }
 
-    ArrayList<Hall> halls = FileOperations.read("halls.txt");
+    ArrayList<Hall> halls = FileOperations.read("halls.txt", Hall.class);
     int amount = 0;
 
     for (Hall hall : halls) {
