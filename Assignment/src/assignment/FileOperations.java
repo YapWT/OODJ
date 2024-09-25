@@ -76,48 +76,6 @@ public class FileOperations {
               };
           result.add((T) new Schedule(LocalDate.parse(data.get(0)), data.get(1), timeSlots));
         }
-        // if (filename.contains("users")) {
-        //  result.add(
-        //      (T)
-        //          new User(
-        //              data.get(0),
-        //              data.get(1),
-        //              data.get(2),
-        //              data.get(3),
-        //              data.get(4),
-        //              data.get(5)));
-        // } else if (filename.contains("halls")) {
-        //  result.add((T) new Hall(data.get(0), data.get(1), data.get(2)));
-        // } else if (filename.contains("bookings")) {
-        //  int[] timeSlots =
-        //      new int[] {Integer.parseInt(data.get(3)), Integer.parseInt(data.get(4))};
-        //  result.add(
-        //      (T)
-        //          new Booking(
-        //              data.get(0),
-        //              data.get(1),
-        //              data.get(2),
-        //              timeSlots,
-        //              Integer.parseInt(data.get(5)),
-        //              data.get(6),
-        //              LocalDate.parse(data.get(7)),
-        //              data.get(8)));
-        // } else if (filename.contains("schedules")) {
-        //  String[] timeSlots =
-        //      new String[] {
-        //        data.get(2),
-        //        data.get(3),
-        //        data.get(4),
-        //        data.get(5),
-        //        data.get(6),
-        //        data.get(7),
-        //        data.get(8),
-        //        data.get(9),
-        //        data.get(10),
-        //        data.get(11)
-        //      };
-        //  result.add((T) new Schedule(LocalDate.parse(data.get(0)), data.get(1), timeSlots));
-        // }
       }
     } catch (FileNotFoundException e) {
       if (filename.contains("schedules")) {
