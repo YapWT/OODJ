@@ -67,7 +67,7 @@ public class Schedule {
 
   public static boolean checkIfScheduleExists(LocalDate scheduleDate, String hallID) {
     ArrayList<Schedule> schedules = FileOperations.read("schedules.txt", Schedule.class);
-    if (schedules != null && schedules.isEmpty()) {
+    if (schedules != null && !schedules.isEmpty()) {
       for (Schedule schedule : schedules) {
         if (schedule.getScheduleDate().toString().equals(scheduleDate.toString())
             && schedule.getHallID().equals(hallID)) {
