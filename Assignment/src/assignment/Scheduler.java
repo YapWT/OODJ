@@ -3,6 +3,8 @@ package assignment;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Scheduler extends Staff {
@@ -101,7 +103,24 @@ public class Scheduler extends Staff {
         writer.close();
   }
   
-  public void scheduleHall(String hallID, String[]timeslot,String date){
-      
+  public void scheduleHall(String hallID, int[] timeSlots, LocalDate date,String status){
+      if(Schedule.checkIfScheduleExists(date, hallID))
+      {
+          Schedule schedule = Schedule.scheduleObjectify(date, hallID);
+          for (int i = timeSlots[0] - 1; i < timeSlots[1] - 1; i++)
+          {
+              
+          }
+      }else
+      {
+          Schedule schedule = new Schedule(date,hallID);
+          String[] availableSlots = new String[10];
+          Arrays.fill(availableSlots, "available");
+          for (int i = timeSlots[0] - 1; i < timeSlots[1] - 1; i++) {
+            availableSlots[i] = status;
+            }
+          schedule.setTimeSlot(availableSlots);
+          FileOperations.write("schedules.txt", schedule); 
+      }
   }
 }

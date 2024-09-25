@@ -150,7 +150,6 @@ public class uiViewSchedule extends javax.swing.JFrame {
         String selectedHallID = comboHallID.getSelectedItem().toString();
         Schedule schedule = new Schedule(datePicker.getDate(),comboHallID.getSelectedItem().toString());
         if (!Schedule.checkIfScheduleExists(selectedDate, selectedHallID)) {  
-            System.out.println(Schedule.checkIfScheduleExists(selectedDate, selectedHallID));
             String[] availableSlots = new String[10];
             Arrays.fill(availableSlots, "available");
             schedule.setTimeSlot(availableSlots);
