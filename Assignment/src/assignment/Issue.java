@@ -22,7 +22,7 @@ public class Issue {
         this.response = response;
         this.status = status;
         this.assignedStaff = assignedStaff;
-    }    
+    }
     
     public String getAssignedStaff() {
         return assignedStaff;
