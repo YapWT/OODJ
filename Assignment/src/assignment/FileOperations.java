@@ -75,8 +75,29 @@ public class FileOperations {
                 data.get(11)
               };
           result.add((T) new Schedule(LocalDate.parse(data.get(0)), data.get(1), timeSlots));
+        } else if (runtimeClass == Issue.class) {
+              // Ensure all necessary fields are present or use default values (like empty strings).
+              String issueID = data.size() > 0 ? data.get(0) : "";
+              String bookingID = data.size() > 1 ? data.get(1) : "";
+              String description = data.size() > 2 ? data.get(2) : "";  // Default to empty string
+              String response = data.size() > 3 ? data.get(3) : "";     // Default to empty string
+              String status = data.size() > 4 ? data.get(4) : "";       // Default to empty string
+              String assignedStaff = data.size() > 5 ? data.get(5) : "";// Default to empty string
+
+              if (runtimeClass == Issue.class) {
+                  result.add(
+                          (T) new Issue(
+                                  issueID,
+                                  bookingID,
+                                  description,
+                                  response,
+                                  status,
+                                  assignedStaff));
+              }
+          
         }
       }
+      
     } catch (FileNotFoundException e) {
       if (filename.contains("schedules")) {
         result.add((T) new Schedule());
