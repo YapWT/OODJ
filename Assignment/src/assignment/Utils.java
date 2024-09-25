@@ -218,7 +218,26 @@ public class Utils {
       System.out.println(hall.getHallType() + " " + hall.getHallID());
       if (hall.getHallType().equals(hallType) && hall.getHallStatus().equals(hallStatus)) {
         tableRow[0] = hall.getHallID();
-        tableRow[1] = hallType;
+        String type = null;
+        switch(hallType)
+        {
+            case "auditorium":
+            {
+                type="Auditorium";
+                break;
+            }
+            case "banquet":
+            {
+                type="Banquet Hall";
+                break;
+            }
+            case "meeting":
+            {
+                type="Meeting Room";
+                break;
+            }
+        }
+        tableRow[1] = type;
         tableRow[2] = hallStatus;
 
         model.addRow(tableRow);
