@@ -1,5 +1,7 @@
 package assignment;
 
+import java.time.LocalDate;
+
 public class Booking {
   private String bookingID;
   private String hallID;
@@ -8,6 +10,7 @@ public class Booking {
   private int totalPrice;
   private String bookingStatus;
   private Issue issue;
+  private LocalDate bookingDate;
 
   public Booking() {}
 
@@ -34,6 +37,7 @@ public class Booking {
       int[] timeSlots,
       int totalPrice,
       String bookingStatus,
+      LocalDate bookingDate,
       String issueID) {
 
     this.bookingID = bookingID;
@@ -41,6 +45,7 @@ public class Booking {
     this.timeSlots = timeSlots;
     this.totalPrice = totalPrice;
     this.bookingStatus = bookingStatus;
+    this.bookingDate = bookingDate;
 
     this.customer = Utils.IDtoObject(customerID, "users.txt", Customer.class);
     this.issue = Utils.IDtoObject(issueID, "issues.txt", Issue.class);
@@ -63,7 +68,7 @@ public class Booking {
     this.customer = customer;
     this.issue = issue;
   }
-
+  
   public String getBookingID() {
     return bookingID;
   }
@@ -122,7 +127,7 @@ public class Booking {
 
   public String toString() {
     return String.format(
-        "%s|%s|%s|%d|%d|%d|%s|%s",
+        "%s|%s|%s|%d|%d|%d|%s|%s|%s",
         bookingID,
         hallID,
         customer.getUid(),
@@ -130,6 +135,7 @@ public class Booking {
         timeSlots[1],
         totalPrice,
         bookingStatus,
+        bookingDate.toString(),
         issue.getIssueID());
   }
 }

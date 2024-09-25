@@ -75,9 +75,9 @@ class Admin extends Staff{
     
     public <T> void search(JTable t, String s) {
         ((DefaultTableModel) t.getModel()).setRowCount(0);
-        ArrayList<T> objects = FileOperations.read("users.txt");
+        ArrayList<User> objects = FileOperations.read("users.txt", User.class);
         
-        for (T obj : objects) {
+        for (User obj : objects) {
             User user = (User) obj;
             if (user.getUname().contains(s) && !user.getUstatus().equals("deleted"))
                 Utils.addTableRow(t, User.class, user);

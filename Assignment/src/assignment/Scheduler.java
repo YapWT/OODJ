@@ -100,4 +100,8 @@ public class Scheduler extends Staff {
         writer.write(buffer.toString());
         writer.close();
   }
+  
+  public void scheduleHall(String hallID, String[]timeslot,String date){
+      
+  }
 }
