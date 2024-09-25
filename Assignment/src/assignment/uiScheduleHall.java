@@ -225,10 +225,14 @@ public class uiScheduleHall extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
-        if(startSlot.getSelectedIndex() >= endSlot.getSelectedIndex()) {
+        if(startSlot.getSelectedIndex() >= endSlot.getSelectedIndex() ) {
             lblRemarks.setText("Start time must be before end time!");
-        }else{
-            int[] timeSlot = new int[] {startSlot.getSelectedIndex(), endSlot.getSelectedIndex()-1};
+        }else if(comboStatus.getSelectedIndex()==-1)
+        {
+            lblRemarks.setText("Please select availability");
+        }
+        else{
+            int[] timeSlot = new int[] {startSlot.getSelectedIndex()+1, endSlot.getSelectedIndex()+1};
             scheduler.scheduleHall(comboHallID.getSelectedItem().toString(), timeSlot, datePicker.getDate(),comboStatus.getSelectedItem().toString().toLowerCase());
         }
     }//GEN-LAST:event_btnSaveActionPerformed

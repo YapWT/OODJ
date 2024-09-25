@@ -104,16 +104,20 @@ public class Scheduler extends Staff {
   }
   
   public void scheduleHall(String hallID, int[] timeSlots, LocalDate date,String status){
+      Schedule schedule = null;
       if(Schedule.checkIfScheduleExists(date, hallID))
       {
-          Schedule schedule = Schedule.scheduleObjectify(date, hallID);
+          schedule = Schedule.scheduleObjectify(date, hallID);
+          String[] timeSlot = schedule.getTimeSlot();
           for (int i = timeSlots[0] - 1; i < timeSlots[1] - 1; i++)
           {
-              
+              timeSlot[i] = status;
           }
+          schedule.setTimeSlot(timeSlot);
       }else
       {
-          Schedule schedule = new Schedule(date,hallID);
+          schedule.setScheduleDate(date);
+          schedule.setHallID(hallID);
           String[] availableSlots = new String[10];
           Arrays.fill(availableSlots, "available");
           for (int i = timeSlots[0] - 1; i < timeSlots[1] - 1; i++) {
@@ -122,5 +126,6 @@ public class Scheduler extends Staff {
           schedule.setTimeSlot(availableSlots);
           FileOperations.write("schedules.txt", schedule); 
       }
+      Schedule.overwriteOldSchedule(schedule);
   }
 }

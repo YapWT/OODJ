@@ -58,12 +58,14 @@ public class Customer extends User {
     if (Schedule.checkIfScheduleExists(date, hallID)) {
       schedule = Schedule.scheduleObjectify(date, hallID);
       timeSlot = schedule.getTimeSlot();
-      for (int i = timeSlots[0] - 1; i < timeSlots[1] - 1; i++) {
+      for (int i = timeSlots[0] - 1; i < timeSlots[1] - 1; i++) 
+      {
         if (timeSlot[i].equals("booked")) {
           throw new IllegalArgumentException("Invalid choice, conflicted timeSlot");
         }
       }
-      for (int i = timeSlots[0] - 1; i < timeSlots[1] - 1; i++) {
+      for (int i = timeSlots[0] - 1; i < timeSlots[1] - 1; i++) 
+      {
         timeSlot[i] = "booked";
       }
       schedule.setTimeSlot(timeSlot);

@@ -22,11 +22,13 @@ public class uiViewSchedule extends javax.swing.JFrame {
     
     public uiViewSchedule() {
         initComponents();
+        jTable1.setVisible(false);
         datePicker.setDateToToday();
         ArrayList<Hall> halls = FileOperations.read("halls.txt", Hall.class);
         for(Hall hall : halls) {
             comboHallID.addItem(hall.getHallID());
         }
+        
     }
 
     /**
@@ -145,7 +147,7 @@ public class uiViewSchedule extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
-
+        jTable1.setVisible(true);
         LocalDate selectedDate = datePicker.getDate();
         String selectedHallID = comboHallID.getSelectedItem().toString();
         Schedule schedule = new Schedule(datePicker.getDate(),comboHallID.getSelectedItem().toString());
