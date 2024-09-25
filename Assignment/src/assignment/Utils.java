@@ -153,6 +153,27 @@ public class Utils {
 
           model.addRow(tableRow);
         }
+      } else if (runtimeClass == Booking.class) {
+          for (T row : object) {
+              Booking b = (Booking) row;
+              if ((b.getBookingStatus()).toLowerCase().equals("success")) {
+                tableRow[0] = b.getBookingDate();
+                tableRow[1] = "RM" + b.getTotalPrice();
+                model.addRow(tableRow);
+              }
+          }
+      } else if (runtimeClass == Issue.class) {
+          for (T row : object) {
+              Issue issue = (Issue) row;
+              tableRow[0] = issue.getIssueID();
+              tableRow[1] = issue.getBooking();
+              tableRow[2] = issue.getDescription();
+              tableRow[3] = issue.getResponse();
+              tableRow[4] = issue.getStatus();
+              tableRow[5] = issue.getAssignedStaff();
+              model.addRow(tableRow);
+              System.out.println(tableRow);
+          }
       }
     }
   }

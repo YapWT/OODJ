@@ -1,6 +1,9 @@
 package assignment;
 
 import java.time.LocalDate;
+import java.util.Locale;
+import java.time.temporal.WeekFields;
+import java.util.ArrayList;
 
 public class Booking {
   private String bookingID;
@@ -68,6 +71,37 @@ public class Booking {
     this.customer = customer;
     this.issue = issue;
   }
+
+    public LocalDate getBookingDate() {
+        return bookingDate;
+    }
+    
+    public ArrayList<Booking> getBookingFilter(String filter) {
+    ArrayList<Integer> f = new ArrayList<>();
+    ArrayList<Booking> bookings = FileOperations.read("Bookings.txt", Booking.class);
+    
+   
+        
+    for (Booking b : bookings) {
+        LocalDate Date = b.getBookingDate();  // Directly access bookingDate
+        
+        if (filter.equals("month")) {
+            f.add(Date.getMonthValue());  // Extract the month directly
+        } else if (filter.equals("year")) {
+            f.add(Date.getYear());  // Extract the year directly
+        } else if (filter.equals("week")) {
+            WeekFields weekFields = WeekFields.of(Locale.getDefault());
+            int weekNumber = Date.get(weekFields.weekOfYear());  // Extract the week number
+            f.add(weekNumber);
+        }
+    }
+    return bookings;
+    
+    }
+
+    public void setBookingDate(LocalDate bookingDate) {
+        this.bookingDate = bookingDate;
+    }
   
   public String getBookingID() {
     return bookingID;
@@ -139,3 +173,4 @@ public class Booking {
         issue.getIssueID());
   }
 }
+
