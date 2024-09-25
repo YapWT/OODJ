@@ -203,7 +203,7 @@ public class uiLogin extends javax.swing.JFrame {
                         new uiAdmin(cl.getUid(), new Admin()).setVisible(true);
                         break;
                     case "C":
-                        new uiCustomer(Utils.IDtoObject(cl.getUid(), "user.txt", Customer.class)).setVisible(true);
+                        new uiCustomer(Utils.IDtoObject(cl.getUid(), "users.txt", Customer.class)).setVisible(true);
                         break;
                     case "M":
                         new uiManager(cl.getUid()).setVisible(true);
