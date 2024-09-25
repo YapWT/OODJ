@@ -43,7 +43,8 @@ public class FileOperations {
                       timeSlots,
                       Integer.parseInt(data.get(5)),
                       data.get(6),
-                      data.get(7)));
+                      LocalDate.parse(data.get(7)),
+                      data.get(8)));
         } else if (filename.contains("schedules")) {
           String[] timeSlots =
               new String[] {
