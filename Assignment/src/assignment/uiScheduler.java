@@ -22,7 +22,6 @@ public class uiScheduler extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         viewHall = new javax.swing.JButton();
         SchedulerPanel = new javax.swing.JPanel();
-        maintainHall = new javax.swing.JButton();
         scheduleHall = new javax.swing.JButton();
         editHall = new javax.swing.JButton();
         addHall = new javax.swing.JButton();
@@ -62,18 +61,6 @@ public class uiScheduler extends javax.swing.JFrame {
             SchedulerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
         );
-
-        maintainHall.setBackground(new java.awt.Color(255, 255, 255));
-        maintainHall.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        maintainHall.setForeground(new java.awt.Color(0, 0, 0));
-        maintainHall.setText("Hall Maintenance");
-        maintainHall.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        maintainHall.setBorderPainted(false);
-        maintainHall.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintainHallActionPerformed(evt);
-            }
-        });
 
         scheduleHall.setBackground(new java.awt.Color(255, 255, 255));
         scheduleHall.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
@@ -133,7 +120,6 @@ public class uiScheduler extends javax.swing.JFrame {
                         .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(viewHall, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(maintainHall, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(scheduleHall, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(editHall, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,7 +136,7 @@ public class uiScheduler extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29)
+                .addGap(45, 45, 45)
                 .addComponent(viewHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,8 +144,6 @@ public class uiScheduler extends javax.swing.JFrame {
                 .addComponent(editHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scheduleHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(maintainHall, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnUpdateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
@@ -198,12 +182,6 @@ public class uiScheduler extends javax.swing.JFrame {
         SchedulerPanel.add(new uiViewHall(currentScheduler).getPanel());
         
     }//GEN-LAST:event_viewHallActionPerformed
-
-    private void maintainHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintainHallActionPerformed
-        SchedulerPanel.removeAll();
-        SchedulerPanel.repaint();
-        SchedulerPanel.add(new uiMaintainence().getPanel());
-    }//GEN-LAST:event_maintainHallActionPerformed
 
     private void scheduleHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleHallActionPerformed
         SchedulerPanel.removeAll();
@@ -262,7 +240,6 @@ public class uiScheduler extends javax.swing.JFrame {
     private javax.swing.JButton editHall;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton maintainHall;
     private javax.swing.JButton scheduleHall;
     private javax.swing.JButton viewHall;
     // End of variables declaration//GEN-END:variables
