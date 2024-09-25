@@ -87,11 +87,20 @@ public class Scheduler extends Staff {
           break;
         }
     }
-    Hall hall=Utils.IDtoObject(HallID, "halls.txt", Hall.class);
-    hall.setHallStatus(HallStatus);
-    hall.setHallType(HallType);
-    System.out.print(hall.getHallID()+hall.getHallStatus()+hall.getHallType());
-    Utils.editFile("halls.txt", hall, Hall.class);
+    data = HallID + "|" + HallType + "|" + HallStatus;
+      Scanner sc = new Scanner(new File("halls.txt"));
+        StringBuffer buffer = new StringBuffer();
+        while (sc.hasNextLine()) {
+            String line = sc.nextLine();
+            if (line.contains(HallID)) {
+                line = data;
+            }
+            buffer.append(line).append(System.lineSeparator());
+        }
+        sc.close();
+        FileWriter writer = new FileWriter("halls.txt");
+        writer.write(buffer.toString());
+        writer.close();
   }
   
   public void scheduleHall(String hallID, int[] timeSlots, LocalDate date,String status){

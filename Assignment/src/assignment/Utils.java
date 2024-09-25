@@ -89,18 +89,6 @@ public class Utils {
           break;
         }
       }
-    }else if(runtimeClass==Hall.class)
-    {
-        Hall a = (Hall) data;
-        for (int i = 0; i < obj.size(); i++) 
-        {
-            Hall hall = (Hall) obj.get(i);
-            if (hall.getHallID().equals(a.getHallID())) 
-            {
-                
-                break;
-            }
-      }
     }
     // edit with rewrite all data
     FileOperations.write(filename, obj);
