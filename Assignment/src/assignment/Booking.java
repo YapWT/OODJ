@@ -1,9 +1,9 @@
 package assignment;
 
 import java.time.LocalDate;
-import java.util.Locale;
 import java.time.temporal.WeekFields;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Booking {
   private String bookingID;
@@ -23,7 +23,8 @@ public class Booking {
       Customer customer,
       int[] timeSlots,
       int totalPrice,
-      String bookingStatus) {
+      String bookingStatus,
+      LocalDate bookingDate) {
 
     this.bookingID = bookingID;
     this.hallID = hallID;
@@ -31,6 +32,8 @@ public class Booking {
     this.timeSlots = timeSlots;
     this.totalPrice = totalPrice;
     this.bookingStatus = bookingStatus;
+    this.bookingDate = bookingDate;
+    this.issue = new Issue() {};
   }
 
   public Booking(
@@ -61,6 +64,7 @@ public class Booking {
       int[] timeSlots,
       int totalPrice,
       String bookingStatus,
+      LocalDate bookingDate,
       Issue issue) {
 
     this.bookingID = bookingID;
@@ -69,40 +73,38 @@ public class Booking {
     this.totalPrice = totalPrice;
     this.bookingStatus = bookingStatus;
     this.customer = customer;
+    this.bookingDate = bookingDate;
     this.issue = issue;
   }
 
-    public LocalDate getBookingDate() {
-        return bookingDate;
-    }
-    
-    public ArrayList<Booking> getBookingFilter(String filter) {
+  public LocalDate getBookingDate() {
+    return bookingDate;
+  }
+
+  public ArrayList<Booking> getBookingFilter(String filter) {
     ArrayList<Integer> f = new ArrayList<>();
     ArrayList<Booking> bookings = FileOperations.read("Bookings.txt", Booking.class);
-    
-   
-        
+
     for (Booking b : bookings) {
-        LocalDate Date = b.getBookingDate();  // Directly access bookingDate
-        
-        if (filter.equals("month")) {
-            f.add(Date.getMonthValue());  // Extract the month directly
-        } else if (filter.equals("year")) {
-            f.add(Date.getYear());  // Extract the year directly
-        } else if (filter.equals("week")) {
-            WeekFields weekFields = WeekFields.of(Locale.getDefault());
-            int weekNumber = Date.get(weekFields.weekOfYear());  // Extract the week number
-            f.add(weekNumber);
-        }
+      LocalDate Date = b.getBookingDate(); // Directly access bookingDate
+
+      if (filter.equals("month")) {
+        f.add(Date.getMonthValue()); // Extract the month directly
+      } else if (filter.equals("year")) {
+        f.add(Date.getYear()); // Extract the year directly
+      } else if (filter.equals("week")) {
+        WeekFields weekFields = WeekFields.of(Locale.getDefault());
+        int weekNumber = Date.get(weekFields.weekOfYear()); // Extract the week number
+        f.add(weekNumber);
+      }
     }
     return bookings;
-    
-    }
+  }
 
-    public void setBookingDate(LocalDate bookingDate) {
-        this.bookingDate = bookingDate;
-    }
-  
+  public void setBookingDate(LocalDate bookingDate) {
+    this.bookingDate = bookingDate;
+  }
+
   public String getBookingID() {
     return bookingID;
   }
