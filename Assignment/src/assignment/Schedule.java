@@ -69,8 +69,7 @@ public class Schedule {
     ArrayList<Schedule> schedules = FileOperations.read("schedules.txt", Schedule.class);
     if (schedules != null && !schedules.isEmpty()) {
       for (Schedule schedule : schedules) {
-        if (schedule.getScheduleDate().toString().equals(scheduleDate.toString())
-            && schedule.getHallID().equals(hallID)) {
+        if (schedule.getScheduleDate().toString().equals(scheduleDate.toString()) && schedule.getHallID().equals(hallID)) {
           return true;
         }
       }

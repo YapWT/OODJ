@@ -4,6 +4,7 @@
  */
 package assignment;
 
+import com.sun.source.tree.ContinueTree;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -155,6 +156,7 @@ public class uiViewSchedule extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
+
         LocalDate selectedDate = datePicker.getDate();
         String selectedHallID = comboHallID.getSelectedItem().toString();
         Schedule schedule = new Schedule(datePicker.getDate(),comboHallID.getSelectedItem().toString());
@@ -163,8 +165,9 @@ public class uiViewSchedule extends javax.swing.JFrame {
             String[] availableSlots = new String[10];
             Arrays.fill(availableSlots, "available");
             schedule.setTimeSlot(availableSlots);
-            System.out.println(schedule.toString()); 
-            FileOperations.write("Schedules.txt", schedule.toString()); 
+            FileOperations.write("schedules.txt", schedule.toString()); 
+            schedule = Schedule.scheduleObjectify(selectedDate, selectedHallID); 
+            Schedule.displaySchedule(jTable1, schedule);
             
         } else {
             schedule = Schedule.scheduleObjectify(selectedDate, selectedHallID); 
