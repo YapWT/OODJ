@@ -65,7 +65,7 @@ public class uiScheduleHall extends javax.swing.JFrame {
         datePicker = new com.github.lgooddatepicker.components.DatePicker();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        comboStatus = new javax.swing.JComboBox<>();
         btnSave = new javax.swing.JButton();
         startSlot = new javax.swing.JComboBox<>();
         endSlot = new javax.swing.JComboBox<>();
@@ -101,9 +101,9 @@ public class uiScheduleHall extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Available", "Booked", "Maintanence" }));
-        jComboBox2.setSelectedIndex(-1);
-        jComboBox2.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Available", "Booked", "Maintanence" }));
+        comboStatus.setSelectedIndex(-1);
+        comboStatus.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
 
         btnSave.setText("Save");
         btnSave.setBackground(new java.awt.Color(153, 153, 153));
@@ -160,7 +160,7 @@ public class uiScheduleHall extends javax.swing.JFrame {
                                     .addComponent(endSlot, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addGap(5, 5, 5)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(comboStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -193,7 +193,7 @@ public class uiScheduleHall extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51)
                 .addComponent(lblRemarks)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
@@ -228,8 +228,8 @@ public class uiScheduleHall extends javax.swing.JFrame {
         if(startSlot.getSelectedIndex() >= endSlot.getSelectedIndex()) {
             lblRemarks.setText("Start time must be before end time!");
         }else{
-            int[] bookingSlot = new int[] {startSlot.getSelectedIndex(), endSlot.getSelectedIndex()-1};
-            
+            int[] timeSlot = new int[] {startSlot.getSelectedIndex(), endSlot.getSelectedIndex()-1};
+            scheduler.scheduleHall(comboHallID.getSelectedItem().toString(), timeSlot, datePicker.getDate(),comboStatus.getSelectedItem().toString().toLowerCase());
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -274,9 +274,9 @@ public class uiScheduleHall extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> comboHallID;
+    private javax.swing.JComboBox<String> comboStatus;
     private com.github.lgooddatepicker.components.DatePicker datePicker;
     private javax.swing.JComboBox<String> endSlot;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
