@@ -63,22 +63,23 @@ public class Customer extends User {
           throw new IllegalArgumentException("Invalid choice, conflicted timeSlot");
         }
       }
+      for (int i = timeSlots[0] - 1; i < timeSlots[1] - 1; i++) {
+        timeSlot[i] = "booked";
+      }
+      schedule.setTimeSlot(timeSlot);
 
     } else {
       schedule.setScheduleDate(date);
       schedule.setHallID(hallID);
       String[] scheduleSlots = new String[10];
       Arrays.fill(scheduleSlots, "available");
-      for (int i = timeSlots[0] - 1; i < timeSlots[1] - 1; i++) {
-        timeSlot[i] = "booked";
-      }
-      schedule.setTimeSlot(scheduleSlots);
     }
 
     Booking booking =
         new Booking(Utils.generateID("B"), hallID, this, timeSlots, amount, "success", date);
     FileOperations.write("bookings.txt", booking);
-    FileOperations.write("schedules.txt", schedule);
+
+    Schedule.overwriteOldSchedule(schedule);
   }
 
   public void viewBookings() {}
