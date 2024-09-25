@@ -215,7 +215,6 @@ public class Utils {
     ArrayList<Hall> halls = FileOperations.read("halls.txt", Hall.class);
     Object[] tableRow = new Object[3];
     for (Hall hall : halls) {
-      System.out.println(hall.getHallType() + " " + hall.getHallID());
       if (hall.getHallType().equals(hallType) && hall.getHallStatus().equals(hallStatus)) {
         tableRow[0] = hall.getHallID();
         String type = null;
