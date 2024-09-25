@@ -15,6 +15,7 @@ public class uiManager extends javax.swing.JFrame {
         this.ID = ID;
         Utils.viewTable(salesTbl, "bookings.txt", Booking.class);
         Utils.viewTable(issueTbl, "issues.txt", Issue.class);
+        new Manager().showScheduler(jComboBox3);
         weekCbo.setEnabled(false);
         monthCbo.setEnabled(false);
         yearCbo.setEnabled(false);
@@ -252,8 +253,6 @@ public class uiManager extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(issueTbl);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jButton4.setText("SAVE");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,8 +270,6 @@ public class uiManager extends javax.swing.JFrame {
         jLabel2.setText("ASSIGN SCHEDULER :");
 
         jLabel12.setText("STATUS :");
-
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel15.setText("RESPONSE :");
 
@@ -338,7 +335,7 @@ public class uiManager extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
                     .addComponent(jButton5))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("MAINTENANCE OPERATION", jPanel5);
