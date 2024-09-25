@@ -69,6 +69,9 @@ public class Hall {
   public void setRatePerHour(int ratePerHour) {
     this.ratePerHour = ratePerHour;
   }
+  public String toString() {
+    return String.format("%s|%s|%s%",this.hallID,this.hallType,this.hallStatus);
+  }
 }
 
 class Auditorium extends Hall {
