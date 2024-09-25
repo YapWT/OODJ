@@ -33,7 +33,7 @@ public class uiScheduleHall extends javax.swing.JFrame {
     public uiScheduleHall() {
         initComponents();
         datePicker.setDateToToday();
-        ArrayList<Hall> halls = FileOperations.read("halls.txt");
+        ArrayList<Hall> halls = FileOperations.read("halls.txt", Hall.class);
         for(String slot : timeSlotComboStrings) {
             startSlot.addItem(slot);
             endSlot.addItem(slot);

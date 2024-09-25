@@ -12,14 +12,16 @@ import java.util.Arrays;
 
 @SuppressWarnings("unchecked")
 public class FileOperations {
-  public static <T> ArrayList<T> read(String filename) {
+  public static <T> ArrayList<T> read(String filename, Class<T> runtimeClass) {
     ArrayList<T> result = new ArrayList<>();
 
     try (BufferedReader rd = new BufferedReader(new FileReader(filename))) {
       String line;
       while ((line = rd.readLine()) != null) {
         ArrayList<String> data = new ArrayList<>(Arrays.asList(line.split("\\|")));
-        if (filename.contains("users")) {
+        String id = data.get(0);
+
+        if (runtimeClass == User.class) {
           result.add(
               (T)
                   new User(
@@ -29,9 +31,22 @@ public class FileOperations {
                       data.get(3),
                       data.get(4),
                       data.get(5)));
-        } else if (filename.contains("halls")) {
+
+        } else if (User.class.isAssignableFrom(runtimeClass)) {
+          if (id.startsWith("C")) {
+            result.add(
+                runtimeClass.cast(
+                    new Customer(
+                        data.get(0),
+                        data.get(1),
+                        data.get(2),
+                        data.get(3),
+                        data.get(4),
+                        data.get(5))));
+          }
+        } else if (runtimeClass == Hall.class) {
           result.add((T) new Hall(data.get(0), data.get(1), data.get(2)));
-        } else if (filename.contains("bookings")) {
+        } else if (runtimeClass == Booking.class) {
           int[] timeSlots =
               new int[] {Integer.parseInt(data.get(3)), Integer.parseInt(data.get(4))};
           result.add(
@@ -45,7 +60,7 @@ public class FileOperations {
                       data.get(6),
                       LocalDate.parse(data.get(7)),
                       data.get(8)));
-        } else if (filename.contains("schedules")) {
+        } else if (runtimeClass == Schedule.class) {
           String[] timeSlots =
               new String[] {
                 data.get(2),
@@ -61,6 +76,48 @@ public class FileOperations {
               };
           result.add((T) new Schedule(LocalDate.parse(data.get(0)), data.get(1), timeSlots));
         }
+        // if (filename.contains("users")) {
+        //  result.add(
+        //      (T)
+        //          new User(
+        //              data.get(0),
+        //              data.get(1),
+        //              data.get(2),
+        //              data.get(3),
+        //              data.get(4),
+        //              data.get(5)));
+        // } else if (filename.contains("halls")) {
+        //  result.add((T) new Hall(data.get(0), data.get(1), data.get(2)));
+        // } else if (filename.contains("bookings")) {
+        //  int[] timeSlots =
+        //      new int[] {Integer.parseInt(data.get(3)), Integer.parseInt(data.get(4))};
+        //  result.add(
+        //      (T)
+        //          new Booking(
+        //              data.get(0),
+        //              data.get(1),
+        //              data.get(2),
+        //              timeSlots,
+        //              Integer.parseInt(data.get(5)),
+        //              data.get(6),
+        //              LocalDate.parse(data.get(7)),
+        //              data.get(8)));
+        // } else if (filename.contains("schedules")) {
+        //  String[] timeSlots =
+        //      new String[] {
+        //        data.get(2),
+        //        data.get(3),
+        //        data.get(4),
+        //        data.get(5),
+        //        data.get(6),
+        //        data.get(7),
+        //        data.get(8),
+        //        data.get(9),
+        //        data.get(10),
+        //        data.get(11)
+        //      };
+        //  result.add((T) new Schedule(LocalDate.parse(data.get(0)), data.get(1), timeSlots));
+        // }
       }
     } catch (FileNotFoundException e) {
       if (filename.contains("schedules")) {

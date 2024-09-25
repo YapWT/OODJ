@@ -23,7 +23,7 @@ public class uiEditHall extends javax.swing.JFrame {
     public uiEditHall(Scheduler scheduler) {
         this.scheduler = scheduler;
         initComponents();
-        ArrayList<Hall> halls = FileOperations.read("halls.txt");
+        ArrayList<Hall> halls = FileOperations.read("halls.txt", Hall.class);
         for(Hall hall : halls) {
             comboHallID.addItem(hall.getHallID());
         }

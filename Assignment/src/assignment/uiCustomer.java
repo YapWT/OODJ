@@ -35,7 +35,7 @@ public class uiCustomer extends javax.swing.JFrame {
         endSlot.addItem(slot);
     }
 
-    ArrayList<Hall> halls = FileOperations.read("halls.txt");
+    ArrayList<Hall> halls = FileOperations.read("halls.txt", Hall.class);
     for (Hall hall : halls) {
         hallComboBox.addItem(hall.getHallID());
     }
@@ -60,7 +60,7 @@ public class uiCustomer extends javax.swing.JFrame {
         endSlot.addItem(slot);
     }
 
-    ArrayList<Hall> halls = FileOperations.read("halls.txt");
+    ArrayList<Hall> halls = FileOperations.read("halls.txt", Hall.class);
     for (Hall hall : halls) {
         hallComboBox.addItem(hall.getHallID());
     }
