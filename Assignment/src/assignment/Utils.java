@@ -205,43 +205,33 @@ public class Utils {
 
           model.addRow(tableRow);
         } 
-      }else if(runtimeClass == Hall.class){
-          for(T row:object){
-              Hall a = (Hall) row;
-              String hallType=null;
-              String Type= null;
-              switch(column){
-              case 0:
+      }
+  }
+  }
+  //for filter hall only 
+  public static <T> void viewTable(JTable t, String hallType, String hallStatus)
+  {
+      DefaultTableModel model = (DefaultTableModel) t.getModel();
+      model.setRowCount(0);
+      ArrayList<Hall> halls = FileOperations.read("halls.txt");
+      Object[] tableRow = new Object[3];
+      if(halls!=null)
+      {
+          for(Hall hall : halls)
+          {
+              if (hall.getHallType()==hallType && hall.getHallStatus()==hallStatus)
               {
-                  hallType = "auditorium";
-                  Type="Auditorium";
-                  break;
-              }
-              case 1:
-              {
-                  hallType="banquet";
-                  Type="Banquet Hall";
-                  break;
-              }
-              case 2:
-              {
-                  hallType="meeting";
-                  Type="Meeting Room";
-                  break;
-              }
-              }
-              if (a.getHallType()==hallType && a.getHallStatus()==filter)
-              {
-                  tableRow[0]=a.getHallID();
-                  tableRow[1]=Type;
-                  tableRow[2]=filter;
+                  tableRow[0]=hall.getHallID();
+                  tableRow[1]=hallType;
+                  tableRow[2]=hallStatus;
                   
                   model.addRow(tableRow);
                }
+
+
+          }
+                        }
       }
-    }
-  }
-  }
 
   public static <T> void addTableRow(JTable t, Class<T> runtimeClass, T data) {
     DefaultTableModel model = (DefaultTableModel) t.getModel();
