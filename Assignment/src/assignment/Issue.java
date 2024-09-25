@@ -7,11 +7,22 @@ package assignment;
 public class Issue {
       
     private String issueID;
+    private Booking booking;
     private String description;
     private String response;
-    private Booking booking;
     private String status;
+    private String assignedStaff;
 
+    
+    
+    public String getAssignedStaff() {
+        return assignedStaff;
+    }
+
+    public void setAssignedStaff(String assignedStaff) {
+        this.assignedStaff = assignedStaff;
+    }
+    
     public String getIssueID() {
         return issueID;
     }
@@ -50,6 +61,14 @@ public class Issue {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+        "%s|%s|%s|%s|%s|%s",
+                issueID,booking,description,response,status, assignedStaff);
+        
     }
     
     
