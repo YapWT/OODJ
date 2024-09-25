@@ -173,7 +173,27 @@ public class uiViewHall extends javax.swing.JFrame {
             labelFilter.setText("Filter cannot be empty.");
         }
         else{
-            Utils.viewTable(TblHall, "halls.txt", Hall.class, filterHallType.getSelectedIndex(), filterHallStatus.getSelectedItem().toString());
+            String type = null;
+            switch(filterHallType.getSelectedIndex())
+            {
+                case 0:
+                {
+                    type = "auditorium";
+                    break;
+                }
+                case 1:
+                {
+                    type="banquet";
+                    break;
+                }
+                case 2:
+                {
+                    type="meeting";
+                    break;
+                }
+                
+            }
+            Utils.viewTable(TblHall, type, filterHallStatus.getSelectedItem().toString());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

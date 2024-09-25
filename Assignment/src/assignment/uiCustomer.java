@@ -170,6 +170,12 @@ public class uiCustomer extends javax.swing.JFrame {
 
         jLabel6.setText("Select Date:");
 
+        startSlot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startSlotActionPerformed(evt);
+            }
+        });
+
         jLabel7.setText("Select time slot:");
 
         jLabel8.setText("to");
@@ -360,6 +366,10 @@ public class uiCustomer extends javax.swing.JFrame {
             customer.bookHalls(hallComboBox.getSelectedItem().toString(), bookingSlot, datePicker.getDate());
         }
     }//GEN-LAST:event_bookHallBtnActionPerformed
+
+    private void startSlotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startSlotActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_startSlotActionPerformed
 
   private void jButton5ActionPerformed(
       java.awt.event.ActionEvent evt) { // GEN-FIRST:event_jButton5ActionPerformed
