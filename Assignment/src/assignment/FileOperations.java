@@ -75,6 +75,17 @@ public class FileOperations {
                 data.get(11)
               };
           result.add((T) new Schedule(LocalDate.parse(data.get(0)), data.get(1), timeSlots));
+        } else if (runtimeClass == Issue.class) {
+              String issueID = data.size() > 0 ? data.get(0) : "";
+              String bookingID = data.size() > 1 ? data.get(1) : "";
+              String description = data.size() > 2 ? data.get(2) : "";  
+              String response = data.size() > 3 ? data.get(3) : "";     
+              String status = data.size() > 4 ? data.get(4) : "";       
+              String assignedStaff = data.size() > 5 ? data.get(5) : "";
+
+              if (runtimeClass == Issue.class) {
+                  result.add((T) new Issue(issueID, bookingID, description, response, status, assignedStaff));
+              }
         }
       }
     } catch (FileNotFoundException e) {
