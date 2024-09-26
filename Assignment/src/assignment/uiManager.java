@@ -494,14 +494,17 @@ public class uiManager extends javax.swing.JFrame {
         String newResponse = jTextField2.getText();
 
         // chnage 3 thing
-        Issue iiii = Utils.IDtoObject(issueID, "issues.txt", Issue.class);
-        issue.setIssueID(iiii.getIssueID());
+        issue.setIssueID(issueID);
+        issue.setStatus(newStatus);
+        issue.setAssignedStaff(newAssignedStaff);
+        issue.setResponse(newResponse);
         Utils.editFile("issues.txt", issue, Issue.class);
 
         issueTbl.setValueAt(newStatus, selectedRow, 4);
         issueTbl.setValueAt(newAssignedStaff, selectedRow, 5);
         issueTbl.setValueAt(newResponse, selectedRow, 3);
-
+        // update home's total issue in pending
+        manager.showTotalIssueInProgress(issuesLbl);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
