@@ -42,7 +42,7 @@ public class uiAdmin extends javax.swing.JFrame {
                 String type = PNL_add.getType();     
                 if (type != null && name != null && !name.isEmpty()){
                     classA.addStaff(name, "123", type, "");
-                    if (defaultPending && (classA.getUtype().equals(RoleSelected) || RoleSelected == null))
+                    if (defaultPending || (classA.getUtype().equals(RoleSelected) || RoleSelected == null))
                         Utils.addTableRow(TBL_view, User.class, classA);
                     jLabel6.setVisible(true);
                     jLabel6.setText(name + " Added!");
@@ -800,6 +800,7 @@ public class uiAdmin extends javax.swing.JFrame {
         defaultPending = true;
         RoleSelected = null;
         Utils.viewTable(TBL_view, "users.txt", User.class);
+        classA.removeCurrentAdmin(TBL_view, Uid);
     }//GEN-LAST:event_BTN_cancelfActionPerformed
 
     private void BTN_fpendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpendingActionPerformed
