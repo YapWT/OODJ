@@ -51,7 +51,6 @@ public class uiCustomer extends javax.swing.JFrame {
                 schedule.setTimeSlot(scheduleSlots);
                 FileOperations.write("schedules.txt", schedule);
             }
-            System.out.println("table display is called" + schedule.toString());
             Schedule.displaySchedule(scheduleTable, schedule);
           }
         });
@@ -62,8 +61,10 @@ public class uiCustomer extends javax.swing.JFrame {
     for(Booking booking : bookings){
         if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")){
             cancelBookingCombo.addItem(booking.getBookingID());
+            raiseIssueCombo.addItem(booking.getBookingID());
         }
     }
+    Customer.displayIssueTable(issueTable, customer.getUid());
   }
 
   @SuppressWarnings("unchecked")
@@ -107,6 +108,13 @@ public class uiCustomer extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         cancelBookingBtn = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        issueTable = new javax.swing.JTable();
+        jLabel11 = new javax.swing.JLabel();
+        raiseIssueCombo = new javax.swing.JComboBox<>();
+        issueDesc = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        submitIssueBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -439,9 +447,9 @@ public class uiCustomer extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(cancelBookingCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cancelBookingCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cancelBookingBtn)
                 .addGap(0, 72, Short.MAX_VALUE))
@@ -449,15 +457,80 @@ public class uiCustomer extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Cancel Bookings", jPanel3);
 
+        issueTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "BookingID", "Booking Date", "Issue Desc.", "Isssue Response", "Issue Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        issueTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(issueTable);
+
+        jLabel11.setText("Select bookingID that you would like to raise an issue:");
+
+        jLabel12.setText("Issue Description:");
+
+        submitIssueBtn.setText("Submit");
+        submitIssueBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitIssueBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 564, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(issueDesc)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(raiseIssueCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel12))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(submitIssueBtn)))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(raiseIssueCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(issueDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(submitIssueBtn)
+                .addGap(0, 31, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Raise Issue", jPanel4);
@@ -518,6 +591,12 @@ public class uiCustomer extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cancelBookingBtnActionPerformed
 
+    private void submitIssueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitIssueBtnActionPerformed
+        customer.createIssue(raiseIssueCombo.getSelectedItem().toString(), issueDesc.getText());
+        Customer.displayIssueTable(issueTable, customer.getUid());
+        issueDesc.setText("");
+    }//GEN-LAST:event_submitIssueBtnActionPerformed
+
   private void datePickerFocusGained(
       java.awt.event.FocusEvent evt) { // GEN-FIRST:event_datePickerFocusGained
     datePicker.setDateToToday();
@@ -530,7 +609,6 @@ public class uiCustomer extends javax.swing.JFrame {
     } else {
       int[] bookingSlot = new int[] {startSlot.getSelectedIndex() + 1, endSlot.getSelectedIndex() + 1};
       try {
-          System.out.println(hallComboBox.getSelectedItem().toString() + " in bookHall button");
         customer.bookHalls(
           hallComboBox.getSelectedItem().toString(), bookingSlot, datePicker.getDate());
         bookStatus.setText("Hall booked!");
@@ -558,7 +636,6 @@ public class uiCustomer extends javax.swing.JFrame {
       java.awt.event.ActionEvent evt) { // GEN-FIRST:event_hallComboBoxActionPerformed
     // TODO add your handling code here:
     String selectedHall = hallComboBox.getSelectedItem().toString();
-      System.out.println(selectedHall);
     Hall hall = Utils.IDtoObject(selectedHall, "halls.txt", Hall.class);
 
     hallTypeLBL.setText(hall.getHallType());
@@ -566,10 +643,8 @@ public class uiCustomer extends javax.swing.JFrame {
     RatePerHourLBL.setText(Integer.toString(hall.getRatePerHour()));
 
     if (Schedule.checkIfScheduleExists(datePicker.getDate(), selectedHall)) {
-        System.out.println("Schedule exists");
       schedule = Schedule.scheduleObjectify(datePicker.getDate(), selectedHall);
     } else {
-        System.out.println("Schedule doesnt exists");
       schedule.setScheduleDate(datePicker.getDate());
       schedule.setHallID(selectedHall);
       String[] scheduleSlots = new String[10];
@@ -638,9 +713,13 @@ public class uiCustomer extends javax.swing.JFrame {
     private javax.swing.JButton filterUpcomingBtn;
     private javax.swing.JComboBox<String> hallComboBox;
     private javax.swing.JLabel hallTypeLBL;
+    private javax.swing.JTextField issueDesc;
+    private javax.swing.JTable issueTable;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -657,8 +736,11 @@ public class uiCustomer extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JComboBox<String> raiseIssueCombo;
     private javax.swing.JTable scheduleTable;
     private javax.swing.JComboBox<String> startSlot;
+    private javax.swing.JButton submitIssueBtn;
     // End of variables declaration//GEN-END:variables
 }

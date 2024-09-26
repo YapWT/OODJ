@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class Customer extends User {
   public Customer() {}
@@ -80,9 +82,48 @@ public class Customer extends User {
     Schedule.overwriteOldSchedule(schedule);
   }
 
-  public void viewBookings() {}
+  public static void displayIssueTable(JTable T, String customerID) {
+    DefaultTableModel model = (DefaultTableModel) T.getModel();
+    model.setRowCount(0);
+    ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
 
-  public void cancelBookings() {}
+    Object[] tableRow = new Object[5];
 
-  public void createIssue() {}
+    for (Booking booking : bookings) {
+      if (booking.getCustomer().getUid().equals(customerID)
+          && !booking.getBookingStatus().equals("cancelled")) {
+        tableRow[0] = booking.getBookingID();
+        tableRow[1] = booking.getBookingDate();
+        if (booking.getIssue().isEmpty()) {
+          tableRow[2] = "null";
+          tableRow[3] = "null";
+          tableRow[4] = "null";
+        } else {
+          tableRow[2] = booking.getIssue().getDescription();
+          tableRow[3] = booking.getIssue().getResponse();
+          tableRow[4] = booking.getIssue().getStatus();
+        }
+
+        model.addRow(tableRow);
+      }
+    }
+  }
+
+  public void createIssue(String bookingID, String description) {
+    String issueID = Utils.generateID("I");
+
+    Issue issue = new Issue(issueID, bookingID, description);
+
+    FileOperations.write("issues.txt", issue);
+
+    ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
+    for (Booking booking : bookings) {
+      if (booking.getBookingID().equals(bookingID)) {
+        booking.setIssue(Utils.IDtoObject(issueID, "issues.txt", Issue.class));
+        break;
+      }
+    }
+
+    FileOperations.write("bookings.txt", bookings);
+  }
 }

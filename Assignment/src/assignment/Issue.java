@@ -14,7 +14,17 @@ public class Issue {
   private String assignedStaff;
 
   public Issue() {
-    this.issueID = "null";
+    this.issueID = null;
+  }
+
+  public Issue(String issueID, String bookingID, String description) {
+    this.issueID = issueID;
+    this.booking = bookingID;
+    this.description = description;
+    this.status = "pending";
+
+    this.response = null;
+    this.assignedStaff = null;
   }
 
   public Issue(
@@ -32,22 +42,22 @@ public class Issue {
     this.assignedStaff = assignedStaff;
   }
 
-    public void setIssueID(String issueID) {
-        this.issueID = issueID;
-        Issue data = Utils.IDtoObject(issueID, "issues.txt", Issue.class);
+  public void setIssueID(String issueID) {
+    this.issueID = issueID;
+    Issue data = Utils.IDtoObject(issueID, "issues.txt", Issue.class);
 
-        if (!(data == null)) {
-            this.booking = data.getBooking();
-            this.description = data.getDescription();
-            this.response = data.getResponse();
-            this.status = data.getStatus();
-            this.assignedStaff = data.getAssignedStaff();
-        }
+    if (!(data == null)) {
+      this.booking = data.getBooking();
+      this.description = data.getDescription();
+      this.response = data.getResponse();
+      this.status = data.getStatus();
+      this.assignedStaff = data.getAssignedStaff();
     }
+  }
 
-    public String getAssignedStaff() {
-        return assignedStaff;
-    }
+  public String getAssignedStaff() {
+    return assignedStaff;
+  }
 
   public void setAssignedStaff(String assignedStaff) {
     this.assignedStaff = assignedStaff;
@@ -96,5 +106,13 @@ public class Issue {
   public String toString() {
     return String.format(
         "%s|%s|%s|%s|%s|%s", issueID, booking, description, response, status, assignedStaff);
+  }
+
+  public boolean isEmpty() {
+    if (issueID == null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
