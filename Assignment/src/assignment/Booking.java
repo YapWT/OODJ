@@ -1,8 +1,10 @@
 package assignment;
 
 import java.time.LocalDate;
+import java.time.temporal.IsoFields;
 import java.time.temporal.WeekFields;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -106,6 +108,42 @@ public class Booking {
     }
     return bookings;
   }
+  
+    public boolean matchesFilters(Booking booking, Integer week, Integer month, Integer year) {
+        LocalDate bookingDate = booking.getBookingDate(); // Assuming you have a getter for bookingDate
+
+        // Check year
+        System.out.print(bookingDate.getYear());
+        System.out.print(year);
+        if (year != null && bookingDate.getYear() != year) {
+            return false;
+        }
+        
+        // Check month (only if month is specified)
+        if (month != null && bookingDate.getMonthValue() != month) {
+            return false;
+        }
+
+        // Check week (only if week is specified)
+        if (week != null && bookingDate.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR) != week) {
+            return false;
+        }
+
+        return true;
+    }
+
+    
+    public void updateSalesTable(List<Booking> filteredBookings, JTable t) {
+    DefaultTableModel tableModel = (DefaultTableModel) t.getModel();
+    tableModel.setRowCount(0); // Assuming you are using a DefaultTableModel
+
+    for (Booking booking : filteredBookings) {
+        // Assuming the table model has two columns (date, sales)
+        Object[] row = { booking.getBookingDate(), booking.getTotalPrice() }; // Add your specific details
+        tableModel.addRow(row);
+    }
+}
+
 
   public void setBookingDate(LocalDate bookingDate) {
     this.bookingDate = bookingDate;

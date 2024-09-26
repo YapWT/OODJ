@@ -32,9 +32,22 @@ public class Issue {
     this.assignedStaff = assignedStaff;
   }
 
-  public String getAssignedStaff() {
-    return assignedStaff;
-  }
+    public void setIssueID(String issueID) {
+        this.issueID = issueID;
+        Issue data = Utils.IDtoObject(issueID, "issues.txt", Issue.class);
+
+        if (!(data == null)) {
+            this.booking = data.getBooking();
+            this.description = data.getDescription();
+            this.response = data.getResponse();
+            this.status = data.getStatus();
+            this.assignedStaff = data.getAssignedStaff();
+        }
+    }
+
+    public String getAssignedStaff() {
+        return assignedStaff;
+    }
 
   public void setAssignedStaff(String assignedStaff) {
     this.assignedStaff = assignedStaff;
@@ -45,10 +58,6 @@ public class Issue {
       return "null";
     }
     return issueID;
-  }
-
-  public void setIssueID(String issueID) {
-    this.issueID = issueID;
   }
 
   public String getDescription() {

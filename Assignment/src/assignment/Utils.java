@@ -68,6 +68,13 @@ public class Utils {
           return obj;
         }
       }
+    } else if (runtimeClass == Issue.class) {
+        for (T obj : objects) {
+            Issue issuee = (Issue) obj;
+            if (issuee.getIssueID().equals(id)) {
+                return obj;
+            }
+        }
     }
     return null;
   }
@@ -89,6 +96,15 @@ public class Utils {
           break;
         }
       }
+    } else if (runtimeClass == Issue.class) {
+        Issue issue = (Issue) data;
+        for (int i = 0; i < obj.size(); i++) {
+            Issue issues = (Issue) obj.get(i);
+            if (issues.getIssueID().equals(issue.getIssueID())) {
+                obj.set(i, (T) issue);
+                break;
+            }
+        }
     }
     // edit with rewrite all data
     FileOperations.write(filename, obj);
