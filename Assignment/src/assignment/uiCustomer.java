@@ -61,6 +61,8 @@ public class uiCustomer extends javax.swing.JFrame {
     for(Booking booking : bookings){
         if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")){
             cancelBookingCombo.addItem(booking.getBookingID());
+        }
+        if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled") && booking.getIssue().isEmpty()){
             raiseIssueCombo.addItem(booking.getBookingID());
         }
     }
@@ -595,6 +597,13 @@ public class uiCustomer extends javax.swing.JFrame {
         customer.createIssue(raiseIssueCombo.getSelectedItem().toString(), issueDesc.getText());
         Customer.displayIssueTable(issueTable, customer.getUid());
         issueDesc.setText("");
+        raiseIssueCombo.removeAllItems();
+        ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
+        for(Booking booking : bookings){
+            if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled") && booking.getIssue().isEmpty()){
+                raiseIssueCombo.addItem(booking.getBookingID());
+            }
+        }
     }//GEN-LAST:event_submitIssueBtnActionPerformed
 
   private void datePickerFocusGained(
@@ -619,6 +628,9 @@ public class uiCustomer extends javax.swing.JFrame {
       
       schedule = Schedule.scheduleObjectify(datePicker.getDate(), hallComboBox.getSelectedItem().toString());
       Schedule.displaySchedule(scheduleTable, schedule);
+      Booking.displayBookingsTable(filterBookingTable, "All", customer.getUid());
+      Booking.displayBookingsTable(cancelBookingsTable, "All", customer.getUid());
+      Customer.displayIssueTable(issueTable, customer.getUid());
     }
   } // GEN-LAST:event_bookHallBtnActionPerformed
 
