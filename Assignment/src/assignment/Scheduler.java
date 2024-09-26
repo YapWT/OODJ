@@ -118,6 +118,7 @@ public class Scheduler extends Staff {
           schedule.setTimeSlot(timeSlot);
       }else
       {
+          schedule = new Schedule();
           schedule.setScheduleDate(date);
           schedule.setHallID(hallID);
           String[] availableSlots = new String[10];
