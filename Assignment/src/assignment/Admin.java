@@ -111,7 +111,7 @@ class Admin extends Staff{
         this.model = (DefaultTableModel) t.getModel();
         model.setRowCount(0);
         Object[] tableRow = new Object[7];
-        int i = 0;
+        int i = 1;
         
         for (Booking bs : bookings) {
             if (past) {

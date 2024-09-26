@@ -2,8 +2,10 @@ package assignment;
 
 import com.github.lgooddatepicker.optionalusertools.DateChangeListener;
 import com.github.lgooddatepicker.zinternaltools.DateChangeEvent;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 public class uiCustomer extends javax.swing.JFrame {
   Customer customer;
@@ -32,7 +34,9 @@ public class uiCustomer extends javax.swing.JFrame {
 
     ArrayList<Hall> halls = FileOperations.read("halls.txt", Hall.class);
     for (Hall hall : halls) {
-      hallComboBox.addItem(hall.getHallID());
+        if(!hall.getHallStatus().equals("Inactive")) {
+            hallComboBox.addItem(hall.getHallID());
+        }
     }
 
     datePicker.addDateChangeListener(
@@ -590,6 +594,9 @@ public class uiCustomer extends javax.swing.JFrame {
             if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")){
                 cancelBookingCombo.addItem(booking.getBookingID());
             }
+            if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled") && booking.getIssue().isEmpty()){
+                raiseIssueCombo.addItem(booking.getBookingID());
+            }
         }
     }//GEN-LAST:event_cancelBookingBtnActionPerformed
 
@@ -618,9 +625,14 @@ public class uiCustomer extends javax.swing.JFrame {
     } else {
       int[] bookingSlot = new int[] {startSlot.getSelectedIndex() + 1, endSlot.getSelectedIndex() + 1};
       try {
-        customer.bookHalls(
+          if(datePicker.getDate().isBefore(LocalDate.now())){
+              JOptionPane.showMessageDialog(null, "You can't book a hall that is in the past!");
+          } else {
+            customer.bookHalls(
           hallComboBox.getSelectedItem().toString(), bookingSlot, datePicker.getDate());
-        bookStatus.setText("Hall booked!");
+            JOptionPane.showMessageDialog(null, "Hall booked");
+            bookStatus.setText(" ");
+          }
       } catch (IllegalArgumentException e) {
           bookStatus.setText("You included unavailable timeslots");
       }
@@ -631,6 +643,15 @@ public class uiCustomer extends javax.swing.JFrame {
       Booking.displayBookingsTable(filterBookingTable, "All", customer.getUid());
       Booking.displayBookingsTable(cancelBookingsTable, "All", customer.getUid());
       Customer.displayIssueTable(issueTable, customer.getUid());
+      ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
+      for(Booking booking : bookings){
+          if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")){
+              cancelBookingCombo.addItem(booking.getBookingID());
+          }
+          if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled") && booking.getIssue().isEmpty()){      
+              raiseIssueCombo.addItem(booking.getBookingID());
+          }
+      }
     }
   } // GEN-LAST:event_bookHallBtnActionPerformed
 
