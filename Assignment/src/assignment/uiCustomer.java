@@ -125,7 +125,6 @@ public class uiCustomer extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         submitIssueBtn = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -552,13 +551,6 @@ public class uiCustomer extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Update Profile", jPanel5);
 
-        jButton1.setText("Logout");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -570,10 +562,7 @@ public class uiCustomer extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(237, 237, 237)
-                        .addComponent(jButton1)))
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -583,9 +572,7 @@ public class uiCustomer extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addGap(45, 45, 45))
         );
 
         pack();
@@ -636,11 +623,6 @@ public class uiCustomer extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_submitIssueBtnActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-        new uiLogin().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
   private void datePickerFocusGained(
       java.awt.event.FocusEvent evt) { // GEN-FIRST:event_datePickerFocusGained
@@ -777,7 +759,6 @@ public class uiCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel hallTypeLBL;
     private javax.swing.JTextField issueDesc;
     private javax.swing.JTable issueTable;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
