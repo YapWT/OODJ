@@ -29,6 +29,13 @@ public class Utils {
         Booking booking = (Booking) obj;
         typeOfData.add(booking.getBookingID());
       }
+
+    } else if (type.equals("I")) {
+      data = FileOperations.read("issues.txt", Issue.class);
+      for (Object obj : data) {
+        Issue issue = (Issue) obj;
+        typeOfData.add(issue.getIssueID());
+      }
     }
 
     int count = typeOfData.size();
@@ -69,12 +76,12 @@ public class Utils {
         }
       }
     } else if (runtimeClass == Issue.class) {
-        for (T obj : objects) {
-            Issue issuee = (Issue) obj;
-            if (issuee.getIssueID().equals(id)) {
-                return obj;
-            }
+      for (T obj : objects) {
+        Issue issuee = (Issue) obj;
+        if (issuee.getIssueID().equals(id)) {
+          return obj;
         }
+      }
     }
     return null;
   }
@@ -97,14 +104,14 @@ public class Utils {
         }
       }
     } else if (runtimeClass == Issue.class) {
-        Issue issue = (Issue) data;
-        for (int i = 0; i < obj.size(); i++) {
-            Issue issues = (Issue) obj.get(i);
-            if (issues.getIssueID().equals(issue.getIssueID())) {
-                obj.set(i, (T) issue);
-                break;
-            }
+      Issue issue = (Issue) data;
+      for (int i = 0; i < obj.size(); i++) {
+        Issue issues = (Issue) obj.get(i);
+        if (issues.getIssueID().equals(issue.getIssueID())) {
+          obj.set(i, (T) issue);
+          break;
         }
+      }
     }
     // edit with rewrite all data
     FileOperations.write(filename, obj);
@@ -170,25 +177,25 @@ public class Utils {
           model.addRow(tableRow);
         }
       } else if (runtimeClass == Booking.class) {
-          for (T row : object) {
-              Booking b = (Booking) row;
-              if ((b.getBookingStatus()).toLowerCase().equals("success")) {
-                tableRow[0] = b.getBookingDate();
-                tableRow[1] = "RM" + b.getTotalPrice();
-                model.addRow(tableRow);
-              }
+        for (T row : object) {
+          Booking b = (Booking) row;
+          if ((b.getBookingStatus()).toLowerCase().equals("success")) {
+            tableRow[0] = b.getBookingDate();
+            tableRow[1] = "RM" + b.getTotalPrice();
+            model.addRow(tableRow);
           }
+        }
       } else if (runtimeClass == Issue.class) {
-          for (T row : object) {
-              Issue issue = (Issue) row;
-              tableRow[0] = issue.getIssueID();
-              tableRow[1] = issue.getBooking();
-              tableRow[2] = issue.getDescription();
-              tableRow[3] = issue.getResponse();
-              tableRow[4] = issue.getStatus();
-              tableRow[5] = issue.getAssignedStaff();
-              model.addRow(tableRow);
-          }
+        for (T row : object) {
+          Issue issue = (Issue) row;
+          tableRow[0] = issue.getIssueID();
+          tableRow[1] = issue.getBooking();
+          tableRow[2] = issue.getDescription();
+          tableRow[3] = issue.getResponse();
+          tableRow[4] = issue.getStatus();
+          tableRow[5] = issue.getAssignedStaff();
+          model.addRow(tableRow);
+        }
       }
     }
   }
@@ -254,22 +261,21 @@ public class Utils {
       if (hall.getHallType().equals(hallType) && hall.getHallStatus().equals(hallStatus)) {
         tableRow[0] = hall.getHallID();
         String type = null;
-        switch(hallType)
-        {
-            case "auditorium":
+        switch (hallType) {
+          case "auditorium":
             {
-                type="Auditorium";
-                break;
+              type = "Auditorium";
+              break;
             }
-            case "banquet":
+          case "banquet":
             {
-                type="Banquet Hall";
-                break;
+              type = "Banquet Hall";
+              break;
             }
-            case "meeting":
+          case "meeting":
             {
-                type="Meeting Room";
-                break;
+              type = "Meeting Room";
+              break;
             }
         }
         tableRow[1] = type;

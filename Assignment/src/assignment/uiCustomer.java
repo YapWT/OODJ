@@ -66,7 +66,7 @@ public class uiCustomer extends javax.swing.JFrame {
         if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")){
             cancelBookingCombo.addItem(booking.getBookingID());
         }
-        if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled") && !booking.getIssue().isEmpty()){
+        if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled") && booking.getIssue().isEmpty()){
             raiseIssueCombo.addItem(booking.getBookingID());
         }
     }
