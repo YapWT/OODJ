@@ -31,6 +31,26 @@ public class uiManager extends javax.swing.JFrame {
         String managerName = (Utils.IDtoObject(ID, "users.txt", User.class)).getUname();
         jLabel1.setText(managerName);
         
+        issueTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int selectedRow = issueTbl.getSelectedRow();
+                String currentStatus = issueTbl.getValueAt(selectedRow, 4).toString();
+
+                if (currentStatus.equals("Pending".toLowerCase())) {
+                    jComboBox4.removeAllItems();
+                    jComboBox4.addItem("In Progress");
+                }
+
+                if (currentStatus.equals("In Progress".toLowerCase())) {
+                    jComboBox4.removeAllItems();
+                    jComboBox4.addItem("In Progress");
+                    jComboBox4.addItem("Done");
+                    jComboBox4.addItem("Completed");
+                }
+            }
+        });
+
+        
         // update profile
         // updateProfile
         Panel_updateProfile PNL_profile = new Panel_updateProfile(ID, new User());
@@ -371,6 +391,11 @@ public class uiManager extends javax.swing.JFrame {
         });
         issueTbl.setColumnSelectionAllowed(true);
         issueTbl.getTableHeader().setReorderingAllowed(false);
+        issueTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                issueTblMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(issueTbl);
         issueTbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
@@ -385,7 +410,6 @@ public class uiManager extends javax.swing.JFrame {
         jComboBox4.setBackground(new java.awt.Color(102, 102, 102));
         jComboBox4.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         jComboBox4.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "In Progress", "Done", "Closed", "Cancelled" }));
 
         jLabel15.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
@@ -581,11 +605,17 @@ public class uiManager extends javax.swing.JFrame {
             return;
         }
         String issueID = issueTbl.getValueAt(selectedRow, 0).toString();
+        String currentStatus = issueTbl.getValueAt(selectedRow, 4).toString().toLowerCase();
 
-        String newStatus = jComboBox4.getSelectedItem().toString();
+        if (currentStatus.equals("Cancelled".toLowerCase())) {
+            JOptionPane.showMessageDialog(null, "This issue is cancelled.");
+            return;
+        }
+        
+        String newStatus = jComboBox4.getSelectedItem().toString().toLowerCase();
         String newAssignedStaff = assignCbo.getSelectedItem().toString();
         String newResponse = jTextField2.getText();
-
+        
         // chnage 3 thing
         issue.setIssueID(issueID);
         issue.setStatus(newStatus);
@@ -604,6 +634,21 @@ public class uiManager extends javax.swing.JFrame {
         assignCbo.setSelectedIndex(0);
         jTextField2.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void issueTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_issueTblMouseClicked
+        int selectedRow = issueTbl.getSelectedRow();
+        
+        String currentStatus = issueTbl.getValueAt(selectedRow, 4).toString(); 
+        
+        jComboBox4.removeAllItems(); 
+        if (currentStatus.equals("Pending")) {
+            jComboBox4.addItem("In Progress"); 
+        } else if (currentStatus.equals("In Progress")) {
+            jComboBox4.addItem("In Progress");
+            jComboBox4.addItem("Done");
+            jComboBox4.addItem("Completed");
+        } 
+    }//GEN-LAST:event_issueTblMouseClicked
 
     /**
      * @param args the command line arguments
