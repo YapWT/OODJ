@@ -57,6 +57,7 @@ public class uiCustomer extends javax.swing.JFrame {
         });
     
     Booking.displayBookingsTable(filterBookingTable, "All", customer.getUid());
+    Booking.displayBookingsTable(cancelBookingsTable, "All", customer.getUid());
   }
 
   @SuppressWarnings("unchecked")
@@ -94,6 +95,11 @@ public class uiCustomer extends javax.swing.JFrame {
         filterPastBtn = new javax.swing.JButton();
         filterUpcomingBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        cancelBookingsTable = new javax.swing.JTable();
+        cancelBookingCombo = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        cancelBookingBtn = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -362,15 +368,72 @@ public class uiCustomer extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("View Bookings", jPanel2);
 
+        cancelBookingsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "BookingID", "HallID", "Start Time", "End Time", "Total Price", "Booking Date"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        cancelBookingsTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(cancelBookingsTable);
+        if (cancelBookingsTable.getColumnModel().getColumnCount() > 0) {
+            cancelBookingsTable.getColumnModel().getColumn(0).setResizable(false);
+            cancelBookingsTable.getColumnModel().getColumn(1).setResizable(false);
+            cancelBookingsTable.getColumnModel().getColumn(2).setResizable(false);
+            cancelBookingsTable.getColumnModel().getColumn(3).setResizable(false);
+            cancelBookingsTable.getColumnModel().getColumn(4).setResizable(false);
+            cancelBookingsTable.getColumnModel().getColumn(5).setResizable(false);
+        }
+
+        jLabel10.setText("Select Booking:");
+
+        cancelBookingBtn.setText("Cancel Booking");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 564, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(192, 192, 192)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancelBookingCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(216, 216, 216)
+                        .addComponent(cancelBookingBtn)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(cancelBookingCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cancelBookingBtn)
+                .addGap(0, 72, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cancel Bookings", jPanel3);
@@ -535,6 +598,9 @@ public class uiCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel RatePerHourLBL;
     private javax.swing.JButton bookHallBtn;
     private javax.swing.JLabel bookStatus;
+    private javax.swing.JButton cancelBookingBtn;
+    private javax.swing.JComboBox<String> cancelBookingCombo;
+    private javax.swing.JTable cancelBookingsTable;
     private javax.swing.JLabel capacityLBL;
     private com.github.lgooddatepicker.components.DatePicker datePicker;
     private javax.swing.JComboBox<String> endSlot;
@@ -546,6 +612,7 @@ public class uiCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel hallTypeLBL;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -561,6 +628,7 @@ public class uiCustomer extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable scheduleTable;
     private javax.swing.JComboBox<String> startSlot;

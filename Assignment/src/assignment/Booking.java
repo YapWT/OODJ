@@ -197,7 +197,8 @@ public class Booking {
 
     if (bookings != null) {
       for (Booking booking : bookings) {
-        if (customerID.equals(booking.getCustomer().getUid())) {
+        if (customerID.equals(booking.getCustomer().getUid())
+            && !booking.getBookingStatus().equals("cancelled")) {
           switch (filter) {
             case "All":
               {
@@ -208,6 +209,7 @@ public class Booking {
                 tableRow[4] = booking.getTotalPrice();
                 tableRow[5] = booking.getBookingDate();
                 model.addRow(tableRow);
+                break;
               }
             case "Past":
               {
@@ -219,6 +221,7 @@ public class Booking {
                   tableRow[4] = booking.getTotalPrice();
                   tableRow[5] = booking.getBookingDate();
                   model.addRow(tableRow);
+                  break;
                 }
               }
             case "Up Coming":
@@ -232,6 +235,7 @@ public class Booking {
                   tableRow[4] = booking.getTotalPrice();
                   tableRow[5] = booking.getBookingDate();
                   model.addRow(tableRow);
+                  break;
                 }
               }
           }
