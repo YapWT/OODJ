@@ -17,25 +17,6 @@ public class uiCustomer extends javax.swing.JFrame {
 
   public uiCustomer() {
     initComponents();
-    datePicker.setDateToToday();
-    for (String slot : timeSlotComboStrings) {
-      startSlot.addItem(slot);
-      endSlot.addItem(slot);
-    }
-
-    ArrayList<Hall> halls = FileOperations.read("halls.txt", Hall.class);
-    for (Hall hall : halls) {
-      hallComboBox.addItem(hall.getHallID());
-    }
-
-    datePicker.addDateChangeListener(
-        new DateChangeListener() {
-          public void dateChanged(DateChangeEvent event) {
-            System.out.println("table display is called" + schedule.toString());
-            datePicker.setDate(event.getNewDate());
-            Schedule.displaySchedule(scheduleTable, schedule);
-          }
-        });
   }
 
   public uiCustomer(User customer) {
@@ -74,417 +55,384 @@ public class uiCustomer extends javax.swing.JFrame {
             Schedule.displaySchedule(scheduleTable, schedule);
           }
         });
+    
+    Booking.displayBookingsTable(filterBookingTable, "All", customer.getUid());
   }
 
   @SuppressWarnings("unchecked")
-  // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-  private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-    jPopupMenu1 = new javax.swing.JPopupMenu();
-    jLabel1 = new javax.swing.JLabel();
-    jButton5 = new javax.swing.JButton();
-    jTabbedPane1 = new javax.swing.JTabbedPane();
-    jPanel1 = new javax.swing.JPanel();
-    hallComboBox = new javax.swing.JComboBox<>();
-    jLabel2 = new javax.swing.JLabel();
-    jLabel3 = new javax.swing.JLabel();
-    jLabel4 = new javax.swing.JLabel();
-    jLabel5 = new javax.swing.JLabel();
-    jScrollPane1 = new javax.swing.JScrollPane();
-    scheduleTable = new javax.swing.JTable();
-    hallTypeLBL = new javax.swing.JLabel();
-    capacityLBL = new javax.swing.JLabel();
-    RatePerHourLBL = new javax.swing.JLabel();
-    datePicker = new com.github.lgooddatepicker.components.DatePicker();
-    jLabel6 = new javax.swing.JLabel();
-    startSlot = new javax.swing.JComboBox<>();
-    endSlot = new javax.swing.JComboBox<>();
-    jLabel7 = new javax.swing.JLabel();
-    jLabel8 = new javax.swing.JLabel();
-    bookHallBtn = new javax.swing.JButton();
-    bookStatus = new javax.swing.JLabel();
-    jPanel2 = new javax.swing.JPanel();
-    jPanel3 = new javax.swing.JPanel();
-    jPanel4 = new javax.swing.JPanel();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jLabel1 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        hallComboBox = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        scheduleTable = new javax.swing.JTable();
+        hallTypeLBL = new javax.swing.JLabel();
+        capacityLBL = new javax.swing.JLabel();
+        RatePerHourLBL = new javax.swing.JLabel();
+        datePicker = new com.github.lgooddatepicker.components.DatePicker();
+        jLabel6 = new javax.swing.JLabel();
+        startSlot = new javax.swing.JComboBox<>();
+        endSlot = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        bookHallBtn = new javax.swing.JButton();
+        bookStatus = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        filterBookingTable = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        filterAllBtn = new javax.swing.JButton();
+        filterPastBtn = new javax.swing.JButton();
+        filterUpcomingBtn = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
 
-    setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-    jLabel1.setText("Customer Menu");
+        jLabel1.setText("Customer Menu");
 
-    jButton5.setText("Logout");
-    jButton5.addActionListener(
-        new java.awt.event.ActionListener() {
-          public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jButton5ActionPerformed(evt);
-          }
+        jButton5.setText("Logout");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
         });
 
-    jTabbedPane1.setToolTipText("Book New Hall");
+        jTabbedPane1.setToolTipText("Book New Hall");
 
-    hallComboBox.addActionListener(
-        new java.awt.event.ActionListener() {
-          public void actionPerformed(java.awt.event.ActionEvent evt) {
-            hallComboBoxActionPerformed(evt);
-          }
+        hallComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hallComboBoxActionPerformed(evt);
+            }
         });
 
-    jLabel2.setText("Select Hall:");
+        jLabel2.setText("Select Hall:");
 
-    jLabel3.setText("Capacity:");
+        jLabel3.setText("Capacity:");
 
-    jLabel4.setText("Hall Type:");
+        jLabel4.setText("Hall Type:");
 
-    jLabel5.setText("Rate Per Hour:");
+        jLabel5.setText("Rate Per Hour:");
 
-    scheduleTable.setModel(
-        new javax.swing.table.DefaultTableModel(
-            new Object[][] {}, new String[] {"Time", "Availability"}) {
+        scheduleTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-          Class[] types = new Class[] {java.lang.String.class, java.lang.String.class};
-          boolean[] canEdit = new boolean[] {false, false};
+            },
+            new String [] {
+                "Time", "Availability"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
-          public Class getColumnClass(int columnIndex) {
-            return types[columnIndex];
-          }
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-          public boolean isCellEditable(int rowIndex, int columnIndex) {
-            return canEdit[columnIndex];
-          }
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-    scheduleTable.getTableHeader().setReorderingAllowed(false);
-    jScrollPane1.setViewportView(scheduleTable);
-    if (scheduleTable.getColumnModel().getColumnCount() > 0) {
-      scheduleTable.getColumnModel().getColumn(0).setResizable(false);
-      scheduleTable.getColumnModel().getColumn(1).setResizable(false);
-    }
+        scheduleTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(scheduleTable);
+        if (scheduleTable.getColumnModel().getColumnCount() > 0) {
+            scheduleTable.getColumnModel().getColumn(0).setResizable(false);
+            scheduleTable.getColumnModel().getColumn(1).setResizable(false);
+        }
 
-    datePicker.addFocusListener(
-        new java.awt.event.FocusAdapter() {
-          public void focusGained(java.awt.event.FocusEvent evt) {
-            datePickerFocusGained(evt);
-          }
-        });
-
-    jLabel6.setText("Select Date:");
-
-    startSlot.addActionListener(
-        new java.awt.event.ActionListener() {
-          public void actionPerformed(java.awt.event.ActionEvent evt) {
-            startSlotActionPerformed(evt);
-          }
+        datePicker.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                datePickerFocusGained(evt);
+            }
         });
 
-    jLabel7.setText("Select time slot:");
+        jLabel6.setText("Select Date:");
 
-    jLabel8.setText("to");
-
-    bookHallBtn.setText("Book Hall");
-    bookHallBtn.addActionListener(
-        new java.awt.event.ActionListener() {
-          public void actionPerformed(java.awt.event.ActionEvent evt) {
-            bookHallBtnActionPerformed(evt);
-          }
+        startSlot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startSlotActionPerformed(evt);
+            }
         });
 
-    bookStatus.setToolTipText("");
-    bookStatus.setMaximumSize(new java.awt.Dimension(100, 30));
+        jLabel7.setText("Select time slot:");
 
-    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-    jPanel1.setLayout(jPanel1Layout);
-    jPanel1Layout.setHorizontalGroup(
-        jPanel1Layout
-            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(
-                jPanel1Layout
-                    .createSequentialGroup()
-                    .addGroup(
-                        jPanel1Layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(
-                                jPanel1Layout
-                                    .createParallelGroup(
-                                        javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(
-                                        jPanel1Layout
-                                            .createSequentialGroup()
-                                            .addGap(48, 48, 48)
-                                            .addGroup(
-                                                jPanel1Layout
-                                                    .createParallelGroup(
-                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(
-                                                        jPanel1Layout
-                                                            .createSequentialGroup()
-                                                            .addComponent(jLabel4)
-                                                            .addPreferredGap(
-                                                                javax.swing.LayoutStyle
-                                                                    .ComponentPlacement.RELATED)
-                                                            .addComponent(hallTypeLBL))
-                                                    .addGroup(
-                                                        jPanel1Layout
-                                                            .createSequentialGroup()
-                                                            .addComponent(jLabel3)
-                                                            .addPreferredGap(
-                                                                javax.swing.LayoutStyle
-                                                                    .ComponentPlacement.RELATED)
-                                                            .addComponent(capacityLBL))
-                                                    .addGroup(
-                                                        jPanel1Layout
-                                                            .createSequentialGroup()
-                                                            .addComponent(jLabel2)
-                                                            .addPreferredGap(
-                                                                javax.swing.LayoutStyle
-                                                                    .ComponentPlacement.RELATED)
-                                                            .addComponent(
-                                                                hallComboBox,
-                                                                javax.swing.GroupLayout
-                                                                    .PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout
-                                                                    .DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout
-                                                                    .PREFERRED_SIZE))
-                                                    .addGroup(
-                                                        jPanel1Layout
-                                                            .createSequentialGroup()
-                                                            .addComponent(jLabel5)
-                                                            .addPreferredGap(
-                                                                javax.swing.LayoutStyle
-                                                                    .ComponentPlacement.RELATED)
-                                                            .addComponent(RatePerHourLBL))
-                                                    .addComponent(
-                                                        datePicker,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel6)))
-                                    .addGroup(
-                                        jPanel1Layout
-                                            .createSequentialGroup()
-                                            .addGap(23, 23, 23)
-                                            .addGroup(
-                                                jPanel1Layout
-                                                    .createParallelGroup(
-                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(
-                                                        jPanel1Layout
-                                                            .createSequentialGroup()
-                                                            .addComponent(
-                                                                startSlot,
-                                                                javax.swing.GroupLayout
-                                                                    .PREFERRED_SIZE,
-                                                                80,
-                                                                javax.swing.GroupLayout
-                                                                    .PREFERRED_SIZE)
-                                                            .addPreferredGap(
-                                                                javax.swing.LayoutStyle
-                                                                    .ComponentPlacement.RELATED,
-                                                                javax.swing.GroupLayout
-                                                                    .DEFAULT_SIZE,
-                                                                Short.MAX_VALUE)
-                                                            .addComponent(jLabel8)
-                                                            .addPreferredGap(
-                                                                javax.swing.LayoutStyle
-                                                                    .ComponentPlacement.RELATED)
-                                                            .addComponent(
-                                                                endSlot,
-                                                                javax.swing.GroupLayout
-                                                                    .PREFERRED_SIZE,
-                                                                80,
-                                                                javax.swing.GroupLayout
-                                                                    .PREFERRED_SIZE)
-                                                            .addGap(19, 19, 19))
-                                                    .addGroup(
-                                                        jPanel1Layout
-                                                            .createSequentialGroup()
-                                                            .addComponent(jLabel7)
-                                                            .addGap(0, 0, Short.MAX_VALUE)))))
-                            .addGroup(
-                                jPanel1Layout
-                                    .createSequentialGroup()
-                                    .addGap(75, 75, 75)
-                                    .addComponent(bookHallBtn))
-                            .addGroup(
-                                jPanel1Layout
-                                    .createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(
-                                        bookStatus,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        241,
-                                        Short.MAX_VALUE)))
-                    .addGap(18, 18, 18)
-                    .addComponent(
-                        jScrollPane1,
-                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                        282,
-                        javax.swing.GroupLayout.PREFERRED_SIZE)));
-    jPanel1Layout.setVerticalGroup(
-        jPanel1Layout
-            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(
-                jPanel1Layout
-                    .createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(
-                        jScrollPane1,
-                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(
-                jPanel1Layout
-                    .createSequentialGroup()
-                    .addGap(40, 40, 40)
-                    .addGroup(
-                        jPanel1Layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(
-                                hallComboBox,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(
-                        jPanel1Layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(hallTypeLBL))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(
-                        jPanel1Layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(capacityLBL))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(
-                        jPanel1Layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(RatePerHourLBL))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jLabel6)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(
-                        datePicker,
-                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(39, 39, 39)
-                    .addComponent(jLabel7)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(
-                        jPanel1Layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(
-                                startSlot,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(
-                                endSlot,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                    .addGap(18, 18, 18)
-                    .addComponent(bookHallBtn)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(
-                        bookStatus,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        Short.MAX_VALUE)
-                    .addGap(57, 57, 57)));
+        jLabel8.setText("to");
 
-    jTabbedPane1.addTab("Book New Hall", jPanel1);
+        bookHallBtn.setText("Book Hall");
+        bookHallBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookHallBtnActionPerformed(evt);
+            }
+        });
 
-    javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-    jPanel2.setLayout(jPanel2Layout);
-    jPanel2Layout.setHorizontalGroup(
-        jPanel2Layout
-            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 547, Short.MAX_VALUE));
-    jPanel2Layout.setVerticalGroup(
-        jPanel2Layout
-            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE));
+        bookStatus.setMaximumSize(new java.awt.Dimension(100, 30));
+        bookStatus.setToolTipText("");
 
-    jTabbedPane1.addTab("View Bookings", jPanel2);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(48, 48, 48)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(hallTypeLBL))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(capacityLBL))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(hallComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(RatePerHourLBL))
+                                .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel6)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(23, 23, 23)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(startSlot, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(endSlot, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(19, 19, 19))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addGap(0, 0, Short.MAX_VALUE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(bookHallBtn))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(bookStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(hallComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(hallTypeLBL))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(capacityLBL))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(RatePerHourLBL))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(startSlot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(endSlot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
+                .addComponent(bookHallBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bookStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(57, 57, 57))
+        );
 
-    javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-    jPanel3.setLayout(jPanel3Layout);
-    jPanel3Layout.setHorizontalGroup(
-        jPanel3Layout
-            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 547, Short.MAX_VALUE));
-    jPanel3Layout.setVerticalGroup(
-        jPanel3Layout
-            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE));
+        jTabbedPane1.addTab("Book New Hall", jPanel1);
 
-    jTabbedPane1.addTab("Cancel Bookings", jPanel3);
+        filterBookingTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-    javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-    jPanel4.setLayout(jPanel4Layout);
-    jPanel4Layout.setHorizontalGroup(
-        jPanel4Layout
-            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 547, Short.MAX_VALUE));
-    jPanel4Layout.setVerticalGroup(
-        jPanel4Layout
-            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE));
+            },
+            new String [] {
+                "BookingID", "HallID", "Start Time", "End Time", "Total Price", "Booking Date"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
-    jTabbedPane1.addTab("Raise Issue", jPanel4);
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-    getContentPane().setLayout(layout);
-    layout.setHorizontalGroup(
-        layout
-            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(
-                layout
-                    .createSequentialGroup()
-                    .addGroup(
-                        layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(
-                                layout
-                                    .createSequentialGroup()
-                                    .addGap(245, 245, 245)
-                                    .addComponent(jLabel1))
-                            .addGroup(
-                                layout
-                                    .createSequentialGroup()
-                                    .addGap(23, 23, 23)
-                                    .addComponent(
-                                        jTabbedPane1,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        547,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(
-                                layout
-                                    .createSequentialGroup()
-                                    .addGap(255, 255, 255)
-                                    .addComponent(jButton5)))
-                    .addContainerGap(26, Short.MAX_VALUE)));
-    layout.setVerticalGroup(
-        layout
-            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(
-                layout
-                    .createSequentialGroup()
-                    .addGap(21, 21, 21)
-                    .addComponent(jLabel1)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jTabbedPane1)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jButton5)
-                    .addContainerGap()));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(filterBookingTable);
+        if (filterBookingTable.getColumnModel().getColumnCount() > 0) {
+            filterBookingTable.getColumnModel().getColumn(0).setResizable(false);
+            filterBookingTable.getColumnModel().getColumn(1).setResizable(false);
+            filterBookingTable.getColumnModel().getColumn(2).setResizable(false);
+            filterBookingTable.getColumnModel().getColumn(3).setResizable(false);
+            filterBookingTable.getColumnModel().getColumn(4).setResizable(false);
+            filterBookingTable.getColumnModel().getColumn(5).setResizable(false);
+        }
 
-    pack();
-  } // </editor-fold>//GEN-END:initComponents
+        jLabel9.setText("Filter reservations by:");
+
+        filterAllBtn.setText("All");
+        filterAllBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterAllBtnActionPerformed(evt);
+            }
+        });
+
+        filterPastBtn.setText("Past");
+        filterPastBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterPastBtnActionPerformed(evt);
+            }
+        });
+
+        filterUpcomingBtn.setText("Upcoming");
+        filterUpcomingBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterUpcomingBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filterAllBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filterPastBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filterUpcomingBtn)
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(116, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(filterAllBtn)
+                    .addComponent(filterPastBtn)
+                    .addComponent(filterUpcomingBtn))
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("View Bookings", jPanel2);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 564, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 439, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Cancel Bookings", jPanel3);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 564, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 439, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Raise Issue", jPanel4);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(245, 245, 245)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(255, 255, 255)
+                        .addComponent(jButton5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPane1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void filterAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterAllBtnActionPerformed
+       Booking.displayBookingsTable(filterBookingTable, "All", customer.getUid());
+    }//GEN-LAST:event_filterAllBtnActionPerformed
+
+    private void filterPastBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterPastBtnActionPerformed
+        Booking.displayBookingsTable(filterBookingTable, "Past", customer.getUid());
+    }//GEN-LAST:event_filterPastBtnActionPerformed
+
+    private void filterUpcomingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterUpcomingBtnActionPerformed
+        Booking.displayBookingsTable(filterBookingTable, "Up Coming", customer.getUid());
+    }//GEN-LAST:event_filterUpcomingBtnActionPerformed
 
   private void datePickerFocusGained(
       java.awt.event.FocusEvent evt) { // GEN-FIRST:event_datePickerFocusGained
@@ -585,32 +533,38 @@ public class uiCustomer extends javax.swing.JFrame {
         });
   }
 
-  // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JLabel RatePerHourLBL;
-  private javax.swing.JButton bookHallBtn;
-  private javax.swing.JLabel bookStatus;
-  private javax.swing.JLabel capacityLBL;
-  private com.github.lgooddatepicker.components.DatePicker datePicker;
-  private javax.swing.JComboBox<String> endSlot;
-  private javax.swing.JComboBox<String> hallComboBox;
-  private javax.swing.JLabel hallTypeLBL;
-  private javax.swing.JButton jButton5;
-  private javax.swing.JLabel jLabel1;
-  private javax.swing.JLabel jLabel2;
-  private javax.swing.JLabel jLabel3;
-  private javax.swing.JLabel jLabel4;
-  private javax.swing.JLabel jLabel5;
-  private javax.swing.JLabel jLabel6;
-  private javax.swing.JLabel jLabel7;
-  private javax.swing.JLabel jLabel8;
-  private javax.swing.JPanel jPanel1;
-  private javax.swing.JPanel jPanel2;
-  private javax.swing.JPanel jPanel3;
-  private javax.swing.JPanel jPanel4;
-  private javax.swing.JPopupMenu jPopupMenu1;
-  private javax.swing.JScrollPane jScrollPane1;
-  private javax.swing.JTabbedPane jTabbedPane1;
-  private javax.swing.JTable scheduleTable;
-  private javax.swing.JComboBox<String> startSlot;
-  // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel RatePerHourLBL;
+    private javax.swing.JButton bookHallBtn;
+    private javax.swing.JLabel bookStatus;
+    private javax.swing.JLabel capacityLBL;
+    private com.github.lgooddatepicker.components.DatePicker datePicker;
+    private javax.swing.JComboBox<String> endSlot;
+    private javax.swing.JButton filterAllBtn;
+    private javax.swing.JTable filterBookingTable;
+    private javax.swing.JButton filterPastBtn;
+    private javax.swing.JButton filterUpcomingBtn;
+    private javax.swing.JComboBox<String> hallComboBox;
+    private javax.swing.JLabel hallTypeLBL;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable scheduleTable;
+    private javax.swing.JComboBox<String> startSlot;
+    // End of variables declaration//GEN-END:variables
 }

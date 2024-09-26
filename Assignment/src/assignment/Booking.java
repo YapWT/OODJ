@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.temporal.WeekFields;
 import java.util.ArrayList;
 import java.util.Locale;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class Booking {
   private String bookingID;
@@ -173,5 +175,68 @@ public class Booking {
         bookingStatus,
         bookingDate.toString(),
         issue.getIssueID());
+  }
+
+  public static String timeSlotConversion(int time) {
+    String[] timeSlotComboStrings =
+        new String[] {
+          "8:00am", "9:00am", "10:00am", "11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm",
+          "4:00pm", "5:00pm", "6:00pm"
+        };
+
+    return timeSlotComboStrings[time - 1];
+  }
+
+  public static void displayBookingsTable(JTable T, String filter, String customerID) {
+    DefaultTableModel model = (DefaultTableModel) T.getModel();
+    model.setRowCount(0);
+
+    ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
+
+    Object[] tableRow = new Object[6];
+
+    if (bookings != null) {
+      for (Booking booking : bookings) {
+        if (customerID.equals(booking.getCustomer().getUid())) {
+          switch (filter) {
+            case "All":
+              {
+                tableRow[0] = booking.getBookingID();
+                tableRow[1] = booking.getHallID();
+                tableRow[2] = timeSlotConversion(booking.getTimeSlots()[0]);
+                tableRow[3] = timeSlotConversion(booking.getTimeSlots()[1]);
+                tableRow[4] = booking.getTotalPrice();
+                tableRow[5] = booking.getBookingDate();
+                model.addRow(tableRow);
+              }
+            case "Past":
+              {
+                if (booking.getBookingDate().isBefore(LocalDate.now())) {
+                  tableRow[0] = booking.getBookingID();
+                  tableRow[1] = booking.getHallID();
+                  tableRow[2] = timeSlotConversion(booking.getTimeSlots()[0]);
+                  tableRow[3] = timeSlotConversion(booking.getTimeSlots()[1]);
+                  tableRow[4] = booking.getTotalPrice();
+                  tableRow[5] = booking.getBookingDate();
+                  model.addRow(tableRow);
+                }
+              }
+            case "Up Coming":
+              {
+                if (booking.getBookingDate().isEqual(LocalDate.now())
+                    || booking.getBookingDate().isAfter(LocalDate.now())) {
+                  tableRow[0] = booking.getBookingID();
+                  tableRow[1] = booking.getHallID();
+                  tableRow[2] = timeSlotConversion(booking.getTimeSlots()[0]);
+                  tableRow[3] = timeSlotConversion(booking.getTimeSlots()[1]);
+                  tableRow[4] = booking.getTotalPrice();
+                  tableRow[5] = booking.getBookingDate();
+                  model.addRow(tableRow);
+                }
+              }
+          }
+        }
+      }
+    }
   }
 }
