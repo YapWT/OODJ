@@ -286,12 +286,12 @@ public class Booking {
     }
   }
 
-  public static void cancelBooking(String boookingID, String customerID) {
+  public static void cancelBooking(String bookingID, String customerID) {
     ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
     ArrayList<Schedule> schedules = FileOperations.read("schedules.txt", Schedule.class);
 
     for (Booking booking : bookings) {
-      if (booking.getBookingID().equals(boookingID)
+      if (booking.getBookingID().equals(bookingID)
           && booking.getCustomer().getUid().equals(customerID)) {
         booking.setBookingStatus("cancelled");
 

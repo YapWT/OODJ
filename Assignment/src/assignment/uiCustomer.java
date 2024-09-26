@@ -66,6 +66,9 @@ public class uiCustomer extends javax.swing.JFrame {
     for(Booking booking : bookings){
         if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")){
             cancelBookingCombo.addItem(booking.getBookingID());
+            if (booking.getIssue().getStatus().equals("pending") || booking.getIssue().getStatus().equals("in progress")) {
+                cancelIssueCombo.addItem(booking.getIssue().getIssueID());
+            }
         }
         if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled") && booking.getIssue().isEmpty()){
             raiseIssueCombo.addItem(booking.getBookingID());
@@ -124,6 +127,9 @@ public class uiCustomer extends javax.swing.JFrame {
         issueDesc = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         submitIssueBtn = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        cancelIssueCombo = new javax.swing.JComboBox<>();
+        cancelIssueBtn = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -497,6 +503,15 @@ public class uiCustomer extends javax.swing.JFrame {
             }
         });
 
+        jLabel13.setText("Select issueID that you would like to cancel:");
+
+        cancelIssueBtn.setText("Cancel");
+        cancelIssueBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelIssueBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -505,18 +520,24 @@ public class uiCustomer extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(issueDesc)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(issueDesc)
+                        .addGap(18, 18, 18)
+                        .addComponent(submitIssueBtn))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(raiseIssueCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel12))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(submitIssueBtn)))
+                            .addComponent(jLabel12)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cancelIssueCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cancelIssueBtn)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -530,10 +551,15 @@ public class uiCustomer extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(issueDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(submitIssueBtn)
-                .addGap(0, 61, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(issueDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(submitIssueBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(cancelIssueCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelIssueBtn))
+                .addGap(0, 113, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Raise Issue", jPanel4);
@@ -617,12 +643,40 @@ public class uiCustomer extends javax.swing.JFrame {
         issueDesc.setText("");
         raiseIssueCombo.removeAllItems();
         ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
-        for(Booking booking : bookings){
-            if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled") && booking.getIssue().isEmpty()){
-                raiseIssueCombo.addItem(booking.getBookingID());
+        for (Booking booking : bookings) {
+            if (booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")) {
+                if (booking.getIssue().isEmpty()) {
+                    raiseIssueCombo.addItem(booking.getBookingID());
+                } else {
+                    String issueStatus = booking.getIssue().getStatus();
+                    if (issueStatus.equals("pending") || issueStatus.equals("in progress")) {
+                        cancelIssueCombo.addItem(booking.getIssue().getIssueID());
+                    }
+                }
             }
         }
     }//GEN-LAST:event_submitIssueBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        new uiLogin().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cancelIssueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelIssueBtnActionPerformed
+        Issue issue = Utils.IDtoObject(cancelIssueCombo.getSelectedItem().toString(), "issues.txt", Issue.class);
+        Issue.cancelIssue(issue);
+        
+        cancelIssueCombo.removeAllItems();
+        ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
+        for (Booking booking : bookings) {
+            if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled") && !booking.getIssue().isEmpty()) {
+                if (booking.getIssue().getStatus().equals("pending") || booking.getIssue().getStatus().equals("in progress")) {
+                    cancelIssueCombo.addItem(booking.getIssue().getIssueID());
+                }
+            }
+        }
+        Customer.displayIssueTable(issueTable, customer.getUid());
+    }//GEN-LAST:event_cancelIssueBtnActionPerformed
 
   private void datePickerFocusGained(
       java.awt.event.FocusEvent evt) { // GEN-FIRST:event_datePickerFocusGained
@@ -748,6 +802,8 @@ public class uiCustomer extends javax.swing.JFrame {
     private javax.swing.JButton cancelBookingBtn;
     private javax.swing.JComboBox<String> cancelBookingCombo;
     private javax.swing.JTable cancelBookingsTable;
+    private javax.swing.JButton cancelIssueBtn;
+    private javax.swing.JComboBox<String> cancelIssueCombo;
     private javax.swing.JLabel capacityLBL;
     private com.github.lgooddatepicker.components.DatePicker datePicker;
     private javax.swing.JComboBox<String> endSlot;
@@ -763,6 +819,7 @@ public class uiCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

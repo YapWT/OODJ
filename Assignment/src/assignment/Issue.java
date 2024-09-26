@@ -4,6 +4,8 @@
  */
 package assignment;
 
+import java.util.ArrayList;
+
 public class Issue {
 
   private String issueID;
@@ -114,5 +116,22 @@ public class Issue {
     } else {
       return false;
     }
+  }
+
+  public static void cancelIssue(Issue cancellingIssue) {
+    ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
+    ArrayList<Issue> issues = FileOperations.read("issues.txt", Issue.class);
+
+    for (Booking booking : bookings) {
+      if (booking.getBookingID().equals(cancellingIssue.getBooking())) {
+        for (Issue issue : issues) {
+          if (issue.getIssueID().equals(cancellingIssue.getIssueID())) {
+            issue.setStatus("cancelled");
+          }
+        }
+      }
+    }
+
+    FileOperations.write("issues.txt", issues);
   }
 }
