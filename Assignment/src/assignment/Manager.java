@@ -26,7 +26,7 @@ public class Manager extends Staff {
   }
   
   public void showTotalEarnings(JLabel lbl) {
-      ArrayList<Booking> bookings = FileOperations.read("Bookings.txt", Booking.class);
+      ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
       Integer sales = 0;
       
       for (Booking b : bookings) {

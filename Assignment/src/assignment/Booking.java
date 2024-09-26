@@ -91,7 +91,7 @@ public class Booking {
 
   public ArrayList<Booking> getBookingFilter(String filter) {
     ArrayList<Integer> f = new ArrayList<>();
-    ArrayList<Booking> bookings = FileOperations.read("Bookings.txt", Booking.class);
+    ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
 
     for (Booking b : bookings) {
       LocalDate Date = b.getBookingDate(); // Directly access bookingDate
