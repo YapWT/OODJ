@@ -41,13 +41,26 @@ public class Manager extends Staff {
       Integer total = 0;
       
       for (Issue i : issues) {
-          if (i.getStatus().equals("In Progress")) {
+          if (i.getStatus().equals("In Progress") || i.getStatus().isEmpty()) {
               total++;
           }
       }
       
       lbl.setText(total.toString());
 
+  }
+  
+  public void showTotalIssuePendingResponse(JLabel lbl) {
+      ArrayList<Issue> issues = FileOperations.read("issues.txt", Issue.class);
+      Integer total = 0;
+
+      for (Issue i : issues) {
+          if (i.getResponse().equals("")) {
+              total++;
+          }
+      }
+
+      lbl.setText(total.toString());
   }
   
   
