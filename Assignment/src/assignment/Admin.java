@@ -99,8 +99,8 @@ class Admin extends Staff{
                 tableRow[2] = bs.getHallID();
                 tableRow[3] = bs.getCustomer().getUid();
                 tableRow[4] = bs.getBookingDate();
-                tableRow[5] = bs.getTimeSlots()[0];
-                tableRow[6] = bs.getTimeSlots()[1];
+                tableRow[5] = Booking.timeSlotConversion(bs.getTimeSlots()[0]);
+                tableRow[6] = Booking.timeSlotConversion(bs.getTimeSlots()[1]);
                 model.addRow(tableRow);
             }
         }
@@ -121,8 +121,8 @@ class Admin extends Staff{
                     tableRow[2] = bs.getHallID();
                     tableRow[3] = bs.getCustomer().getUid();
                     tableRow[4] = bs.getBookingDate();
-                    tableRow[5] = bs.getTimeSlots()[0];
-                    tableRow[6] = bs.getTimeSlots()[1];
+                    tableRow[5] = Booking.timeSlotConversion(bs.getTimeSlots()[0]);
+                    tableRow[6] = Booking.timeSlotConversion(bs.getTimeSlots()[1]);
                     model.addRow(tableRow);
                 }
             } else {
@@ -133,15 +133,13 @@ class Admin extends Staff{
                     tableRow[2] = bs.getHallID();
                     tableRow[3] = bs.getCustomer().getUid();
                     tableRow[4] = bs.getBookingDate();
-                    tableRow[5] = bs.getTimeSlots()[0];
-                    tableRow[6] = bs.getTimeSlots()[1];
+                    tableRow[5] = Booking.timeSlotConversion(bs.getTimeSlots()[0]);
+                    tableRow[6] = Booking.timeSlotConversion(bs.getTimeSlots()[1]);
                     model.addRow(tableRow);
                 }
             } 
         }
-    }
-    
-    
+    }   
     
     public void removeCurrentAdmin(JTable t, String currentAdmin){
         this.model = (DefaultTableModel) t.getModel();
