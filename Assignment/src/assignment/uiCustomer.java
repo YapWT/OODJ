@@ -2,6 +2,7 @@ package assignment;
 
 import com.github.lgooddatepicker.optionalusertools.DateChangeListener;
 import com.github.lgooddatepicker.zinternaltools.DateChangeEvent;
+import java.awt.BorderLayout;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -71,6 +72,9 @@ public class uiCustomer extends javax.swing.JFrame {
         }
     }
     Customer.displayIssueTable(issueTable, customer.getUid());
+        Panel_updateProfile PNL_profile = new Panel_updateProfile(customer.getUid(), new User());
+            jPanel5.setLayout(new BorderLayout());
+            jPanel5.add(PNL_profile, BorderLayout.CENTER);
   }
 
   @SuppressWarnings("unchecked")
@@ -79,7 +83,6 @@ public class uiCustomer extends javax.swing.JFrame {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jLabel1 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         hallComboBox = new javax.swing.JComboBox<>();
@@ -121,17 +124,12 @@ public class uiCustomer extends javax.swing.JFrame {
         issueDesc = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         submitIssueBtn = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Customer Menu");
-
-        jButton5.setText("Logout");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
 
         jTabbedPane1.setToolTipText("Book New Hall");
 
@@ -382,7 +380,7 @@ public class uiCustomer extends javax.swing.JFrame {
                     .addComponent(filterPastBtn)
                     .addComponent(filterUpcomingBtn))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -458,7 +456,7 @@ public class uiCustomer extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cancelBookingBtn)
-                .addGap(0, 72, Short.MAX_VALUE))
+                .addGap(0, 102, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cancel Bookings", jPanel3);
@@ -536,10 +534,30 @@ public class uiCustomer extends javax.swing.JFrame {
                 .addComponent(issueDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(submitIssueBtn)
-                .addGap(0, 31, Short.MAX_VALUE))
+                .addGap(0, 61, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Raise Issue", jPanel4);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 564, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 469, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Update Profile", jPanel5);
+
+        jButton1.setText("Logout");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -551,11 +569,11 @@ public class uiCustomer extends javax.swing.JFrame {
                         .addGap(245, 245, 245)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addComponent(jButton5))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(237, 237, 237)
+                        .addComponent(jButton1)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -566,7 +584,7 @@ public class uiCustomer extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(jButton1)
                 .addContainerGap())
         );
 
@@ -612,6 +630,11 @@ public class uiCustomer extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_submitIssueBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        new uiLogin().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
   private void datePickerFocusGained(
       java.awt.event.FocusEvent evt) { // GEN-FIRST:event_datePickerFocusGained
@@ -748,7 +771,7 @@ public class uiCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel hallTypeLBL;
     private javax.swing.JTextField issueDesc;
     private javax.swing.JTable issueTable;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -765,6 +788,7 @@ public class uiCustomer extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
