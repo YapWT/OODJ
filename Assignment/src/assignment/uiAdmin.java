@@ -74,7 +74,7 @@ public class uiAdmin extends javax.swing.JFrame {
                 if (!(row.getText().isEmpty() || pass.getPassword().length == 0)) {
                     if (classA.modifyPass(TBL_view, row.getText(), new String(pass.getPassword()))) {
                         jLabel6.setVisible(true);
-                        jLabel6.setText("Password Change!");
+                        jLabel6.setText(classA.getUname() + "'s Password Change!");
                     } else {
                         jLabel6.setVisible(true);
                         jLabel6.setText("Invalid Row Number. ");
@@ -104,6 +104,9 @@ public class uiAdmin extends javax.swing.JFrame {
                             jLabel6.setText("Customer are not allowed to deactive or reactive. ");
                         } else {
                             classA.modifyStatus(false);
+                            jLabel6.setVisible(true);
+                            if (classA.getUstatus().equals("deactived")) jLabel6.setText("Sucessfully Deactive " + classA.getUname());
+                            else jLabel6.setText("Sucessfully Reactive " + classA.getUname());
                         }
                     } else {
                     jLabel6.setVisible(true);
@@ -134,6 +137,8 @@ public class uiAdmin extends javax.swing.JFrame {
                             jLabel6.setText("Only allow to delete Customer. ");
                         } else {
                             classA.modifyStatus();
+                            jLabel6.setVisible(true);
+                            jLabel6.setText("Sucessfully Delete " + classA.getUname());
                         }
                     } else {
                     jLabel6.setVisible(true);
@@ -164,6 +169,9 @@ public class uiAdmin extends javax.swing.JFrame {
                             jLabel6.setText("Only allow to block or unblock Customer. ");
                         } else {
                             classA.modifyStatus(true);
+                            jLabel6.setVisible(true);
+                            if (classA.getUstatus().equals("blocked")) jLabel6.setText("Sucessfully Block " + classA.getUname());
+                            else jLabel6.setText("Sucessfully Unblock " + classA.getUname());
                         }
                     } else {
                     jLabel6.setVisible(true);
@@ -726,7 +734,7 @@ public class uiAdmin extends javax.swing.JFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -796,6 +804,7 @@ public class uiAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_fcancelBActionPerformed
 
     private void BTN_cancelfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelfActionPerformed
+        jTextField1.setText("");
         jLabel6.setVisible(false);
         defaultPending = true;
         RoleSelected = null;
@@ -804,42 +813,49 @@ public class uiAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_cancelfActionPerformed
 
     private void BTN_fpendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpendingActionPerformed
+        jTextField1.setText("");
         jLabel6.setVisible(false);
         defaultPending = true;
         Utils.viewTable(TBL_view, "users.txt", User.class, 5, "pending");
     }//GEN-LAST:event_BTN_fpendingActionPerformed
 
     private void BTN_fdeactivedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fdeactivedActionPerformed
+        jTextField1.setText("");
         jLabel6.setVisible(false);
         defaultPending = false;
         Utils.viewTable(TBL_view, "users.txt", User.class, 5, "deactived");
     }//GEN-LAST:event_BTN_fdeactivedActionPerformed
 
     private void BTN_fblockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fblockActionPerformed
+        jTextField1.setText("");
         jLabel6.setVisible(false);
         defaultPending = false;
         Utils.viewTable(TBL_view, "users.txt", User.class, 5, "blocked");
     }//GEN-LAST:event_BTN_fblockActionPerformed
 
     private void BTN_fschedulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fschedulerActionPerformed
+        jTextField1.setText("");
         jLabel6.setVisible(false);
         RoleSelected = 'S';
         Utils.viewTable(TBL_view, "users.txt", User.class, 3, "S");
     }//GEN-LAST:event_BTN_fschedulerActionPerformed
 
     private void BTN_fmanagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fmanagerActionPerformed
+        jTextField1.setText("");
         jLabel6.setVisible(false);
         RoleSelected = 'M';
         Utils.viewTable(TBL_view, "users.txt", User.class, 3, "M");
     }//GEN-LAST:event_BTN_fmanagerActionPerformed
 
     private void BTN_fcustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fcustomerActionPerformed
+        jTextField1.setText("");
         jLabel6.setVisible(false);
         RoleSelected = 'C';
         Utils.viewTable(TBL_view, "users.txt", User.class, 3, "C");
     }//GEN-LAST:event_BTN_fcustomerActionPerformed
 
     private void BTN_fadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fadminActionPerformed
+        jTextField1.setText("");
         jLabel6.setVisible(false);
         RoleSelected = 'A';
         Utils.viewTable(TBL_view, "users.txt", User.class, 3, "A");
@@ -847,6 +863,7 @@ public class uiAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_fadminActionPerformed
 
     private void BTN_factiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_factiveActionPerformed
+        jTextField1.setText("");
         jLabel6.setVisible(false);
         defaultPending = false;
         Utils.viewTable(TBL_view, "users.txt", User.class, 5, "active");
@@ -854,23 +871,23 @@ public class uiAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_factiveActionPerformed
 
     private void BTN_blockCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_blockCActionPerformed
-        // TODO add your handling code here:
+        jTextField1.setText("");
     }//GEN-LAST:event_BTN_blockCActionPerformed
 
     private void BTN_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_addActionPerformed
-
+        jTextField1.setText("");
     }//GEN-LAST:event_BTN_addActionPerformed
 
     private void BTN_modifyPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_modifyPassActionPerformed
-        // TODO add your handling code here:
+        jTextField1.setText("");
     }//GEN-LAST:event_BTN_modifyPassActionPerformed
 
     private void BTN_deleteCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_deleteCActionPerformed
-        // TODO add your handling code here:
+        jTextField1.setText("");
     }//GEN-LAST:event_BTN_deleteCActionPerformed
 
     private void BTN_deactiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_deactiveActionPerformed
-        // TODO add your handling code here:
+        jTextField1.setText("");
     }//GEN-LAST:event_BTN_deactiveActionPerformed
 
     private void BTN_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_searchActionPerformed
