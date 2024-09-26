@@ -5,84 +5,87 @@
 package assignment;
 
 public class Issue {
-      
-    private String issueID;
-    private String booking;
-    private String description;
-    private String response;
-    private String status;
-    private String assignedStaff;
 
-    public Issue() {}
+  private String issueID;
+  private String booking;
+  private String description;
+  private String response;
+  private String status;
+  private String assignedStaff;
 
-    public Issue(String issueID, String booking, String description, String response, String status, String assignedStaff) {
-        this.issueID = issueID;
-        this.booking = booking;
-        this.description = description;
-        this.response = response;
-        this.status = status;
-        this.assignedStaff = assignedStaff;
-    }
-    
-    public String getAssignedStaff() {
-        return assignedStaff;
-    }
+  public Issue() {
+    this.issueID = "null";
+  }
 
-    public void setAssignedStaff(String assignedStaff) {
-        this.assignedStaff = assignedStaff;
-    }
-    
-    public String getIssueID() {
-        return issueID;
-    }
+  public Issue(
+      String issueID,
+      String booking,
+      String description,
+      String response,
+      String status,
+      String assignedStaff) {
+    this.issueID = issueID;
+    this.booking = booking;
+    this.description = description;
+    this.response = response;
+    this.status = status;
+    this.assignedStaff = assignedStaff;
+  }
 
-    public void setIssueID(String issueID) {
-        this.issueID = issueID;
-    }
+  public String getAssignedStaff() {
+    return assignedStaff;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public void setAssignedStaff(String assignedStaff) {
+    this.assignedStaff = assignedStaff;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
+  public String getIssueID() {
+    if (issueID == null || issueID.equals("null")) {
+      return "null";
     }
+    return issueID;
+  }
 
-    public String getResponse() {
-        return response;
-    }
+  public void setIssueID(String issueID) {
+    this.issueID = issueID;
+  }
 
-    public void setResponse(String response) {
-        this.response = response;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public String getBooking() {
-        return booking;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    public void setBooking(String booking) {
-        this.booking = booking;
-    }
+  public String getResponse() {
+    return response;
+  }
 
-    public String getStatus() {
-        return status;
-    }
+  public void setResponse(String response) {
+    this.response = response;
+  }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+  public String getBooking() {
+    return booking;
+  }
 
-    @Override
-    public String toString() {
-        return String.format(
-        "%s|%s|%s|%s|%s|%s",
-                issueID,booking,description,response,status, assignedStaff);
-        
-    }
-    
-    
+  public void setBooking(String booking) {
+    this.booking = booking;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+  @Override
+  public String toString() {
+    return String.format(
+        "%s|%s|%s|%s|%s|%s", issueID, booking, description, response, status, assignedStaff);
+  }
 }
-
-
-
-

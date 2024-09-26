@@ -56,7 +56,11 @@ public class Booking {
     this.bookingDate = bookingDate;
 
     this.customer = Utils.IDtoObject(customerID, "users.txt", Customer.class);
-    this.issue = Utils.IDtoObject(issueID, "issues.txt", Issue.class);
+    if (issueID.equals("null")) {
+      this.issue = new Issue() {};
+    } else {
+      this.issue = Utils.IDtoObject(issueID, "issues.txt", Issue.class);
+    }
   }
 
   public Booking(
@@ -242,5 +246,18 @@ public class Booking {
         }
       }
     }
+  }
+
+  public static void cancelBooking(String boookingID, String customerID) {
+    ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
+
+    for (Booking booking : bookings) {
+      if (booking.getBookingID().equals(boookingID)
+          && booking.getCustomer().getUid().equals(customerID)) {
+        booking.setBookingStatus("cancelled");
+      }
+    }
+
+    FileOperations.write("bookings.txt", bookings);
   }
 }

@@ -58,6 +58,12 @@ public class uiCustomer extends javax.swing.JFrame {
     
     Booking.displayBookingsTable(filterBookingTable, "All", customer.getUid());
     Booking.displayBookingsTable(cancelBookingsTable, "All", customer.getUid());
+    ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
+    for(Booking booking : bookings){
+        if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")){
+            cancelBookingCombo.addItem(booking.getBookingID());
+        }
+    }
   }
 
   @SuppressWarnings("unchecked")
@@ -405,6 +411,11 @@ public class uiCustomer extends javax.swing.JFrame {
         jLabel10.setText("Select Booking:");
 
         cancelBookingBtn.setText("Cancel Booking");
+        cancelBookingBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBookingBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -494,6 +505,18 @@ public class uiCustomer extends javax.swing.JFrame {
     private void filterUpcomingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterUpcomingBtnActionPerformed
         Booking.displayBookingsTable(filterBookingTable, "Up Coming", customer.getUid());
     }//GEN-LAST:event_filterUpcomingBtnActionPerformed
+
+    private void cancelBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBookingBtnActionPerformed
+        Booking.cancelBooking(cancelBookingCombo.getSelectedItem().toString(), customer.getUid());
+        Booking.displayBookingsTable(cancelBookingsTable, "All", customer.getUid());
+        cancelBookingCombo.removeAllItems();
+        ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
+        for(Booking booking : bookings){
+            if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")){
+                cancelBookingCombo.addItem(booking.getBookingID());
+            }
+        }
+    }//GEN-LAST:event_cancelBookingBtnActionPerformed
 
   private void datePickerFocusGained(
       java.awt.event.FocusEvent evt) { // GEN-FIRST:event_datePickerFocusGained
