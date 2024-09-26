@@ -56,7 +56,6 @@ public class Scheduler extends Staff {
 
   public void editHall(String HallID, int hallType, int hallStatus) throws IOException {
     HallType = null;
-    HallType=null;
     HallStatus=null;
     switch (hallType) {
       case 0:
@@ -89,7 +88,7 @@ public class Scheduler extends Staff {
     }
     Hall hall = Utils.IDtoObject(HallID, "halls.txt",Hall.class);
     hall.setHallType(HallType);
-    hall.setHallType(HallType);
+    hall.setHallStatus(HallStatus);
     data = hall.getHallID()+"|"+hall.getHallType()+"|"+hall.getHallStatus();
       Scanner sc = new Scanner(new File("halls.txt"));
         StringBuffer buffer = new StringBuffer();
