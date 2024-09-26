@@ -181,7 +181,7 @@ public class uiAdmin extends javax.swing.JFrame {
         
 
         // view booking
-        
+        new Admin().viewBooking(TBL_booking);
         // updateProfile
         Panel_updateProfile PNL_profile = new Panel_updateProfile(Uid, new User());
             jPanel5.setLayout(new BorderLayout());
@@ -221,8 +221,12 @@ public class uiAdmin extends javax.swing.JFrame {
         BTN_cancelf = new javax.swing.JButton();
         BTN_cancelf2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        TBL_view1 = new javax.swing.JTable();
+        jLabel10 = new javax.swing.JLabel();
+        BTN_factive1 = new javax.swing.JButton();
+        BTN_fpending1 = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        TBL_booking = new javax.swing.JTable();
+        BTN_fpending2 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -541,19 +545,37 @@ public class uiAdmin extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("User Management", jPanel7);
 
-        TBL_view1.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel10.setText("Filtering Bookings Based on Status:");
+
+        BTN_factive1.setText("Past Booking");
+        BTN_factive1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTN_factive1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_factive1ActionPerformed(evt);
+            }
+        });
+
+        BTN_fpending1.setText("Upcoming Booking");
+        BTN_fpending1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTN_fpending1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_fpending1ActionPerformed(evt);
+            }
+        });
+
+        TBL_booking.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "no", "User ID", "Password", "User Name"
+                "no", "Booking ID", "Hall ID", "Customer ID", "Booking Date", "Start Time", "End Time"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -564,24 +586,54 @@ public class uiAdmin extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        TBL_view1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane6.setViewportView(TBL_view1);
+        TBL_booking.getTableHeader().setReorderingAllowed(false);
+        jScrollPane7.setViewportView(TBL_booking);
+
+        BTN_fpending2.setText("Cancel Filter");
+        BTN_fpending2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTN_fpending2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_fpending2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel10)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(BTN_factive1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BTN_fpending1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BTN_fpending2)))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
+
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BTN_factive1, BTN_fpending1, BTN_fpending2});
+
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addComponent(jLabel10)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BTN_fpending1)
+                    .addComponent(BTN_factive1)
+                    .addComponent(BTN_fpending2))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("View Booking Status", jPanel3);
@@ -711,6 +763,18 @@ public class uiAdmin extends javax.swing.JFrame {
             classA.search(TBL_view, jTextField1.getText());
     }//GEN-LAST:event_BTN_cancelf2ActionPerformed
 
+    private void BTN_factive1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_factive1ActionPerformed
+        new Admin().viewBooking(TBL_booking, true);
+    }//GEN-LAST:event_BTN_factive1ActionPerformed
+
+    private void BTN_fpending1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpending1ActionPerformed
+        new Admin().viewBooking(TBL_booking, false);
+    }//GEN-LAST:event_BTN_fpending1ActionPerformed
+
+    private void BTN_fpending2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpending2ActionPerformed
+        new Admin().viewBooking(TBL_booking);
+    }//GEN-LAST:event_BTN_fpending2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -756,17 +820,21 @@ public class uiAdmin extends javax.swing.JFrame {
     private javax.swing.JButton BTN_deactive;
     private javax.swing.JButton BTN_deleteC;
     private javax.swing.JButton BTN_factive;
+    private javax.swing.JButton BTN_factive1;
     private javax.swing.JButton BTN_fadmin;
     private javax.swing.JButton BTN_fblock;
     private javax.swing.JButton BTN_fcustomer;
     private javax.swing.JButton BTN_fdeactived;
     private javax.swing.JButton BTN_fmanager;
     private javax.swing.JButton BTN_fpending;
+    private javax.swing.JButton BTN_fpending1;
+    private javax.swing.JButton BTN_fpending2;
     private javax.swing.JButton BTN_fscheduler;
     private javax.swing.ButtonGroup BTN_groupAdd;
     private javax.swing.JButton BTN_modifyPass;
+    private javax.swing.JTable TBL_booking;
     private javax.swing.JTable TBL_view;
-    private javax.swing.JTable TBL_view1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -778,7 +846,7 @@ public class uiAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables

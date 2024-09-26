@@ -1,5 +1,6 @@
 package assignment;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -82,9 +83,65 @@ class Admin extends Staff{
             if (user.getUname().contains(s) && !user.getUstatus().equals("deleted"))
                 Utils.addTableRow(t, User.class, user);
         }
-        
-        
     }
+    
+    public void viewBooking(JTable t) {
+        ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
+        this.model = (DefaultTableModel) t.getModel();
+        model.setRowCount(0);
+        Object[] tableRow = new Object[7];
+        int i = 0;
+
+        for (Booking bs : bookings) {
+            if (bs.getBookingStatus().equals("success")) {
+                tableRow[0] = i++;
+                tableRow[1] = bs.getBookingID();
+                tableRow[2] = bs.getHallID();
+                tableRow[3] = bs.getCustomer().getUid();
+                tableRow[4] = bs.getBookingDate();
+                tableRow[5] = bs.getTimeSlots()[0];
+                tableRow[6] = bs.getTimeSlots()[1];
+                model.addRow(tableRow);
+            }
+        }
+    }
+    
+    public void viewBooking(JTable t, boolean past) {
+        ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
+        this.model = (DefaultTableModel) t.getModel();
+        model.setRowCount(0);
+        Object[] tableRow = new Object[7];
+        int i = 0;
+        
+        for (Booking bs : bookings) {
+            if (past) {
+                if (bs.getBookingDate().isBefore(LocalDate.now())) {
+                    tableRow[0] = i++;
+                    tableRow[1] = bs.getBookingID();
+                    tableRow[2] = bs.getHallID();
+                    tableRow[3] = bs.getCustomer().getUid();
+                    tableRow[4] = bs.getBookingDate();
+                    tableRow[5] = bs.getTimeSlots()[0];
+                    tableRow[6] = bs.getTimeSlots()[1];
+                    model.addRow(tableRow);
+                }
+            } else {
+                // For upcoming bookings (today and future)
+                if (bs.getBookingDate().isEqual(LocalDate.now()) || bs.getBookingDate().isAfter(LocalDate.now())) {
+                    tableRow[0] = i++;
+                    tableRow[1] = bs.getBookingID();
+                    tableRow[2] = bs.getHallID();
+                    tableRow[3] = bs.getCustomer().getUid();
+                    tableRow[4] = bs.getBookingDate();
+                    tableRow[5] = bs.getTimeSlots()[0];
+                    tableRow[6] = bs.getTimeSlots()[1];
+                    model.addRow(tableRow);
+                }
+            } 
+        }
+    }
+    
+    
     
     public void removeCurrentAdmin(JTable t, String currentAdmin){
         this.model = (DefaultTableModel) t.getModel();
