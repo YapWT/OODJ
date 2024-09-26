@@ -1,5 +1,6 @@
 package assignment;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JTable;
@@ -66,16 +67,17 @@ public class Schedule {
   }
 
   public static boolean checkIfScheduleExists(LocalDate scheduleDate, String hallID) {
-    ArrayList<Schedule> schedules = FileOperations.read("schedules.txt", Schedule.class);
-    if (schedules != null && !schedules.isEmpty() && !schedules.get(0).isEmpty()) {
-      for (Schedule schedule : schedules) {
-        if (schedule.getScheduleDate().toString().equals(scheduleDate.toString())
-            && schedule.getHallID().equals(hallID)) {
-          return true;
-        }
+      ArrayList<Schedule> schedules = FileOperations.read("schedules.txt", Schedule.class);
+      if (schedules != null && !schedules.isEmpty() && !schedules.get(0).isEmpty()) {
+          for (Schedule schedule : schedules) {
+              if (schedule.getScheduleDate().toString().equals(scheduleDate.toString())
+                      && schedule.getHallID().equals(hallID)) {
+                  return true;
+              }
+          }
       }
-    }
-    return false;
+      return false;
+    
   }
 
   public static Schedule scheduleObjectify(LocalDate scheduleDate, String hallID) {
