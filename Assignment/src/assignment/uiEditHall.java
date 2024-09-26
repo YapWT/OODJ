@@ -60,10 +60,8 @@ public class uiEditHall extends javax.swing.JFrame {
         pnlEditHall.setPreferredSize(new java.awt.Dimension(500, 500));
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Choose Hall:");
 
-        comboHallID.setBackground(new java.awt.Color(255, 255, 255));
         comboHallID.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         comboHallID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,26 +70,21 @@ public class uiEditHall extends javax.swing.JFrame {
         });
 
         lblHallType.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        lblHallType.setForeground(new java.awt.Color(0, 0, 0));
         lblHallType.setText("Hall Type");
 
-        comboHallType.setBackground(new java.awt.Color(255, 255, 255));
         comboHallType.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         comboHallType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Auditorium", "Banquet Hall", "Meeting Room" }));
         comboHallType.setSelectedIndex(-1);
 
         lblHallStatus.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        lblHallStatus.setForeground(new java.awt.Color(0, 0, 0));
         lblHallStatus.setText("Hall Status");
 
-        comboHallStatus.setBackground(new java.awt.Color(255, 255, 255));
         comboHallStatus.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         comboHallStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
         comboHallStatus.setSelectedIndex(-1);
 
         btnSave.setBackground(new java.awt.Color(153, 204, 255));
         btnSave.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        btnSave.setForeground(new java.awt.Color(0, 0, 0));
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +93,6 @@ public class uiEditHall extends javax.swing.JFrame {
         });
 
         lblRemarks.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        lblRemarks.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout pnlEditHallLayout = new javax.swing.GroupLayout(pnlEditHall);
         pnlEditHall.setLayout(pnlEditHallLayout);
@@ -172,9 +164,9 @@ public class uiEditHall extends javax.swing.JFrame {
             lblRemarks.setText("Hall type and status cannot be empty.");
         }
         else{
-            String hallID = String.valueOf(comboHallID.getSelectedItem());
+            String hallID = comboHallID.getSelectedItem().toString();
             try {
-                scheduler.editHall(hallID, comboHallType.getSelectedIndex(),comboHallType.getSelectedIndex());
+                scheduler.editHall(hallID, comboHallType.getSelectedIndex(),comboHallStatus.getSelectedIndex());
                 lblRemarks.setText("Hall Updated");
             } catch (IOException ex) {
                 Logger.getLogger(uiEditHall.class.getName()).log(Level.SEVERE, null, ex);
