@@ -605,8 +605,9 @@ public class uiCustomer extends javax.swing.JFrame {
 
     private void cancelBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBookingBtnActionPerformed
         Booking.cancelBooking(cancelBookingCombo.getSelectedItem().toString(), customer.getUid());
-        Booking.displayBookingsTable(cancelBookingsTable, "All", customer.getUid());
+
         cancelBookingCombo.removeAllItems();
+        raiseIssueCombo.removeAllItems();
         ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
         for(Booking booking : bookings){
             if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")){
@@ -616,6 +617,11 @@ public class uiCustomer extends javax.swing.JFrame {
                 raiseIssueCombo.addItem(booking.getBookingID());
             }
         }
+        
+        Schedule.displaySchedule(scheduleTable, schedule);
+        Booking.displayBookingsTable(filterBookingTable, "All", customer.getUid());
+        Booking.displayBookingsTable(cancelBookingsTable, "All", customer.getUid());
+        Customer.displayIssueTable(issueTable, customer.getUid());
     }//GEN-LAST:event_cancelBookingBtnActionPerformed
 
     private void submitIssueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitIssueBtnActionPerformed

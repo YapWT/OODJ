@@ -108,42 +108,42 @@ public class Booking {
     }
     return bookings;
   }
-  
-    public boolean matchesFilters(Booking booking, Integer week, Integer month, Integer year) {
-        LocalDate bookingDate = booking.getBookingDate(); // Assuming you have a getter for bookingDate
 
-        // Check year
-        System.out.print(bookingDate.getYear());
-        System.out.print(year);
-        if (year != null && bookingDate.getYear() != year) {
-            return false;
-        }
-        
-        // Check month (only if month is specified)
-        if (month != null && bookingDate.getMonthValue() != month) {
-            return false;
-        }
+  public boolean matchesFilters(Booking booking, Integer week, Integer month, Integer year) {
+    LocalDate bookingDate = booking.getBookingDate(); // Assuming you have a getter for bookingDate
 
-        // Check week (only if week is specified)
-        if (week != null && bookingDate.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR) != week) {
-            return false;
-        }
-
-        return true;
+    // Check year
+    System.out.print(bookingDate.getYear());
+    System.out.print(year);
+    if (year != null && bookingDate.getYear() != year) {
+      return false;
     }
 
-    
-    public void updateSalesTable(List<Booking> filteredBookings, JTable t) {
+    // Check month (only if month is specified)
+    if (month != null && bookingDate.getMonthValue() != month) {
+      return false;
+    }
+
+    // Check week (only if week is specified)
+    if (week != null && bookingDate.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR) != week) {
+      return false;
+    }
+
+    return true;
+  }
+
+  public void updateSalesTable(List<Booking> filteredBookings, JTable t) {
     DefaultTableModel tableModel = (DefaultTableModel) t.getModel();
     tableModel.setRowCount(0); // Assuming you are using a DefaultTableModel
 
     for (Booking booking : filteredBookings) {
-        // Assuming the table model has two columns (date, sales)
-        Object[] row = { booking.getBookingDate(), booking.getTotalPrice() }; // Add your specific details
-        tableModel.addRow(row);
+      // Assuming the table model has two columns (date, sales)
+      Object[] row = {
+        booking.getBookingDate(), booking.getTotalPrice()
+      }; // Add your specific details
+      tableModel.addRow(row);
     }
-}
-
+  }
 
   public void setBookingDate(LocalDate bookingDate) {
     this.bookingDate = bookingDate;
@@ -288,14 +288,26 @@ public class Booking {
 
   public static void cancelBooking(String boookingID, String customerID) {
     ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
+    ArrayList<Schedule> schedules = FileOperations.read("schedules.txt", Schedule.class);
 
     for (Booking booking : bookings) {
       if (booking.getBookingID().equals(boookingID)
           && booking.getCustomer().getUid().equals(customerID)) {
         booking.setBookingStatus("cancelled");
+
+        for (Schedule schedule : schedules) {
+          if (booking.getHallID().equals(schedule.getHallID())
+              && booking.getBookingDate().isEqual(schedule.getScheduleDate())) {
+            String[] timeSlot = schedule.getTimeSlot();
+            for (int i = booking.getTimeSlots()[0]; i < booking.getTimeSlots()[1]; i++) {
+              timeSlot[i - 1] = "available";
+            }
+          }
+        }
       }
     }
 
     FileOperations.write("bookings.txt", bookings);
+    FileOperations.write("schedules.txt", schedules);
   }
 }
