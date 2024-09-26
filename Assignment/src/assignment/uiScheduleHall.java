@@ -230,6 +230,9 @@ public class uiScheduleHall extends javax.swing.JFrame {
         }else if(comboStatus.getSelectedIndex()==-1)
         {
             lblRemarks.setText("Please select availability");
+        }else if(comboHallID.getSelectedIndex()==-1)
+        {
+            lblRemarks.setText("Hall cannot be empty");
         }
         else{
             int[] timeSlot = new int[] {startSlot.getSelectedIndex()+1, endSlot.getSelectedIndex()+1};
