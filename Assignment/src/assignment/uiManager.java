@@ -27,29 +27,10 @@ public class uiManager extends javax.swing.JFrame {
         yearCbo.setEnabled(false);
         manager.showTotalEarnings(earningsLbl);
         manager.showTotalIssueInProgress(issuesLbl);
-        manager.showTotalIssuePendingResponse(responseLbl);
+        manager.showTotalIssuePending(pendingLbl);
+        manager.showTotalIssuePendingResponse(pendingIssueLbl);
         String managerName = (Utils.IDtoObject(ID, "users.txt", User.class)).getUname();
         jLabel1.setText(managerName);
-        
-        issueTbl.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                int selectedRow = issueTbl.getSelectedRow();
-                String currentStatus = issueTbl.getValueAt(selectedRow, 4).toString();
-
-                if (currentStatus.equals("Pending".toLowerCase())) {
-                    jComboBox4.removeAllItems();
-                    jComboBox4.addItem("In Progress");
-                }
-
-                if (currentStatus.equals("In Progress".toLowerCase())) {
-                    jComboBox4.removeAllItems();
-                    jComboBox4.addItem("In Progress");
-                    jComboBox4.addItem("Done");
-                    jComboBox4.addItem("Completed");
-                }
-            }
-        });
-
         
         // update profile
         // updateProfile
@@ -72,8 +53,10 @@ public class uiManager extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         earningsLbl = new javax.swing.JLabel();
         issuesLbl = new javax.swing.JLabel();
-        responseLbl = new javax.swing.JLabel();
+        pendingLbl = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        pendingIssueLbl = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -129,7 +112,7 @@ public class uiManager extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("PENDING ISSUE RESPONSE :");
+        jLabel10.setText("PENDING ISSUE :");
 
         earningsLbl.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 18)); // NOI18N
         earningsLbl.setForeground(new java.awt.Color(0, 0, 0));
@@ -139,13 +122,21 @@ public class uiManager extends javax.swing.JFrame {
         issuesLbl.setForeground(new java.awt.Color(0, 0, 0));
         issuesLbl.setText("jLabel16");
 
-        responseLbl.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 18)); // NOI18N
-        responseLbl.setForeground(new java.awt.Color(0, 0, 0));
-        responseLbl.setText("jLabel17");
+        pendingLbl.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 18)); // NOI18N
+        pendingLbl.setForeground(new java.awt.Color(0, 0, 0));
+        pendingLbl.setText("jLabel17");
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Name Name Name");
+
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("PENDING ISSUE RESPONSE :");
+
+        pendingIssueLbl.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 18)); // NOI18N
+        pendingIssueLbl.setForeground(new java.awt.Color(0, 0, 0));
+        pendingIssueLbl.setText("jLabel16");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -154,18 +145,22 @@ public class uiManager extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)
-                            .addComponent(jLabel10))
-                        .addGap(260, 260, 260)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel6))
+                        .addGap(204, 204, 204)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(pendingIssueLbl)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(earningsLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(issuesLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                            .addComponent(responseLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
+                            .addComponent(issuesLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                            .addComponent(pendingLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(118, 118, 118))
         );
         jPanel2Layout.setVerticalGroup(
@@ -178,7 +173,7 @@ public class uiManager extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(issuesLbl)
                         .addGap(18, 18, 18)
-                        .addComponent(responseLbl))
+                        .addComponent(pendingLbl))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
@@ -189,7 +184,11 @@ public class uiManager extends javax.swing.JFrame {
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel10)))
-                .addContainerGap(319, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(pendingIssueLbl))
+                .addContainerGap(276, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("HOME", jPanel2);
@@ -477,23 +476,18 @@ public class uiManager extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(153, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel12))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(assignCbo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(55, 55, 55))))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel12))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(assignCbo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(55, 55, 55))
         );
 
         jTabbedPane1.addTab("MAINTENANCE OPERATION", jPanel5);
@@ -628,7 +622,8 @@ public class uiManager extends javax.swing.JFrame {
         issueTbl.setValueAt(newResponse, selectedRow, 3);
         // update home's total issue in pending
         manager.showTotalIssueInProgress(issuesLbl);
-        manager.showTotalIssuePendingResponse(responseLbl);
+        manager.showTotalIssuePending(pendingLbl);
+        manager.showTotalIssuePendingResponse(pendingIssueLbl);
         
         jComboBox4.setSelectedIndex(0);
         assignCbo.setSelectedIndex(0);
@@ -637,17 +632,19 @@ public class uiManager extends javax.swing.JFrame {
 
     private void issueTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_issueTblMouseClicked
         int selectedRow = issueTbl.getSelectedRow();
-        
-        String currentStatus = issueTbl.getValueAt(selectedRow, 4).toString(); 
-        
-        jComboBox4.removeAllItems(); 
-        if (currentStatus.equals("Pending")) {
-            jComboBox4.addItem("In Progress"); 
-        } else if (currentStatus.equals("In Progress")) {
+        String currentStatus = issueTbl.getValueAt(selectedRow, 4).toString();
+
+        if (currentStatus.equals("Pending".toLowerCase())) {
+            jComboBox4.removeAllItems();
+            jComboBox4.addItem("In Progress");
+        }
+
+        if (currentStatus.equals("In Progress".toLowerCase())) {
+            jComboBox4.removeAllItems();
             jComboBox4.addItem("In Progress");
             jComboBox4.addItem("Done");
-            jComboBox4.addItem("Completed");
-        } 
+            jComboBox4.addItem("Closed");
+        }
     }//GEN-LAST:event_issueTblMouseClicked
 
     /**
@@ -707,6 +704,7 @@ public class uiManager extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -721,7 +719,8 @@ public class uiManager extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JComboBox<String> monthCbo;
-    private javax.swing.JLabel responseLbl;
+    private javax.swing.JLabel pendingIssueLbl;
+    private javax.swing.JLabel pendingLbl;
     private javax.swing.JTable salesTbl;
     private javax.swing.JComboBox<String> weekCbo;
     private javax.swing.JComboBox<String> yearCbo;
