@@ -264,8 +264,8 @@
                                               </Group>
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="BTN_fmanager" linkSize="6" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="BTN_fdeactived" linkSize="6" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                                                  <Component id="BTN_fmanager" linkSize="6" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                           </Group>
@@ -287,7 +287,7 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jTextField1" max="32767" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="BTN_cancelf2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="BTN_search" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
@@ -346,7 +346,7 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="BTN_cancelf2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="BTN_search" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="BTN_cancelf" min="-2" max="-2" attributes="0"/>
@@ -656,7 +656,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_fpendingActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="BTN_cancelf2">
+                    <Component class="javax.swing.JButton" name="BTN_search">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="66" green="66" red="66" type="rgb"/>
@@ -673,7 +673,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_cancelf2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_searchActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="BTN_cancelf">
@@ -727,11 +727,11 @@
                       </Group>
                       <Group type="102" alignment="2" attributes="0">
                           <EmptySpace min="58" pref="58" max="-2" attributes="0"/>
-                          <Component id="BTN_factive1" linkSize="7" min="-2" max="-2" attributes="0"/>
+                          <Component id="BTN_fpast" linkSize="7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="BTN_fpending1" linkSize="7" min="-2" max="-2" attributes="0"/>
+                          <Component id="BTN_fupcoming" linkSize="7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="BTN_fpending2" linkSize="7" min="-2" max="-2" attributes="0"/>
+                          <Component id="BTN_fcancelB" linkSize="7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="74" pref="74" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -745,9 +745,9 @@
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="BTN_fpending1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="BTN_factive1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="BTN_fpending2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BTN_fupcoming" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BTN_fpast" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BTN_fcancelB" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="234" max="32767" attributes="0"/>
                       </Group>
@@ -763,7 +763,7 @@
                     <Property name="text" type="java.lang.String" value="Filtering Bookings Based on Status:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="BTN_factive1">
+                <Component class="javax.swing.JButton" name="BTN_fpast">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -780,10 +780,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_factive1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_fpastActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="BTN_fpending1">
+                <Component class="javax.swing.JButton" name="BTN_fupcoming">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -800,7 +800,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_fpending1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_fupcomingActionPerformed"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane7">
@@ -880,7 +880,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="BTN_fpending2">
+                <Component class="javax.swing.JButton" name="BTN_fcancelB">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -897,7 +897,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_fpending2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_fcancelBActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

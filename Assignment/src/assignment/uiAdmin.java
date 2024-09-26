@@ -217,15 +217,15 @@ public class uiAdmin extends javax.swing.JFrame {
         BTN_fblock = new javax.swing.JButton();
         BTN_fdeactived = new javax.swing.JButton();
         BTN_fpending = new javax.swing.JButton();
-        BTN_cancelf2 = new javax.swing.JButton();
+        BTN_search = new javax.swing.JButton();
         BTN_cancelf = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        BTN_factive1 = new javax.swing.JButton();
-        BTN_fpending1 = new javax.swing.JButton();
+        BTN_fpast = new javax.swing.JButton();
+        BTN_fupcoming = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
         TBL_booking = new javax.swing.JTable();
-        BTN_fpending2 = new javax.swing.JButton();
+        BTN_fcancelB = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -442,14 +442,14 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
-        BTN_cancelf2.setBackground(new java.awt.Color(102, 102, 102));
-        BTN_cancelf2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
-        BTN_cancelf2.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_cancelf2.setText("SEARCH");
-        BTN_cancelf2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BTN_cancelf2.addActionListener(new java.awt.event.ActionListener() {
+        BTN_search.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_search.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_search.setForeground(new java.awt.Color(255, 255, 255));
+        BTN_search.setText("SEARCH");
+        BTN_search.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTN_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_cancelf2ActionPerformed(evt);
+                BTN_searchActionPerformed(evt);
             }
         });
 
@@ -489,8 +489,8 @@ public class uiAdmin extends javax.swing.JFrame {
                                     .addComponent(BTN_factive, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(BTN_fmanager)
-                                    .addComponent(BTN_fdeactived, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(BTN_fdeactived, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BTN_fmanager))
                                 .addGap(26, 26, 26))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -505,7 +505,7 @@ public class uiAdmin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1)
                         .addGap(18, 18, 18)
-                        .addComponent(BTN_cancelf2)))
+                        .addComponent(BTN_search)))
                 .addGap(6, 6, 6))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -558,7 +558,7 @@ public class uiAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
-                    .addComponent(BTN_cancelf2))
+                    .addComponent(BTN_search))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BTN_cancelf)
                 .addGap(5, 5, 5))
@@ -597,25 +597,25 @@ public class uiAdmin extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 18)); // NOI18N
         jLabel10.setText("Filtering Bookings Based on Status:");
 
-        BTN_factive1.setBackground(new java.awt.Color(102, 102, 102));
-        BTN_factive1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
-        BTN_factive1.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_factive1.setText("Past Booking");
-        BTN_factive1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BTN_factive1.addActionListener(new java.awt.event.ActionListener() {
+        BTN_fpast.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_fpast.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_fpast.setForeground(new java.awt.Color(255, 255, 255));
+        BTN_fpast.setText("Past Booking");
+        BTN_fpast.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTN_fpast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_factive1ActionPerformed(evt);
+                BTN_fpastActionPerformed(evt);
             }
         });
 
-        BTN_fpending1.setBackground(new java.awt.Color(102, 102, 102));
-        BTN_fpending1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
-        BTN_fpending1.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_fpending1.setText("Upcoming Booking");
-        BTN_fpending1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BTN_fpending1.addActionListener(new java.awt.event.ActionListener() {
+        BTN_fupcoming.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_fupcoming.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_fupcoming.setForeground(new java.awt.Color(255, 255, 255));
+        BTN_fupcoming.setText("Upcoming Booking");
+        BTN_fupcoming.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTN_fupcoming.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_fpending1ActionPerformed(evt);
+                BTN_fupcomingActionPerformed(evt);
             }
         });
 
@@ -648,14 +648,14 @@ public class uiAdmin extends javax.swing.JFrame {
         TBL_booking.getTableHeader().setReorderingAllowed(false);
         jScrollPane7.setViewportView(TBL_booking);
 
-        BTN_fpending2.setBackground(new java.awt.Color(102, 102, 102));
-        BTN_fpending2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
-        BTN_fpending2.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_fpending2.setText("Cancel Filter");
-        BTN_fpending2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BTN_fpending2.addActionListener(new java.awt.event.ActionListener() {
+        BTN_fcancelB.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_fcancelB.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_fcancelB.setForeground(new java.awt.Color(255, 255, 255));
+        BTN_fcancelB.setText("Cancel Filter");
+        BTN_fcancelB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTN_fcancelB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_fpending2ActionPerformed(evt);
+                BTN_fcancelBActionPerformed(evt);
             }
         });
 
@@ -671,15 +671,15 @@ public class uiAdmin extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel3Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
-                .addComponent(BTN_factive1)
+                .addComponent(BTN_fpast)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BTN_fpending1)
+                .addComponent(BTN_fupcoming)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BTN_fpending2)
+                .addComponent(BTN_fcancelB)
                 .addGap(74, 74, 74))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BTN_factive1, BTN_fpending1, BTN_fpending2});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BTN_fcancelB, BTN_fpast, BTN_fupcoming});
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -690,9 +690,9 @@ public class uiAdmin extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BTN_fpending1)
-                    .addComponent(BTN_factive1)
-                    .addComponent(BTN_fpending2))
+                    .addComponent(BTN_fupcoming)
+                    .addComponent(BTN_fpast)
+                    .addComponent(BTN_fcancelB))
                 .addContainerGap(234, Short.MAX_VALUE))
         );
 
@@ -783,68 +783,70 @@ public class uiAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BTN_cancelf1ActionPerformed
 
-    private void BTN_factive1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_factive1ActionPerformed
+    private void BTN_fpastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpastActionPerformed
         new Admin().viewBooking(TBL_booking, true);
-    }//GEN-LAST:event_BTN_factive1ActionPerformed
+    }//GEN-LAST:event_BTN_fpastActionPerformed
 
-    private void BTN_fpending1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpending1ActionPerformed
+    private void BTN_fupcomingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fupcomingActionPerformed
         new Admin().viewBooking(TBL_booking, false);
-    }//GEN-LAST:event_BTN_fpending1ActionPerformed
+    }//GEN-LAST:event_BTN_fupcomingActionPerformed
 
-    private void BTN_fpending2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpending2ActionPerformed
+    private void BTN_fcancelBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fcancelBActionPerformed
         new Admin().viewBooking(TBL_booking);
-    }//GEN-LAST:event_BTN_fpending2ActionPerformed
-
-    private void BTN_cancelf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelf2ActionPerformed
-        defaultPending = true;
-        RoleSelected = null;
-        if (jTextField1 != null)
-        classA.search(TBL_view, jTextField1.getText());
-    }//GEN-LAST:event_BTN_cancelf2ActionPerformed
+    }//GEN-LAST:event_BTN_fcancelBActionPerformed
 
     private void BTN_cancelfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelfActionPerformed
+        jLabel6.setVisible(false);
         defaultPending = true;
         RoleSelected = null;
         Utils.viewTable(TBL_view, "users.txt", User.class);
     }//GEN-LAST:event_BTN_cancelfActionPerformed
 
     private void BTN_fpendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpendingActionPerformed
+        jLabel6.setVisible(false);
         defaultPending = true;
         Utils.viewTable(TBL_view, "users.txt", User.class, 5, "pending");
     }//GEN-LAST:event_BTN_fpendingActionPerformed
 
     private void BTN_fdeactivedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fdeactivedActionPerformed
+        jLabel6.setVisible(false);
         defaultPending = false;
         Utils.viewTable(TBL_view, "users.txt", User.class, 5, "deactived");
     }//GEN-LAST:event_BTN_fdeactivedActionPerformed
 
     private void BTN_fblockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fblockActionPerformed
+        jLabel6.setVisible(false);
         defaultPending = false;
         Utils.viewTable(TBL_view, "users.txt", User.class, 5, "blocked");
     }//GEN-LAST:event_BTN_fblockActionPerformed
 
     private void BTN_fschedulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fschedulerActionPerformed
+        jLabel6.setVisible(false);
         RoleSelected = 'S';
         Utils.viewTable(TBL_view, "users.txt", User.class, 3, "S");
     }//GEN-LAST:event_BTN_fschedulerActionPerformed
 
     private void BTN_fmanagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fmanagerActionPerformed
+        jLabel6.setVisible(false);
         RoleSelected = 'M';
         Utils.viewTable(TBL_view, "users.txt", User.class, 3, "M");
     }//GEN-LAST:event_BTN_fmanagerActionPerformed
 
     private void BTN_fcustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fcustomerActionPerformed
+        jLabel6.setVisible(false);
         RoleSelected = 'C';
         Utils.viewTable(TBL_view, "users.txt", User.class, 3, "C");
     }//GEN-LAST:event_BTN_fcustomerActionPerformed
 
     private void BTN_fadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fadminActionPerformed
+        jLabel6.setVisible(false);
         RoleSelected = 'A';
         Utils.viewTable(TBL_view, "users.txt", User.class, 3, "A");
         classA.removeCurrentAdmin(TBL_view, Uid);
     }//GEN-LAST:event_BTN_fadminActionPerformed
 
     private void BTN_factiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_factiveActionPerformed
+        jLabel6.setVisible(false);
         defaultPending = false;
         Utils.viewTable(TBL_view, "users.txt", User.class, 5, "active");
         classA.removeCurrentAdmin(TBL_view, Uid);
@@ -869,6 +871,14 @@ public class uiAdmin extends javax.swing.JFrame {
     private void BTN_deactiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_deactiveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BTN_deactiveActionPerformed
+
+    private void BTN_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_searchActionPerformed
+        jLabel6.setVisible(false);
+        defaultPending = true;
+        RoleSelected = null;
+        if (jTextField1 != null)
+        classA.search(TBL_view, jTextField1.getText());
+    }//GEN-LAST:event_BTN_searchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -911,22 +921,22 @@ public class uiAdmin extends javax.swing.JFrame {
     private javax.swing.JButton BTN_blockC;
     private javax.swing.JButton BTN_cancelf;
     private javax.swing.JButton BTN_cancelf1;
-    private javax.swing.JButton BTN_cancelf2;
     private javax.swing.JButton BTN_deactive;
     private javax.swing.JButton BTN_deleteC;
     private javax.swing.JButton BTN_factive;
-    private javax.swing.JButton BTN_factive1;
     private javax.swing.JButton BTN_fadmin;
     private javax.swing.JButton BTN_fblock;
+    private javax.swing.JButton BTN_fcancelB;
     private javax.swing.JButton BTN_fcustomer;
     private javax.swing.JButton BTN_fdeactived;
     private javax.swing.JButton BTN_fmanager;
+    private javax.swing.JButton BTN_fpast;
     private javax.swing.JButton BTN_fpending;
-    private javax.swing.JButton BTN_fpending1;
-    private javax.swing.JButton BTN_fpending2;
     private javax.swing.JButton BTN_fscheduler;
+    private javax.swing.JButton BTN_fupcoming;
     private javax.swing.ButtonGroup BTN_groupAdd;
     private javax.swing.JButton BTN_modifyPass;
+    private javax.swing.JButton BTN_search;
     private javax.swing.JTable TBL_booking;
     private javax.swing.JTable TBL_view;
     private javax.swing.JLabel jLabel10;
