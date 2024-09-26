@@ -135,6 +135,12 @@ public class Panel_updateProfile extends javax.swing.JPanel {
         jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 204, 204));
+        setForeground(new java.awt.Color(0, 0, 0));
+
+        BTN_name.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_name.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_name.setForeground(new java.awt.Color(255, 255, 255));
         BTN_name.setText("Change User Name");
         BTN_name.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_name.addActionListener(new java.awt.event.ActionListener() {
@@ -143,6 +149,9 @@ public class Panel_updateProfile extends javax.swing.JPanel {
             }
         });
 
+        BTN_c.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_c.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_c.setForeground(new java.awt.Color(255, 255, 255));
         BTN_c.setText("Change Contact");
         BTN_c.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_c.addActionListener(new java.awt.event.ActionListener() {
@@ -151,6 +160,9 @@ public class Panel_updateProfile extends javax.swing.JPanel {
             }
         });
 
+        BTN_pass.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_pass.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_pass.setForeground(new java.awt.Color(255, 255, 255));
         BTN_pass.setText("Change Password");
         BTN_pass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_pass.addActionListener(new java.awt.event.ActionListener() {
@@ -159,6 +171,9 @@ public class Panel_updateProfile extends javax.swing.JPanel {
             }
         });
 
+        BTN_delete.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_delete.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_delete.setForeground(new java.awt.Color(255, 255, 255));
         BTN_delete.setText("Delete Account");
         BTN_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_delete.addActionListener(new java.awt.event.ActionListener() {
@@ -167,6 +182,9 @@ public class Panel_updateProfile extends javax.swing.JPanel {
             }
         });
 
+        BTN_logout.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_logout.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_logout.setForeground(new java.awt.Color(255, 255, 255));
         BTN_logout.setText("Log Out");
         BTN_logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_logout.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +193,10 @@ public class Panel_updateProfile extends javax.swing.JPanel {
             }
         });
 
+        TBL_profile.setBackground(new java.awt.Color(204, 204, 204));
+        TBL_profile.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        TBL_profile.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        TBL_profile.setForeground(new java.awt.Color(0, 0, 0));
         TBL_profile.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -201,6 +223,11 @@ public class Panel_updateProfile extends javax.swing.JPanel {
         TBL_profile.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(TBL_profile);
 
+        jPanel6.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel8.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("jLabel8");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -244,8 +271,8 @@ public class Panel_updateProfile extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
                 .addComponent(BTN_name)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BTN_c)
@@ -257,7 +284,7 @@ public class Panel_updateProfile extends javax.swing.JPanel {
                 .addComponent(BTN_delete)
                 .addGap(35, 35, 35)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

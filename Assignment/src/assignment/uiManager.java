@@ -131,7 +131,7 @@ public class uiManager extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -182,6 +182,7 @@ public class uiManager extends javax.swing.JFrame {
 
         salesTbl.setBackground(new java.awt.Color(204, 204, 204));
         salesTbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        salesTbl.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         salesTbl.setForeground(new java.awt.Color(0, 0, 0));
         salesTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -350,6 +351,7 @@ public class uiManager extends javax.swing.JFrame {
 
         issueTbl.setBackground(new java.awt.Color(204, 204, 204));
         issueTbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        issueTbl.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         issueTbl.setForeground(new java.awt.Color(0, 0, 0));
         issueTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

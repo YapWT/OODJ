@@ -194,12 +194,11 @@ public class uiAdmin extends javax.swing.JFrame {
 
         BTN_groupAdd = new javax.swing.ButtonGroup();
         BTN_cancelf1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         TBL_view = new javax.swing.JTable();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         BTN_deactive = new javax.swing.JButton();
         BTN_deleteC = new javax.swing.JButton();
@@ -218,8 +217,8 @@ public class uiAdmin extends javax.swing.JFrame {
         BTN_fblock = new javax.swing.JButton();
         BTN_fdeactived = new javax.swing.JButton();
         BTN_fpending = new javax.swing.JButton();
-        BTN_cancelf = new javax.swing.JButton();
         BTN_cancelf2 = new javax.swing.JButton();
+        BTN_cancelf = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         BTN_factive1 = new javax.swing.JButton();
@@ -229,6 +228,8 @@ public class uiAdmin extends javax.swing.JFrame {
         BTN_fpending2 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
 
         BTN_cancelf1.setText("Cancel Filter");
         BTN_cancelf1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -239,9 +240,20 @@ public class uiAdmin extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 204, 204));
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
+        jTabbedPane1.setBackground(new java.awt.Color(153, 153, 153));
+        jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
         jTabbedPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        jPanel7.setBackground(new java.awt.Color(204, 204, 204));
+
+        TBL_view.setBackground(new java.awt.Color(204, 204, 204));
+        TBL_view.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        TBL_view.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        TBL_view.setForeground(new java.awt.Color(0, 0, 0));
         TBL_view.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -273,23 +285,11 @@ public class uiAdmin extends javax.swing.JFrame {
             TBL_view.getColumnModel().getColumn(6).setHeaderValue("Status");
         }
 
-        jLabel6.setText("jLabel6");
-        jLabel6.setToolTipText("");
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
+        BTN_deactive.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_deactive.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_deactive.setForeground(new java.awt.Color(255, 255, 255));
         BTN_deactive.setText("Deactive/Reactivate Staff");
         BTN_deactive.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_deactive.addActionListener(new java.awt.event.ActionListener() {
@@ -298,6 +298,9 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        BTN_deleteC.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_deleteC.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_deleteC.setForeground(new java.awt.Color(255, 255, 255));
         BTN_deleteC.setText("Delete Customer");
         BTN_deleteC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_deleteC.addActionListener(new java.awt.event.ActionListener() {
@@ -306,6 +309,9 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        BTN_modifyPass.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_modifyPass.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_modifyPass.setForeground(new java.awt.Color(255, 255, 255));
         BTN_modifyPass.setText("Modify Password");
         BTN_modifyPass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_modifyPass.addActionListener(new java.awt.event.ActionListener() {
@@ -314,6 +320,9 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        BTN_add.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_add.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_add.setForeground(new java.awt.Color(255, 255, 255));
         BTN_add.setText("Add User");
         BTN_add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_add.addActionListener(new java.awt.event.ActionListener() {
@@ -322,6 +331,9 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        BTN_blockC.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_blockC.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_blockC.setForeground(new java.awt.Color(255, 255, 255));
         BTN_blockC.setText("Block/Unblock Customer");
         BTN_blockC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_blockC.addActionListener(new java.awt.event.ActionListener() {
@@ -330,8 +342,13 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Filter User by Status: ");
 
+        BTN_factive.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_factive.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_factive.setForeground(new java.awt.Color(255, 255, 255));
         BTN_factive.setText("Active");
         BTN_factive.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_factive.addActionListener(new java.awt.event.ActionListener() {
@@ -340,8 +357,13 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Filter User by User Type: ");
 
+        BTN_fadmin.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_fadmin.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_fadmin.setForeground(new java.awt.Color(255, 255, 255));
         BTN_fadmin.setText("Admin");
         BTN_fadmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_fadmin.addActionListener(new java.awt.event.ActionListener() {
@@ -350,8 +372,17 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Search User by User Name:  ");
 
+        jTextField1.setBackground(new java.awt.Color(102, 102, 102));
+        jTextField1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+
+        BTN_fcustomer.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_fcustomer.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_fcustomer.setForeground(new java.awt.Color(255, 255, 255));
         BTN_fcustomer.setText("Customer");
         BTN_fcustomer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_fcustomer.addActionListener(new java.awt.event.ActionListener() {
@@ -360,6 +391,9 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        BTN_fmanager.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_fmanager.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_fmanager.setForeground(new java.awt.Color(255, 255, 255));
         BTN_fmanager.setText("Manager");
         BTN_fmanager.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_fmanager.addActionListener(new java.awt.event.ActionListener() {
@@ -368,6 +402,9 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        BTN_fscheduler.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_fscheduler.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_fscheduler.setForeground(new java.awt.Color(255, 255, 255));
         BTN_fscheduler.setText("Scheduler");
         BTN_fscheduler.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_fscheduler.addActionListener(new java.awt.event.ActionListener() {
@@ -376,6 +413,9 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        BTN_fblock.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_fblock.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_fblock.setForeground(new java.awt.Color(255, 255, 255));
         BTN_fblock.setText("Blocked");
         BTN_fblock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_fblock.setPreferredSize(new java.awt.Dimension(78, 25));
@@ -385,6 +425,9 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        BTN_fdeactived.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_fdeactived.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_fdeactived.setForeground(new java.awt.Color(255, 255, 255));
         BTN_fdeactived.setText("Deactived");
         BTN_fdeactived.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_fdeactived.addActionListener(new java.awt.event.ActionListener() {
@@ -393,6 +436,9 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        BTN_fpending.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_fpending.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_fpending.setForeground(new java.awt.Color(255, 255, 255));
         BTN_fpending.setText("Pending");
         BTN_fpending.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_fpending.addActionListener(new java.awt.event.ActionListener() {
@@ -401,6 +447,20 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        BTN_cancelf2.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_cancelf2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_cancelf2.setForeground(new java.awt.Color(255, 255, 255));
+        BTN_cancelf2.setText("SEARCH");
+        BTN_cancelf2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTN_cancelf2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_cancelf2ActionPerformed(evt);
+            }
+        });
+
+        BTN_cancelf.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_cancelf.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_cancelf.setForeground(new java.awt.Color(255, 255, 255));
         BTN_cancelf.setText("Cancel Filter");
         BTN_cancelf.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_cancelf.addActionListener(new java.awt.event.ActionListener() {
@@ -409,90 +469,85 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
-        BTN_cancelf2.setText("Go");
-        BTN_cancelf2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BTN_cancelf2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_cancelf2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(BTN_add, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BTN_modifyPass, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BTN_deleteC))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(BTN_blockC, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(BTN_deactive, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(BTN_factive, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(141, 141, 141)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(BTN_fcustomer)
+                                    .addComponent(BTN_fpending, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BTN_fmanager)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(BTN_fdeactived, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(BTN_fblock, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(BTN_cancelf2))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(5, 5, 5)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                                    .addComponent(BTN_factive)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(BTN_fpending)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(BTN_fdeactived)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(BTN_fblock, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                                    .addComponent(BTN_fadmin)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(BTN_fcustomer)
-                                                    .addGap(6, 6, 6)
-                                                    .addComponent(BTN_fmanager)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(BTN_fscheduler)))
-                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                                    .addComponent(BTN_blockC)
-                                                    .addGap(47, 47, 47)
-                                                    .addComponent(BTN_deactive))
-                                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                                    .addComponent(BTN_add)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(BTN_modifyPass)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(BTN_deleteC))))))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BTN_fscheduler))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField1)
+                                .addGap(18, 18, 18)
+                                .addComponent(BTN_cancelf2)))))
+                .addGap(6, 6, 6))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
+                        .addGap(6, 6, 6)
+                        .addComponent(BTN_fadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(209, 209, 209)
                         .addComponent(BTN_cancelf)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BTN_add, BTN_modifyPass});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BTN_fadmin, BTN_fblock, BTN_fcustomer, BTN_fmanager, BTN_fscheduler});
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BTN_blockC, BTN_deactive});
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BTN_factive, BTN_fadmin, BTN_fblock, BTN_fcustomer, BTN_fdeactived, BTN_fmanager, BTN_fpending, BTN_fscheduler});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BTN_add, BTN_deleteC});
 
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BTN_add)
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(BTN_modifyPass)
+                    .addComponent(BTN_add)
                     .addComponent(BTN_deleteC))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTN_blockC)
                     .addComponent(BTN_deactive))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -500,7 +555,7 @@ public class uiAdmin extends javax.swing.JFrame {
                     .addComponent(BTN_fblock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BTN_fdeactived)
                     .addComponent(BTN_fpending))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -522,14 +577,14 @@ public class uiAdmin extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addContainerGap(23, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jScrollPane5)))
+                .addGap(38, 38, 38))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -538,15 +593,21 @@ public class uiAdmin extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("User Management", jPanel7);
 
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Filtering Bookings Based on Status:");
 
+        BTN_factive1.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_factive1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_factive1.setForeground(new java.awt.Color(255, 255, 255));
         BTN_factive1.setText("Past Booking");
         BTN_factive1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_factive1.addActionListener(new java.awt.event.ActionListener() {
@@ -555,6 +616,9 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        BTN_fpending1.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_fpending1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_fpending1.setForeground(new java.awt.Color(255, 255, 255));
         BTN_fpending1.setText("Upcoming Booking");
         BTN_fpending1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_fpending1.addActionListener(new java.awt.event.ActionListener() {
@@ -563,6 +627,10 @@ public class uiAdmin extends javax.swing.JFrame {
             }
         });
 
+        TBL_booking.setBackground(new java.awt.Color(204, 204, 204));
+        TBL_booking.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        TBL_booking.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        TBL_booking.setForeground(new java.awt.Color(0, 0, 0));
         TBL_booking.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -589,6 +657,9 @@ public class uiAdmin extends javax.swing.JFrame {
         TBL_booking.getTableHeader().setReorderingAllowed(false);
         jScrollPane7.setViewportView(TBL_booking);
 
+        BTN_fpending2.setBackground(new java.awt.Color(102, 102, 102));
+        BTN_fpending2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        BTN_fpending2.setForeground(new java.awt.Color(255, 255, 255));
         BTN_fpending2.setText("Cancel Filter");
         BTN_fpending2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_fpending2.addActionListener(new java.awt.event.ActionListener() {
@@ -602,21 +673,20 @@ public class uiAdmin extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(84, 84, 84)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel10)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(BTN_factive1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BTN_fpending1)))
+                        .addComponent(BTN_factive1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BTN_fpending2)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addComponent(BTN_fpending1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BTN_fpending2))
+                    .addComponent(jLabel10))
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane7)
+                .addContainerGap())
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BTN_factive1, BTN_fpending1, BTN_fpending2});
@@ -633,7 +703,7 @@ public class uiAdmin extends javax.swing.JFrame {
                     .addComponent(BTN_fpending1)
                     .addComponent(BTN_factive1)
                     .addComponent(BTN_fpending2))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("View Booking Status", jPanel3);
@@ -642,55 +712,143 @@ public class uiAdmin extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 593, Short.MAX_VALUE)
+            .addGap(0, 598, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 519, Short.MAX_VALUE)
+            .addGap(0, 539, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Update Profile", jPanel5);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Admin Page");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(224, 224, 224)
-                        .addComponent(jLabel2)))
+        jPanel8.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel6.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("jLabel6");
+        jLabel6.setToolTipText("");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel2)
+                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("jTabbedPane1");
         jTabbedPane1.getAccessibleContext().setAccessibleDescription("");
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BTN_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_addActionPerformed
-
-    }//GEN-LAST:event_BTN_addActionPerformed
-
-    private void BTN_modifyPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_modifyPassActionPerformed
+    private void BTN_cancelf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelf1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_modifyPassActionPerformed
+    }//GEN-LAST:event_BTN_cancelf1ActionPerformed
+
+    private void BTN_factive1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_factive1ActionPerformed
+        new Admin().viewBooking(TBL_booking, true);
+    }//GEN-LAST:event_BTN_factive1ActionPerformed
+
+    private void BTN_fpending1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpending1ActionPerformed
+        new Admin().viewBooking(TBL_booking, false);
+    }//GEN-LAST:event_BTN_fpending1ActionPerformed
+
+    private void BTN_fpending2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpending2ActionPerformed
+        new Admin().viewBooking(TBL_booking);
+    }//GEN-LAST:event_BTN_fpending2ActionPerformed
+
+    private void BTN_cancelf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelf2ActionPerformed
+        defaultPending = true;
+        RoleSelected = null;
+        if (jTextField1 != null)
+        classA.search(TBL_view, jTextField1.getText());
+    }//GEN-LAST:event_BTN_cancelf2ActionPerformed
+
+    private void BTN_cancelfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelfActionPerformed
+        defaultPending = true;
+        RoleSelected = null;
+        Utils.viewTable(TBL_view, "users.txt", User.class);
+    }//GEN-LAST:event_BTN_cancelfActionPerformed
+
+    private void BTN_fpendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpendingActionPerformed
+        defaultPending = true;
+        Utils.viewTable(TBL_view, "users.txt", User.class, 5, "pending");
+    }//GEN-LAST:event_BTN_fpendingActionPerformed
+
+    private void BTN_fdeactivedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fdeactivedActionPerformed
+        defaultPending = false;
+        Utils.viewTable(TBL_view, "users.txt", User.class, 5, "deactived");
+    }//GEN-LAST:event_BTN_fdeactivedActionPerformed
+
+    private void BTN_fblockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fblockActionPerformed
+        defaultPending = false;
+        Utils.viewTable(TBL_view, "users.txt", User.class, 5, "blocked");
+    }//GEN-LAST:event_BTN_fblockActionPerformed
+
+    private void BTN_fschedulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fschedulerActionPerformed
+        RoleSelected = 'S';
+        Utils.viewTable(TBL_view, "users.txt", User.class, 3, "S");
+    }//GEN-LAST:event_BTN_fschedulerActionPerformed
+
+    private void BTN_fmanagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fmanagerActionPerformed
+        RoleSelected = 'M';
+        Utils.viewTable(TBL_view, "users.txt", User.class, 3, "M");
+    }//GEN-LAST:event_BTN_fmanagerActionPerformed
+
+    private void BTN_fcustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fcustomerActionPerformed
+        RoleSelected = 'C';
+        Utils.viewTable(TBL_view, "users.txt", User.class, 3, "C");
+    }//GEN-LAST:event_BTN_fcustomerActionPerformed
 
     private void BTN_fadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fadminActionPerformed
         RoleSelected = 'A';
@@ -704,76 +862,25 @@ public class uiAdmin extends javax.swing.JFrame {
         classA.removeCurrentAdmin(TBL_view, Uid);
     }//GEN-LAST:event_BTN_factiveActionPerformed
 
-    private void BTN_cancelfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelfActionPerformed
-        defaultPending = true;
-        RoleSelected = null;
-        Utils.viewTable(TBL_view, "users.txt", User.class);
-    }//GEN-LAST:event_BTN_cancelfActionPerformed
-
-    private void BTN_fpendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpendingActionPerformed
-        defaultPending = true;
-        Utils.viewTable(TBL_view, "users.txt", User.class, 5, "pending");
-    }//GEN-LAST:event_BTN_fpendingActionPerformed
-
-    private void BTN_fcustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fcustomerActionPerformed
-        RoleSelected = 'C';
-        Utils.viewTable(TBL_view, "users.txt", User.class, 3, "C");
-    }//GEN-LAST:event_BTN_fcustomerActionPerformed
-
-    private void BTN_fmanagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fmanagerActionPerformed
-        RoleSelected = 'M';
-        Utils.viewTable(TBL_view, "users.txt", User.class, 3, "M");
-    }//GEN-LAST:event_BTN_fmanagerActionPerformed
-
-    private void BTN_fschedulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fschedulerActionPerformed
-        RoleSelected = 'S';
-        Utils.viewTable(TBL_view, "users.txt", User.class, 3, "S");
-    }//GEN-LAST:event_BTN_fschedulerActionPerformed
-
-    private void BTN_fdeactivedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fdeactivedActionPerformed
-        defaultPending = false;
-        Utils.viewTable(TBL_view, "users.txt", User.class, 5, "deactived");
-    }//GEN-LAST:event_BTN_fdeactivedActionPerformed
-
-    private void BTN_fblockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fblockActionPerformed
-        defaultPending = false;
-        Utils.viewTable(TBL_view, "users.txt", User.class, 5, "blocked");
-    }//GEN-LAST:event_BTN_fblockActionPerformed
-
     private void BTN_blockCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_blockCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BTN_blockCActionPerformed
 
-    private void BTN_deactiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_deactiveActionPerformed
+    private void BTN_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_addActionPerformed
+
+    }//GEN-LAST:event_BTN_addActionPerformed
+
+    private void BTN_modifyPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_modifyPassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_deactiveActionPerformed
+    }//GEN-LAST:event_BTN_modifyPassActionPerformed
 
     private void BTN_deleteCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_deleteCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BTN_deleteCActionPerformed
 
-    private void BTN_cancelf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelf1ActionPerformed
+    private void BTN_deactiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_deactiveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_cancelf1ActionPerformed
-
-    private void BTN_cancelf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_cancelf2ActionPerformed
-        defaultPending = true;
-        RoleSelected = null;
-        if (jTextField1 != null)
-            classA.search(TBL_view, jTextField1.getText());
-    }//GEN-LAST:event_BTN_cancelf2ActionPerformed
-
-    private void BTN_factive1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_factive1ActionPerformed
-        new Admin().viewBooking(TBL_booking, true);
-    }//GEN-LAST:event_BTN_factive1ActionPerformed
-
-    private void BTN_fpending1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpending1ActionPerformed
-        new Admin().viewBooking(TBL_booking, false);
-    }//GEN-LAST:event_BTN_fpending1ActionPerformed
-
-    private void BTN_fpending2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_fpending2ActionPerformed
-        new Admin().viewBooking(TBL_booking);
-    }//GEN-LAST:event_BTN_fpending2ActionPerformed
+    }//GEN-LAST:event_BTN_deactiveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -840,6 +947,7 @@ public class uiAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
