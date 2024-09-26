@@ -101,7 +101,7 @@ public class uiScheduleHall extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
 
-        comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Available", "Booked", "Maintanence" }));
+        comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Available", "Booked", "Maintenence" }));
         comboStatus.setSelectedIndex(-1);
         comboStatus.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
 

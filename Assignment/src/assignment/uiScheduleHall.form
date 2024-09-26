@@ -209,7 +209,7 @@
               <StringArray count="3">
                 <StringItem index="0" value="Available"/>
                 <StringItem index="1" value="Booked"/>
-                <StringItem index="2" value="Maintanence"/>
+                <StringItem index="2" value="Maintenence"/>
               </StringArray>
             </Property>
             <Property name="selectedIndex" type="int" value="-1"/>
