@@ -530,8 +530,10 @@ public class uiCustomer extends javax.swing.JFrame {
     } else {
       int[] bookingSlot = new int[] {startSlot.getSelectedIndex() + 1, endSlot.getSelectedIndex() + 1};
       try {
+          System.out.println(hallComboBox.getSelectedItem().toString() + " in bookHall button");
         customer.bookHalls(
           hallComboBox.getSelectedItem().toString(), bookingSlot, datePicker.getDate());
+        bookStatus.setText("Hall booked!");
       } catch (IllegalArgumentException e) {
           bookStatus.setText("You included unavailable timeslots");
       }
@@ -556,6 +558,7 @@ public class uiCustomer extends javax.swing.JFrame {
       java.awt.event.ActionEvent evt) { // GEN-FIRST:event_hallComboBoxActionPerformed
     // TODO add your handling code here:
     String selectedHall = hallComboBox.getSelectedItem().toString();
+      System.out.println(selectedHall);
     Hall hall = Utils.IDtoObject(selectedHall, "halls.txt", Hall.class);
 
     hallTypeLBL.setText(hall.getHallType());
@@ -563,8 +566,10 @@ public class uiCustomer extends javax.swing.JFrame {
     RatePerHourLBL.setText(Integer.toString(hall.getRatePerHour()));
 
     if (Schedule.checkIfScheduleExists(datePicker.getDate(), selectedHall)) {
+        System.out.println("Schedule exists");
       schedule = Schedule.scheduleObjectify(datePicker.getDate(), selectedHall);
     } else {
+        System.out.println("Schedule doesnt exists");
       schedule.setScheduleDate(datePicker.getDate());
       schedule.setHallID(selectedHall);
       String[] scheduleSlots = new String[10];

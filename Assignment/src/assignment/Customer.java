@@ -47,8 +47,6 @@ public class Customer extends User {
       if (hall.getHallID().equals(hallID)) {
         amount = hall.getRatePerHour() * (timeSlots[1] - timeSlots[0]);
         break;
-      } else {
-        throw new IllegalArgumentException("Invalid hall number");
       }
     }
 
@@ -58,14 +56,12 @@ public class Customer extends User {
     if (Schedule.checkIfScheduleExists(date, hallID)) {
       schedule = Schedule.scheduleObjectify(date, hallID);
       timeSlot = schedule.getTimeSlot();
-      for (int i = timeSlots[0] - 1; i < timeSlots[1] - 1; i++) 
-      {
-        if (timeSlot[i].equals("booked")) {
-          throw new IllegalArgumentException("Invalid choice, conflicted timeSlot");
+      for (int i = timeSlots[0] - 1; i < timeSlots[1] - 1; i++) {
+        if (timeSlot[i].equals("booked") || timeSlot[i].equals("maintenance")) {
+          throw new IllegalArgumentException("Invalid choice, you chose invalid timeSlot");
         }
       }
-      for (int i = timeSlots[0] - 1; i < timeSlots[1] - 1; i++) 
-      {
+      for (int i = timeSlots[0] - 1; i < timeSlots[1] - 1; i++) {
         timeSlot[i] = "booked";
       }
       schedule.setTimeSlot(timeSlot);
