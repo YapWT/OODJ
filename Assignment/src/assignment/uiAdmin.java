@@ -94,7 +94,7 @@ public class uiAdmin extends javax.swing.JFrame {
             
             JTextField row = new JTextField();
             
-            int option = JOptionPane.showConfirmDialog(null, new Object[] {"Row: ", row}, "Active or Deactive Staff", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            int option = JOptionPane.showConfirmDialog(null, new Object[] {"Row: ", row}, "Deactive or Reactive Staff", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
             
             if (option == JOptionPane.OK_OPTION) {
                 if (!(row.getText().isEmpty())) {
@@ -265,14 +265,14 @@ public class uiAdmin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "no", "User ID", "Password", "User Name", "User Type", "Contact", "Status"
+                "no", "User ID", "User Name", "User Type", "Contact", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -285,18 +285,13 @@ public class uiAdmin extends javax.swing.JFrame {
         });
         TBL_view.getTableHeader().setReorderingAllowed(false);
         jScrollPane5.setViewportView(TBL_view);
-        if (TBL_view.getColumnModel().getColumnCount() > 0) {
-            TBL_view.getColumnModel().getColumn(4).setHeaderValue("User Type");
-            TBL_view.getColumnModel().getColumn(5).setHeaderValue("Contact");
-            TBL_view.getColumnModel().getColumn(6).setHeaderValue("Status");
-        }
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
         BTN_deactive.setBackground(new java.awt.Color(102, 102, 102));
         BTN_deactive.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         BTN_deactive.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_deactive.setText("Deactive/Reactivate Staff");
+        BTN_deactive.setText("Deactivate/Reactivate Staff");
         BTN_deactive.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_deactive.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -431,7 +426,7 @@ public class uiAdmin extends javax.swing.JFrame {
         BTN_fdeactived.setBackground(new java.awt.Color(102, 102, 102));
         BTN_fdeactived.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         BTN_fdeactived.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_fdeactived.setText("Deactived");
+        BTN_fdeactived.setText("Deactivate");
         BTN_fdeactived.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTN_fdeactived.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -704,7 +699,7 @@ public class uiAdmin extends javax.swing.JFrame {
                 .addContainerGap(234, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("View Booking Status", jPanel3);
+        jTabbedPane1.addTab("View Bookings Status", jPanel3);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);

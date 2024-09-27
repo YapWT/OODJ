@@ -139,11 +139,10 @@ public class Utils {
           if (!a.getUstatus().equals("deleted")) {
             tableRow[0] = i++;
             tableRow[1] = a.getUid();
-            tableRow[2] = a.getUpass().replaceAll(".", "*");
-            tableRow[3] = a.getUname();
-            tableRow[4] = a.getUtype();
-            tableRow[5] = a.getUcontact();
-            tableRow[6] = a.getUstatus();
+            tableRow[2] = a.getUname();
+            tableRow[3] = a.getUtype();
+            tableRow[4] = a.getUcontact();
+            tableRow[5] = a.getUstatus();
 
             model.addRow(tableRow);
           }
@@ -229,11 +228,10 @@ public class Utils {
             if (!a.getUstatus().equals("deleted") && f.equals(filter)) {
               tableRow[0] = i++;
               tableRow[1] = a.getUid();
-              tableRow[2] = a.getUpass().replaceAll(".", "*");
-              tableRow[3] = a.getUname();
-              tableRow[4] = a.getUtype();
-              tableRow[5] = a.getUcontact();
-              tableRow[6] = a.getUstatus();
+              tableRow[2] = a.getUname();
+              tableRow[3] = a.getUtype();
+              tableRow[4] = a.getUcontact();
+              tableRow[5] = a.getUstatus();
 
               model.addRow(tableRow);
             }
@@ -294,11 +292,10 @@ public class Utils {
       User user = (User) data;
       tableRow[0] = model.getRowCount() + 1;
       tableRow[1] = user.getUid();
-      tableRow[2] = user.getUpass().replaceAll(".", "*");
-      tableRow[3] = user.getUname();
-      tableRow[4] = user.getUtype();
-      tableRow[5] = user.getUcontact();
-      tableRow[6] = user.getUstatus();
+      tableRow[2] = user.getUname();
+      tableRow[3] = user.getUtype();
+      tableRow[4] = user.getUcontact();
+      tableRow[5] = user.getUstatus();
 
       model.addRow(tableRow);
     }

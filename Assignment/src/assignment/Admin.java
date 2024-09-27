@@ -26,7 +26,6 @@ class Admin extends Staff{
         if (check(t, row)) {
             setUpass(pass);
             Utils.editFile("users.txt", this, User.class);
-            model.setValueAt(pass.replaceAll(".", "*"), n - 1, 2);
             return true;
         } return false; // row is out of range or invalid data type = invalid row number
     }
