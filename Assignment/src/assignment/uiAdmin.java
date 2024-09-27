@@ -635,14 +635,14 @@ public class uiAdmin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "no", "Booking ID", "Hall ID", "Customer ID", "Booking Date", "Start Time", "End Time"
+                "no", "Booking ID", "Hall ID", "Customer ID", "Booking Date", "Start Time", "End Time", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
