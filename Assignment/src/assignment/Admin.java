@@ -39,7 +39,7 @@ class Admin extends Staff{
             else setUstatus("blocked");
         }
         Utils.editFile("users.txt", this, User.class);
-        model.setValueAt(getUstatus(), n - 1, 6);
+        model.setValueAt(getUstatus(), n - 1, 5);
     }
     
     public void modifyStatus() { 
