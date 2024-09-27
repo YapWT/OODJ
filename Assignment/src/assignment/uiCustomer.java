@@ -643,22 +643,26 @@ public class uiCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelBookingBtnActionPerformed
 
     private void submitIssueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitIssueBtnActionPerformed
-        customer.createIssue(raiseIssueCombo.getSelectedItem().toString(), issueDesc.getText());
-        Customer.displayIssueTable(issueTable, customer.getUid());
-        issueDesc.setText("");
-        raiseIssueCombo.removeAllItems();
-        ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
-        for (Booking booking : bookings) {
-            if (booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")) {
-                if (booking.getIssue().isEmpty()) {
-                    raiseIssueCombo.addItem(booking.getBookingID());
-                } else {
-                    String issueStatus = booking.getIssue().getStatus();
-                    if (issueStatus.equals("pending") || issueStatus.equals("in progress")) {
-                        cancelIssueCombo.addItem(booking.getIssue().getIssueID());
+        if(!issueDesc.getText().isBlank()){
+            customer.createIssue(raiseIssueCombo.getSelectedItem().toString(), issueDesc.getText());
+            Customer.displayIssueTable(issueTable, customer.getUid());
+            issueDesc.setText("");
+            raiseIssueCombo.removeAllItems();
+            ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
+            for (Booking booking : bookings) {
+                if (booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")) {
+                    if (booking.getIssue().isEmpty()) {
+                        raiseIssueCombo.addItem(booking.getBookingID());
+                    } else {
+                        String issueStatus = booking.getIssue().getStatus();
+                        if (issueStatus.equals("pending") || issueStatus.equals("in progress")) {
+                            cancelIssueCombo.addItem(booking.getIssue().getIssueID());
+                        }
                     }
                 }
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Issue description cannot be empty!");
         }
     }//GEN-LAST:event_submitIssueBtnActionPerformed
 
@@ -668,19 +672,23 @@ public class uiCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cancelIssueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelIssueBtnActionPerformed
-        Issue issue = Utils.IDtoObject(cancelIssueCombo.getSelectedItem().toString(), "issues.txt", Issue.class);
-        Issue.cancelIssue(issue);
-        
-        cancelIssueCombo.removeAllItems();
-        ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
-        for (Booking booking : bookings) {
-            if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled") && !booking.getIssue().isEmpty()) {
-                if (booking.getIssue().getStatus().equals("pending") || booking.getIssue().getStatus().equals("in progress")) {
-                    cancelIssueCombo.addItem(booking.getIssue().getIssueID());
+        if(cancelIssueCombo.getSelectedItem() != null){
+            Issue issue = Utils.IDtoObject(cancelIssueCombo.getSelectedItem().toString(), "issues.txt", Issue.class);
+            Issue.cancelIssue(issue);
+
+            cancelIssueCombo.removeAllItems();
+            ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
+            for (Booking booking : bookings) {
+                if (booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled") && !booking.getIssue().isEmpty()) {
+                    if (booking.getIssue().getStatus().equals("pending") || booking.getIssue().getStatus().equals("in progress")) {
+                        cancelIssueCombo.addItem(booking.getIssue().getIssueID());
+                    }
                 }
             }
+            Customer.displayIssueTable(issueTable, customer.getUid());
+        } else {
+            JOptionPane.showMessageDialog(null, "You need to select one Issue!");
         }
-        Customer.displayIssueTable(issueTable, customer.getUid());
     }//GEN-LAST:event_cancelIssueBtnActionPerformed
 
   private void datePickerFocusGained(
