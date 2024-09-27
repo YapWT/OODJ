@@ -66,8 +66,10 @@ public class uiCustomer extends javax.swing.JFrame {
     for(Booking booking : bookings){
         if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")){
             cancelBookingCombo.addItem(booking.getBookingID());
-            if (booking.getIssue().getStatus().equals("pending") || booking.getIssue().getStatus().equals("in progress")) {
-                cancelIssueCombo.addItem(booking.getIssue().getIssueID());
+            if(!booking.getIssue().isEmpty()) {
+                if (booking.getIssue().getStatus().equals("pending") || booking.getIssue().getStatus().equals("in progress")) {
+                    cancelIssueCombo.addItem(booking.getIssue().getIssueID());
+                }
             }
         }
         if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled") && booking.getIssue().isEmpty()){
@@ -708,6 +710,7 @@ public class uiCustomer extends javax.swing.JFrame {
       Booking.displayBookingsTable(filterBookingTable, "All", customer.getUid());
       Booking.displayBookingsTable(cancelBookingsTable, "All", customer.getUid());
       Customer.displayIssueTable(issueTable, customer.getUid());
+      cancelBookingCombo.removeAllItems();
       ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
       for(Booking booking : bookings){
           if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")){
