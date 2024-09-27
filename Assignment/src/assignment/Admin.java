@@ -89,20 +89,19 @@ class Admin extends Staff{
         ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
         this.model = (DefaultTableModel) t.getModel();
         model.setRowCount(0);
-        Object[] tableRow = new Object[7];
+        Object[] tableRow = new Object[8];
         int i = 0;
 
         for (Booking bs : bookings) {
-            if (bs.getBookingStatus().equals("success")) {
-                tableRow[0] = i++;
-                tableRow[1] = bs.getBookingID();
-                tableRow[2] = bs.getHallID();
-                tableRow[3] = bs.getCustomer().getUid();
-                tableRow[4] = bs.getBookingDate();
-                tableRow[5] = Booking.timeSlotConversion(bs.getTimeSlots()[0]);
-                tableRow[6] = Booking.timeSlotConversion(bs.getTimeSlots()[1]);
-                model.addRow(tableRow);
-            }
+            tableRow[0] = i++;
+            tableRow[1] = bs.getBookingID();
+            tableRow[2] = bs.getHallID();
+            tableRow[3] = bs.getCustomer().getUid();
+            tableRow[4] = bs.getBookingDate();
+            tableRow[5] = Booking.timeSlotConversion(bs.getTimeSlots()[0]);
+            tableRow[6] = Booking.timeSlotConversion(bs.getTimeSlots()[1]);
+            tableRow[7] = bs.getBookingStatus();
+            model.addRow(tableRow);
         }
     }
     
@@ -110,7 +109,7 @@ class Admin extends Staff{
         ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
         this.model = (DefaultTableModel) t.getModel();
         model.setRowCount(0);
-        Object[] tableRow = new Object[7];
+        Object[] tableRow = new Object[8];
         int i = 1;
         
         for (Booking bs : bookings) {
@@ -123,6 +122,7 @@ class Admin extends Staff{
                     tableRow[4] = bs.getBookingDate();
                     tableRow[5] = Booking.timeSlotConversion(bs.getTimeSlots()[0]);
                     tableRow[6] = Booking.timeSlotConversion(bs.getTimeSlots()[1]);
+                    tableRow[7] = bs.getBookingStatus();
                     model.addRow(tableRow);
                 }
             } else {
@@ -135,6 +135,7 @@ class Admin extends Staff{
                     tableRow[4] = bs.getBookingDate();
                     tableRow[5] = Booking.timeSlotConversion(bs.getTimeSlots()[0]);
                     tableRow[6] = Booking.timeSlotConversion(bs.getTimeSlots()[1]);
+                    tableRow[7] = bs.getBookingStatus();
                     model.addRow(tableRow);
                 }
             } 
