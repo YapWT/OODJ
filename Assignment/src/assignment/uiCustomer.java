@@ -64,7 +64,9 @@ public class uiCustomer extends javax.swing.JFrame {
     ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
     for(Booking booking : bookings){
         if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")){
-            cancelBookingCombo.addItem(booking.getBookingID());
+            if (!booking.getBookingDate().isBefore(LocalDate.now()) && LocalDate.now().isBefore(booking.getBookingDate().minusDays(3))){
+                cancelBookingCombo.addItem(booking.getBookingID());
+            }
             if(!booking.getIssue().isEmpty()) {
                 if (booking.getIssue().getStatus().equals("pending") || booking.getIssue().getStatus().equals("in progress")) {
                     cancelIssueCombo.addItem(booking.getIssue().getIssueID());
@@ -625,7 +627,9 @@ public class uiCustomer extends javax.swing.JFrame {
         ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
         for(Booking booking : bookings){
             if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")){
-                cancelBookingCombo.addItem(booking.getBookingID());
+                if (!booking.getBookingDate().isBefore(LocalDate.now()) && LocalDate.now().isBefore(booking.getBookingDate().minusDays(3))) {
+                    cancelBookingCombo.addItem(booking.getBookingID());
+                }
             }
             if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled") && booking.getIssue().isEmpty()){
                 raiseIssueCombo.addItem(booking.getBookingID());
@@ -713,7 +717,9 @@ public class uiCustomer extends javax.swing.JFrame {
       ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
       for(Booking booking : bookings){
           if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled")){
-              cancelBookingCombo.addItem(booking.getBookingID());
+              if (!booking.getBookingDate().isBefore(LocalDate.now()) && LocalDate.now().isBefore(booking.getBookingDate().minusDays(3))) {
+                  cancelBookingCombo.addItem(booking.getBookingID());
+              }
           }
           if(booking.getCustomer().getUid().equals(customer.getUid()) && !booking.getBookingStatus().equals("cancelled") && booking.getIssue().isEmpty()){      
               raiseIssueCombo.addItem(booking.getBookingID());
