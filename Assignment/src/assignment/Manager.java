@@ -31,7 +31,7 @@ public class Manager extends Staff {
       Integer total = 0;
       
       for (Issue i : issues) {
-          if (i.getStatus().equals("In Progress".toLowerCase())) {
+          if (i.getStatus().equalsIgnoreCase("In Progress")) {
               total++;
           }
       }
@@ -45,7 +45,7 @@ public class Manager extends Staff {
       Integer total = 0;
 
       for (Issue i : issues) {
-          if (i.getStatus().equals("Pending".toLowerCase()) || i.getStatus().isEmpty()) {
+          if (i.getStatus().equalsIgnoreCase("Pending") || i.getStatus().isEmpty()) {
               total++;
           }
       }
@@ -59,8 +59,12 @@ public class Manager extends Staff {
       Integer total = 0;
 
       for (Issue i : issues) {
-          if (i.getResponse().equals("") || i.getResponse().equals("null")) {
-              total++;
+          String response = i.getResponse().trim(); // Trim whitespace to avoid inconsistencies
+
+          if (response.isEmpty() || response.equals("null")) { // Check both empty and "null"
+              if (!i.getStatus().equalsIgnoreCase("Cancelled")) {
+                  total++;
+              }
           }
       }
 
