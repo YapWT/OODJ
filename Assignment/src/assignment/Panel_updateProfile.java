@@ -294,6 +294,7 @@ public class Panel_updateProfile extends javax.swing.JPanel {
     }//GEN-LAST:event_BTN_passActionPerformed
 
     private void BTN_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_deleteActionPerformed
+        jLabel8.setVisible(false);
         int result = JOptionPane.showConfirmDialog(
             null,
             "Are you sure you want to delete your account?",
