@@ -142,6 +142,8 @@ public class uiCustomerRegister extends javax.swing.JFrame {
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         if(nameTxt.getText().isBlank()|| passwordTxt.getText().isBlank()|| contactTxt.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Fields cannot be blank!");
+        } else if(Utils.checkContact(contactTxt.getText())) {
+            JOptionPane.showMessageDialog(null, "Contact is in wrong format!");
         } else {
             customer.register(nameTxt.getText(), passwordTxt.getText(), contactTxt.getText());
             this.dispose();
