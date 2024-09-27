@@ -234,6 +234,7 @@ public class Booking {
     model.setRowCount(0);
 
     ArrayList<Booking> bookings = FileOperations.read("bookings.txt", Booking.class);
+    LocalDate today = LocalDate.now();
 
     Object[] tableRow = new Object[6];
 
@@ -241,45 +242,39 @@ public class Booking {
       for (Booking booking : bookings) {
         if (customerID.equals(booking.getCustomer().getUid())
             && !booking.getBookingStatus().equals("cancelled")) {
-          switch (filter) {
-            case "All":
-              {
-                tableRow[0] = booking.getBookingID();
-                tableRow[1] = booking.getHallID();
-                tableRow[2] = timeSlotConversion(booking.getTimeSlots()[0]);
-                tableRow[3] = timeSlotConversion(booking.getTimeSlots()[1]);
-                tableRow[4] = booking.getTotalPrice();
-                tableRow[5] = booking.getBookingDate();
-                model.addRow(tableRow);
-                break;
-              }
-            case "Past":
-              {
-                if (booking.getBookingDate().isBefore(LocalDate.now())) {
-                  tableRow[0] = booking.getBookingID();
-                  tableRow[1] = booking.getHallID();
-                  tableRow[2] = timeSlotConversion(booking.getTimeSlots()[0]);
-                  tableRow[3] = timeSlotConversion(booking.getTimeSlots()[1]);
-                  tableRow[4] = booking.getTotalPrice();
-                  tableRow[5] = booking.getBookingDate();
-                  model.addRow(tableRow);
-                  break;
-                }
-              }
-            case "Up Coming":
-              {
-                if (booking.getBookingDate().isEqual(LocalDate.now())
-                    || booking.getBookingDate().isAfter(LocalDate.now())) {
-                  tableRow[0] = booking.getBookingID();
-                  tableRow[1] = booking.getHallID();
-                  tableRow[2] = timeSlotConversion(booking.getTimeSlots()[0]);
-                  tableRow[3] = timeSlotConversion(booking.getTimeSlots()[1]);
-                  tableRow[4] = booking.getTotalPrice();
-                  tableRow[5] = booking.getBookingDate();
-                  model.addRow(tableRow);
-                  break;
-                }
-              }
+          if (filter.equals("All")) {
+            tableRow[0] = booking.getBookingID();
+            tableRow[1] = booking.getHallID();
+            tableRow[2] = timeSlotConversion(booking.getTimeSlots()[0]);
+            tableRow[3] = timeSlotConversion(booking.getTimeSlots()[1]);
+            tableRow[4] = booking.getTotalPrice();
+            tableRow[5] = booking.getBookingDate();
+            model.addRow(tableRow);
+          } else if (filter.equals("Past")) {
+            if (booking.getBookingDate().isBefore(today)) {
+              System.out.println("Booking Date: " + booking.getBookingDate());
+              System.out.println("Current Date: " + today);
+              tableRow[0] = booking.getBookingID();
+              tableRow[1] = booking.getHallID();
+              tableRow[2] = timeSlotConversion(booking.getTimeSlots()[0]);
+              tableRow[3] = timeSlotConversion(booking.getTimeSlots()[1]);
+              tableRow[4] = booking.getTotalPrice();
+              tableRow[5] = booking.getBookingDate();
+              model.addRow(tableRow);
+            }
+          } else if (filter.equals("Up Coming")) {
+            System.out.println("Booking Date: " + booking.getBookingDate());
+            System.out.println("Current Date: " + today);
+            if (booking.getBookingDate().isEqual(today)
+                || booking.getBookingDate().isAfter(today)) {
+              tableRow[0] = booking.getBookingID();
+              tableRow[1] = booking.getHallID();
+              tableRow[2] = timeSlotConversion(booking.getTimeSlots()[0]);
+              tableRow[3] = timeSlotConversion(booking.getTimeSlots()[1]);
+              tableRow[4] = booking.getTotalPrice();
+              tableRow[5] = booking.getBookingDate();
+              model.addRow(tableRow);
+            }
           }
         }
       }
