@@ -695,9 +695,9 @@ public class uiCustomer extends javax.swing.JFrame {
           if(datePicker.getDate().isBefore(LocalDate.now())){
               JOptionPane.showMessageDialog(null, "You can't book a hall that is in the past!");
           } else {
-            customer.bookHalls(
+            int amount = customer.bookHalls(
           hallComboBox.getSelectedItem().toString(), bookingSlot, datePicker.getDate());
-            JOptionPane.showMessageDialog(null, "Hall booked");
+            JOptionPane.showMessageDialog(null, "Hall Booked!\nTotal will be RM"+ Integer.toString(amount) + ".", "Payment", JOptionPane.INFORMATION_MESSAGE);
             bookStatus.setText(" ");
           }
       } catch (IllegalArgumentException e) {

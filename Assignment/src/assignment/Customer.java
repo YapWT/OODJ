@@ -37,7 +37,7 @@ public class Customer extends User {
     return null;
   }
 
-  public void bookHalls(String hallID, int[] timeSlots, LocalDate date) {
+  public int bookHalls(String hallID, int[] timeSlots, LocalDate date) {
     if (timeSlots.length > 2) {
       throw new IllegalArgumentException("Timeslots only accept an array of length 2");
     }
@@ -80,6 +80,8 @@ public class Customer extends User {
     FileOperations.write("bookings.txt", booking);
 
     Schedule.overwriteOldSchedule(schedule);
+
+    return amount;
   }
 
   public static void displayIssueTable(JTable T, String customerID) {
