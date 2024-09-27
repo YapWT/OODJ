@@ -24,7 +24,6 @@ public class uiCustomer extends javax.swing.JFrame {
 
   public uiCustomer(User customer) {
     this.customer = (Customer) customer;
-    System.out.println(customer.toString());
     initComponents();
 
     datePicker.setDateToToday();
@@ -607,17 +606,14 @@ public class uiCustomer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void filterAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterAllBtnActionPerformed
-        System.out.println("All button pressed");
         Booking.displayBookingsTable(filterBookingTable, "All", customer.getUid());
     }//GEN-LAST:event_filterAllBtnActionPerformed
 
     private void filterPastBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterPastBtnActionPerformed
-        System.out.println("Past button pressed");
         Booking.displayBookingsTable(filterBookingTable, "Past", customer.getUid());
     }//GEN-LAST:event_filterPastBtnActionPerformed
 
     private void filterUpcomingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterUpcomingBtnActionPerformed
-        System.out.println("Up coming button pressed");
         Booking.displayBookingsTable(filterBookingTable, "Up Coming", customer.getUid());
     }//GEN-LAST:event_filterUpcomingBtnActionPerformed
 

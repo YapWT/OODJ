@@ -252,8 +252,6 @@ public class Booking {
             model.addRow(tableRow);
           } else if (filter.equals("Past")) {
             if (booking.getBookingDate().isBefore(today)) {
-              System.out.println("Booking Date: " + booking.getBookingDate());
-              System.out.println("Current Date: " + today);
               tableRow[0] = booking.getBookingID();
               tableRow[1] = booking.getHallID();
               tableRow[2] = timeSlotConversion(booking.getTimeSlots()[0]);
@@ -263,8 +261,6 @@ public class Booking {
               model.addRow(tableRow);
             }
           } else if (filter.equals("Up Coming")) {
-            System.out.println("Booking Date: " + booking.getBookingDate());
-            System.out.println("Current Date: " + today);
             if (booking.getBookingDate().isEqual(today)
                 || booking.getBookingDate().isAfter(today)) {
               tableRow[0] = booking.getBookingID();
