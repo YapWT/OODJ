@@ -1,6 +1,5 @@
 package assignment;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,13 +27,6 @@ public class Customer extends User {
     this.setUstatus("active");
 
     FileOperations.write("users.txt", this);
-  }
-
-  public ArrayList<Hall> viewAvailableHalls() throws IOException {
-    ArrayList<Hall> halls = FileOperations.read("halls.txt", Hall.class);
-    // this is retarded
-
-    return null;
   }
 
   public int bookHalls(String hallID, int[] timeSlots, LocalDate date) {
