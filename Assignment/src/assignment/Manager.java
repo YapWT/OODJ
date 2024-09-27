@@ -9,8 +9,8 @@ public class Manager extends Staff {
   public void showScheduler(JComboBox cb) {
       ArrayList<User> object = FileOperations.read("users.txt", User.class);
       for (User obj : object) {
-          if (obj.getUtype().equals("S")){
-              cb.addItem(obj.getUid()); // get scheduler id
+          if (obj.getUtype().equals("S") && obj.getUstatus().equals("active")){
+              cb.addItem(obj.getUid()); // get scheduler id that is active
           }
       }
   }
@@ -20,7 +20,8 @@ public class Manager extends Staff {
       Integer sales = 0;
       
       for (Booking b : bookings) {
-          sales += b.getTotalPrice();
+          if (b.getBookingStatus().equals("success"))
+            sales += b.getTotalPrice();
       }
       
       lbl.setText("RM" + sales.toString());
