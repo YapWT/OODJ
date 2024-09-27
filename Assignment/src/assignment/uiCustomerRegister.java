@@ -4,6 +4,8 @@
  */
 package assignment;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aaron
@@ -138,10 +140,13 @@ public class uiCustomerRegister extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        // TODO add your handling code here:
-        customer.register(nameTxt.getText(), passwordTxt.getText(), contactTxt.getText());
-        this.dispose();
-        new uiCustomer(customer).setVisible(true);
+        if(nameTxt.getText().isBlank()|| passwordTxt.getText().isBlank()|| contactTxt.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Fields cannot be blank!");
+        } else {
+            customer.register(nameTxt.getText(), passwordTxt.getText(), contactTxt.getText());
+            this.dispose();
+            new uiCustomer(customer).setVisible(true);
+        }
     }//GEN-LAST:event_registerButtonActionPerformed
 
     /**
